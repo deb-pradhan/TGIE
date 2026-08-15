@@ -3,7 +3,7 @@ import { FrameBlock } from "@/components/frame/Grid";
 
 export function TrustBand() {
   return (
-    <FrameBlock full>
+    <FrameBlock>
       <div className="rounded-[6px] bg-forest-deep px-6 py-9 text-ondark">
         <p className="text-center font-mono text-[11.5px] uppercase tracking-[0.18em] text-ondark-mut">
           {site.trust.caption}

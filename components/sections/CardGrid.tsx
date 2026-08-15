@@ -38,7 +38,7 @@ export function CardGrid({
               </h3>
               <p className="mt-2 flex-1 text-[13.5px] text-muted">{it.note}</p>
               <span className="mt-4 text-[13px] font-medium text-ink-2 group-hover:text-teal">
-                Explore →
+                Explore
               </span>
             </Link>
           </Cell>

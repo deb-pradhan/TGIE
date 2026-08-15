@@ -15,6 +15,7 @@ export default function Home() {
     <div className="flex flex-col gap-[2px] bg-paper pb-[2px]">
       <Hero />
       <TrustBand />
+      <GapStrip />
       <Philosophy />
       <GapStrip />
       <Practices />

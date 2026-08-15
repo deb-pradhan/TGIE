@@ -25,7 +25,7 @@ export default function CompanyPage() {
         line1={company.h1}
         line2={company.h2}
         lead={company.lead}
-        cta={<Button href="/start">Start a Project →</Button>}
+        cta={<Button href="/start">Start a Project</Button>}
       />
 
       <TrustBand />

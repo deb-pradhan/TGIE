@@ -22,7 +22,7 @@ export function Nav() {
           </span>
           <span className="text-white/85">{site.announcement.text}</span>
           <a href={site.announcement.href} className="hidden font-medium text-white hover:underline sm:inline">
-            {site.announcement.cta} →
+            {site.announcement.cta}
           </a>
         </div>
       </div>
@@ -98,51 +98,54 @@ export function Nav() {
             </div>
           </div>
 
-          {/* mega menu cell */}
+          {/* mega menu — cell collage */}
           {open && (
-            <div className="absolute inset-x-0 top-[calc(100%+2px)] mx-auto hidden max-w-[var(--maxw)] rounded-[6px] bg-cell shadow-[0_30px_50px_-30px_rgba(16,54,43,0.35)] lg:block">
+            <div className="absolute inset-x-0 top-[calc(100%+2px)] mx-auto hidden max-w-[var(--maxw)] rounded-[8px] bg-paper p-[2px] shadow-[0_30px_50px_-30px_rgba(16,54,43,0.35)] lg:block">
               {practices
                 .filter((p) => p.slug === open)
-                .map((p) => (
-                  <div key={p.slug} className="grid grid-cols-[1.4fr_1fr] gap-[2px] p-[2px]">
-                    <div className="rounded-[8px] bg-paper/60 p-6">
-                      <div className="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-teal">
-                        {p.index} · {p.name}
+                .map((p) => {
+                  const subs = practiceDetail[p.slug].subs;
+                  return (
+                    <div key={p.slug} className="flex flex-col gap-[2px]">
+                      {/* header cell */}
+                      <div className="flex items-end justify-between gap-6 rounded-[6px] bg-cell px-6 py-5">
+                        <div>
+                          <div className="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-teal">
+                            {p.index} · {p.name}
+                          </div>
+                          <p className="mt-2 max-w-[46ch] font-mono text-[16px] font-medium leading-snug tracking-tight text-ink">
+                            {p.position}
+                          </p>
+                        </div>
+                        <a
+                          href={`/practices/${p.slug}`}
+                          className="shrink-0 whitespace-nowrap text-[13px] font-medium text-ink-2 hover:text-teal"
+                        >
+                          Explore {p.short}
+                        </a>
                       </div>
-                      <p className="mt-2 max-w-[44ch] font-mono text-[17px] font-medium leading-snug tracking-tight text-ink">
-                        {p.position}
-                      </p>
-                      <div className="mt-5 grid grid-cols-2 gap-x-8 gap-y-3">
-                        {practiceDetail[p.slug].subs.map((s) => (
+
+                      {/* sub-page cells */}
+                      <div className="grid grid-cols-3 gap-[2px]">
+                        {subs.map((s) => (
                           <a
                             key={s.slug}
                             href={`/practices/${p.slug}/${s.slug}`}
-                            className="group block"
+                            className="group flex items-center justify-between gap-2 rounded-[6px] bg-cell px-4 py-3.5 transition-colors hover:bg-card"
                           >
-                            <div className="text-[14px] font-medium text-ink group-hover:text-teal">
+                            <span className="text-[13.5px] font-medium text-ink group-hover:text-teal">
                               {s.title}
-                            </div>
+                            </span>
                           </a>
                         ))}
+                        {subs.length % 3 !== 0 &&
+                          Array.from({ length: 3 - (subs.length % 3) }).map((_, i) => (
+                            <div key={i} aria-hidden className="rounded-[6px] bg-cell" />
+                          ))}
                       </div>
                     </div>
-                    <div className="flex flex-col justify-between rounded-[8px] bg-forest p-5 text-ondark">
-                      <div>
-                        <div className="font-mono text-[10.5px] font-bold uppercase tracking-[0.1em] text-teal-soft">
-                          The body we give
-                        </div>
-                        <p className="mt-2 font-mono text-[15px] font-medium leading-snug">{p.body}</p>
-                        <div className="mt-4 font-mono text-[10.5px] font-bold uppercase tracking-[0.1em] text-teal-soft">
-                          The weight we lift
-                        </div>
-                        <p className="mt-2 text-[13.5px] text-ondark-mut">{p.weight}</p>
-                      </div>
-                      <a href={`/practices/${p.slug}`} className="mt-4 text-[13px] font-medium text-white">
-                        Explore {p.short} →
-                      </a>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
             </div>
           )}
 

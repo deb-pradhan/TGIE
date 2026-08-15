@@ -47,7 +47,7 @@ export default async function SubPage({ params }: Params) {
         lead={s.summary}
         cta={
           <>
-            <Button href="/start">Start a Project →</Button>
+            <Button href="/start">Start a Project</Button>
             <Button href={`/practices/${slug}`} variant="ghost">
               Back to {p.short}
             </Button>

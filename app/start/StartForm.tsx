@@ -66,7 +66,7 @@ export function StartForm() {
           type="submit"
           className="inline-flex cursor-pointer items-center gap-2 rounded-btn border border-transparent bg-inkbtn px-[22px] py-3 text-[14.5px] font-medium text-white shadow-[var(--shadow-btn)] transition-transform duration-150 hover:-translate-y-px focus-visible:outline-2 focus-visible:outline-teal"
         >
-          Send it →
+          Send it
         </button>
         <span className="text-[12.5px] text-muted">We reply within two working days.</span>
       </div>

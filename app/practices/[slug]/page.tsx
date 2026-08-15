@@ -41,7 +41,7 @@ export default async function PracticePage({ params }: Params) {
         lead={d.lead}
         cta={
           <>
-            <Button href="/start">Start a Project →</Button>
+            <Button href="/start">Start a Project</Button>
             <Button href="#capabilities" variant="ghost">
               What we deliver
             </Button>

@@ -22,7 +22,7 @@ export default function WorkPage() {
         line1={work.h1}
         line2={work.h2}
         lead={work.lead}
-        cta={<Button href="/start">Start a Project →</Button>}
+        cta={<Button href="/start">Start a Project</Button>}
       />
 
       <GapStrip />

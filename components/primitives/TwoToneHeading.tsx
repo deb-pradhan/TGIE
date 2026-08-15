@@ -17,6 +17,7 @@ export function TwoToneHeading({
   line2,
   as = "h2",
   onDark = false,
+  accentLine2 = false,
   className,
   align = "left",
 }: {
@@ -24,6 +25,7 @@ export function TwoToneHeading({
   line2?: string;
   as?: As;
   onDark?: boolean;
+  accentLine2?: boolean;
   className?: string;
   align?: "left" | "center";
 }) {
@@ -42,7 +44,13 @@ export function TwoToneHeading({
       {line2 && (
         <>
           <br />
-          <span className={onDark ? "text-ondark-mut" : "text-muted"}>{line2}</span>
+          <span
+            className={
+              accentLine2 ? "text-teal-deep" : onDark ? "text-ondark-mut" : "text-muted"
+            }
+          >
+            {line2}
+          </span>
         </>
       )}
     </Tag>

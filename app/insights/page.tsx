@@ -35,7 +35,7 @@ export default function InsightsPage() {
                 href="/start"
                 className="mt-4 text-[13px] font-medium text-ink-2 hover:text-teal"
               >
-                {r.cta} →
+                {r.cta}
               </a>
             </Cell>
           ))}

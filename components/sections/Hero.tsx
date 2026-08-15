@@ -51,7 +51,7 @@ export function Hero() {
               <Chip>raise</Chip> nobody prepped for. We carry all of it. You keep the idea.
             </p>
             <div className="mt-8 flex flex-wrap gap-3.5">
-              <Button href="#contact">Start a Project →</Button>
+              <Button href="#contact">Start a Project</Button>
               <Button href="#practices" variant="ghost">
                 See the practices
               </Button>

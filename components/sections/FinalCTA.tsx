@@ -18,10 +18,10 @@ export function FinalCTA() {
             <EngravedFigure className="max-w-[220px] opacity-70" />
           </div>
           <div className="relative">
-            <TwoToneHeading as="h2" align="center" line1={f.line1} line2={f.line2} />
+            <TwoToneHeading as="h2" align="center" accentLine2 line1={f.line1} line2={f.line2} />
             <p className="mx-auto mt-4 max-w-[54ch] text-[15px] text-muted">{f.sub}</p>
             <div className="mt-7 flex flex-wrap justify-center gap-3.5">
-              <Button href="/start">Start a Project →</Button>
+              <Button href="/start">Start a Project</Button>
               <Button href="/start" variant="ghost">
                 Book a consultation
               </Button>
