@@ -6,8 +6,8 @@ export const site = {
   hero: {
     eyebrow: "The Great Indian Engineers",
     line1: "Theory, embodied.",
-    line2: "One accountable team — from first sketch to shipped hardware.",
-    lead: "Most partners hand you a piece. We hold the whole thing — the board, the enclosure, the product line, the company, and heavy fabrication at scale — as one accountable team. You keep the idea, and you own everything we make.",
+    line2: "One accountable team, from first sketch to shipped hardware.",
+    lead: "Most partners hand you a piece. We hold the whole thing: the board, the enclosure, the product line, the company, and heavy fabrication at scale, as one accountable team. You keep the idea, and you own everything we make.",
     stats: [
       { value: "4", unit: "pillars", label: "Under one accountable roof" },
       { value: "ISO 9001", label: "2015 certified fabrication" },
@@ -32,7 +32,7 @@ export const site = {
   philosophy: {
     eyebrow: "Our conviction",
     headline: "You carry the vision. We carry the weight.",
-    sub: "The discovery is yours — the thesis, the data, the IP. What we carry is the operational weight of turning an idea into something you can hold, defend, publish, and sell.",
+    sub: "The discovery is yours: the thesis, the data, the IP. What we carry is the operational weight of turning an idea into something you can hold, defend, publish, and sell.",
     tenets: [
       {
         n: "Principle I",
@@ -46,7 +46,7 @@ export const site = {
       },
       {
         n: "Principle III",
-        title: "A body we build, you own — completely",
+        title: "A body we build, you own completely",
         body: "Files, IP, entity, brand. All of it, handed back. Zero lock-in.",
       },
     ],
@@ -56,7 +56,7 @@ export const site = {
     eyebrow: "100% zero lock-in",
     line1: "We build the body.",
     line2: "You own it.",
-    sub: "Publication and grant compliance demand full transparency over the apparatus. On milestone completion, complete ownership transfers to you — no licensing friction between you and your own work.",
+    sub: "Publication and grant compliance demand full transparency over the apparatus. On milestone completion, complete ownership transfers to you. No licensing friction between you and your own work.",
     items: [
       { title: "Complete CAD & Gerber", note: "Full STEP files, schematics, manufacturing-ready packages" },
       { title: "Firmware source access", note: "Fully commented repositories and build scripts" },
@@ -72,7 +72,7 @@ export const site = {
     cards: [
       {
         title: "Firmware & silicon mastery",
-        body: "Bare-metal and FreeRTOS across Espressif ESP-IDF, Nordic nRF Connect, and STM32 — engineered to stay stable through extended trials.",
+        body: "Bare-metal and FreeRTOS across Espressif ESP-IDF, Nordic nRF Connect, and STM32. Engineered to stay stable through extended trials.",
         chart: "line" as const,
       },
       {
@@ -82,7 +82,7 @@ export const site = {
       },
       {
         title: "Edge AI & on-device ML",
-        body: "Lightweight models on microcontrollers via Edge Impulse and TensorFlow Lite — movement and bio-signal inference at the edge.",
+        body: "Lightweight models on microcontrollers via Edge Impulse and TensorFlow Lite. Movement and bio-signal inference at the edge.",
         chart: "gauge" as const,
       },
     ],
@@ -91,7 +91,7 @@ export const site = {
   caseStudy: {
     eyebrow: "Proven track record",
     quote:
-      "The custom hardware was delivered fully calibrated and field-ready — enabling pristine empirical dataset logs required for a successful thesis defense.",
+      "The custom hardware was delivered fully calibrated and field-ready, enabling pristine empirical dataset logs required for a successful thesis defense.",
     who: "Doctoral thesis validation",
     role: "PhD scholar, premier Indian technical institute",
   },
@@ -99,12 +99,12 @@ export const site = {
   finalCta: {
     line1: "Bring your research to the world.",
     line2: "You dream it. We'll carry it.",
-    sub: "Take the operational weight off your plate. One accountable team spanning engineering, legal, branding, and market — based in Thirumudivakkam, Chennai, working with institutions and founders globally.",
+    sub: "Take the operational weight off your plate. One accountable team spanning engineering, legal, branding, and market, based in Thirumudivakkam, Chennai, working with institutions and founders globally.",
   },
 
   footer: {
     blurb:
-      "The Great Indian Engineers — embedded systems, academic hardware prototyping, fabrication, and end-to-end business enablement.",
+      "The Great Indian Engineers: embedded systems, academic hardware prototyping, fabrication, and end-to-end business enablement.",
     columns: [
       {
         title: "Practices",

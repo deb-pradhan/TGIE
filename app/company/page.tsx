@@ -11,9 +11,9 @@ import { Button } from "@/components/primitives/Button";
 import { StatTile } from "@/components/dataviz/Charts";
 
 export const metadata: Metadata = {
-  title: "Company — TGIE",
+  title: "Company. TGIE",
   description:
-    "The Great Indian Engineers — institutional rigor, medical-grade discipline, based in Thirumudivakkam, Chennai.",
+    "The Great Indian Engineers: institutional rigor, medical-grade discipline, based in Thirumudivakkam, Chennai.",
 };
 
 export default function CompanyPage() {

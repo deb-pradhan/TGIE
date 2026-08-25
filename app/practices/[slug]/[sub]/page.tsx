@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug, sub } = await params;
   const s = practiceDetail[slug]?.subs.find((x) => x.slug === sub);
   if (!s) return {};
-  return { title: `${s.title} — TGIE`, description: s.summary };
+  return { title: `${s.title}. TGIE`, description: s.summary };
 }
 
 export default async function SubPage({ params }: Params) {

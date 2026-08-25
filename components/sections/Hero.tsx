@@ -20,7 +20,7 @@ export function Hero() {
               {h.line2}
             </p>
             <p className="text-lead mt-6 max-w-[52ch] text-muted">
-              Most ideas die after the breakthrough — in the board that won&apos;t{" "}
+              Most ideas die after the breakthrough. In the board that won&apos;t{" "}
               <Chip>hold a signal</Chip>, the company nobody has time to form, the{" "}
               <Chip>raise</Chip> nobody prepped for. We carry all of it. You keep the idea.
             </p>

@@ -5,7 +5,7 @@ import { TwoToneHeading } from "@/components/primitives/TwoToneHeading";
 import { StartForm } from "./StartForm";
 
 export const metadata: Metadata = {
-  title: "Start a project — TGIE",
+  title: "Start a project. TGIE",
   description: "Tell us what you're building. We'll carry the weight.",
 };
 

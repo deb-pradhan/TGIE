@@ -1,4 +1,4 @@
-/** Heavy Fabrication (Pillar D) page — showcase content: flow, the gap, stats. */
+/** Heavy Fabrication (Pillar D) page. Showcase content: flow, the gap, stats. */
 
 export const fabrication = {
   process: {
@@ -9,7 +9,7 @@ export const fabrication = {
       {
         n: "Step 01",
         title: "RFQ & sourcing",
-        scope: "Requirements, quoting, and material sourcing — one point of contact.",
+        scope: "Requirements, quoting, and material sourcing. One point of contact.",
       },
       {
         n: "Step 02",
@@ -32,7 +32,7 @@ export const fabrication = {
   gap: {
     eyebrow: "Why heavy fabrication is its own pillar",
     heading: "A validated design still isn't a delivered structure.",
-    body: "TGIE's manufacturing extends beyond 3D-printed and small-batch parts into heavy structural fabrication — an ISO 9001:2015 certified operation processing roughly 200 tonnes a month. Clients issue a single Purchase Order and we manage the whole lifecycle: RFQ, sourcing, cutting, bending, fabrication, machining, coating, and logistics. That removes the vendor-coordination burden a fragmented fab chain puts on the client.",
+    body: "TGIE's manufacturing extends beyond 3D-printed and small-batch parts into heavy structural fabrication, an ISO 9001:2015 certified operation processing roughly 200 tonnes a month. Clients issue a single Purchase Order and we manage the whole lifecycle: RFQ, sourcing, cutting, bending, fabrication, machining, coating, and logistics. That removes the vendor-coordination burden a fragmented fab chain puts on the client.",
   },
 
   stats: {
@@ -49,7 +49,7 @@ export const fabrication = {
     eyebrow: "Delivered with the paperwork",
     heading: "Certified, documented,",
     headingMuted: "delivered.",
-    body: "Every fabrication engagement ships with mill certificates, Welding Procedure Specifications (WPS), and test reports — the QC documentation industrial OEMs and heavy-equipment manufacturers need on file.",
+    body: "Every fabrication engagement ships with mill certificates, Welding Procedure Specifications (WPS), and test reports. The QC documentation industrial OEMs and heavy-equipment manufacturers need on file.",
   },
 
   categories: {

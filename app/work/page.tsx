@@ -9,9 +9,9 @@ import { TwoToneHeading } from "@/components/primitives/TwoToneHeading";
 import { Button } from "@/components/primitives/Button";
 
 export const metadata: Metadata = {
-  title: "Work & case studies — TGIE",
+  title: "Work & case studies. TGIE",
   description:
-    "From a PhD's wearable sensor to a certified industrial fabrication run — the shapes a project takes across all four pillars.",
+    "From a PhD's wearable sensor to a certified industrial fabrication run. The shapes a project takes across all four pillars.",
 };
 
 export default function WorkPage() {

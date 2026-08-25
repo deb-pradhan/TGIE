@@ -1,9 +1,9 @@
-# TGIE — Brand Positioning & Voice
+# TGIE. Brand Positioning & Voice
 
 **The Great Indian Engineers**
 Embedded systems · academic hardware prototyping · fabrication · business enablement · fundraising & GTM
 
-This doc tells you what TGIE stands for, who reads it, and how it sounds. Read it before you write a single line — then check the draft against §8 and §12 before you ship.
+This doc tells you what TGIE stands for, who reads it, and how it sounds. Read it before you write a single line, then check the draft against §8 and §12 before you ship.
 
 ---
 
@@ -21,7 +21,7 @@ TGIE gives the idea a body, and carries the weight of building it. The creator k
 
 1. **An idea is only real once it has a body.** Papers and slides prove something *can* be. Physical, legal, and commercial form is what makes it *exist*.
 2. **The weight shouldn't fall on the creator.** Vision and operations are different jobs. We shoulder the weight so the thinking stays yours.
-3. **A body we build, you own — completely.** Files, IP, entity, brand. All of it handed back. Zero lock-in.
+3. **A body we build, you own completely.** Files, IP, entity, brand. All of it handed back. Zero lock-in.
 
 ### How each practice connects
 
@@ -29,20 +29,20 @@ Each practice gives the idea a different body and lifts a different weight:
 
 | Domain | The body it gives | The weight it lifts |
 |---|---|---|
-| Engineering | a *physical* body — silicon, firmware, enclosure | building it from zero |
-| Research | a *credible* body — calibrated, field-ready apparatus | proving the data can be trusted |
-| Fabrication | a *repeatable* body — units, not one-offs | holding quality at volume |
-| Business Enablement | a *legal* body — entity, compliance, operations | structure, audit, admin |
-| Fundraising & GTM | a *market* body — brand, capital, customers | reaching investors and buyers |
+| Engineering | a *physical* body: silicon, firmware, enclosure | building it from zero |
+| Research | a *credible* body: calibrated, field-ready apparatus | proving the data can be trusted |
+| Fabrication | a *repeatable* body: units, not one-offs | holding quality at volume |
+| Business Enablement | a *legal* body: entity, compliance, operations | structure, audit, admin |
+| Fundraising & GTM | a *market* body: brand, capital, customers | reaching investors and buyers |
 
 ---
 
 ## 2. Positioning statement
 
-> For researchers and founders whose ideas still live on paper, TGIE gives those ideas a body — physical, legal, and commercial — and carries the full weight of building it. So the vision stays yours. And the ownership ends entirely in your hands.
+> For researchers and founders whose ideas still live on paper, TGIE gives those ideas a body: physical, legal, and commercial, and carries the full weight of building it. So the vision stays yours. And the ownership ends entirely in your hands.
 
 **Category:** end-to-end hardware development and commercialization partner.
-**What makes us different:** we hold the whole thing — engineering through market — as one accountable team. Then we give all of it back.
+**What makes us different:** we hold the whole thing, engineering through market, as one accountable team. Then we give all of it back.
 
 ---
 
@@ -51,7 +51,7 @@ Each practice gives the idea a different body and lifts a different weight:
 Two audiences. Same feeling underneath.
 
 - **Researchers, PhD scholars, university R&D labs.** They care about rigor, trustworthy data, and their thesis or grant. They're skeptical of vendors who don't understand the science.
-- **Founders and academic spin-offs.** They have a working idea and a mountain of things that aren't the idea — a company to form, money to raise, a product to ship.
+- **Founders and academic spin-offs.** They have a working idea and a mountain of things that aren't the idea: a company to form, money to raise, a product to ship.
 
 **What both feel before they find us:** *"The idea is the easy part. Everything after it is crushing me."*
 **What we want them to feel:** *"I can put this weight down. Someone competent has it. And it's still mine."*
@@ -68,7 +68,7 @@ TGIE sounds like a senior engineer you trust. The kind who's calm because they'v
 - **Confident, not loud.** We say what we do once.
 - **Precise.** Engineers respect precision. Vague claims lose us the room.
 - **Warm, but not chummy.** We respect the reader's intelligence and their time.
-- **Proud of the craft.** "The Great Indian Engineers" — there's pride in making things well.
+- **Proud of the craft.** "The Great Indian Engineers." There's pride in making things well.
 
 If TGIE were a person: measured, dry humor, allergic to hype, finishes what they start.
 
@@ -79,7 +79,7 @@ If TGIE were a person: measured, dry humor, allergic to hype, finishes what they
 1. **Say the real thing.** Name the actual object, step, or outcome. *"A six-layer board that doesn't drop packets"* beats *"a robust hardware solution."*
 2. **Short sentences carry more weight.** Let one be four words. Let it land.
 3. **Lead with the reader.** Start from their problem or their gain. "You" before "we."
-4. **Show the burden, then lift it.** Name the weight first — the fragile breadboard, the incorporation paperwork. Then offer relief.
+4. **Show the burden, then lift it.** Name the weight first: the fragile breadboard, the incorporation paperwork. Then offer relief.
 5. **Under-claim.** Say slightly less than the truth. Let the work sound more impressive than the sentence.
 6. **One idea per sentence.** If a sentence needs an "and," a comma, and a dash, it's two sentences.
 
@@ -116,7 +116,7 @@ Do these on purpose. They're what separate written-by-a-person from generated.
 
 ---
 
-## 8. Anti-rules — AI writing patterns to avoid
+## 8. Anti-rules. AI writing patterns to avoid
 
 These are the fingerprints of generated text. Cut on sight.
 
@@ -131,7 +131,7 @@ These are the fingerprints of generated text. Cut on sight.
 ### Banned "not just / it's about" constructions
 
 - "It's not just X, it's Y." / "It's not about X. It's about Y."
-- "More than a [vendor] — a [partner]."
+- "More than a [vendor]: a [partner]."
 - "This isn't your average ___."
 
 ### Banned hype vocabulary
@@ -151,7 +151,7 @@ These are the fingerprints of generated text. Cut on sight.
 - "It's worth noting that…" / "It's important to note…" / "Needless to say…"
 - "In order to" (just "to"). "Utilize" (just "use"). "A myriad of" (just "many").
 - "At the end of the day." / "When it comes to." / "The fact of the matter is."
-- Empty intensifiers: "truly," "really," "very," "incredibly," "meticulously," "carefully" — unless literally true and load-bearing.
+- Empty intensifiers: "truly," "really," "very," "incredibly," "meticulously," "carefully." Unless literally true and load-bearing.
 
 ### Banned closings
 
@@ -189,7 +189,7 @@ The thing that kills ideas is the weight. The fragile breadboard. The unstable s
 
 **Master line:** Theory, embodied.
 **Promise:** You carry the vision. We carry the weight.
-**Full version:** We give ideas a body — and carry the weight of making it real.
+**Full version:** We give ideas a body and carry the weight of making it real.
 
 **By audience:**
 - Research and labs: *Your thesis deserves a body as rigorous as your method.*
@@ -197,24 +197,24 @@ The thing that kills ideas is the weight. The fragile breadboard. The unstable s
 - IP and trust: *We build the body. You own it.*
 
 **By domain:**
-- Engineering: *We build the physical body — the board, the firmware, the housing.*
+- Engineering: *We build the physical body: the board, the firmware, the housing.*
 - Research: *We make the apparatus credible enough to trust the data.*
 - Fabrication: *We turn one working unit into a batch that behaves the same.*
-- Business Enablement: *We give the idea a legal body — the company around it.*
+- Business Enablement: *We give the idea a legal body: the company around it.*
 - Fundraising & GTM: *We carry it the last distance, into capital and the market.*
 
 **For the whole company:**
-*TGIE gives your idea a body it can live in — and carries what that costs.*
+*TGIE gives your idea a body it can live in and carries what that costs.*
 
 ---
 
 ## 11. Before / after
 
 **Off-voice (generated):**
-> In today's fast-paced innovation landscape, TGIE empowers researchers and founders to seamlessly transform their groundbreaking ideas into robust, market-ready solutions. It's not just about hardware — it's about unlocking your full potential.
+> In today's fast-paced innovation landscape, TGIE empowers researchers and founders to seamlessly transform their groundbreaking ideas into robust, market-ready solutions. It's not just about hardware. It's about unlocking your full potential.
 
 **On-voice (TGIE):**
-> Most ideas die after the breakthrough — in the board that won't hold a signal, the company nobody has time to form, the raise nobody prepped for. We carry all of it. You keep the idea, and everything we build for it.
+> Most ideas die after the breakthrough. In the board that won't hold a signal, the company nobody has time to form, the raise nobody prepped for. We carry all of it. You keep the idea, and everything we build for it.
 
 ---
 

@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
   const p = practices.find((x) => x.slug === slug);
   if (!p) return {};
-  return { title: `${p.name} — TGIE`, description: p.position };
+  return { title: `${p.name}. TGIE`, description: p.position };
 }
 
 export default async function PracticePage({ params }: Params) {

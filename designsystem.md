@@ -1,26 +1,26 @@
 # TGIE Design System & Visual Identity
 
-### Comprehensive agent & team handover — v4
+### Comprehensive agent & team handover. v4
 
 **Codename:** *Paper & Cell Collage*
 **Applies to:** the TGIE marketing web experience (`web/`, Next.js 16 + Tailwind v4).
 **Status:** Authoritative. This document + the live code in `web/components/frame/Grid.tsx` are the single source of truth. When they disagree, the code wins and this doc must be corrected.
 
 **What changed in v4** (fold-ins from continued build):
-- **Decorative surface treatments** are now a first-class concept — the animated **DitherField** (ordered-dither wave) that skins the green footer collage cell-by-cell, plus the rules for keeping text legible over it. See the new **§11.2**.
-- **Real image assets** are now used for illustration (e.g. the Philosophy engraved plate) via `next/image` — §11.1 updated.
-- **`TwoToneHeading` gains `accentLine2`** (teal second line) — §6.3 / §9.2.
-- **Motion** section adds the off-screen-pause pattern for many animated instances — §13.
-- New anti-pattern: **text over the dither must sit on a scrim** — §20.
+- **Decorative surface treatments** are now a first-class concept: the animated **DitherField** (ordered-dither wave) that skins the green footer collage cell-by-cell, plus the rules for keeping text legible over it. See the new **§11.2**.
+- **Real image assets** are now used for illustration (e.g. the Philosophy engraved plate) via `next/image`, §11.1 updated.
+- **`TwoToneHeading` gains `accentLine2`** (teal second line), §6.3 / §9.2.
+- **Motion** section adds the off-screen-pause pattern for many animated instances. See §13.
+- New anti-pattern: **text over the dither must sit on a scrim**. See §20.
 
-This is written as a **cross-disciplinary handover** — for whoever picks up the work next, human or agent, whether they touch pixels, copy, components, or content. It is deliberately exhaustive. If you read only one section, read **§2 (Core Mental Model)** and **§20 (Anti-patterns)** — nearly every past mistake came from missing those.
+This is written as a **cross-disciplinary handover**, for whoever picks up the work next, human or agent, whether they touch pixels, copy, components, or content. It is deliberately exhaustive. If you read only one section, read **§2 (Core Mental Model)** and **§20 (Anti-patterns)**. Nearly every past mistake came from missing those.
 
 ---
 
 ## Table of contents
 
 1. How to use this document
-2. **The core mental model — the cell collage**
+2. **The core mental model: the cell collage**
 3. Design principles
 4. Brand & visual identity foundations
 5. Color system
@@ -41,8 +41,8 @@ This is written as a **cross-disciplinary handover** — for whoever picks up th
 20. **Anti-patterns (mistakes never to repeat)**
 21. Governance, versioning & contribution
 22. Glossary
-23. Appendix A — New-page playbook
-24. Appendix B — Complete token reference
+23. Appendix A. New-page playbook
+24. Appendix B. Complete token reference
 
 ---
 
@@ -54,25 +54,25 @@ This is written as a **cross-disciplinary handover** — for whoever picks up th
 - **Reviewing a PR?** Use §19's checklist and scan §20.
 - **Tokens/values** live in `web/app/globals.css` (`@theme`) and Appendix B. Never hardcode a value that a token exists for.
 
-The **golden test** for anything in this system: *screenshot a junction where blocks meet — the seams must read as hairlines, the diamonds must emerge from the corners, and nothing may float on top of the surface.* If that's true and the copy is on-voice, it's on-system.
+The **golden test** for anything in this system: *screenshot a junction where blocks meet. The seams must read as hairlines, the diamonds must emerge from the corners, and nothing may float on top of the surface.* If that's true and the copy is on-voice, it's on-system.
 
 ---
 
-## 2. The core mental model — the cell collage
+## 2. The core mental model: the cell collage
 
 The entire visual language is one construction. Internalize it before writing any markup.
 
 > **Lighter cells laid tightly on a darker canvas.**
 
-- Every visible block on the page — the nav, the announcement bar, hero halves, sections, columns, spacer strips, footer columns, FAQ questions, even deliberately *empty* areas — is a **cell**: a lighter, borderless, subtly-rounded rectangle.
+- Every visible block on the page (the nav, the announcement bar, hero halves, sections, columns, spacer strips, footer columns, FAQ questions, even deliberately *empty* areas) is a **cell**: a lighter, borderless, subtly-rounded rectangle.
 - Cells sit on a slightly **darker canvas** separated by a uniform **2px gap** (the *seam*).
-- **The seams are the gridlines.** Nothing is ever *drawn* — no border strokes, no `<hr>`, no divider elements, no rule lines.
-- Where four rounded cell corners meet across a seam, the canvas shows through as a small **diamond**. The diamond is **emergent negative space** — never an element.
+- **The seams are the gridlines.** Nothing is ever *drawn*. No border strokes, no `<hr>`, no divider elements, no rule lines.
+- Where four rounded cell corners meet across a seam, the canvas shows through as a small **diamond**. The diamond is **emergent negative space**, never an element.
 - **Canvas is never exposed beyond the 2px seams.** Empty regions are covered by *empty cells* (edge cells, spacer cells, filler cells).
 
 Everything else in this document is a consequence of these five facts.
 
-**Why it works (visual-design rationale):** contrast and structure come from *surfaces and spacing*, not from lines and ornament. This reads as precise and "engineered" — appropriate for a hardware/research brand — while staying warm (paper tones, not clinical white) and calm (no visual noise). It is also intrinsically responsive: cells reflow, seams stay constant.
+**Why it works (visual-design rationale):** contrast and structure come from *surfaces and spacing*, not from lines and ornament. This reads as precise and "engineered" (appropriate for a hardware/research brand), while staying warm (paper tones, not clinical white) and calm (no visual noise). It is also intrinsically responsive: cells reflow, seams stay constant.
 
 ---
 
@@ -91,10 +91,10 @@ Everything else in this document is a consequence of these five facts.
 
 ## 4. Brand & visual identity foundations
 
-- **Name:** TGIE — *The Great Indian Engineers.*
+- **Name:** TGIE. *The Great Indian Engineers.*
 - **Positioning line:** *Theory, embodied.*
 - **Promise:** *You carry the vision. We carry the weight.*
-- **Personality:** a senior engineer you trust — grounded, precise, confident, warm, allergic to hype. (Full character + voice: `brandpositioning.md`.)
+- **Personality:** a senior engineer you trust. Grounded, precise, confident, warm, allergic to hype. (Full character + voice: `brandpositioning.md`.)
 - **Logo lockup:** a rounded-square mark containing a mono "T" (`bg-forest`, white glyph, 7px radius, ~28px) followed by the wordmark **TGIE** set in Space Mono, bold, tight tracking. On dark surfaces the mark's fill becomes `--color-forest-deep`.
 - **Visual signatures (what makes it recognizably TGIE):**
   1. the **cell collage** with 2px seams and emergent diamonds;
@@ -123,7 +123,7 @@ Everything else in this document is a consequence of these five facts.
 | Brand green (cell) | `--color-forest` | `#0f3a2e` | Dark green cells (footer tiles, dark bands) |
 | Brand green (canvas) | `--color-forest-deep` | `#0b2c23` | Trust-band fill; footer mark fill |
 | Footer canvas | *(inline)* | `#081f18` | The **seams** of the footer's green collage (the only sanctioned inline hex) |
-| Accent | `--color-teal` | `#2fae97` | The single accent — status dots, chart series, hover, key phrases |
+| Accent | `--color-teal` | `#2fae97` | The single accent: status dots, chart series, hover, key phrases |
 | Accent deep | `--color-teal-deep` | `#0e6e5c` | Teal text on light, gradient dark stop, gauge start |
 | Accent soft | `--color-teal-soft` | `#6fd0bb` | Teal on dark, gradient light stop |
 | Mint wash | `--color-mint` | `#e9f5f1` | Tinted icon badges, small pills |
@@ -148,7 +148,7 @@ Everything else in this document is a consequence of these five facts.
 
 ## 6. Typography system
 
-Two families, fixed roles. This pairing is intentional and load-bearing to the identity — **do not deviate.**
+Two families, fixed roles. This pairing is intentional and load-bearing to the identity. **Do not deviate.**
 
 ### 6.1 Families
 
@@ -176,8 +176,8 @@ Mono is wide; the scale is already sized down to compensate. **Do not enlarge.**
 ### 6.3 Rules
 - **Headings are Space Mono, weight 500, `tracking-tight`.** Never sans for headings.
 - **Body/paragraphs are Hanken Grotesk.** Never mono for long body copy (mono is for headings, labels, indices, blockquotes, the wordmark).
-- **Weight discipline:** 400 (regular) and 500 (medium) only. **Never 600/700** — the sole exception is the logo wordmark (bold).
-- **Two-tone heading (signature):** line 1 in `--color-ink`, line 2 in `--color-muted`, same size/weight. Use the `TwoToneHeading` component; do not hand-roll. Pass **`accentLine2`** to render line 2 in `--color-teal` instead of muted — reserved for the primary conviction/CTA moment (e.g. Final CTA), not for every heading.
+- **Weight discipline:** 400 (regular) and 500 (medium) only. **Never 600/700**, the sole exception is the logo wordmark (bold).
+- **Two-tone heading (signature):** line 1 in `--color-ink`, line 2 in `--color-muted`, same size/weight. Use the `TwoToneHeading` component; do not hand-roll. Pass **`accentLine2`** to render line 2 in `--color-teal` instead of muted. Reserved for the primary conviction/CTA moment (e.g. Final CTA), not for every heading.
 - **Sentence case** everywhere. UPPERCASE only for small mono labels with wide tracking.
 - **One teal phrase max per heading** (e.g. a key phrase in the conviction line, or the whole second line via `accentLine2`). Optional, not default.
 - Base CSS sets `h1–h4` to weight 500, `letter-spacing:-0.02em`, `line-height:1.06`; `TwoToneHeading` overrides to mono with `leading-[1.18]`.
@@ -195,7 +195,7 @@ Mono is wide; the scale is already sized down to compensate. **Do not enlarge.**
 | Edge column | `minmax(14px, 1fr)` | Empty edge cells; shrink to 14px on mobile, grow on wide screens. |
 | Spacer strip | `GapStrip` default `h=16px` | Empty cell between content rows. |
 
-### 7.1 Radii — four sacred numbers
+### 7.1 Radii: four sacred numbers
 The collage radii are literal px (not the `--radius-*` UI tokens, which are for buttons/tiles/cards):
 
 | Element | Radius |
@@ -238,7 +238,7 @@ gap: 2px
 
 ### 8.3 Implementation recipes
 ```tsx
-// PAGE STACK — the vertical seams between every block
+// PAGE STACK: the vertical seams between every block
 <div className="flex flex-col gap-[2px] bg-paper pb-[2px]"> …blocks… </div>
 
 // A single-cell section (light)
@@ -252,7 +252,7 @@ gap: 2px
   </div>
 </FrameBlock>
 
-// A stack of item-cells (FAQ, list rows) — each item its OWN cell
+// A stack of item-cells (FAQ, list rows). Each item its OWN cell
 <div className="flex flex-col gap-[2px]">
   {items.map(x => <Cell key={x.id}>…</Cell>)}
 </div>
@@ -275,7 +275,7 @@ gap: 2px
 
 Location: `web/components/`. Prefer these over anything bespoke.
 
-### 9.1 Grid primitives — `frame/Grid.tsx`
+### 9.1 Grid primitives: `frame/Grid.tsx`
 | Export | Purpose |
 |---|---|
 | `GAP` | The `2` seam constant. |
@@ -284,23 +284,23 @@ Location: `web/components/`. Prefer these over anything bespoke.
 | `GapStrip` | Plain spacer cell (`h` prop, default 16). |
 | `DottedStrip` | Spacer cell with the `.dots` texture. |
 
-### 9.2 Primitives — `primitives/`
-- **`Section`** — the standard section: `FrameBlock` + `Cell` + `section-y` padding. Props: `tone` (`paper`/`paper2`/`forest`/`forestDeep` — dark tones render full-bleed), `flush` (drop section padding), `id`, `className`, `containerClassName`.
-- **`TwoToneHeading`** — the signature heading. Props: `line1`, `line2?`, `as` (`h1`/`h2`/`h3`), `align`, `onDark`, `accentLine2` (teal 2nd line — sparing). Always mono, weight 500, tracking-tight. **Use for every section heading.**
-- **`Button`** — anchor-based. Variants: `primary` (near-black `--color-inkbtn`, white text, `--shadow-btn` glow, hover `-translate-y-px`), `ghost` (transparent, `--color-line` border, hover border-ink), `onDark` (white on dark), `outlineDark`. Sizes: `md` (22px×12px, 14.5px), `sm` (16px×8px, 13.5px). Radius `--radius-btn` (12px), never a pill. *Note: for internal routes prefer wrapping/using `next/link`; the logo already does.*
-- **`Pill`** — exports `Eyebrow` (pill with a teal status dot + mono-ish label; `onDark` variant) and inline `Chip` (rounded tag for emphasizing a phrase inside a paragraph, 1–3 per paragraph max).
-- **`Card`** — white elevated card, used **only inside a cell** (e.g. floating dashboard over pixel art). Optional `hover` lift.
+### 9.2 Primitives: `primitives/`
+- **`Section`**. The standard section: `FrameBlock` + `Cell` + `section-y` padding. Props: `tone` (`paper`/`paper2`/`forest`/`forestDeep`; dark tones render full-bleed), `flush` (drop section padding), `id`, `className`, `containerClassName`.
+- **`TwoToneHeading`**. The signature heading. Props: `line1`, `line2?`, `as` (`h1`/`h2`/`h3`), `align`, `onDark`, `accentLine2` (teal 2nd line, sparing). Always mono, weight 500, tracking-tight. **Use for every section heading.**
+- **`Button`**. Anchor-based. Variants: `primary` (near-black `--color-inkbtn`, white text, `--shadow-btn` glow, hover `-translate-y-px`), `ghost` (transparent, `--color-line` border, hover border-ink), `onDark` (white on dark), `outlineDark`. Sizes: `md` (22px×12px, 14.5px), `sm` (16px×8px, 13.5px). Radius `--radius-btn` (12px), never a pill. *Note: for internal routes prefer wrapping/using `next/link`; the logo already does.*
+- **`Pill`**. Exports `Eyebrow` (pill with a teal status dot + mono-ish label; `onDark` variant) and inline `Chip` (rounded tag for emphasizing a phrase inside a paragraph, 1–3 per paragraph max).
+- **`Card`**. White elevated card, used **only inside a cell** (e.g. floating dashboard over pixel art). Optional `hover` lift.
 
-### 9.3 Sections — `sections/`
+### 9.3 Sections: `sections/`
 `Hero`, `TrustBand`, `Philosophy`, `Practices`, `Capabilities`, `Ownership`, `Lifecycle`, `CaseStudy`, `FinalCTA`, `Faq`, `Footer`, plus reusable `PageHero` (interior pages, with `Breadcrumb`) and `CardGrid` (linked sub-page cells). All are composed from the primitives above.
 
-### 9.4 Data-viz — `dataviz/Charts.tsx`
+### 9.4 Data-viz: `dataviz/Charts.tsx`
 Hand-built SVG: `Donut`, `Gauge`, `BarChart`, `LineChart`, `StatTile`. **No chart library.**
 
-### 9.5 Illustration & surface treatments — `illustration/`
-`IsoScene` (isometric; `bare` mode for bento cells), `EngravedFigure` (monochrome hatching), `PixelBackdrop` (pixel art; only behind a white card or filling a media cell), **`DitherField`** (animated ordered-dither surface for green/dark cells — see §11.2), and real image plates via `next/image` (see §11.1). Client illustration/treatment components are `"use client"` and must honor reduced motion.
+### 9.5 Illustration & surface treatments: `illustration/`
+`IsoScene` (isometric; `bare` mode for bento cells), `EngravedFigure` (monochrome hatching), `PixelBackdrop` (pixel art; only behind a white card or filling a media cell), **`DitherField`** (animated ordered-dither surface for green/dark cells; see §11.2), and real image plates via `next/image` (see §11.1). Client illustration/treatment components are `"use client"` and must honor reduced motion.
 
-### 9.6 Nav — `nav/Nav.tsx`
+### 9.6 Nav: `nav/Nav.tsx`
 Announcement cell (dark, full-bleed 8px bar) → sticky nav cell (light 8px bar, content centered to `--maxw`) → **mega-menu as a cell collage** (a canvas panel with a header cell + a 3-col grid of sub-page cells, filler cells to avoid exposed canvas, 2px seams; an "Explore {practice} →" link in the header cell) → mobile menu cell.
 
 ---
@@ -338,26 +338,26 @@ Every interior page wraps in the page stack (`flex flex-col gap-[2px] bg-paper p
 
 - **Icons:** line icons, ~1.6–1.8px stroke, rounded joins, `--color-teal` or `--color-ink`. Placed in mint (`--color-mint`) rounded-square badges for feature rows. 16–20px inline, 24px max decorative.
 
-### 11.1 Illustration registers — one register per figure, never mixed
+### 11.1 Illustration registers: one register per figure, never mixed
 1. **Isometric** (product/how-it-works): white pucks/tiles, teal line icons, dashed teal connectors, faint `.iso-grid` ground (`IsoScene`).
-2. **Engraved line-art** (emotional/editorial beats): monochrome only — **never colorize**. Available both as the generated `EngravedFigure` and as **real image plates** (e.g. `/public/illustration/engraved-atlas.png` in the Philosophy media cell).
-3. **Pixel art** (playful backdrop): only filling a media cell or sitting behind a floating white card — **never behind text**, never a standalone hero background (`PixelBackdrop`).
+2. **Engraved line-art** (emotional/editorial beats): monochrome only, **never colorize**. Available both as the generated `EngravedFigure` and as **real image plates** (e.g. `/public/illustration/engraved-atlas.png` in the Philosophy media cell).
+3. **Pixel art** (playful backdrop): only filling a media cell or sitting behind a floating white card, **never behind text**, never a standalone hero background (`PixelBackdrop`).
 
 **Real image assets (the mature path).** Illustration may now be actual artwork, not only generated SVG. Rules:
 - Serve via **`next/image`** with `fill` + `object-cover`, an explicit `sizes`, and `aria-hidden` + `alt=""` for decorative plates.
 - Live in `web/public/illustration/`. The cell that holds it is `relative overflow-hidden rounded-[6px]` so the art is clipped to the collage cell (never bleeds past the seam).
 - Keep every figure in a **single register**; engraved plates stay monochrome; pixel/photographic art stays masked to a card or media cell.
-- Placeholders (generated SVG) and final art are interchangeable **without touching layout** — the cell is the frame.
+- Placeholders (generated SVG) and final art are interchangeable **without touching layout**: the cell is the frame.
 
-### 11.2 Animated surface treatment — the DitherField
-A decorative, animated **ordered-dither wave** (`DitherField`) that skins **dark/green cells** — currently every cell of the footer green collage. It is deliberately built in the **pixel register** (a low-res canvas quantized with a 4×4 Bayer matrix, upscaled with `image-rendering: pixelated`) so it belongs to the same family as `PixelBackdrop`, not a foreign shader.
+### 11.2 Animated surface treatment: the DitherField
+A decorative, animated **ordered-dither wave** (`DitherField`) that skins **dark/green cells** (currently every cell of the footer green collage). It is deliberately built in the **pixel register** (a low-res canvas quantized with a 4×4 Bayer matrix, upscaled with `image-rendering: pixelated`) so it belongs to the same family as `PixelBackdrop`, not a foreign shader.
 
 Rules for using it:
-- **Palette:** a tight green ramp (`#0b2c23 → #143a2e → #1b4d3f → #23664f`) — low-contrast, so it reads as texture, not decoration competing with content. Match the surrounding cell's family if reused elsewhere.
+- **Palette:** a tight green ramp (`#0b2c23 → #143a2e → #1b4d3f → #23664f`), low-contrast, so it reads as texture, not decoration competing with content. Match the surrounding cell's family if reused elsewhere.
 - **Placement:** `absolute inset-0`, `pointer-events-none`, `aria-hidden`, inside a `relative overflow-hidden rounded-[6px]` cell. Content sits in a `relative z-10` wrapper above it.
 - **Text legibility is mandatory.** Any cell with text over the dither MUST place a **scrim** (`bg-[#081f18]/70`, tune 60–75%) between the dither and the content. Feature/empty cells (e.g. the wordmark, edge fillers) may show it at full strength.
 - **Performance:** many instances are fine because `DitherField` pauses via `IntersectionObserver` when off-screen and only allocates a small low-res buffer (`PIXEL` = 6). Never run an always-on full-resolution shader.
-- **Motion:** honors `prefers-reduced-motion` — one static frame, no loop, no pointer listeners. Optional pointer ripple only when motion is allowed.
+- **Motion:** honors `prefers-reduced-motion`. One static frame, no loop, no pointer listeners. Optional pointer ripple only when motion is allowed.
 - **Tuning knobs (all one-liners in `DitherField.tsx`):** `PIXEL` (chunkiness), `SPEED`, `FREQ`, `AMP`, `RAMP` (contrast/hue), and the scrim opacity in the consuming cell.
 - **Where it's allowed:** dark/green collage surfaces used as a hero-of-the-section moment (footer today). Do **not** apply it to light paper cells or behind dense body copy.
 
@@ -377,7 +377,7 @@ Rules for using it:
 
 ## 13. Motion & interaction
 
-- **Reveal on scroll:** `Reveal` (Motion / framer-motion) — fade + 14px rise, `once`, `-80px` viewport margin, ~0.5s ease. Gated by `useReducedMotion`.
+- **Reveal on scroll:** `Reveal` (Motion / framer-motion). Fade + 14px rise, `once`, `-80px` viewport margin, ~0.5s ease. Gated by `useReducedMotion`.
 - **Hover:** cards/buttons lift `-translate-y-px`; cells shift to `bg-card`; links → teal; FAQ chevron rotates 180°; mega-menu arrow → teal.
 - **Ambient / decorative animation:** the `DitherField` surface (§11.2) is the only continuous animation. It is texture, not signal.
 - **Off-screen pause (required for continuous animation):** any always-running canvas/rAF loop MUST pause via `IntersectionObserver` when its element is off-screen (as `DitherField` does), so multiple instances cost nothing until scrolled into view.
@@ -405,23 +405,23 @@ Rules for using it:
 - **Breakpoints (Tailwind):** `sm 640 · md 768 · lg 1024 · xl 1280`.
 - **The collage is responsive by construction:** edge cells shrink to 14px slivers on mobile; the content column is fluid below `--maxw`.
 - **Grid collapse:** multi-column rows (`lg:grid-cols-2`, `md:grid-cols-3`) stack to one column below breakpoint; **keep `gap-[2px]`** when stacked so seams persist.
-- **Order:** alternating rows (`lg:order-2`) reset to source order on mobile — **text above media**.
+- **Order:** alternating rows (`lg:order-2`) reset to source order on mobile. **Text above media.**
 - **Nav:** collapses to a Menu button `<lg`; mobile menu is a dropdown cell.
 - **Type/space:** already fluid via `clamp()`; do not add manual per-breakpoint font sizes.
-- **Hard rule — zero horizontal page scroll at any width.** Test 375 / 768 / 1024 / 1280 / 1440. Wide inner content (tables, wide charts) scrolls inside its own cell (`overflow-x-auto`), never the page.
+- **Hard rule: zero horizontal page scroll at any width.** Test 375 / 768 / 1024 / 1280 / 1440. Wide inner content (tables, wide charts) scrolls inside its own cell (`overflow-x-auto`), never the page.
 
 ---
 
 ## 16. UX writing & content design
 
-Voice is owned by **`brandpositioning.md`** — read it before writing. This section governs how voice meets the type system.
+Voice is owned by **`brandpositioning.md`**; read it before writing. This section governs how voice meets the type system.
 
 - **Master line / promise:** *Theory, embodied.* / *You carry the vision. We carry the weight.*
 - **Two-tone headings carry the message:** line 1 = the claim, line 2 = the muted qualifier. Keep both short; mono is wide.
 - **Eyebrows:** short mono UPPERCASE labels (`PRACTICE 01`, `WHAT'S INCLUDED`, `100% ZERO LOCK-IN`). Sentence-case everything else.
-- **Feature paragraphs are plain** — no marker/underline highlight effects. Name the weight, then lift it.
+- **Feature paragraphs are plain**. No marker/underline highlight effects. Name the weight, then lift it.
 - **Numbered lists** use mono `01–04` labels; keep item titles to a few words, notes to one line.
-- **CTAs:** action-first, concrete — *Start a Project →*, *Explore Engineering →*, *What we deliver*. Avoid hype verbs.
+- **CTAs:** action-first, concrete. *Start a Project →*, *Explore Engineering →*, *What we deliver*. Avoid hype verbs.
 - **Microcopy honesty:** the `/start` form and trust marks must stay truthful (no invented review counts/logos). Third-party names (IIT Madras, MedCuore) require sign-off before public use.
 - **Banned language:** run copy against `brandpositioning.md` §8 (unlock, leverage, seamless, elevate, revolutionize, delve, "in today's fast-paced world", "not just X but Y", etc.). Cut on sight.
 - **Formatting rules:** sentence case; no Title Case; no mid-sentence bold (use a `Chip` or the muted line); end on the strong word.
@@ -451,9 +451,9 @@ Voice is owned by **`brandpositioning.md`** — read it before writing. This sec
 ## 19. Quality gates & definition of done
 
 A change is done only when **all** are true:
-- [ ] Built with `FrameBlock`/`Cell`/`GapStrip`/`Section` — no hand-rolled grid geometry.
+- [ ] Built with `FrameBlock`/`Cell`/`GapStrip`/`Section`. No hand-rolled grid geometry.
 - [ ] **No exposed canvas** beyond 2px seams at any width (edge cells + fillers cover everything).
-- [ ] Seam `2px`, cell radius `6px`, bar `8px`, strip `4px` — untouched.
+- [ ] Seam `2px`, cell radius `6px`, bar `8px`, strip `4px`. Untouched.
 - [ ] Headings Space Mono 500 via `TwoToneHeading`; body Hanken Grotesk; sizes from `--text-*`.
 - [ ] Dark only in the three sanctioned roles; footer is the green collage.
 - [ ] Copy in `content/*.ts`, on-voice, banned words absent (`brandpositioning.md` §8/§12).
@@ -465,31 +465,31 @@ A change is done only when **all** are true:
 
 ---
 
-## 20. Anti-patterns — mistakes never to repeat
+## 20. Anti-patterns: mistakes never to repeat
 
 Each of these is a real mistake made while building this system. They are the fastest way to go off-brand.
 
-1. ❌ **Drawing gridlines** — no `h-px`/`w-px` divider elements, no border-based rails, no double-line strokes. Seams come from gaps between cells.
-2. ❌ **Placing a diamond element** — no rotated squares, no `+` marks, no crop brackets. Junction diamonds are emergent only.
-3. ❌ **Leaving canvas exposed** beyond the 2px seams — no naked `bg-paper` beside/above/between cells. Cover it with an empty cell.
+1. ❌ **Drawing gridlines**. No `h-px`/`w-px` divider elements, no border-based rails, no double-line strokes. Seams come from gaps between cells.
+2. ❌ **Placing a diamond element**. No rotated squares, no `+` marks, no crop brackets. Junction diamonds are emergent only.
+3. ❌ **Leaving canvas exposed** beyond the 2px seams. No naked `bg-paper` beside/above/between cells. Cover it with an empty cell.
 4. ❌ **Fixed-width edge cells** or a centered frame with canvas margins outside it. Edge cells are fluid to the viewport edge.
-5. ❌ **Square segment cells / splits inside spacer strips** — strips are plain single cells.
-6. ❌ **Extra dark bands** — only announcement, trust band, footer are dark.
-7. ❌ **Grid texture / marks / frames behind the hero** — the hero is clean cells.
-8. ❌ **Sans headings or mono body paragraphs** — the pairing is fixed.
+5. ❌ **Square segment cells / splits inside spacer strips**. Strips are plain single cells.
+6. ❌ **Extra dark bands**. Only announcement, trust band, footer are dark.
+7. ❌ **Grid texture / marks / frames behind the hero**. The hero is clean cells.
+8. ❌ **Sans headings or mono body paragraphs**. The pairing is fixed.
 9. ❌ **Weight 600/700**, Title Case headings, or a second accent color.
 10. ❌ **Colorizing engraved art; pixel art behind text; mixing illustration registers** in one figure.
-11. ❌ **Pure white as a cell/page surface** — white is only for floating cards inside cells.
-12. ❌ **Installing a chart library** — charts are the hand-built SVGs in `dataviz/`.
-13. ❌ **Marker/underline highlight** on feature paragraphs — plain muted text.
-14. ❌ **Borders between cells** — the 2px seam is the separator.
-15. ❌ **Bordered list inside one cell for the FAQ** — each question is its own cell.
-16. ❌ **Enlarging cell radius** to "soften" — it enlarges the diamond and breaks the look; stay at 6px.
-17. ❌ **Hardcoding copy in JSX** — it belongs in `content/*.ts`.
-18. ❌ **Text over the DitherField without a scrim** — every text cell over the dither needs the dark scrim (§11.2); the wordmark/empty cells are the only bare exceptions.
-19. ❌ **Dither on light paper cells or behind body copy** — it's a dark/green surface treatment only.
-20. ❌ **A continuous animation with no off-screen pause** — always `IntersectionObserver`-gate a rAF loop.
-21. ❌ **Real images that bleed past the cell** — clip art to the cell (`overflow-hidden rounded-[6px]`) and mark decorative plates `aria-hidden`/`alt=""`.
+11. ❌ **Pure white as a cell/page surface**. White is only for floating cards inside cells.
+12. ❌ **Installing a chart library**. Charts are the hand-built SVGs in `dataviz/`.
+13. ❌ **Marker/underline highlight** on feature paragraphs. Plain muted text.
+14. ❌ **Borders between cells**. The 2px seam is the separator.
+15. ❌ **Bordered list inside one cell for the FAQ**. Each question is its own cell.
+16. � **Enlarging cell radius** to "soften". It enlarges the diamond and breaks the look; stay at 6px.
+17. ❌ **Hardcoding copy in JSX**. It belongs in `content/*.ts`.
+18. ❌ **Text over the DitherField without a scrim**. Every text cell over the dither needs the dark scrim (§11.2); the wordmark/empty cells are the only bare exceptions.
+19. ❌ **Dither on light paper cells or behind body copy**. It's a dark/green surface treatment only.
+20. ❌ **A continuous animation with no off-screen pause**. Always `IntersectionObserver`-gate a rAF loop.
+21. ❌ **Real images that bleed past the cell**. Clip art to the cell (`overflow-hidden rounded-[6px]`) and mark decorative plates `aria-hidden`/`alt=""`.
 
 ---
 
@@ -500,40 +500,40 @@ Each of these is a real mistake made while building this system. They are the fa
 - **Changing a token/constant:** change it in `globals.css`/`Grid.tsx`, update Appendix B and any affected section, and re-verify §19 across breakpoints.
 - **Tuning the "feel":** the whole aesthetic is two colors (`--color-paper`, `--color-cell`) + one constant (`GAP`) + four radii. Prefer adjusting these single values over per-section overrides.
 - **Versioning:** bump the header version (v3 → v4) on any change to the core laws (§2, §8) or the token set; note what changed at the top.
-- **Deviations:** if a real need conflicts with a law, propose the change to the law here first — don't quietly special-case a page. (The Fabrication showcase is the one sanctioned per-page enrichment and is backed by its own content file.)
+- **Deviations:** if a real need conflicts with a law, propose the change to the law here first. Don't quietly special-case a page. (The Fabrication showcase is the one sanctioned per-page enrichment and is backed by its own content file.)
 
 ---
 
 ## 22. Glossary
 
-- **Canvas** — the darker page surface (`--color-paper`); seen only in seams.
-- **Cell** — a lighter rounded block on the canvas; the atomic unit.
-- **Seam** — the 2px canvas gap between cells; reads as a hairline.
-- **Diamond** — the small canvas shape that emerges where four rounded corners meet; never an element.
-- **Edge cell** — the empty fluid cell flanking content to the viewport edge.
-- **Spacer strip** — an empty cell (`GapStrip`) providing vertical rhythm.
-- **Dark band** — a full-bleed dark green cell (one of three sanctioned).
-- **Green collage** — the footer's version of the construction (`#081f18` canvas + `--color-forest` cells).
-- **Two-tone heading** — the signature heading: ink line + muted line (or teal line 2 via `accentLine2`).
-- **Register** — one of the three illustration styles (isometric / engraved / pixel).
-- **Surface treatment** — an animated skin applied to a cell's surface (currently `DitherField`); decorative texture, never content.
-- **DitherField** — the animated ordered-dither wave on green/dark cells (§11.2).
-- **Scrim** — the translucent dark overlay (`bg-[#081f18]/70`) placed between a surface treatment and text to keep copy legible.
+- **Canvas**: the darker page surface (`--color-paper`); seen only in seams.
+- **Cell**: a lighter rounded block on the canvas; the atomic unit.
+- **Seam**: the 2px canvas gap between cells; reads as a hairline.
+- **Diamond**: the small canvas shape that emerges where four rounded corners meet; never an element.
+- **Edge cell**: the empty fluid cell flanking content to the viewport edge.
+- **Spacer strip**: an empty cell (`GapStrip`) providing vertical rhythm.
+- **Dark band**: a full-bleed dark green cell (one of three sanctioned).
+- **Green collage**: the footer's version of the construction (`#081f18` canvas + `--color-forest` cells).
+- **Two-tone heading**: the signature heading: ink line + muted line (or teal line 2 via `accentLine2`).
+- **Register**: one of the three illustration styles (isometric / engraved / pixel).
+- **Surface treatment**: an animated skin applied to a cell's surface (currently `DitherField`); decorative texture, never content.
+- **DitherField**: the animated ordered-dither wave on green/dark cells (§11.2).
+- **Scrim**: the translucent dark overlay (`bg-[#081f18]/70`) placed between a surface treatment and text to keep copy legible.
 
 ---
 
-## 23. Appendix A — New-page playbook
+## 23. Appendix A. New-page playbook
 
 1. **Wrap** the page in the stack: `<div className="flex flex-col gap-[2px] bg-paper pb-[2px]">`. (`Nav`/`Footer` come from the layout.)
 2. **Hero:** use `PageHero` (breadcrumb + eyebrow + `TwoToneHeading` + lead + `Button` CTAs) in one cell.
 3. **Body:** compose from `Section` (single cell) and `FrameBlock` multi-cell rows. Every column is a `Cell`; every gap is `gap-[2px]`. Item lists (FAQ-like) → one `Cell` per item.
 4. **Spacing:** separate major blocks with `<GapStrip />` (or `<DottedStrip />` for texture).
-5. **Dark moments:** only if warranted, a `FrameBlock full` green cell — and count your dark budget.
+5. **Dark moments:** only if warranted, a `FrameBlock full` green cell. Count your dark budget.
 6. **Copy:** author it in `content/*.ts`; keep headings two-tone/mono; run the banned-word check.
 7. **Metadata:** export `metadata`/`generateMetadata` with an on-voice title + description.
 8. **Verify (§19):** build, lint, 375px overflow check, and the junction screenshot.
 
-## 24. Appendix B — Complete token reference
+## 24. Appendix B. Complete token reference
 
 ```css
 /* @theme (web/app/globals.css) */
@@ -568,7 +568,7 @@ GAP = 2;                              /* seam */
 /* collage radii: cell 6px · bar 8px · strip/filler 4px */
 /* footer canvas (inline): #081f18 */
 
-/* DitherField.tsx — decorative surface treatment (green cells) */
+/* DitherField.tsx. Decorative surface treatment (green cells) */
 RAMP = ["#0b2c23","#143a2e","#1b4d3f","#23664f"];   /* tight green ramp */
 PIXEL = 6; SPEED = 0.028; FREQ = 0.09; AMP = 0.9;
 scrim (behind text over the dither): bg-[#081f18]/70   /* 60–75% */
@@ -578,4 +578,4 @@ scrim (behind text over the dither): bg-[#081f18]/70   /* 60–75% */
 
 ---
 
-*End of handover. If something here is ambiguous, look at how an existing on-system section solves it (Practices, FAQ, Footer are good references) and mirror it — then improve this document so the next reader doesn't have to.*
+*End of handover. If something here is ambiguous, look at how an existing on-system section solves it (Practices, FAQ, Footer are good references) and mirror it. Then improve this document so the next reader doesn't have to.*

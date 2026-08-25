@@ -6,7 +6,7 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 import { FrameBlock, Cell, GapStrip } from "@/components/frame/Grid";
 
 export const metadata: Metadata = {
-  title: "Insights & resources — TGIE",
+  title: "Insights & resources. TGIE",
   description: "Answers, guides, and the capability portfolio.",
 };
 

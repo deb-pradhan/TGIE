@@ -12,7 +12,7 @@ export function StartForm() {
   if (sent) {
     return (
       <div className="mt-8 rounded-card border border-line bg-card p-6">
-        <div className="text-[16px] font-medium">Thanks — we&apos;ve got it.</div>
+        <div className="text-[16px] font-medium">Thanks. We&apos;ve got it.</div>
         <p className="mt-2 text-[14px] text-muted">
           We&apos;ll read what you sent and reply within two working days. In the meantime, the
           idea stays entirely yours.

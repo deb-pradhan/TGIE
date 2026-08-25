@@ -37,7 +37,7 @@ export function Practices() {
           />
           <p className="text-lead mt-4 max-w-[60ch] text-muted">
             Not a menu of services. Each pillar gives your idea a different body, and lifts a
-            different weight — held by one accountable team. Holding all four together is the
+            different weight. All held by one accountable team. Holding all four together is the
             part no regional competitor replicates.
           </p>
         </Reveal>
