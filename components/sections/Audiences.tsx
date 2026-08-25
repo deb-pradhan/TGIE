@@ -2,7 +2,7 @@ import { audiences } from "@/content/pages";
 import { Section } from "@/components/primitives/Section";
 import { TwoToneHeading } from "@/components/primitives/TwoToneHeading";
 import { Eyebrow } from "@/components/primitives/Pill";
-import { FrameBlock, Cell, GapStrip } from "@/components/frame/Grid";
+import { FrameBlock, Cell } from "@/components/frame/Grid";
 import { Reveal } from "@/lib/motion";
 
 export function Audiences() {
@@ -15,7 +15,6 @@ export function Audiences() {
           <p className="text-lead mt-4 max-w-[58ch] text-muted">{audiences.lead}</p>
         </Reveal>
       </Section>
-      <GapStrip h={2} />
       <FrameBlock>
         <div className="grid gap-[2px] md:grid-cols-3">
           {audiences.items.map((it, i) => (
