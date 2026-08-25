@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TGIE — Sitemap & Information Architecture</title>
+<style>
+  :root{
+    --green-950:#0c2a22;--green-900:#10362b;--green-800:#1c463a;
+    --cream:#f4f1ea;--cream-2:#eeeae1;--paper:#fbfaf6;--card:#ffffff;
+    --teal:#2f8f7c;--teal-soft:#63b3a3;--sage:#a9bfb6;
+    --ink:#182722;--ink-2:#33443d;--muted:#647871;--line:#e2ddd2;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:
+    radial-gradient(1200px 500px at 50% -10%,#eef2ee,transparent 60%),var(--cream);
+    color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;padding:0 0 70px}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 30px}
+
+  /* header */
+  .head{padding:44px 0 30px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:19px}
+  .brand .mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--green-900),var(--teal));display:grid;place-items:center;color:#fff;font-family:var(--serif);font-size:15px}
+  .head h1{font-family:var(--serif);font-weight:500;font-size:30px;margin-top:14px;letter-spacing:-.02em}
+  .head .eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+  .head p{color:var(--muted);font-size:14px;max-width:52ch;margin-top:6px}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:7px}
+  .sw{width:22px;height:12px;border-radius:4px;display:inline-block;border:1px solid var(--line)}
+  .sw.t0{background:var(--green-900)}
+  .sw.t1{background:var(--teal)}
+  .sw.t2{background:#fff}
+  .sw.tg{background:var(--cream-2);border-style:dashed}
+
+  /* tier band label */
+  .tier{display:flex;align-items:center;gap:14px;margin:34px 0 16px}
+  .tier b{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);white-space:nowrap}
+  .tier i{flex:1;height:1px;background:var(--line)}
+
+  /* home node */
+  .home-row{display:flex;justify-content:center;position:relative}
+  .home{background:var(--green-900);color:#fff;border-radius:14px;padding:16px 34px;text-align:center;box-shadow:0 20px 40px -22px rgba(16,54,43,.6)}
+  .home b{font-size:17px;letter-spacing:-.02em}
+  .home small{display:block;font-size:11.5px;color:var(--sage);margin-top:2px}
+  .spine{width:2px;height:26px;background:var(--line);margin:0 auto}
+
+  /* primary pillar grid */
+  .pillars{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  .col{position:relative}
+  .cat{background:var(--teal);color:#fff;border-radius:12px 12px 0 0;padding:14px 15px;position:relative}
+  .cat .num{font-family:var(--serif);font-size:12px;opacity:.85}
+  .cat b{display:block;font-size:15px;letter-spacing:-.01em;margin-top:2px;line-height:1.2}
+  .cat small{display:block;font-size:11px;opacity:.85;margin-top:3px}
+  .cat.alt{background:var(--green-800)}
+  .kids{background:var(--card);border:1px solid var(--line);border-top:none;border-radius:0 0 12px 12px;padding:8px;display:flex;flex-direction:column;gap:7px}
+  .kid{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:9px 11px;font-size:12.5px;font-weight:500;position:relative}
+  .kid small{display:block;color:var(--muted);font-size:11px;font-weight:400;margin-top:1px}
+  .kid:hover{border-color:var(--teal-soft)}
+  .badge{position:absolute;top:-9px;right:-6px;background:var(--green-900);color:#fff;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;box-shadow:0 6px 14px -6px rgba(0,0,0,.4)}
+
+  /* secondary sections */
+  .secondary{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .scol .cat{background:var(--green-900)}
+
+  /* global utility */
+  .global{display:grid;grid-template-columns:1fr;gap:12px;background:var(--paper);border:1px dashed var(--line);border-radius:14px;padding:18px}
+  .global-head{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .chips{display:flex;flex-wrap:wrap;gap:9px}
+  .chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:12.5px;font-weight:600}
+  .chip.solid{background:var(--green-900);color:#fff;border-color:var(--green-900)}
+  .chip small{color:var(--muted);font-weight:400}
+
+  .foot{margin-top:34px;font-size:12px;color:var(--muted);text-align:center}
+
+  @media(max-width:1080px){.pillars{grid-template-columns:repeat(2,1fr)}.secondary{grid-template-columns:1fr}}
+  @media(max-width:560px){.pillars{grid-template-columns:1fr}}
+  @media print{body{background:#fff}.kid,.chip{break-inside:avoid}}
+
+  .treecard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;box-shadow:0 24px 60px -32px rgba(16,54,43,.3);overflow-x:auto}
+  .treecard svg{min-width:640px;display:block}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="head">
+    <div>
+      <div class="brand"><span class="mark">T</span> TGIE</div>
+      <div class="eyebrow" style="margin-top:16px">Information Architecture</div>
+      <h1>Sitemap &amp; Page Structure</h1>
+      <p>Five practice pillars, three supporting sections, and a global utility layer — with <b>Fundraising &amp; GTM</b> promoted to its own top-level category.</p>
+    </div>
+    <div class="legend">
+      <span><i class="sw t0"></i> Home / entry</span>
+      <span><i class="sw t1"></i> Category page</span>
+      <span><i class="sw t2"></i> Sub-page</span>
+      <span><i class="sw tg"></i> Global / utility</span>
+    </div>
+  </div>
+
+  <!-- TREE OVERVIEW -->
+  <div class="tier"><b>At a glance · tree view</b><i></i></div>
+  <div class="treecard">
+    <svg width="100%" viewBox="0 0 680 424" role="img" font-family="inherit">
+    <title>TGIE sitemap tree</title>
+    <desc>Home branches to five practice categories — Engineering, Research, Fabrication, Business enablement, and Fundraising and GTM — each with sub-pages, plus three supporting sections. Fundraising and GTM is flagged New as a newly separated top-level category.</desc>
+    <g stroke="#8aa79d" stroke-width="1.5" fill="none">
+      <line x1="341" y1="60" x2="341" y2="80"/><line x1="71" y1="80" x2="611" y2="80"/>
+      <line x1="71" y1="80" x2="71" y2="92"/><line x1="206" y1="80" x2="206" y2="92"/><line x1="341" y1="80" x2="341" y2="92"/><line x1="476" y1="80" x2="476" y2="92"/><line x1="611" y1="80" x2="611" y2="92"/>
+      <line x1="71" y1="142" x2="71" y2="152"/><line x1="206" y1="142" x2="206" y2="152"/><line x1="341" y1="142" x2="341" y2="152"/><line x1="476" y1="142" x2="476" y2="152"/><line x1="611" y1="142" x2="611" y2="152"/>
+    </g>
+    <rect x="266" y="18" width="150" height="42" rx="8" fill="#10362b"/>
+    <text x="341" y="37" text-anchor="middle" font-size="14" font-weight="500" fill="#ffffff">Home</text>
+    <text x="341" y="51" text-anchor="middle" font-size="9.5" fill="#a9bfb6">sitemap root</text>
+    <rect x="10" y="92" width="122" height="50" rx="6" fill="#2f8f7c"/>
+    <text x="71" y="115" text-anchor="middle" font-size="13" font-weight="500" fill="#ffffff">Engineering</text>
+    <text x="71" y="131" text-anchor="middle" font-size="9.5" fill="#d7ece6">hardware &amp; firmware</text>
+    <rect x="145" y="92" width="122" height="50" rx="6" fill="#2f8f7c"/>
+    <text x="206" y="115" text-anchor="middle" font-size="13" font-weight="500" fill="#ffffff">Research</text>
+    <text x="206" y="131" text-anchor="middle" font-size="9.5" fill="#d7ece6">academic prototyping</text>
+    <rect x="280" y="92" width="122" height="50" rx="6" fill="#2f8f7c"/>
+    <text x="341" y="115" text-anchor="middle" font-size="13" font-weight="500" fill="#ffffff">Fabrication</text>
+    <text x="341" y="131" text-anchor="middle" font-size="9.5" fill="#d7ece6">manufacturing for R&amp;D</text>
+    <rect x="415" y="92" width="122" height="50" rx="6" fill="#2f8f7c"/>
+    <text x="476" y="112" text-anchor="middle" font-size="12" font-weight="500" fill="#ffffff">Business</text>
+    <text x="476" y="126" text-anchor="middle" font-size="12" font-weight="500" fill="#ffffff">enablement</text>
+    <text x="476" y="139" text-anchor="middle" font-size="9" fill="#d7ece6">corporate advisory</text>
+    <rect x="550" y="92" width="122" height="50" rx="6" fill="#2f8f7c"/>
+    <text x="611" y="112" text-anchor="middle" font-size="12" font-weight="500" fill="#ffffff">Fundraising</text>
+    <text x="611" y="126" text-anchor="middle" font-size="12" font-weight="500" fill="#ffffff">&amp; GTM</text>
+    <text x="611" y="139" text-anchor="middle" font-size="9" fill="#d7ece6">capital &amp; go-to-market</text>
+    <rect x="596" y="85" width="42" height="16" rx="8" fill="#10362b"/>
+    <text x="617" y="96" text-anchor="middle" font-size="9" font-weight="500" fill="#ffffff">New</text>
+    <g font-size="10.5">
+      <rect x="10" y="152" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="71" y="166" text-anchor="middle" fill="#33443d">Custom PCB design</text>
+      <rect x="10" y="178" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="71" y="192" text-anchor="middle" fill="#33443d">Firmware &amp; RTOS</text>
+      <rect x="10" y="204" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="71" y="218" text-anchor="middle" fill="#33443d">3D enclosures</text>
+      <rect x="10" y="230" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="71" y="244" text-anchor="middle" fill="#33443d">Edge AI &amp; TinyML</text>
+      <rect x="10" y="256" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="71" y="270" text-anchor="middle" fill="#33443d">Data dashboards</text>
+      <rect x="145" y="152" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="206" y="166" text-anchor="middle" fill="#33443d">Thesis hardware</text>
+      <rect x="145" y="178" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="206" y="192" text-anchor="middle" fill="#33443d">R&amp;D lifecycle</text>
+      <rect x="145" y="204" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="206" y="218" text-anchor="middle" fill="#33443d">In-house lab</text>
+      <rect x="145" y="230" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="206" y="244" text-anchor="middle" fill="#33443d">IP transfer</text>
+      <rect x="280" y="152" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="341" y="166" text-anchor="middle" fill="#33443d">Small-batch runs</text>
+      <rect x="280" y="178" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="341" y="192" text-anchor="middle" fill="#33443d">PCB &amp; SMD assembly</text>
+      <rect x="280" y="204" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="341" y="218" text-anchor="middle" fill="#33443d">Enclosure production</text>
+      <rect x="280" y="230" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="341" y="244" text-anchor="middle" fill="#33443d">QC &amp; test jigs</text>
+      <rect x="415" y="152" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="476" y="166" text-anchor="middle" fill="#33443d">Incorporation</text>
+      <rect x="415" y="178" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="476" y="192" text-anchor="middle" fill="#33443d">Audit &amp; compliance</text>
+      <rect x="415" y="204" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="476" y="218" text-anchor="middle" fill="#33443d">Branding &amp; identity</text>
+      <rect x="415" y="230" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="476" y="244" text-anchor="middle" fill="#33443d">Operations</text>
+      <rect x="550" y="152" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="611" y="166" text-anchor="middle" fill="#33443d">Grants &amp; schemes</text>
+      <rect x="550" y="178" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="611" y="192" text-anchor="middle" fill="#33443d">Investor &amp; pitch</text>
+      <rect x="550" y="204" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="611" y="218" text-anchor="middle" fill="#33443d">Go-to-market</text>
+      <rect x="550" y="230" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="611" y="244" text-anchor="middle" fill="#33443d">Marketplace &amp; Amazon</text>
+      <rect x="550" y="256" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="611" y="270" text-anchor="middle" fill="#33443d">Lead gen</text>
+    </g>
+    <text x="10" y="308" font-size="11" font-weight="500" fill="#647871">Supporting sections · also top-level</text>
+    <line x1="250" y1="304" x2="672" y2="304" stroke="#e2ddd2" stroke-width="1.5"/>
+    <rect x="10" y="320" width="200" height="46" rx="6" fill="#1c463a"/>
+    <text x="110" y="342" text-anchor="middle" font-size="12.5" font-weight="500" fill="#ffffff">Work &amp; case studies</text>
+    <text x="110" y="357" text-anchor="middle" font-size="9.5" fill="#a9bfb6">thesis validation, references</text>
+    <rect x="240" y="320" width="200" height="46" rx="6" fill="#1c463a"/>
+    <text x="340" y="342" text-anchor="middle" font-size="12.5" font-weight="500" fill="#ffffff">Insights &amp; resources</text>
+    <text x="340" y="357" text-anchor="middle" font-size="9.5" fill="#a9bfb6">articles, FAQ, downloads</text>
+    <rect x="470" y="320" width="200" height="46" rx="6" fill="#1c463a"/>
+    <text x="570" y="342" text-anchor="middle" font-size="12.5" font-weight="500" fill="#ffffff">Company</text>
+    <text x="570" y="357" text-anchor="middle" font-size="9.5" fill="#a9bfb6">about, lab, careers, contact</text>
+    <rect x="10" y="392" width="20" height="12" rx="3" fill="#2f8f7c"/><text x="36" y="402" font-size="10.5" fill="#647871">category page</text>
+    <rect x="150" y="392" width="20" height="12" rx="3" fill="#ffffff" stroke="#e2ddd2"/><text x="176" y="402" font-size="10.5" fill="#647871">sub-page</text>
+    <rect x="250" y="392" width="20" height="12" rx="3" fill="#1c463a"/><text x="276" y="402" font-size="10.5" fill="#647871">supporting section</text>
+    <rect x="392" y="392" width="26" height="12" rx="6" fill="#10362b"/><text x="405" y="401" text-anchor="middle" font-size="8" font-weight="500" fill="#ffffff">New</text><text x="424" y="402" font-size="10.5" fill="#647871">newly separated category</text>
+    </svg>
+  </div>
+
+  <!-- TIER 0 -->
+  <div class="tier"><b>Tier 0 · Entry</b><i></i></div>
+  <div class="home-row">
+    <div class="home"><b>Home</b><small>Manifesto · practices overview · proof</small></div>
+  </div>
+  <div class="spine"></div>
+
+  <!-- TIER 1 + 2 : PRIMARY PILLARS -->
+  <div class="tier"><b>Tier 1 · Practice &amp; Service Categories → Tier 2 · Sub-pages</b><i></i></div>
+  <div class="pillars">
+
+    <!-- 01 Engineering -->
+    <div class="col">
+      <div class="cat"><span class="num">01</span><b>Engineering</b><small>Embedded systems &amp; hardware</small></div>
+      <div class="kids">
+        <div class="kid">Custom PCB &amp; Schematic<small>Up to 6-layer · DFM Gerber</small></div>
+        <div class="kid">Firmware &amp; RTOS<small>Bare-metal · ESP-IDF · nRF · STM32</small></div>
+        <div class="kid">3D Enclosures &amp; Mechanical<small>PETG · ABS · PLA</small></div>
+        <div class="kid">Edge AI &amp; TinyML<small>Edge Impulse · TF Lite</small></div>
+        <div class="kid">Data Visualization<small>Mobile &amp; Python dashboards</small></div>
+      </div>
+    </div>
+
+    <!-- 02 Research -->
+    <div class="col">
+      <div class="cat"><span class="num">02</span><b>Research</b><small>Academic prototyping</small></div>
+      <div class="kids">
+        <div class="kid">Thesis Hardware<small>Calibrated, field-ready</small></div>
+        <div class="kid">Phased R&amp;D Lifecycle<small>PoC → EVT → DVT → Launch</small></div>
+        <div class="kid">In-House Collaboration Lab<small>Chennai · real-time iteration</small></div>
+        <div class="kid">IP Transparency &amp; Transfer<small>CAD · Gerber · firmware · BOM</small></div>
+      </div>
+    </div>
+
+    <!-- 03 Fabrication -->
+    <div class="col">
+      <div class="cat alt"><span class="num">03</span><b>Fabrication</b><small>Manufacturing for R&amp;D</small></div>
+      <div class="kids">
+        <div class="kid">Small-Batch Production<small>10–20 units · pilots</small></div>
+        <div class="kid">PCB Fab &amp; SMD Assembly<small>Domestic &amp; global partners</small></div>
+        <div class="kid">Enclosure Production<small>Bridge / short-run printing</small></div>
+        <div class="kid">Quality Control &amp; Test Jigs<small>Batch consistency</small></div>
+      </div>
+    </div>
+
+    <!-- 04 Business Enablement -->
+    <div class="col">
+      <div class="cat alt"><span class="num">04</span><b>Business Enablement</b><small>Corporate advisory</small></div>
+      <div class="kids">
+        <div class="kid">Company Incorporation<small>India · Dubai/UAE · USA</small></div>
+        <div class="kid">Corporate Audit &amp; Compliance<small>Grant utilization · BOM trace</small></div>
+        <div class="kid">Branding &amp; Identity<small>Naming · logo · positioning</small></div>
+        <div class="kid">Operations &amp; Supply Chain<small>Sourcing · fulfillment · SOPs</small></div>
+      </div>
+    </div>
+
+    <!-- 05 Fundraising & GTM (separated) -->
+    <div class="col">
+      <div class="cat"><span class="num">05</span><b>Fundraising &amp; GTM</b><small>Capital &amp; go-to-market</small><span class="badge">New category</span></div>
+      <div class="kids">
+        <div class="kid">Grants &amp; Gov Schemes<small>DST-NIDHI · BIRAC BIG · MeitY</small></div>
+        <div class="kid">Investor Access &amp; Pitch<small>Deck · financial model · angels</small></div>
+        <div class="kid">Go-to-Market Strategy<small>D2C &amp; B2B channel plan</small></div>
+        <div class="kid">Marketplace &amp; Amazon<small>Listing · A+ content · reviews</small></div>
+        <div class="kid">Lead Gen &amp; Networking<small>TBIs · CRM · demo days</small></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TIER 1b : SUPPORTING SECTIONS -->
+  <div class="tier"><b>Tier 1 · Supporting Sections</b><i></i></div>
+  <div class="secondary">
+
+    <div class="scol col">
+      <div class="cat"><span class="num">06</span><b>Work &amp; Case Studies</b><small>Proof &amp; references</small></div>
+      <div class="kids">
+        <div class="kid">Doctoral Thesis Validation<small>Featured case study</small></div>
+        <div class="kid">Research Hardware Index<small>Selected builds</small></div>
+        <div class="kid">Reference Letters<small>On request</small></div>
+      </div>
+    </div>
+
+    <div class="scol col">
+      <div class="cat"><span class="num">07</span><b>Insights &amp; Resources</b><small>Content hub</small></div>
+      <div class="kids">
+        <div class="kid">Articles &amp; Guides<small>Engineering &amp; funding notes</small></div>
+        <div class="kid">FAQ<small>Engagement &amp; IP questions</small></div>
+        <div class="kid">Downloads<small>Capability portfolio (PDF)</small></div>
+      </div>
+    </div>
+
+    <div class="scol col">
+      <div class="cat"><span class="num">08</span><b>Company</b><small>About &amp; contact</small></div>
+      <div class="kids">
+        <div class="kid">About &amp; Philosophy<small>Mission · conviction · team</small></div>
+        <div class="kid">Lab &amp; Infrastructure<small>Thirumudivakkam facility</small></div>
+        <div class="kid">Careers<small>Open roles</small></div>
+        <div class="kid">Contact / Start a Project<small>Intake form</small></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- GLOBAL / UTILITY -->
+  <div class="tier"><b>Global · Utility &amp; Legal</b><i></i></div>
+  <div class="global">
+    <div class="global-head">Persistent across all pages (nav / footer)</div>
+    <div class="chips">
+      <span class="chip solid">Start a Project ↗</span>
+      <span class="chip">Client Login</span>
+      <span class="chip">Search</span>
+      <span class="chip">Privacy Policy</span>
+      <span class="chip">Terms</span>
+      <span class="chip">IP Transparency <small>· zero lock-in</small></span>
+      <span class="chip">Sitemap</span>
+    </div>
+  </div>
+
+  <div class="foot">TGIE Information Architecture · v2 · The Great Indian Engineers, Thirumudivakkam, Chennai — 8 sections · 33 pages</div>
+
+</div>
+</body>
+</html>

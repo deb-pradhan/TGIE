@@ -3,7 +3,7 @@ import { Section } from "@/components/primitives/Section";
 import { Button } from "@/components/primitives/Button";
 import { TwoToneHeading } from "@/components/primitives/TwoToneHeading";
 import { Reveal } from "@/lib/motion";
-import { EngravedFigure } from "@/components/illustration/EngravedFigure";
+import { StockImage } from "@/components/illustration/StockImage";
 
 export function FinalCTA() {
   const f = site.finalCta;
@@ -11,11 +11,13 @@ export function FinalCTA() {
     <Section tone="paper2" id="contact" className="overflow-hidden">
       <Reveal>
         <div className="relative grid items-center gap-10 py-6 text-center lg:grid-cols-[1fr_auto_1fr] lg:text-left">
-          <div className="pointer-events-none absolute inset-0 -z-0 opacity-[0.06] lg:hidden">
-            <EngravedFigure />
-          </div>
           <div className="hidden lg:block">
-            <EngravedFigure className="max-w-[220px] opacity-70" />
+            <StockImage
+              src="/pillars/finalcta.jpg"
+              alt=""
+              sizes="220px"
+              className="h-[200px] max-w-[220px] rounded-card"
+            />
           </div>
           <div className="relative">
             <TwoToneHeading as="h2" align="center" accentLine2 line1={f.line1} line2={f.line2} />
@@ -28,7 +30,12 @@ export function FinalCTA() {
             </div>
           </div>
           <div className="hidden justify-end lg:flex">
-            <EngravedFigure className="max-w-[220px] opacity-70" />
+            <StockImage
+              src="/pillars/finalcta.jpg"
+              alt=""
+              sizes="220px"
+              className="h-[200px] max-w-[220px] rounded-card"
+            />
           </div>
         </div>
       </Reveal>

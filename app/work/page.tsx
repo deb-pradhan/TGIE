@@ -10,7 +10,8 @@ import { Button } from "@/components/primitives/Button";
 
 export const metadata: Metadata = {
   title: "Work & case studies — TGIE",
-  description: "Field-tested research hardware, and the proof we can talk about.",
+  description:
+    "From a PhD's wearable sensor to a certified industrial fabrication run — the shapes a project takes across all four pillars.",
 };
 
 export default function WorkPage() {
@@ -28,20 +29,23 @@ export default function WorkPage() {
       <GapStrip />
       <CaseStudy />
 
-      {/* research hardware index */}
+      {/* illustrative project examples across the pillars */}
       <GapStrip />
       <FrameBlock>
         <Cell className="px-[var(--gutter)] pt-12 pb-8">
           <Eyebrow>What we build</Eyebrow>
-          <TwoToneHeading line1={work.index.title} className="mt-4" />
+          <TwoToneHeading line1="The shapes a project takes," line2="across the pillars." className="mt-4" />
         </Cell>
       </FrameBlock>
       <GapStrip h={2} />
       <FrameBlock>
-        <div className="grid gap-[2px] sm:grid-cols-2 lg:grid-cols-4">
-          {work.index.items.map((it) => (
-            <Cell key={it.title} className="p-6">
-              <h3 className="font-mono text-[15px] font-medium tracking-tight text-ink">
+        <div className="grid gap-[2px] md:grid-cols-3">
+          {work.examples.map((it) => (
+            <Cell key={it.title} className="flex flex-col p-6">
+              <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-teal">
+                {it.tag}
+              </div>
+              <h3 className="mt-2 font-mono text-[15px] font-medium tracking-tight text-ink">
                 {it.title}
               </h3>
               <p className="mt-2 text-[13px] text-muted">{it.note}</p>
@@ -50,11 +54,29 @@ export default function WorkPage() {
         </div>
       </FrameBlock>
 
+      {/* concept-to-structure band */}
       <GapStrip />
       <FrameBlock full>
-        <div className="rounded-[6px] bg-forest px-[var(--gutter)] py-11 text-center text-ondark">
-          <p className="mx-auto max-w-[60ch] text-[15px] text-ondark-mut">{work.references}</p>
+        <div className="rounded-[6px] bg-forest px-[var(--gutter)] py-12 text-ondark">
+          <div className="mx-auto max-w-[var(--maxw)]">
+            <div className="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-teal-soft">
+              Pillars A → D
+            </div>
+            <p className="mt-3 max-w-[26ch] font-mono text-[22px] font-medium leading-snug tracking-tight text-ondark">
+              {work.concept.title}
+            </p>
+            <p className="mt-3 max-w-[62ch] text-[14.5px] text-ondark-mut">{work.concept.note}</p>
+          </div>
         </div>
+      </FrameBlock>
+
+      <GapStrip />
+      <FrameBlock>
+        <Cell className="px-[var(--gutter)] py-8">
+          <p className="mx-auto max-w-[60ch] text-center text-[14px] text-muted">
+            {work.references}
+          </p>
+        </Cell>
       </FrameBlock>
 
       <GapStrip />

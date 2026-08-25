@@ -1,52 +1,65 @@
 import { cn } from "@/lib/cn";
 
 /**
- * Retro pixel-art backdrop — ONLY ever behind a floating white card
- * (design system §7.3), never behind text. Purely decorative.
+ * On-brand pixel mat — a static ordered (Bayer) dither in the forest palette,
+ * the still cousin of the footer DitherField. ONLY ever behind a floating white
+ * card (design system §7.3), never behind text. Purely decorative.
  */
-export function PixelBackdrop({ className }: { className?: string }) {
-  const px = 10; // pixel unit
+
+// 4×4 Bayer threshold matrix (values 0–15).
+const BAYER = [
+  [0, 8, 2, 10],
+  [12, 4, 14, 6],
+  [3, 11, 1, 9],
+  [15, 7, 13, 5],
+];
+
+const COLS = 44;
+const ROWS = 10;
+const CELL = 4; // viewBox units per pixel
+
+/** Two-tone forest palettes — subtle per-card variation. */
+const TONES = [
+  { dark: "#123f31", light: "#3f8f70" }, // firmware
+  { dark: "#0f3a34", light: "#2f8f86" }, // data-viz (teal)
+  { dark: "#164129", light: "#529760" }, // edge AI (olive)
+];
+
+export function PixelBackdrop({
+  tone = 0,
+  className,
+}: {
+  tone?: number;
+  className?: string;
+}) {
+  const { dark, light } = TONES[tone % TONES.length];
+
+  // Precompute the "lit" pixels: a top→bottom dithered gradient.
+  const lit: string[] = [];
+  for (let r = 0; r < ROWS; r++) {
+    const t = r / (ROWS - 1); // 0 (top) → 1 (bottom)
+    for (let c = 0; c < COLS; c++) {
+      const threshold = (BAYER[r % 4][c % 4] + 0.5) / 16;
+      if (t > threshold) {
+        lit.push(`M${c * CELL} ${r * CELL}h${CELL}v${CELL}h-${CELL}z`);
+      }
+    }
+  }
+
   return (
     <div
       aria-hidden
       className={cn("absolute inset-0 overflow-hidden rounded-card", className)}
-      style={{
-        imageRendering: "pixelated",
-        background: "linear-gradient(180deg,#8fc3d8 0%,#a9d2df 46%,#7fae7c 46%,#6fa06d 100%)",
-      }}
     >
-      {/* sun */}
-      <div
-        className="absolute"
-        style={{ top: px * 2, right: px * 3, width: px * 4, height: px * 4, background: "#f2d67a" }}
-      />
-      {/* clouds */}
-      <div className="absolute" style={{ top: px * 3, left: px * 3, width: px * 5, height: px, background: "rgba(255,255,255,.75)" }} />
-      <div className="absolute" style={{ top: px * 2, left: px * 4, width: px * 3, height: px, background: "rgba(255,255,255,.75)" }} />
-      {/* rolling hills — stepped pixel bands */}
-      <div
-        className="absolute inset-x-0"
-        style={{
-          bottom: 0,
-          height: "58%",
-          backgroundImage:
-            "repeating-linear-gradient(180deg,#4f9268 0 10px,#5aa070 10px 20px)",
-        }}
-      />
-      {/* tree/building blocks */}
-      <div className="absolute inset-x-0 bottom-0 flex h-[46%] items-end gap-[6px] px-2">
-        {[40, 66, 34, 78, 50, 88, 44, 70, 36, 74, 52].map((h, i) => (
-          <div
-            key={i}
-            className="flex-1"
-            style={{
-              height: `${h}%`,
-              background: i % 3 === 0 ? "#2f6b57" : i % 3 === 1 ? "#3d7d66" : "#357a5a",
-              boxShadow: "inset 0 6px 0 rgba(255,255,255,0.07), inset -3px 0 0 rgba(0,0,0,0.08)",
-            }}
-          />
-        ))}
-      </div>
+      <svg
+        className="h-full w-full"
+        viewBox={`0 0 ${COLS * CELL} ${ROWS * CELL}`}
+        preserveAspectRatio="none"
+        style={{ imageRendering: "pixelated" }}
+      >
+        <rect width="100%" height="100%" fill={dark} />
+        <path d={lit.join(" ")} fill={light} />
+      </svg>
     </div>
   );
 }

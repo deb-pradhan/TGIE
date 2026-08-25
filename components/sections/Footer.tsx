@@ -123,7 +123,7 @@ export function Footer() {
           scrim
           contentClassName="flex flex-wrap items-center justify-between gap-2.5 px-6 py-4 text-[12.5px]"
         >
-          <span>© 2026 The Greate Indian Engineers. {site.base}.</span>
+          <span>© 2026 The Great Indian Engineers. {site.base}.</span>
           <span>{f.legal.join(" · ")}</span>
         </DitherCell>
       </Row>

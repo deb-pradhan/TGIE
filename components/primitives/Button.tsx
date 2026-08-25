@@ -4,7 +4,7 @@ import { cn } from "@/lib/cn";
 type Variant = "primary" | "ghost" | "onDark" | "outlineDark";
 
 const base =
-  "inline-flex items-center gap-2 rounded-btn font-medium text-[14.5px] transition-[transform,background-color,border-color,box-shadow] duration-150 will-change-transform focus-visible:outline-2 focus-visible:outline-teal";
+  "inline-flex items-center gap-2 rounded-btn font-medium text-[14.5px] transition-[transform,background-color,border-color,box-shadow] duration-150 will-change-transform focus-visible:outline-2 focus-visible:outline-teal active:translate-y-0 active:scale-[0.985] motion-safe:active:duration-[80ms]";
 
 const sizes = {
   md: "px-[22px] py-3",

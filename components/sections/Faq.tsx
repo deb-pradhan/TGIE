@@ -29,7 +29,12 @@ export function Faq() {
                     </svg>
                   </span>
                 </summary>
-                <p className="px-6 pb-5 text-[14px] text-muted">{f.a}</p>
+                {/* Grid-row trick: animates height/opacity without measuring. */}
+                <div className="grid grid-rows-[0fr] transition-[grid-template-rows,opacity] duration-200 ease-out opacity-0 group-open:grid-rows-[1fr] group-open:opacity-100">
+                  <div className="min-h-0 overflow-hidden">
+                    <p className="px-6 pb-5 text-[14px] text-muted">{f.a}</p>
+                  </div>
+                </div>
               </details>
             </Cell>
           ))}

@@ -2,6 +2,7 @@ import { Hero } from "@/components/sections/Hero";
 import { TrustBand } from "@/components/sections/TrustBand";
 import { Philosophy } from "@/components/sections/Philosophy";
 import { Practices } from "@/components/sections/Practices";
+import { Audiences } from "@/components/sections/Audiences";
 import { Capabilities } from "@/components/sections/Capabilities";
 import { Ownership } from "@/components/sections/Ownership";
 import { Lifecycle } from "@/components/sections/Lifecycle";
@@ -19,6 +20,8 @@ export default function Home() {
       <Philosophy />
       <GapStrip />
       <Practices />
+      <DottedStrip />
+      <Audiences />
       <DottedStrip />
       <Capabilities />
       <GapStrip />

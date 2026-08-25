@@ -26,18 +26,18 @@ export function CardGrid({
         )}
       >
         {items.map((it) => (
-          <Cell key={it.href} className="group flex flex-col p-6 transition-colors hover:bg-card">
+          <Cell key={it.href} className="group flex flex-col p-6 transition-colors duration-200 motion-safe:hover:bg-card">
             <Link href={it.href} className="flex h-full flex-col">
               {it.label && (
                 <div className="font-mono text-[12px] uppercase tracking-[0.12em] text-teal">
                   {it.label}
                 </div>
               )}
-              <h3 className="mt-2 font-mono text-[16px] font-medium tracking-tight text-ink group-hover:text-teal">
+              <h3 className="mt-2 font-mono text-[16px] font-medium tracking-tight text-ink transition-colors duration-200 motion-safe:group-hover:text-teal">
                 {it.title}
               </h3>
               <p className="mt-2 flex-1 text-[13.5px] text-muted">{it.note}</p>
-              <span className="mt-4 text-[13px] font-medium text-ink-2 group-hover:text-teal">
+              <span className="mt-4 text-[13px] font-medium text-ink-2 transition-colors duration-200 motion-safe:group-hover:text-teal">
                 Explore
               </span>
             </Link>

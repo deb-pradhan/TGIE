@@ -150,3 +150,11 @@
   html { scroll-behavior: auto; }
   * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
 }
+
+/* tiny entrance keyframe used by surface-level menus; reduced-motion via the
+   rule above — duration collapses to 0.001ms, so the element appears fully
+   painted immediately, no movement. */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

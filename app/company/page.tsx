@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { company } from "@/content/pages";
+import { company, segments } from "@/content/pages";
 import { site } from "@/content/site";
 import { PageHero } from "@/components/sections/PageHero";
 import { TrustBand } from "@/components/sections/TrustBand";
@@ -13,7 +13,7 @@ import { StatTile } from "@/components/dataviz/Charts";
 export const metadata: Metadata = {
   title: "Company — TGIE",
   description:
-    "The Greate Indian Engineers — institutional rigor, medical-grade discipline, based in Thirumudivakkam, Chennai.",
+    "The Great Indian Engineers — institutional rigor, medical-grade discipline, based in Thirumudivakkam, Chennai.",
 };
 
 export default function CompanyPage() {
@@ -37,11 +37,13 @@ export default function CompanyPage() {
           <Eyebrow>Who leads the work</Eyebrow>
           <TwoToneHeading line1="One accountable engineer," line2="a whole team's discipline." className="mt-4" />
           <div className="mt-6 flex flex-wrap items-center gap-x-9 gap-y-4">
-            <StatTile value="4+" unit="yrs" label="Embedded full-stack" />
+            <StatTile value="4" unit="pillars" label="Under one roof" />
             <span className="hidden h-8 w-px bg-line sm:block" />
             <StatTile value="50+" unit="PCBs" label="Custom layouts delivered" />
             <span className="hidden h-8 w-px bg-line sm:block" />
-            <StatTile value="100%" label="IP transfer, always" />
+            <StatTile value="ISO 9001" label="2015 certified fabrication" />
+            <span className="hidden h-8 w-px bg-line sm:block" />
+            <StatTile value="~200 t" label="Fabricated per month" />
           </div>
         </Cell>
       </FrameBlock>
@@ -56,6 +58,40 @@ export default function CompanyPage() {
               <p className="mt-2 text-[13.5px] text-muted">{it.note}</p>
             </Cell>
           ))}
+        </div>
+      </FrameBlock>
+
+      {/* market segments */}
+      <GapStrip />
+      <FrameBlock>
+        <Cell className="px-[var(--gutter)] pt-12 pb-8">
+          <Eyebrow>{segments.eyebrow}</Eyebrow>
+          <TwoToneHeading line1={segments.line1} line2={segments.line2} className="mt-4" />
+        </Cell>
+      </FrameBlock>
+      <GapStrip h={2} />
+      <FrameBlock>
+        <div className="flex flex-col gap-[2px]">
+          {segments.items.map((s) => (
+            <Cell
+              key={s.segment}
+              className="grid gap-1.5 px-6 py-4 md:grid-cols-[1.3fr_auto_2fr] md:items-baseline md:gap-6"
+            >
+              <div className="font-mono text-[14px] font-medium tracking-tight text-ink">
+                {s.segment}
+              </div>
+              <div className="font-mono text-[12px] font-bold uppercase tracking-[0.1em] text-teal">
+                Pillar {s.pillars}
+              </div>
+              <div className="text-[13px] text-muted">{s.note}</div>
+            </Cell>
+          ))}
+        </div>
+      </FrameBlock>
+      <GapStrip h={2} />
+      <FrameBlock full>
+        <div className="rounded-[6px] bg-forest px-[var(--gutter)] py-10 text-center text-ondark">
+          <p className="mx-auto max-w-[64ch] text-[15px] text-ondark-mut">{segments.note}</p>
         </div>
       </FrameBlock>
 

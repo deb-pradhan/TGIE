@@ -1,7 +1,7 @@
 import { site } from "@/content/site";
 import { Eyebrow } from "@/components/primitives/Pill";
 import { Reveal } from "@/lib/motion";
-import { EngravedFigure } from "@/components/illustration/EngravedFigure";
+import { StockImage } from "@/components/illustration/StockImage";
 import { FrameBlock, Cell } from "@/components/frame/Grid";
 
 export function CaseStudy() {
@@ -21,10 +21,8 @@ export function CaseStudy() {
             </div>
           </Reveal>
         </Cell>
-        <Cell className="flex items-center justify-center px-[var(--gutter)] py-16">
-          <Reveal delay={0.1} className="w-full">
-            <EngravedFigure className="mx-auto max-w-[320px]" />
-          </Reveal>
+        <Cell className="relative min-h-[280px] overflow-hidden">
+          <StockImage src="/pillars/casestudy.jpg" alt="" />
         </Cell>
       </div>
     </FrameBlock>

@@ -3,13 +3,14 @@ import { notFound } from "next/navigation";
 import { practices } from "@/content/practices";
 import { practiceDetail } from "@/content/practiceDetail";
 import { fabrication } from "@/content/fabrication";
+import { materials } from "@/content/pages";
 import { PageHero } from "@/components/sections/PageHero";
 import { CardGrid } from "@/components/sections/CardGrid";
 import { FrameBlock, Cell, GapStrip } from "@/components/frame/Grid";
 import { Button } from "@/components/primitives/Button";
 import { Eyebrow } from "@/components/primitives/Pill";
 import { TwoToneHeading } from "@/components/primitives/TwoToneHeading";
-import { IsoScene } from "@/components/illustration/Iso";
+import { StockImage } from "@/components/illustration/StockImage";
 import { Reveal } from "@/lib/motion";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
@@ -36,7 +37,7 @@ export default async function PracticePage({ params }: Params) {
     <div className="flex flex-col gap-[2px] bg-paper pb-[2px]">
       <PageHero
         crumbs={[{ label: "Practices", href: "/#practices" }, { label: p.short }]}
-        eyebrow={`Practice ${p.index}`}
+        eyebrow={`Pillar ${p.index}`}
         line1={p.name}
         lead={d.lead}
         cta={
@@ -95,9 +96,9 @@ export default async function PracticePage({ params }: Params) {
               <Reveal delay={0.1}>
                 <div className="overflow-hidden rounded-card border border-line bg-card shadow-[var(--shadow-card)]">
                   <div className="flex items-center justify-between border-b border-line bg-card-soft px-6 py-4">
-                    <b className="text-[14px] font-medium">Batch production flow</b>
+                    <b className="text-[14px] font-medium">Fabrication flow · RFQ → delivery</b>
                     <span className="rounded-pill bg-mint px-2.5 py-1 text-[10.5px] font-medium text-teal-deep">
-                      4 steps · single accountable team
+                      one PO · single accountable team
                     </span>
                   </div>
                   <div className="grid md:grid-cols-4">
@@ -133,8 +134,8 @@ export default async function PracticePage({ params }: Params) {
                   </p>
                 </Reveal>
               </Cell>
-              <Cell className="iso-grid flex min-h-[300px] items-center justify-center overflow-hidden p-8">
-                <IsoScene variant="iso-factory" bare className="w-full max-w-[360px]" />
+              <Cell className="relative min-h-[300px] overflow-hidden">
+                <StockImage src="/pillars/fabrication.jpg" alt="" />
               </Cell>
             </div>
           </FrameBlock>
@@ -167,6 +168,64 @@ export default async function PracticePage({ params }: Params) {
                 </div>
               </Reveal>
             </Cell>
+          </FrameBlock>
+
+          {/* Section D: product categories + industry sectors */}
+          <GapStrip />
+          <FrameBlock>
+            <div className="grid gap-[2px] lg:grid-cols-2">
+              <Cell className="px-[var(--gutter)] py-12">
+                <Eyebrow>{fabrication.categories.eyebrow}</Eyebrow>
+                <ul className="mt-6 grid gap-2.5">
+                  {fabrication.categories.items.map((it) => (
+                    <li key={it} className="flex gap-2.5 text-[14.5px] text-ink-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal" />
+                      {it}
+                    </li>
+                  ))}
+                </ul>
+              </Cell>
+              <Cell className="px-[var(--gutter)] py-12">
+                <Eyebrow>{fabrication.sectors.eyebrow}</Eyebrow>
+                <ul className="mt-6 grid gap-2.5">
+                  {fabrication.sectors.items.map((it) => (
+                    <li key={it} className="flex gap-2.5 text-[14.5px] text-ink-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal" />
+                      {it}
+                    </li>
+                  ))}
+                </ul>
+              </Cell>
+            </div>
+          </FrameBlock>
+        </>
+      )}
+
+      {/* products-specific: material & capability matrix */}
+      {slug === "products" && (
+        <>
+          <GapStrip />
+          <FrameBlock>
+            <Cell className="px-[var(--gutter)] pt-12 pb-8">
+              <Reveal>
+                <Eyebrow>{materials.eyebrow}</Eyebrow>
+                <TwoToneHeading line1={materials.line1} line2={materials.line2} className="mt-4" />
+              </Reveal>
+            </Cell>
+          </FrameBlock>
+          <GapStrip h={2} />
+          <FrameBlock>
+            <div className="flex flex-col gap-[2px]">
+              {materials.rows.map((r) => (
+                <Cell key={r.category} className="grid gap-2 px-6 py-5 md:grid-cols-[1fr_1.2fr_1.6fr] md:items-baseline">
+                  <div className="font-mono text-[14px] font-medium tracking-tight text-ink">
+                    {r.category}
+                  </div>
+                  <div className="text-[13px] text-teal-deep">{r.filaments}</div>
+                  <div className="text-[13px] text-muted">{r.use}</div>
+                </Cell>
+              ))}
+            </div>
           </FrameBlock>
         </>
       )}

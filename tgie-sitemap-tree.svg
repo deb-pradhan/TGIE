@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="424" viewBox="0 0 680 424" role="img" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">
+<title>TGIE sitemap tree</title>
+<desc>Home branches to five practice categories — Engineering, Research, Fabrication, Business enablement, and Fundraising and GTM — each with sub-pages, plus three supporting sections. Fundraising and GTM is flagged New as a newly separated top-level category.</desc>
+
+<rect x="0" y="0" width="680" height="424" fill="#f4f1ea"/>
+
+<!-- connectors -->
+<g stroke="#8aa79d" stroke-width="1.5" fill="none">
+  <line x1="341" y1="60" x2="341" y2="80"/>
+  <line x1="71" y1="80" x2="611" y2="80"/>
+  <line x1="71" y1="80" x2="71" y2="92"/>
+  <line x1="206" y1="80" x2="206" y2="92"/>
+  <line x1="341" y1="80" x2="341" y2="92"/>
+  <line x1="476" y1="80" x2="476" y2="92"/>
+  <line x1="611" y1="80" x2="611" y2="92"/>
+  <line x1="71" y1="142" x2="71" y2="152"/>
+  <line x1="206" y1="142" x2="206" y2="152"/>
+  <line x1="341" y1="142" x2="341" y2="152"/>
+  <line x1="476" y1="142" x2="476" y2="152"/>
+  <line x1="611" y1="142" x2="611" y2="152"/>
+</g>
+
+<!-- home -->
+<rect x="266" y="18" width="150" height="42" rx="8" fill="#10362b"/>
+<text x="341" y="37" text-anchor="middle" font-size="14" font-weight="500" fill="#ffffff">Home</text>
+<text x="341" y="51" text-anchor="middle" font-size="9.5" fill="#a9bfb6">sitemap root</text>
+
+<!-- primary category headers -->
+<rect x="10" y="92" width="122" height="50" rx="6" fill="#2f8f7c"/>
+<text x="71" y="115" text-anchor="middle" font-size="13" font-weight="500" fill="#ffffff">Engineering</text>
+<text x="71" y="131" text-anchor="middle" font-size="9.5" fill="#d7ece6">hardware &amp; firmware</text>
+
+<rect x="145" y="92" width="122" height="50" rx="6" fill="#2f8f7c"/>
+<text x="206" y="115" text-anchor="middle" font-size="13" font-weight="500" fill="#ffffff">Research</text>
+<text x="206" y="131" text-anchor="middle" font-size="9.5" fill="#d7ece6">academic prototyping</text>
+
+<rect x="280" y="92" width="122" height="50" rx="6" fill="#2f8f7c"/>
+<text x="341" y="115" text-anchor="middle" font-size="13" font-weight="500" fill="#ffffff">Fabrication</text>
+<text x="341" y="131" text-anchor="middle" font-size="9.5" fill="#d7ece6">manufacturing for R&amp;D</text>
+
+<rect x="415" y="92" width="122" height="50" rx="6" fill="#2f8f7c"/>
+<text x="476" y="112" text-anchor="middle" font-size="12" font-weight="500" fill="#ffffff">Business</text>
+<text x="476" y="126" text-anchor="middle" font-size="12" font-weight="500" fill="#ffffff">enablement</text>
+<text x="476" y="139" text-anchor="middle" font-size="9" fill="#d7ece6">corporate advisory</text>
+
+<rect x="550" y="92" width="122" height="50" rx="6" fill="#2f8f7c"/>
+<text x="611" y="112" text-anchor="middle" font-size="12" font-weight="500" fill="#ffffff">Fundraising</text>
+<text x="611" y="126" text-anchor="middle" font-size="12" font-weight="500" fill="#ffffff">&amp; GTM</text>
+<text x="611" y="139" text-anchor="middle" font-size="9" fill="#d7ece6">capital &amp; go-to-market</text>
+<!-- New badge -->
+<rect x="596" y="85" width="42" height="16" rx="8" fill="#10362b"/>
+<text x="617" y="96" text-anchor="middle" font-size="9" font-weight="500" fill="#ffffff">New</text>
+
+<!-- sub-pages -->
+<g fill="#33443d" font-size="10.5">
+  <!-- Engineering -->
+  <rect x="10" y="152" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="71" y="166" text-anchor="middle" fill="#33443d">Custom PCB design</text>
+  <rect x="10" y="178" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="71" y="192" text-anchor="middle" fill="#33443d">Firmware &amp; RTOS</text>
+  <rect x="10" y="204" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="71" y="218" text-anchor="middle" fill="#33443d">3D enclosures</text>
+  <rect x="10" y="230" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="71" y="244" text-anchor="middle" fill="#33443d">Edge AI &amp; TinyML</text>
+  <rect x="10" y="256" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="71" y="270" text-anchor="middle" fill="#33443d">Data dashboards</text>
+  <!-- Research -->
+  <rect x="145" y="152" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="206" y="166" text-anchor="middle" fill="#33443d">Thesis hardware</text>
+  <rect x="145" y="178" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="206" y="192" text-anchor="middle" fill="#33443d">R&amp;D lifecycle</text>
+  <rect x="145" y="204" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="206" y="218" text-anchor="middle" fill="#33443d">In-house lab</text>
+  <rect x="145" y="230" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="206" y="244" text-anchor="middle" fill="#33443d">IP transfer</text>
+  <!-- Fabrication -->
+  <rect x="280" y="152" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="341" y="166" text-anchor="middle" fill="#33443d">Small-batch runs</text>
+  <rect x="280" y="178" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="341" y="192" text-anchor="middle" fill="#33443d">PCB &amp; SMD assembly</text>
+  <rect x="280" y="204" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="341" y="218" text-anchor="middle" fill="#33443d">Enclosure production</text>
+  <rect x="280" y="230" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="341" y="244" text-anchor="middle" fill="#33443d">QC &amp; test jigs</text>
+  <!-- Business enablement -->
+  <rect x="415" y="152" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="476" y="166" text-anchor="middle" fill="#33443d">Incorporation</text>
+  <rect x="415" y="178" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="476" y="192" text-anchor="middle" fill="#33443d">Audit &amp; compliance</text>
+  <rect x="415" y="204" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="476" y="218" text-anchor="middle" fill="#33443d">Branding &amp; identity</text>
+  <rect x="415" y="230" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="476" y="244" text-anchor="middle" fill="#33443d">Operations</text>
+  <!-- Fundraising & GTM -->
+  <rect x="550" y="152" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="611" y="166" text-anchor="middle" fill="#33443d">Grants &amp; schemes</text>
+  <rect x="550" y="178" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="611" y="192" text-anchor="middle" fill="#33443d">Investor &amp; pitch</text>
+  <rect x="550" y="204" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="611" y="218" text-anchor="middle" fill="#33443d">Go-to-market</text>
+  <rect x="550" y="230" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="611" y="244" text-anchor="middle" fill="#33443d">Marketplace &amp; Amazon</text>
+  <rect x="550" y="256" width="122" height="21" rx="5" fill="#ffffff" stroke="#e2ddd2"/><text x="611" y="270" text-anchor="middle" fill="#33443d">Lead gen</text>
+</g>
+
+<!-- supporting divider -->
+<text x="10" y="308" font-size="11" font-weight="500" fill="#647871">Supporting sections · also top-level</text>
+<line x1="250" y1="304" x2="672" y2="304" stroke="#e2ddd2" stroke-width="1.5"/>
+
+<!-- supporting boxes -->
+<rect x="10" y="320" width="200" height="46" rx="6" fill="#1c463a"/>
+<text x="110" y="342" text-anchor="middle" font-size="12.5" font-weight="500" fill="#ffffff">Work &amp; case studies</text>
+<text x="110" y="357" text-anchor="middle" font-size="9.5" fill="#a9bfb6">thesis validation, references</text>
+
+<rect x="240" y="320" width="200" height="46" rx="6" fill="#1c463a"/>
+<text x="340" y="342" text-anchor="middle" font-size="12.5" font-weight="500" fill="#ffffff">Insights &amp; resources</text>
+<text x="340" y="357" text-anchor="middle" font-size="9.5" fill="#a9bfb6">articles, FAQ, downloads</text>
+
+<rect x="470" y="320" width="200" height="46" rx="6" fill="#1c463a"/>
+<text x="570" y="342" text-anchor="middle" font-size="12.5" font-weight="500" fill="#ffffff">Company</text>
+<text x="570" y="357" text-anchor="middle" font-size="9.5" fill="#a9bfb6">about, lab, careers, contact</text>
+
+<!-- legend -->
+<rect x="10" y="392" width="20" height="12" rx="3" fill="#2f8f7c"/>
+<text x="36" y="402" font-size="10.5" fill="#647871">category page</text>
+<rect x="150" y="392" width="20" height="12" rx="3" fill="#ffffff" stroke="#e2ddd2"/>
+<text x="176" y="402" font-size="10.5" fill="#647871">sub-page</text>
+<rect x="250" y="392" width="20" height="12" rx="3" fill="#1c463a"/>
+<text x="276" y="402" font-size="10.5" fill="#647871">supporting section</text>
+<rect x="392" y="392" width="26" height="12" rx="6" fill="#10362b"/>
+<text x="405" y="401" text-anchor="middle" font-size="8" font-weight="500" fill="#ffffff">New</text>
+<text x="424" y="402" font-size="10.5" fill="#647871">newly separated category</text>
+</svg>

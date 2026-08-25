@@ -137,6 +137,10 @@ export function DitherField({
     }
 
     resize();
+    // The parent cell can still be 0×0 (or under-sized) at effect mount time
+    // on a fresh first paint — re-run on the next frame once layout has settled
+    // so the buffer catches up to the cell's real size before first draw.
+    requestAnimationFrame(resize);
     const ro = new ResizeObserver(resize);
     ro.observe(parent);
 

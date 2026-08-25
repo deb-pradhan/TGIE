@@ -1,32 +1,26 @@
 export const site = {
   name: "TGIE",
-  fullName: "The Greate Indian Engineers",
+  fullName: "The Great Indian Engineers",
   base: "Thirumudivakkam, Chennai · working globally",
 
-  announcement: {
-    label: "New",
-    text: "Now taking on Q3 research builds",
-    cta: "Start a project",
-    href: "#contact",
-  },
-
   hero: {
-    eyebrow: "The Greate Indian Engineers",
+    eyebrow: "The Great Indian Engineers",
     line1: "Theory, embodied.",
-    line2: "We give ideas a body — and carry the weight of making it real.",
-    lead: "Most ideas die after the breakthrough — in the board that won't hold a signal, the company nobody has time to form, the raise nobody prepped for. We carry all of it. You keep the idea.",
+    line2: "One accountable team — from first sketch to shipped hardware.",
+    lead: "Most partners hand you a piece. We hold the whole thing — the board, the enclosure, the product line, the company, and heavy fabrication at scale — as one accountable team. You keep the idea, and you own everything we make.",
     stats: [
-      { value: "50+", unit: "PCBs", label: "Custom boards delivered" },
+      { value: "4", unit: "pillars", label: "Under one accountable roof" },
+      { value: "ISO 9001", label: "2015 certified fabrication" },
       { value: "100%", label: "IP transfer · zero lock-in" },
-      { value: "4+", unit: "yrs", label: "Embedded engineering" },
     ],
   },
 
   trust: {
-    caption: "Grounded in institutional & medical-grade engineering rigor",
+    caption: "Institutional rigor · medical-grade discipline · ISO 9001:2015 fabrication",
     logos: [
       "IIT Madras",
       "MedCuore",
+      "ISO 9001:2015",
       "ESP-IDF",
       "Nordic nRF",
       "STM32",
@@ -110,16 +104,15 @@ export const site = {
 
   footer: {
     blurb:
-      "The Greate Indian Engineers — embedded systems, academic hardware prototyping, fabrication, and end-to-end business enablement.",
+      "The Great Indian Engineers — embedded systems, academic hardware prototyping, fabrication, and end-to-end business enablement.",
     columns: [
       {
         title: "Practices",
         links: [
           { label: "Engineering", href: "/practices/engineering" },
-          { label: "Research", href: "/practices/research" },
-          { label: "Fabrication", href: "/practices/fabrication" },
+          { label: "Products", href: "/practices/products" },
           { label: "Business Enablement", href: "/practices/enablement" },
-          { label: "Fundraising & GTM", href: "/practices/fundraising-gtm" },
+          { label: "Heavy Fabrication", href: "/practices/fabrication" },
         ],
       },
       {
@@ -127,8 +120,9 @@ export const site = {
         links: [
           { label: "Custom PCB design", href: "/practices/engineering/custom-pcb-design" },
           { label: "Edge AI / TinyML", href: "/practices/engineering/edge-ai-tinyml" },
+          { label: "Industrial enclosures", href: "/practices/products/industrial-enclosures" },
           { label: "Incorporation", href: "/practices/enablement/incorporation" },
-          { label: "IP transfer", href: "/practices/research/ip-transfer" },
+          { label: "Certified welding", href: "/practices/fabrication/machinery-welding" },
         ],
       },
       {

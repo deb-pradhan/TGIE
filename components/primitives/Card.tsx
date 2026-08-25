@@ -15,7 +15,7 @@ export function Card({
       className={cn(
         "rounded-card border border-line bg-card shadow-[var(--shadow-card)]",
         hover &&
-          "transition-transform duration-200 hover:-translate-y-[3px] hover:border-teal-soft",
+          "transition-[transform,border-color] duration-200 motion-safe:hover:-translate-y-[3px] motion-safe:hover:border-teal-soft",
         className,
       )}
     >
