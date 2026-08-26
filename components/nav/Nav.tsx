@@ -33,7 +33,7 @@ export function Nav() {
               {practices.map((p) => (
                 <div key={p.slug} className="flex items-center" onMouseEnter={() => setOpen(p.slug)}>
                   <a
-                    href={`/practices/${p.slug}`}
+                    href={`/services/${p.slug}`}
                     className={cn(
                       "flex h-9 items-center rounded-[8px] px-3 text-[14px] font-medium transition-colors duration-150 motion-safe:hover:bg-paper motion-safe:hover:text-forest",
                       open === p.slug
@@ -98,7 +98,7 @@ export function Nav() {
                           </p>
                         </div>
                         <a
-                          href={`/practices/${p.slug}`}
+                          href={`/services/${p.slug}`}
                           className="shrink-0 whitespace-nowrap text-[13px] font-medium text-ink-2 transition-colors duration-150 motion-safe:hover:text-teal"
                         >
                           Explore {p.short}
@@ -110,7 +110,7 @@ export function Nav() {
                         {subs.map((s) => (
                           <a
                             key={s.slug}
-                            href={`/practices/${p.slug}/${s.slug}`}
+                            href={`/services/${p.slug}/${s.slug}`}
                             className="group flex items-center justify-between gap-2 rounded-[6px] bg-cell px-4 py-3.5 transition-colors duration-150 motion-safe:hover:bg-card"
                           >
                             <span className="text-[13.5px] font-medium text-ink transition-colors duration-150 motion-safe:group-hover:text-teal">
@@ -136,7 +136,7 @@ export function Nav() {
                 {practices.map((p) => (
                   <a
                     key={p.slug}
-                    href={`/practices/${p.slug}`}
+                    href={`/services/${p.slug}`}
                     className="rounded-[6px] bg-cell px-4 py-3.5 transition-colors motion-safe:hover:bg-card"
                     onClick={() => setMobile(false)}
                   >

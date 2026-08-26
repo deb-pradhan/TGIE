@@ -36,7 +36,7 @@ export const site = {
     tenets: [
       {
         n: "Principle I",
-        title: "An idea is only real once it has a body",
+        title: "An idea is only real once it has a form",
         body: "Papers and slides prove that something can be. Physical, legal, and commercial form is what makes it exist.",
       },
       {
@@ -46,7 +46,7 @@ export const site = {
       },
       {
         n: "Principle III",
-        title: "A body we build, you own completely",
+        title: "A form we build, you own completely",
         body: "Files, IP, entity, brand. All of it, handed back. Zero lock-in.",
       },
     ],
@@ -54,7 +54,7 @@ export const site = {
 
   ownership: {
     eyebrow: "100% zero lock-in",
-    line1: "We build the body.",
+    line1: "We build the form.",
     line2: "You own it.",
     sub: "Publication and grant compliance demand full transparency over the apparatus. On milestone completion, complete ownership transfers to you. No licensing friction between you and your own work.",
     items: [
@@ -107,22 +107,22 @@ export const site = {
       "The Great Indian Engineers: embedded systems, academic hardware prototyping, fabrication, and end-to-end business enablement.",
     columns: [
       {
-        title: "Practices",
+        title: "Services",
         links: [
-          { label: "Engineering", href: "/practices/engineering" },
-          { label: "Products", href: "/practices/products" },
-          { label: "Business Enablement", href: "/practices/enablement" },
-          { label: "Heavy Fabrication", href: "/practices/fabrication" },
+          { label: "Engineering", href: "/services/engineering" },
+          { label: "Products", href: "/services/products" },
+          { label: "Business Enablement", href: "/services/enablement" },
+          { label: "Heavy Fabrication", href: "/services/fabrication" },
         ],
       },
       {
         title: "Capabilities",
         links: [
-          { label: "Custom PCB design", href: "/practices/engineering/custom-pcb-design" },
-          { label: "Edge AI / TinyML", href: "/practices/engineering/edge-ai-tinyml" },
-          { label: "Industrial enclosures", href: "/practices/products/industrial-enclosures" },
-          { label: "Incorporation", href: "/practices/enablement/incorporation" },
-          { label: "Certified welding", href: "/practices/fabrication/machinery-welding" },
+          { label: "Custom PCB design", href: "/services/engineering/custom-pcb-design" },
+          { label: "Edge AI / TinyML", href: "/services/engineering/edge-ai-tinyml" },
+          { label: "Industrial enclosures", href: "/services/products/industrial-enclosures" },
+          { label: "Incorporation", href: "/services/enablement/incorporation" },
+          { label: "Certified welding", href: "/services/fabrication/machinery-welding" },
         ],
       },
       {

@@ -8,6 +8,7 @@ const labelC = "mb-1.5 block text-[12px] font-medium uppercase tracking-[0.08em]
 
 export function StartForm() {
   const [sent, setSent] = useState(false);
+  const [role, setRole] = useState("researcher");
 
   if (sent) {
     return (
@@ -44,17 +45,39 @@ export function StartForm() {
           <input id="email" name="email" type="email" required className={field} />
         </div>
       </div>
-      <div>
-        <label className={labelC} htmlFor="role">
-          You are a
-        </label>
-        <select id="role" name="role" className={field} defaultValue="researcher">
-          <option value="researcher">Researcher / PhD scholar</option>
-          <option value="lab">University R&amp;D lab</option>
-          <option value="founder">Founder / spin-off</option>
-          <option value="other">Something else</option>
-        </select>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label className={labelC} htmlFor="phone">
+            Phone
+          </label>
+          <input id="phone" name="phone" type="tel" required className={field} />
+        </div>
+        <div>
+          <label className={labelC} htmlFor="role">
+            You are a
+          </label>
+          <select
+            id="role"
+            name="role"
+            className={field}
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+          >
+            <option value="researcher">Researcher / PhD scholar</option>
+            <option value="lab">University R&amp;D lab</option>
+            <option value="founder">Founder / spin-off</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
       </div>
+      {role === "other" && (
+        <div>
+          <label className={labelC} htmlFor="roleOther">
+            Tell us what you do
+          </label>
+          <input id="roleOther" name="roleOther" required className={field} />
+        </div>
+      )}
       <div>
         <label className={labelC} htmlFor="project">
           What are you building?

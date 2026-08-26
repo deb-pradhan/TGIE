@@ -9,7 +9,7 @@ export type Practice = {
   short: string; // nav label
   tagline: string; // mega-menu one-liner
   position: string; // point-of-view line
-  body: string; // "the body it gives"
+  body: string; // "the form it gives"
   weight: string; // "the weight it lifts"
   capabilities: Capability[];
   illustration: IsoVariant;
@@ -32,7 +32,7 @@ export const practices: Practice[] = [
     short: "Engineering",
     tagline: "Silicon, firmware, and enclosures, built from zero.",
     position: "We build from zero, because off-the-shelf compromises the science.",
-    body: "a physical body: silicon, firmware, enclosure",
+    body: "a physical form: silicon, firmware, enclosure",
     weight: "building it from zero",
     capabilities: [
       { title: "Custom PCB & schematic", note: "Up to 6 layers, DFM-ready Gerber" },
@@ -66,12 +66,12 @@ export const practices: Practice[] = [
     short: "Enablement",
     tagline: "The company, capital, and market around the idea.",
     position: "A prototype is not a company. We build the company too.",
-    body: "a legal, fundable body. The company around the idea",
+    body: "a legal, fundable form. The company around the idea",
     weight: "incorporation, compliance, capital, and admin",
     capabilities: [
       { title: "Branding & marketing", note: "Identity, Amazon, D2C content" },
-      { title: "Incorporation", note: "India · Dubai/UAE · USA" },
-      { title: "Funding & investor access", note: "DST-NIDHI, BIRAC BIG, MeitY, angels" },
+      { title: "Startup services", note: "Incorporation, compliance, and fundraising" },
+      { title: "Fundraising & GTM", note: "DST-NIDHI, BIRAC BIG, MeitY, angels" },
       { title: "Audit & operations", note: "Compliance, BOM traceability, SOPs" },
     ],
     illustration: "iso-legal",

@@ -36,7 +36,7 @@ export default async function PracticePage({ params }: Params) {
   return (
     <div className="flex flex-col gap-[2px] bg-paper pb-[2px]">
       <PageHero
-        crumbs={[{ label: "Practices", href: "/#practices" }, { label: p.short }]}
+        crumbs={[{ label: "Services", href: "/#services" }, { label: p.short }]}
         eyebrow={`Pillar ${p.index}`}
         line1={p.name}
         lead={d.lead}
@@ -56,7 +56,7 @@ export default async function PracticePage({ params }: Params) {
         <div className="grid gap-[2px] lg:grid-cols-2">
           <Cell className="p-8">
             <div className="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-teal">
-              The body we give
+              The form we give
             </div>
             <p className="mt-2 font-mono text-[18px] font-medium leading-snug tracking-tight text-ink">
               {p.body}
@@ -246,7 +246,7 @@ export default async function PracticePage({ params }: Params) {
       <CardGrid
         cols={3}
         items={d.subs.map((s, i) => ({
-          href: `/practices/${slug}/${s.slug}`,
+          href: `/services/${slug}/${s.slug}`,
           label: String(i + 1).padStart(2, "0"),
           title: s.title,
           note: s.summary,

@@ -188,7 +188,7 @@ export const practiceDetail: Record<string, PracticeDetail> = {
       },
       {
         slug: "funding-investor-access",
-        title: "Funding & Investor Access",
+        title: "Fundraising & GTM",
         summary:
           "Grant guidance, pitch preparation, and warm introductions for hardware and medtech-adjacent ventures.",
         points: [

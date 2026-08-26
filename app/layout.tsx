@@ -19,13 +19,13 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://tgie.example"),
-  title: "TGIE. Theory, embodied. We give ideas a body and carry the weight.",
+  title: "TGIE. Theory, embodied. We give ideas a form and carry the weight.",
   description:
-    "TGIE gives research and startup ideas a body: hardware, company, and market, and carries the weight of building it. You keep the vision. And you own everything we make.",
+    "TGIE gives research and startup ideas a form: hardware, company, and market, and carries the weight of building it. You keep the vision. And you own everything we make.",
   openGraph: {
     title: "TGIE. Theory, embodied.",
     description:
-      "We give ideas a body and carry the weight of making it real. You carry the vision. We carry the weight.",
+      "We give ideas a form and carry the weight of making it real. You carry the vision. We carry the weight.",
     type: "website",
   },
 };

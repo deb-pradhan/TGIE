@@ -38,8 +38,8 @@ export default async function SubPage({ params }: Params) {
     <div className="flex flex-col gap-[2px] bg-paper pb-[2px]">
       <PageHero
         crumbs={[
-          { label: "Practices", href: "/#practices" },
-          { label: p.short, href: `/practices/${slug}` },
+          { label: "Services", href: "/#services" },
+          { label: p.short, href: `/services/${slug}` },
           { label: s.title },
         ]}
         eyebrow={p.short}
@@ -48,7 +48,7 @@ export default async function SubPage({ params }: Params) {
         cta={
           <>
             <Button href="/start">Start a Project</Button>
-            <Button href={`/practices/${slug}`} variant="ghost">
+            <Button href={`/services/${slug}`} variant="ghost">
               Back to {p.short}
             </Button>
           </>
@@ -104,7 +104,7 @@ export default async function SubPage({ params }: Params) {
       <CardGrid
         cols={3}
         items={siblings.map((x) => ({
-          href: `/practices/${slug}/${x.slug}`,
+          href: `/services/${slug}/${x.slug}`,
           title: x.title,
           note: x.summary,
         }))}

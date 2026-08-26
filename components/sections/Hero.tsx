@@ -26,8 +26,8 @@ export function Hero() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3.5">
               <Button href="#contact">Start a Project</Button>
-              <Button href="#practices" variant="ghost">
-                See the practices
+              <Button href="#services" variant="ghost">
+                See the services
               </Button>
             </div>
             <div className="mt-5 flex items-center gap-2 text-[13px] text-ink-2">

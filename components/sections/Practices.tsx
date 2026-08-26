@@ -27,7 +27,7 @@ const icons: Record<string, ReactNode> = {
 export function Practices() {
   return (
     <div className="flex flex-col gap-[2px]">
-      <Section id="practices">
+      <Section id="services">
         <Reveal>
           <Eyebrow>Four pillars, one roof</Eyebrow>
           <TwoToneHeading
@@ -36,7 +36,7 @@ export function Practices() {
             className="mt-4"
           />
           <p className="text-lead mt-4 max-w-[60ch] text-muted">
-            Not a menu of services. Each pillar gives your idea a different body, and lifts a
+            Not a menu of services. Each pillar gives your idea a different form, and lifts a
             different weight. All held by one accountable team. Holding all four together is the
             part no regional competitor replicates.
           </p>
