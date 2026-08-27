@@ -31,7 +31,7 @@ export const practices: Practice[] = [
     name: "Embedded Hardware & Engineering",
     short: "Engineering",
     tagline: "Silicon, firmware, and enclosures, built from zero.",
-    position: "We build from zero, because off-the-shelf compromises the science.",
+    position: "Off-the-shelf boards fail exactly where research gets interesting. We build hardware that survives the edge cases your data depends on.",
     body: "a physical form: silicon, firmware, enclosure",
     weight: "building it from zero",
     capabilities: [

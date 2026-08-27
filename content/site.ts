@@ -18,14 +18,11 @@ export const site = {
   trust: {
     caption: "Institutional rigor · medical-grade discipline · ISO 9001:2015 fabrication",
     logos: [
-      "IIT Madras",
-      "MedCuore",
-      "ISO 9001:2015",
-      "ESP-IDF",
-      "Nordic nRF",
-      "STM32",
-      "Edge Impulse",
-      "TensorFlow Lite",
+      "FreeRTOS",
+      "STM32CubeMX",
+      "BLE/GATT",
+      "Zero Data-Packet Loss",
+      "DFM-Ready Gerber",
     ],
   },
 

@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TGIE — Theory, embodied.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --canvas:#e7e3d9; --cell:#f4f1ea; --card:#fbf9f4;
+    --ink:#1a1a17; --ink2:#403d36; --muted:#87847b; --line:#e2ded1;
+    --teal:#2f7d63; --teal-soft:#4b9b7d; --teal-deep:#215c49;
+    --forest:#123a2c; --forest-deep:#0d2c21; --ondark:#eef1ec; --ondark-mut:#9db2a7; --mint:#d8ebe0;
+    --gutter:30px; --seam:2px; --r:6px;
+    --mono:'Space Mono',ui-monospace,monospace;
+    --sans:'Hanken Grotesk',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#d7d3c7;color:var(--ink);font-family:var(--sans);font-size:14.5px;line-height:1.5;-webkit-font-smoothing:antialiased;padding:24px 0}
+  img{max-width:100%;display:block}
+
+  /* ---- A4 page ------------------------------------------------------ */
+  .page{width:210mm;min-height:297mm;margin:0 auto 22px;background:var(--canvas);display:flex;flex-direction:column;gap:var(--seam);overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.18)}
+  .frame{display:grid;grid-template-columns:14px minmax(0,1fr) 14px;gap:var(--seam);width:100%}
+  .frame::before,.frame::after{content:"";background:var(--cell)}
+  .filler{flex:1 1 auto}
+  .cell{background:var(--cell)}
+  .pad{padding:30px var(--gutter)}
+  .center-col{display:flex;flex-direction:column;justify-content:center}
+  .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--seam)}
+  .cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--seam)}
+  .cols4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--seam)}
+  .imgcell{position:relative;overflow:hidden}
+  .imgcell img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+  /* ---- type --------------------------------------------------------- */
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;color:var(--ink2);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--teal-soft)}
+  .display{font-family:var(--mono);font-weight:400;letter-spacing:-.02em;line-height:1.08;color:var(--ink)}
+  h1.display{font-size:34px}
+  h2.display{font-size:24px}
+  h3.display{font-size:19px;line-height:1.15}
+  .muted2{color:var(--muted)} .accent{color:var(--teal-deep)}
+  .lead{font-size:13.5px;color:var(--muted)}
+  .kicker{font-family:var(--mono);font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--teal)}
+  .subhead{font-family:var(--mono);font-weight:400;font-size:17px;line-height:1.25;color:var(--muted)}
+  .chip{display:inline-block;font-size:.96em;background:var(--card);border:1px solid var(--line);border-radius:7px;padding:1px 7px;white-space:nowrap}
+  .note{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:12px;color:var(--ink2)}
+  .note::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--teal)}
+
+  .logo{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;font-size:16px}
+  .logo .m{display:grid;place-items:center;width:26px;height:26px;border-radius:7px;background:var(--forest);color:#fff;font-size:13px}
+  .bar{display:flex;align-items:center;justify-content:center;background:var(--cell);height:54px}
+
+  .num{font-family:var(--mono);font-size:13px;color:var(--ink2)}
+  .capgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px;margin-top:18px}
+  .cap .t{font-weight:600;font-size:13px;margin-top:5px}
+  .cap .n{font-size:11.5px;color:var(--muted);margin-top:2px}
+  .icon{display:grid;place-items:center;width:48px;height:48px;font-size:25px;line-height:1;border-radius:11px;background:var(--mint);color:var(--teal);margin-bottom:14px}
+
+  .dark{background:var(--forest);color:var(--ondark)}
+  .trust-cap{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ondark-mut);text-align:center;padding:0 0 16px}
+  .trust-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+  .trust-grid span{border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:9px 16px;font-size:12.5px;color:var(--ondark)}
+
+  .tile{padding:20px}
+  .tile h3{font-family:var(--mono);font-weight:400;font-size:14px}
+  .tile p{font-size:12px;color:var(--muted);margin-top:6px}
+  .tileimg{margin-top:12px;height:110px;overflow:hidden;border-radius:5px}
+  .tileimg img{width:100%;height:100%;object-fit:cover}
+
+  .phase{padding:20px}
+  .phase .bar{display:block;width:24px;height:4px;border-radius:3px;background:rgba(47,125,99,.5)}
+  .phase .n{font-family:var(--mono);font-size:12px;color:var(--teal);margin-top:10px}
+  .phase h3{font-family:var(--mono);font-weight:400;font-size:14px;margin-top:6px}
+  .phase .scope{font-size:11.5px;color:var(--muted);margin-top:7px}
+  .phase .pct{font-family:var(--mono);font-weight:700;font-size:13px;color:var(--teal)}
+  .phase .track{height:5px;border-radius:3px;background:rgba(47,125,99,.16);margin-top:7px;overflow:hidden}
+  .phase .track span{display:block;height:100%;background:var(--teal);border-radius:3px}
+  .phase .get{font-size:11px;font-weight:600;color:var(--teal-deep);margin-top:9px;padding-top:8px;border-top:1px solid var(--line)}
+
+  .foot{background:var(--forest);color:var(--ondark);text-align:center;display:flex;flex-direction:column;justify-content:center;padding:36px var(--gutter)}
+
+  @media print{
+    @page{size:A4 portrait;margin:0}
+    body{background:var(--canvas);padding:0}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .page{margin:0;box-shadow:none;height:297mm;break-after:page}
+    .page:last-child{break-after:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================ PAGE 1 — COVER + CONVICTION ============================ -->
+<section class="page">
+  <div class="frame"><div class="bar"><span class="logo"><span class="m">T</span>TGIE</span></div></div>
+
+  <div class="frame"><div class="two">
+    <div class="cell pad center-col">
+      <span class="eyebrow">The Great Indian Engineers</span>
+      <h1 class="display" style="margin-top:16px">Theory, embodied.</h1>
+      <p class="subhead" style="margin-top:14px;max-width:20ch">One accountable team, from first sketch to shipped hardware.</p>
+      <p class="lead" style="margin-top:16px">Most ideas die after the breakthrough. In the board that won't <span class="chip">hold a signal</span>, the company nobody has time to form, the <span class="chip">raise</span> nobody prepped for. We carry all of it. You keep the idea.</p>
+      <div class="note">Free scoping call. Your idea stays yours from day one.</div>
+    </div>
+    <div class="cell imgcell" style="min-height:320px"><img src="hero/fabrication-robotics.jpg" alt="Industrial robotics fabrication cell" /></div>
+  </div></div>
+
+  <div class="frame"><div class="dark pad" style="padding-top:20px;padding-bottom:20px"><div class="trust-cap">Institutional rigor · medical-grade discipline · ISO 9001:2015 fabrication</div>
+    <div class="trust-grid"><span>FreeRTOS</span><span>STM32CubeMX</span><span>BLE/GATT</span><span>Zero Data-Packet Loss</span><span>DFM-Ready Gerber</span></div>
+  </div></div>
+
+  <div class="frame"><div class="two">
+    <div class="cell pad center-col">
+      <span class="eyebrow">Our conviction</span>
+      <h2 class="display" style="margin-top:14px;max-width:15ch">You carry the vision. <span class="accent">We carry the weight.</span></h2>
+      <p class="lead" style="margin-top:12px">The discovery is yours: the thesis, the data, the IP. What we carry is the operational weight of turning an idea into something you can hold, defend, publish, and sell.</p>
+    </div>
+    <div class="cell imgcell" style="min-height:230px"><img src="illustration/engraved-atlas.png" alt="Engraved figure carrying the world" /></div>
+  </div></div>
+
+  <div class="frame"><div class="cols3">
+    <div class="cell pad" style="padding:22px 20px"><span class="bar" style="display:block;width:24px;height:4px;border-radius:3px;background:rgba(47,125,99,.5)"></span><div class="kicker" style="margin-top:12px">Principle I</div><h3 style="font-weight:600;font-size:14px;margin-top:7px">An idea is only real once it has a form</h3><p class="muted2" style="font-size:11.5px;margin-top:7px">Physical, legal, and commercial form is what makes it exist.</p></div>
+    <div class="cell pad" style="padding:22px 20px"><span class="bar" style="display:block;width:24px;height:4px;border-radius:3px;background:rgba(47,125,99,.5)"></span><div class="kicker" style="margin-top:12px">Principle II</div><h3 style="font-weight:600;font-size:14px;margin-top:7px">The weight shouldn't fall on the creator</h3><p class="muted2" style="font-size:11.5px;margin-top:7px">We shoulder the operational weight so the thinking stays yours.</p></div>
+    <div class="cell pad" style="padding:22px 20px"><span class="bar" style="display:block;width:24px;height:4px;border-radius:3px;background:rgba(47,125,99,.5)"></span><div class="kicker" style="margin-top:12px">Principle III</div><h3 style="font-weight:600;font-size:14px;margin-top:7px">A form we build, you own completely</h3><p class="muted2" style="font-size:11.5px;margin-top:7px">Files, IP, entity, brand. All of it, handed back. Zero lock-in.</p></div>
+  </div></div>
+  <div class="frame filler"><div class="cell"></div></div>
+</section>
+
+<!-- ==================== PAGE 2 — PILLARS A & B ==================== -->
+<section class="page">
+  <div class="frame"><div class="cell pad" style="padding-top:30px;padding-bottom:24px">
+    <span class="eyebrow">Four pillars, one roof</span>
+    <h2 class="display" style="margin-top:12px">Engineering, products, business, <span class="muted2">and heavy fabrication.</span></h2>
+    <p class="lead" style="margin-top:10px;max-width:78ch">Not a menu of services. Each pillar gives your idea a different form, and lifts a different weight. All held by one accountable team.</p>
+  </div></div>
+
+  <div class="frame"><div class="two">
+    <div class="cell pad center-col">
+      <div class="icon">◨</div><div class="kicker">Pillar A</div>
+      <h3 class="display" style="margin-top:6px">Embedded Hardware &amp; Engineering</h3>
+      <p class="muted2" style="margin-top:9px;font-size:13px">Off-the-shelf boards fail exactly where research gets interesting. We build hardware that survives the edge cases your data depends on.</p>
+      <div class="capgrid">
+        <div class="cap"><div class="num">01</div><div class="t">Custom PCB &amp; schematic</div><div class="n">Up to 6 layers, DFM-ready Gerber</div></div>
+        <div class="cap"><div class="num">03</div><div class="t">3D enclosures</div><div class="n">Designed with the PCB footprint</div></div>
+        <div class="cap"><div class="num">02</div><div class="t">Embedded firmware</div><div class="n">Bare-metal, FreeRTOS, BLE/GATT</div></div>
+        <div class="cap"><div class="num">04</div><div class="t">Edge AI / TinyML</div><div class="n">On-device inference, no cloud</div></div>
+      </div>
+    </div>
+    <div class="cell imgcell" style="min-height:240px"><img src="pillars/engineering.jpg" alt="Embedded Hardware & Engineering" /></div>
+  </div></div>
+
+  <div class="frame"><div class="two">
+    <div class="cell imgcell" style="min-height:240px"><img src="pillars/products.jpg" alt="Additive Manufacturing & Product Lines" /></div>
+    <div class="cell pad center-col">
+      <div class="icon">◈</div><div class="kicker">Pillar B</div>
+      <h3 class="display" style="margin-top:6px">Additive Manufacturing &amp; Product Lines</h3>
+      <p class="muted2" style="margin-top:9px;font-size:13px">Additive manufacturing, from a bespoke commission to a scalable retail line.</p>
+      <div class="capgrid">
+        <div class="cap"><div class="num">01</div><div class="t">Industrial enclosures</div><div class="n">PA-CF, PET-CF ruggedized housings</div></div>
+        <div class="cap"><div class="num">03</div><div class="t">Automotive plastics</div><div class="n">Discontinued &amp; custom cabin parts</div></div>
+        <div class="cap"><div class="num">02</div><div class="t">Kinetic IoT &amp; decor</div><div class="n">Motorized, connected desktop art</div></div>
+        <div class="cap"><div class="num">04</div><div class="t">Retail &amp; e-commerce</div><div class="n">High-margin Amazon / D2C runs</div></div>
+      </div>
+    </div>
+  </div></div>
+  <div class="frame filler"><div class="cell"></div></div>
+</section>
+
+<!-- ==================== PAGE 3 — PILLARS C & D + AUDIENCES ==================== -->
+<section class="page">
+  <div class="frame"><div class="two">
+    <div class="cell pad center-col">
+      <div class="icon">⌂</div><div class="kicker">Pillar C</div>
+      <h3 class="display" style="margin-top:6px">Business Enablement &amp; Advisory</h3>
+      <p class="muted2" style="margin-top:9px;font-size:13px">A prototype is not a company. We build the company too.</p>
+      <div class="capgrid">
+        <div class="cap"><div class="num">01</div><div class="t">Branding &amp; marketing</div><div class="n">Identity, Amazon, D2C content</div></div>
+        <div class="cap"><div class="num">03</div><div class="t">Fundraising &amp; GTM</div><div class="n">DST-NIDHI, BIRAC BIG, MeitY, angels</div></div>
+        <div class="cap"><div class="num">02</div><div class="t">Startup services</div><div class="n">Incorporation, compliance, and fundraising</div></div>
+        <div class="cap"><div class="num">04</div><div class="t">Audit &amp; operations</div><div class="n">Compliance, BOM traceability, SOPs</div></div>
+      </div>
+    </div>
+    <div class="cell imgcell" style="min-height:240px"><img src="pillars/enablement-writing.jpg" alt="Business Enablement & Advisory" /></div>
+  </div></div>
+
+  <div class="frame"><div class="two">
+    <div class="cell imgcell" style="min-height:240px"><img src="pillars/fabrication.jpg" alt="Heavy Fabrication & Manufacturing" /></div>
+    <div class="cell pad center-col">
+      <div class="icon">⚒</div><div class="kicker">Pillar D</div>
+      <h3 class="display" style="margin-top:6px">Heavy Fabrication &amp; Manufacturing</h3>
+      <p class="muted2" style="margin-top:9px;font-size:13px">One Purchase Order, from RFQ to a delivered, certified structure.</p>
+      <div class="capgrid">
+        <div class="cap"><div class="num">01</div><div class="t">Single-source accountability</div><div class="n">RFQ to logistics, one PO</div></div>
+        <div class="cap"><div class="num">03</div><div class="t">Certified welding</div><div class="n">GMAW (MIG) and SMAW (ARC)</div></div>
+        <div class="cap"><div class="num">02</div><div class="t">In-house machinery</div><div class="n">Laser, plasma, 320-ton press brake</div></div>
+        <div class="cap"><div class="num">04</div><div class="t">QA &amp; documentation</div><div class="n">ISO 9001:2015, mill certs, WPS</div></div>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="frame"><div class="cell pad" style="padding-top:26px;padding-bottom:18px">
+    <span class="eyebrow">Who we serve</span>
+    <h2 class="display" style="margin-top:12px">Three audiences, <span class="muted2">one accountable roof.</span></h2>
+  </div></div>
+  <div class="frame"><div class="cols3">
+    <div class="cell pad" style="padding:22px 20px"><div class="kicker">01</div><h3 style="font-family:var(--mono);font-weight:400;font-size:14px;margin-top:9px">Research labs &amp; PhD scholars</h3><p class="muted2" style="font-size:11.5px;margin-top:7px">Field-ready custom hardware, calibrated, documented, and yours to publish.</p></div>
+    <div class="cell pad" style="padding:22px 20px"><div class="kicker">02</div><h3 style="font-family:var(--mono);font-weight:400;font-size:14px;margin-top:9px">Founders &amp; academic spin-offs</h3><p class="muted2" style="font-size:11.5px;margin-top:7px">A validated prototype taken through fabrication, branding, incorporation, and launch.</p></div>
+    <div class="cell pad" style="padding:22px 20px"><div class="kicker">03</div><h3 style="font-family:var(--mono);font-weight:400;font-size:14px;margin-top:9px">Industrial &amp; OEM clients</h3><p class="muted2" style="font-size:11.5px;margin-top:7px">Heavy structural fabrication at scale, under single-source accountability.</p></div>
+  </div></div>
+  <div class="frame filler"><div class="cell"></div></div>
+</section>
+
+<!-- ==================== PAGE 4 — CAPABILITIES + ENGAGEMENT + CONTACT ==================== -->
+<section class="page">
+  <div class="frame"><div class="cell pad" style="padding-top:32px;padding-bottom:18px">
+    <span class="eyebrow">Core technical stack</span>
+    <h2 class="display" style="margin-top:12px">Capabilities built <span class="muted2">for research and product teams.</span></h2>
+  </div></div>
+  <div class="frame"><div class="cols3">
+    <div class="cell tile"><h3>Firmware &amp; silicon mastery</h3><p>Bare-metal and FreeRTOS across Espressif ESP-IDF, Nordic nRF Connect, and STM32.</p><div class="tileimg"><img src="pillars/firmware.jpg" alt="" /></div></div>
+    <div class="cell tile"><h3>Full-stack data visualization</h3><p>Cross-platform app interfaces and desktop diagnostic dashboards that read telemetry in real time.</p><div class="tileimg"><img src="pillars/dataviz.jpg" alt="" /></div></div>
+    <div class="cell tile"><h3>Edge AI &amp; on-device ML</h3><p>Lightweight models on microcontrollers via Edge Impulse and TensorFlow Lite.</p><div class="tileimg"><img src="pillars/edgeai.jpg" alt="" /></div></div>
+  </div></div>
+
+  <div class="frame"><div class="cell pad" style="text-align:center;padding-top:26px;padding-bottom:16px">
+    <span class="eyebrow">Engagement model</span>
+    <h2 class="display" style="margin-top:12px">One phased path <span class="muted2">from concept to launch.</span></h2>
+  </div></div>
+  <div class="frame"><div class="cols4">
+    <div class="cell phase"><div class="pct">25%</div><div class="track"><span style="width:25%"></span></div><div class="n">Phase 1</div><h3>Proof of Concept</h3><p class="scope">Dev-board breadboarding, sensor communication, logic validation.</p><p class="get">You get: proof the idea actually works.</p></div>
+    <div class="cell phase"><div class="pct">50%</div><div class="track"><span style="width:50%"></span></div><div class="n">Phase 2</div><h3>Engineering Validation</h3><p class="scope">Custom PCB, miniaturisation, 3D-printed enclosure, bare-metal firmware.</p><p class="get">You get: a working prototype you can hold.</p></div>
+    <div class="cell phase"><div class="pct">75%</div><div class="track"><span style="width:75%"></span></div><div class="n">Phase 3</div><h3>Design Validation</h3><p class="scope">Fully integrated device, optimized firmware, diagnostic GUI.</p><p class="get">You get: field-tested hardware, ready for real data.</p></div>
+    <div class="cell phase"><div class="pct">100%</div><div class="track"><span style="width:100%"></span></div><div class="n">Phase 4</div><h3>Launch Readiness</h3><p class="scope">Small-batch fabrication, branding, marketplace listing, compliance.</p><p class="get">You get: a sellable, fundable product.</p></div>
+  </div></div>
+
+  <div class="frame filler"><div class="dark foot">
+    <div class="kicker" style="color:var(--teal-soft)">Contact us</div>
+    <h2 class="display" style="color:var(--ondark);margin-top:10px">You dream it. <span style="color:var(--ondark-mut)">We'll carry it.</span></h2>
+    <p style="color:var(--ondark-mut);max-width:54ch;margin:12px auto 0;font-size:13.5px">Take the operational weight off your plate. One accountable team spanning engineering, legal, branding, and market.</p>
+    <div style="margin-top:22px;font-family:var(--mono);font-weight:700;font-size:28px;color:#fff;letter-spacing:.02em">+91 95001 69253</div>
+    <div style="margin-top:10px;font-family:var(--mono);font-size:14px;color:var(--teal-soft);letter-spacing:.06em">www.tgie.in</div>
+    <div style="margin-top:4px;font-size:12.5px;color:var(--ondark-mut)">Thirumudivakkam, Chennai · India</div>
+    <div style="margin-top:22px;font-size:11.5px;color:var(--ondark-mut)">© TGIE — The Great Indian Engineers · Theory, embodied.</div>
+  </div></div>
+</section>
+
+</body>
+</html>
