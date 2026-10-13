@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { useRef, useState, type FormEvent, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { track } from "@/lib/analytics";
 import { start } from "@/content/start";
@@ -16,16 +16,18 @@ import {
   type EnquiryErrors,
   type PillarId,
   type Role,
-} from "@/app/api/enquiry/schema";
+} from "@/lib/enquiry";
 
 const field =
   "w-full rounded-tile border bg-card px-3.5 py-2.5 text-[16px] text-ink outline-none transition-colors placeholder:text-muted sm:text-[14px] focus-visible:border-accent-deep focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-accent-deep";
 const labelC = "mb-1.5 block text-[12px] font-medium uppercase tracking-[0.08em] text-ink-2";
 
 const PILLAR_NAMES = Object.fromEntries(practices.map((p) => [p.index, p.short])) as Record<PillarId, string>;
+const mailtoHref = (to: string, body: string) =>
+  `mailto:${to}?subject=${encodeURIComponent("Project enquiry")}&body=${encodeURIComponent(body)}`;
 const ORDER = ["name", "email", "phone", "role", "roleOther", "project"] as const;
 
-type Status = "idle" | "sending" | "sent" | "fallback";
+type Status = "idle" | "ready";
 
 function ErrorIcon({ className }: { className?: string }) {
   return (
@@ -97,17 +99,12 @@ export function StartForm({ contactEmail }: { contactEmail?: string }) {
   const [role, setRole] = useState<Role>("researcher");
   const [pillars, setPillars] = useState<PillarId[]>([]);
   const [errors, setErrors] = useState<EnquiryErrors>({});
-  const [reason, setReason] = useState<"not_configured" | "failed">("failed");
   const [message, setMessage] = useState("");
   const [copied, setCopied] = useState(false);
-  const [sendError, setSendError] = useState("");
   const [count, setCount] = useState(0);
   const touched = useRef(new Set<keyof Enquiry>());
-  const sendingRef = useRef(false);
   const formRef = useRef<HTMLFormElement>(null);
-  const openedAt = useRef<number>(0);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const fallbackRef = useRef<HTMLHeadingElement>(null);
+  const readyRef = useRef<HTMLHeadingElement>(null);
 
   const read = (): Record<string, unknown> => {
     const f = new FormData(formRef.current!);
@@ -150,15 +147,9 @@ export function StartForm({ contactEmail }: { contactEmail?: string }) {
     if (touched.current.has(k) || errors[k]) blur(k);
   };
 
-  useEffect(() => {
-    openedAt.current = Date.now();
-  }, []);
-
-  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (sendingRef.current) return;
-    const raw = read();
-    const r = validateEnquiry(raw);
+    const r = validateEnquiry(read());
     if (!r.ok) {
       setErrors(r.errors);
       const first = ORDER.find((k) => r.errors[k]);
@@ -166,48 +157,13 @@ export function StartForm({ contactEmail }: { contactEmail?: string }) {
       return;
     }
     setErrors({});
-    setSendError("");
-    sendingRef.current = true;
-    setStatus("sending");
     const text = enquiryText(r.value, PILLAR_NAMES);
     setMessage(text);
-    const tgie_hp = new FormData(formRef.current!).get("tgie_hp");
-    let failure: "not_configured" | "failed" = "failed";
-    try {
-      const res = await fetch("/api/enquiry", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...r.value, tgie_hp, elapsed: Date.now() - openedAt.current }),
-      });
-      if (res.ok) {
-        track("generate_lead", { form_id: "start_enquiry", lead_role: r.value.role, lead_pillars: r.value.pillars.join(",") || "none" });
-        setStatus("sent");
-        setTimeout(() => headingRef.current?.focus(), 50);
-        return;
-      }
-      const data = (await res.json().catch(() => ({}))) as { error?: string; fields?: EnquiryErrors };
-      if (res.status === 400 && data.fields) {
-        setErrors(data.fields);
-        setStatus("idle");
-        const first = ORDER.find((k) => data.fields?.[k]);
-        if (first) focusField(first);
-        return;
-      }
-      if (res.status === 429) {
-        setSendError("That's a lot of messages in a short time. Please wait a few minutes and try again.");
-        setStatus("idle");
-        return;
-      }
-      failure = data.error === "not_configured" ? "not_configured" : "failed";
-    } catch {
-      failure = "failed";
-    } finally {
-      sendingRef.current = false;
-    }
-    setReason(failure);
-    track("enquiry_failed", { reason: failure });
-    setStatus("fallback");
-    setTimeout(() => fallbackRef.current?.focus(), 50);
+    track("generate_lead", { form_id: "start_enquiry", lead_role: r.value.role, lead_pillars: r.value.pillars.join(",") || "none" });
+    setStatus("ready");
+    // Hand the message to the visitor's own email app; the panel below stays up as a fallback.
+    if (contactEmail) window.location.href = mailtoHref(contactEmail, text);
+    setTimeout(() => readyRef.current?.focus(), 50);
   }
 
   async function copy() {
@@ -222,10 +178,7 @@ export function StartForm({ contactEmail }: { contactEmail?: string }) {
     setTimeout(() => setCopied(false), 2500);
   }
 
-  const mailto = contactEmail
-    ? `mailto:${contactEmail}?subject=${encodeURIComponent("Project enquiry")}&body=${encodeURIComponent(message)}`
-    : null;
-  const sending = status === "sending";
+  const mailto = contactEmail ? mailtoHref(contactEmail, message) : null;
 
   function backToForm() {
     setStatus("idle");
@@ -234,27 +187,13 @@ export function StartForm({ contactEmail }: { contactEmail?: string }) {
 
   return (
     <>
-      {status === "sent" && (
-        <div role="status" className="rounded-card border border-line bg-card p-6">
-          <span className="grid h-10 w-10 place-items-center rounded-[12px] bg-accent-pale text-accent-deep">
-            <svg aria-hidden width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12.5l4.5 4.5L19 7.5" />
-            </svg>
-          </span>
-          <h2 ref={headingRef} tabIndex={-1} className="mt-4 font-mono text-[18px] font-medium tracking-tight outline-none">
-            {start.form.success.title}
-          </h2>
-          <p className="mt-2 text-[14px] text-ink-2">{start.form.success.body}</p>
-        </div>
-      )}
-
-      {status === "fallback" && (
+      {status === "ready" && (
         <div className="rounded-card border border-line bg-card p-6">
-          <h2 ref={fallbackRef} tabIndex={-1} className="font-mono text-[17px] font-medium tracking-tight outline-none">
-            {reason === "not_configured" ? start.form.fallback.notConfigured : start.form.fallback.failed}
+          <h2 ref={readyRef} tabIndex={-1} className="font-mono text-[17px] font-medium tracking-tight outline-none">
+            {start.form.ready.title}
           </h2>
           <p className="mt-2 text-[14px] text-ink-2">
-            {mailto ? start.form.fallback.actionEmail : start.form.fallback.actionNoEmail}
+            {mailto ? start.form.ready.actionEmail : start.form.ready.actionNoEmail}
           </p>
           <label htmlFor="fallback-message" className={cn(labelC, "mt-5")}>
             Your message
@@ -300,14 +239,8 @@ export function StartForm({ contactEmail }: { contactEmail?: string }) {
         </div>
       )}
 
-      {/* Stays mounted (just hidden) while the success/fallback panel shows, so "Back to the form" keeps what was typed. */}
-      <form ref={formRef} noValidate onSubmit={onSubmit} hidden={status === "sent" || status === "fallback"} className="grid gap-5" aria-busy={sending}>
-        {/* honeypot: real people never see or reach this; bots fill it. Name avoids browser autofill heuristics. */}
-        <div aria-hidden className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
-          <label htmlFor="tgie_hp">Leave this field empty</label>
-          <input id="tgie_hp" name="tgie_hp" type="text" tabIndex={-1} autoComplete="off" />
-        </div>
-
+      {/* Stays mounted (just hidden) while the message-ready panel shows, so "Back to the form" keeps what was typed. */}
+      <form ref={formRef} noValidate onSubmit={onSubmit} hidden={status === "ready"} className="grid gap-5">
         <p className="text-[12px] text-muted">
           <span aria-hidden className="text-accent-deep">
             *
@@ -416,27 +349,12 @@ export function StartForm({ contactEmail }: { contactEmail?: string }) {
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1">
           <button
             type="submit"
-            aria-disabled={sending}
-            className="inline-flex min-h-[44px] cursor-pointer items-center gap-2.5 rounded-btn border border-transparent bg-inkbtn px-[22px] py-3 text-[14.5px] font-medium text-white shadow-[var(--shadow-btn)] transition-transform duration-150 hover:-translate-y-px aria-disabled:cursor-wait aria-disabled:opacity-80 aria-disabled:hover:translate-y-0"
+            className="inline-flex min-h-[44px] cursor-pointer items-center gap-2.5 rounded-btn border border-transparent bg-inkbtn px-[22px] py-3 text-[14.5px] font-medium text-white shadow-[var(--shadow-btn)] transition-transform duration-150 hover:-translate-y-px"
           >
-            {sending && (
-              <svg aria-hidden width="16" height="16" viewBox="0 0 24 24" className="animate-spin" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
-                <path d="M12 3a9 9 0 1 0 9 9" />
-              </svg>
-            )}
-            {sending ? "Sending" : "Send it"}
+            {contactEmail ? "Send by email" : "Prepare my message"}
           </button>
           <span className="text-[12.5px] text-muted">{start.next.response}</span>
         </div>
-        {sendError && (
-          <div role="alert" className="flex items-start gap-2.5 rounded-tile border border-ink bg-card px-4 py-3 text-[13px] font-medium text-ink">
-            <ErrorIcon className="mt-[3px]" />
-            {sendError}
-          </div>
-        )}
-        <p aria-live="polite" className="sr-only">
-          {sending ? "Sending your message" : ""}
-        </p>
       </form>
     </>
   );

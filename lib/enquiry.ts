@@ -1,6 +1,6 @@
 /**
- * Enquiry schema shared by the /start form (client, inline validation) and the
- * /api/enquiry route handler (server, authoritative). Hand-written, no deps.
+ * Enquiry schema for the /start form: client-side validation plus the plain-text
+ * message that is put in the visitor's email app (mailto). Hand-written, no deps.
  */
 export const ROLES = ["researcher", "lab", "founder", "other"] as const;
 export const PILLAR_IDS = ["A", "B", "C", "D"] as const;

@@ -42,17 +42,12 @@ export const start = {
   form: {
     pillarsLabel: "Where do you need us?",
     pillarsHint: "Optional. Pick any that apply.",
-    success: {
-      title: "Thanks. We've got it.",
-      body: "We'll read what you sent and reply within two working days. In the meantime, the idea stays entirely yours.",
-    },
-    fallback: {
-      notConfigured: "Online sending isn't switched on yet, so your message hasn't been delivered.",
-      failed: "We couldn't send that just now, so it hasn't been delivered.",
+    ready: {
+      title: "Your message is ready to send.",
       /** shown when a contact email is published (NEXT_PUBLIC_CONTACT_EMAIL) */
-      actionEmail: "Nothing is lost. Your message is ready below: send it by email, copy it, or call us.",
+      actionEmail: "Your email app should open with it filled in. Press send there to deliver it; nothing is sent until you do. If nothing opened, use the buttons below.",
       /** no contact email yet: only copy + phone are offered, so do not promise email */
-      actionNoEmail: "Nothing is lost. Your message is ready below: copy it and call us, and we'll take it from there.",
+      actionNoEmail: "Copy it and call us, and we'll take it from there.",
     },
   },
 };
