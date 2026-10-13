@@ -6,7 +6,7 @@ import { Sketch, Pcb, Enclosure, Products, Company, Steel } from "./objects";
 
 /**
  * Home hero — "Theory, embodied."
- * One isometric ground, one dashed teal path, four pillars:
+ * One isometric ground, one dashed accent path, four pillars:
  * sketch → PCB → enclosure (A) → product run (B) → company (C) → steel (D),
  * with a TGIE hub in the middle of the "V" and floating spec chips.
  * Pure SVG, server-rendered, CSS-only ambient motion (.ill-*).
@@ -36,8 +36,10 @@ function Chip({
   letter,
   float,
   dx = 0,
+  secondary = false,
 }: {
   dx?: number;
+  secondary?: boolean;
   cx: number;
   cy: number;
   zChip: number;
@@ -49,36 +51,36 @@ function Chip({
   const [ax, yAnchor] = S.proj(cx, cy, zChip);
   const x = ax + dx;
   const [, yObj] = S.proj(cx, cy, zObj);
-  const w = label.length * 6.4 + (letter ? 34 : 22);
-  const top = yAnchor - 24;
+  const w = label.length * 7.4 + (letter ? 40 : 24);
+  const top = yAnchor - 26;
   return (
-    <g>
+    <g className={secondary ? "hidden min-[1100px]:inline" : undefined}>
       <path
-        d={`M${x.toFixed(1)} ${(top + 24).toFixed(1)}L${ax.toFixed(1)} ${yObj.toFixed(1)}`}
+        d={`M${x.toFixed(1)} ${(top + 26).toFixed(1)}L${ax.toFixed(1)} ${yObj.toFixed(1)}`}
         stroke={C.ink2}
         strokeOpacity={0.4}
         strokeWidth={1}
         strokeDasharray="2 3"
       />
-      <circle cx={ax} cy={yObj} r={2.2} fill={C.teal} />
+      <circle cx={ax} cy={yObj} r={2.2} fill={C.accent} />
       <g className={float}>
         <g transform={`translate(${(x - w / 2).toFixed(1)} ${top.toFixed(1)})`}>
           <rect
             y={2.5}
             width={w}
-            height={22}
-            rx={11}
-            fill="rgba(11,44,35,.12)"
+            height={24}
+            rx={12}
+            fill="rgba(17,19,18,.12)"
           />
-          <rect width={w} height={22} rx={11} fill="#fff" stroke={C.line} />
+          <rect width={w} height={24} rx={12} fill="#fff" stroke={C.line} />
           {letter && (
             <>
-              <circle cx={12} cy={11} r={7} fill={C.tealDeep} />
+              <circle cx={13} cy={12} r={8.5} fill={C.accentDeep} />
               <text
-                x={12}
-                y={14}
+                x={13}
+                y={16}
                 textAnchor="middle"
-                fontSize={8.5}
+                fontSize={11.5}
                 fill="#fff"
                 fontFamily={MONO}
               >
@@ -87,9 +89,9 @@ function Chip({
             </>
           )}
           <text
-            x={letter ? 24 : 11}
-            y={14.8}
-            fontSize={10.5}
+            x={letter ? 27 : 12}
+            y={16}
+            fontSize={12}
             fill={C.ink2}
             fontFamily={MONO}
           >
@@ -115,15 +117,15 @@ function Hub(): ReactNode {
           cy={c[1]}
           {...ring(r)}
           fill="none"
-          stroke={C.tealSoft}
+          stroke={C.accentSoft}
           strokeOpacity={i ? 0.45 : 0.7}
           strokeWidth={1.2}
           strokeDasharray="3 4"
           className={i ? undefined : "ill-pulse"}
         />
       ))}
-      {S.bx(hx - 0.8, hy - 0.8, hx + 0.8, hy + 0.8, 0, 0.3, "mint")}
-      {S.bx(hx - 0.5, hy - 0.5, hx + 0.5, hy + 0.5, 0.3, 3.1, "forest")}
+      {S.bx(hx - 0.8, hy - 0.8, hx + 0.8, hy + 0.8, 0, 0.3, "accentPale")}
+      {S.bx(hx - 0.5, hy - 0.5, hx + 0.5, hy + 0.5, 0.3, 3.1, "graphite")}
       <g transform={S.F(hy + 0.5)}>
         <path
           d={`M${hx - 0.26} 2.35H${hx + 0.26}M${hx} 2.35V1.5`}
@@ -133,7 +135,7 @@ function Hub(): ReactNode {
         />
         <path
           d={`M${hx - 0.4} .55H${hx + 0.4}`}
-          stroke={C.tealSoft}
+          stroke={C.accentSoft}
           strokeWidth={0.04}
           strokeLinecap="round"
           strokeDasharray=".1 .08"
@@ -142,12 +144,12 @@ function Hub(): ReactNode {
       <g transform={S.R(hx + 0.5)}>
         <path
           d={`M${hy - 0.35} .6V2.9M${hy - 0.12} .6V2.9M${hy + 0.12} .6V2.9M${hy + 0.35} .6V2.9`}
-          stroke={C.tealSoft}
+          stroke={C.accentSoft}
           strokeOpacity={0.35}
           strokeWidth={0.03}
         />
       </g>
-      {S.bx(hx - 0.55, hy - 0.55, hx + 0.55, hy + 0.55, 3.1, 3.2, "teal")}
+      {S.bx(hx - 0.55, hy - 0.55, hx + 0.55, hy + 0.55, 3.1, 3.2, "accent")}
     </g>
   );
 }
@@ -180,6 +182,7 @@ const CHIPS = [
     letter: "A",
     float: "ill-float-2",
     dx: 8,
+    secondary: true,
   },
   {
     cx: 6.8,
@@ -190,6 +193,7 @@ const CHIPS = [
     letter: "A",
     float: "ill-float",
     dx: -34,
+    secondary: true,
   },
   {
     cx: 9,
@@ -249,7 +253,7 @@ export function HeroScene() {
         <g transform={S.T(0.02)}>
           <path
             d="M.2 8.7H8.7V.2H9.3V9.3H.2Z"
-            fill={C.tealSoft}
+            fill={C.accentSoft}
             fillOpacity={0.22}
           />
         </g>
@@ -260,23 +264,23 @@ export function HeroScene() {
             [9, 0.55],
           ])}
           fill="none"
-          stroke={C.teal}
+          stroke={C.accent}
           strokeWidth={1.7}
           strokeLinejoin="round"
           strokeDasharray="6 4"
           className="ill-dash"
         />
         <g transform={S.T(0.02)}>
-          <path d="M8.78 .95H9.22L9 .3Z" fill={C.teal} />
+          <path d="M8.78 .95H9.22L9 .3Z" fill={C.accent} />
           <circle
             cx={9}
             cy={9}
             r={0.32}
             fill="#fff"
-            stroke={C.teal}
+            stroke={C.accent}
             strokeWidth={0.05}
           />
-          <circle cx={9} cy={9} r={0.1} fill={C.teal} />
+          <circle cx={9} cy={9} r={0.1} fill={C.accent} />
         </g>
 
         {/* hub spokes: every pillar hangs off one team */}
@@ -300,7 +304,7 @@ export function HeroScene() {
             ])
           }
           fill="none"
-          stroke={C.teal}
+          stroke={C.accent}
           strokeOpacity={0.5}
           strokeWidth={1.2}
           strokeDasharray="2 4"

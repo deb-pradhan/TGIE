@@ -18,7 +18,7 @@ export const subFit: Record<string, SubFit> = {
   "kinetic-iot-decor": { icon: "kinetic", phases: [1, 2, 4], note: "Mechanism proof first, then custom electronics and a housing, then a small production batch." },
   "automotive-plastics": { icon: "automotive", phases: [1, 4], note: "Scan and replicate a part to prove fit, then print it in the right material for the job." },
   "scale-miniatures": { icon: "miniature", phases: [3, 4], note: "A single presentation-grade piece, delivered once the design is approved." },
-  "retail-ecommerce": { icon: "retail", phases: [4], note: "Licensed designs go straight to production and listing, with the margin staying with you." },
+  "retail-ecommerce": { icon: "retail", phases: [4], note: "Licensed designs go straight to production and listing, so you skip the design phase and sell from day one." },
 
   "branding-marketing": { icon: "branding", phases: [4], note: "Brand assets and a marketplace presence are prepared so the product is ready to sell." },
   "incorporation": { icon: "incorporation", phases: [3, 4], note: "The legal entity is set up before launch so grants, orders and IP sit in the right place." },

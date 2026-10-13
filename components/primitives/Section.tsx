@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { FrameBlock, Cell } from "@/components/frame/Grid";
 
-type Tone = "paper" | "paper2" | "forest" | "forestDeep";
+type Tone = "paper" | "paper2" | "graphite" | "graphiteDeep";
 
 export function Section({
   children,
@@ -20,13 +20,13 @@ export function Section({
   containerClassName?: string;
 }) {
   // Dark tones span the full frame width as one dark cell
-  if (tone === "forest" || tone === "forestDeep") {
+  if (tone === "graphite" || tone === "graphiteDeep") {
     return (
       <FrameBlock id={id} full className={className}>
         <div
           className={cn(
             "rounded-[6px] text-ondark",
-            tone === "forest" ? "bg-forest" : "bg-forest-deep",
+            tone === "graphite" ? "bg-graphite" : "bg-graphite-deep",
           )}
         >
           <div className={cn("px-[var(--gutter)]", !flush && "section-y", containerClassName)}>

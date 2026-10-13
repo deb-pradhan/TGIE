@@ -9,7 +9,7 @@ import { makeScene } from "./iso";
  */
 
 const ghost = {
-  stroke: C.teal,
+  stroke: C.accent,
   strokeWidth: 1.2,
   strokeDasharray: "4 3",
   strokeLinejoin: "round",
@@ -50,19 +50,21 @@ export function TenetForm() {
     const f = s.box(cx - 0.7, cy - 0.7, cx + 0.7, cy + 0.7, z0, z1);
     return (
       <g className={cls}>
-        <path d={f.right} fill={C.tealSoft} fillOpacity={0.14} {...ghost} />
-        <path d={f.front} fill={C.tealSoft} fillOpacity={0.08} {...ghost} />
+        <path d={f.right} fill={C.accentSoft} fillOpacity={0.14} {...ghost} />
+        <path d={f.front} fill={C.accentSoft} fillOpacity={0.08} {...ghost} />
         <path d={f.top} fill="#fff" fillOpacity={0.6} {...ghost} />
       </g>
     );
   };
   return (
     <Frame label="An idea becomes a form">
-      {half.map((a) => s.pad(a, -a, 1.05, 0.2))}
+      {half.map((a) => (
+        <g key={a}>{s.pad(a, -a, 1.05, 0.2)}</g>
+      ))}
       {/* hand-offs between stages */}
       <path
         d="M91 75H114M186 75H209"
-        stroke={C.teal}
+        stroke={C.accent}
         strokeWidth={1.4}
         strokeDasharray="4 4"
         fill="none"
@@ -76,8 +78,8 @@ export function TenetForm() {
         const f = s.box(-0.7, -0.7, 0.7, 0.7, 0.9, 1.6);
         return (
           <g>
-            <path d={f.right} fill={C.tealSoft} fillOpacity={0.12} {...ghost} />
-            <path d={f.front} fill={C.tealSoft} fillOpacity={0.08} {...ghost} />
+            <path d={f.right} fill={C.accentSoft} fillOpacity={0.12} {...ghost} />
+            <path d={f.front} fill={C.accentSoft} fillOpacity={0.08} {...ghost} />
             <path d={f.top} fill="#fff" fillOpacity={0.5} {...ghost} />
           </g>
         );
@@ -91,7 +93,7 @@ export function TenetForm() {
           width={0.9}
           height={0.9}
           rx={0.12}
-          fill="#0f3a2e"
+          fill="#1c1f1e"
         />
         <path
           d="M2.15 -2.6H2.65M2.4 -2.6V-2.2"
@@ -131,14 +133,14 @@ export function TenetWeight() {
       <g transform={s.T(2.3)}>
         <path
           d="M-1.5 -.6H1.5M-1.5 -.1H1.5M-1.5 .4H1.5"
-          stroke="#8fa39a"
+          stroke="#8a908f"
           strokeWidth={0.04}
         />
       </g>
       {/* the creator: voxel figure, hands free, holding the idea */}
       {s.bx(fx - 0.2, fy - 0.12, fx + 0.2, fy + 0.12, 0.2, 1.0, "ink")}
-      {s.bx(fx - 0.28, fy - 0.2, fx + 0.28, fy + 0.2, 1.0, 1.8, "teal")}
-      {s.bx(fx + 0.28, fy - 0.07, fx + 0.42, fy + 0.07, 1.2, 2.3, "teal")}
+      {s.bx(fx - 0.28, fy - 0.2, fx + 0.28, fy + 0.2, 1.0, 1.8, "accent")}
+      {s.bx(fx + 0.28, fy - 0.07, fx + 0.42, fy + 0.07, 1.2, 2.3, "accent")}
       {s.bx(fx - 0.2, fy - 0.2, fx + 0.2, fy + 0.2, 1.85, 2.25, "white")}
       {/* the idea, light as air */}
       <g className="ill-float">
@@ -149,7 +151,7 @@ export function TenetWeight() {
           cx={s.proj(fx + 0.36, fy + 0.04, 3.1)[0]}
           cy={s.proj(fx + 0.36, fy + 0.04, 3.1)[1]}
           r={3}
-          fill={C.tealSoft}
+          fill={C.accentSoft}
           opacity={0.5}
           className="ill-pulse"
         />
@@ -167,11 +169,11 @@ export function TenetOwn() {
       {s.pad(0, 0, 2.3, 0.2)}
       {s.bx(-1.2, -1, 1.2, 1, 0.2, 1.5, "white")}
       {/* open flap */}
-      {s.bx(-1.2, -1.5, 1.2, -1, 1.5, 1.58, "mint")}
+      {s.bx(-1.2, -1.5, 1.2, -1, 1.5, 1.58, "accentPale")}
       <g transform={s.T(1.5)}>
         <path
           d="M-1.2 .1H1.2"
-          stroke={C.teal}
+          stroke={C.accent}
           strokeWidth={0.04}
           strokeDasharray=".1 .08"
         />
@@ -180,7 +182,7 @@ export function TenetOwn() {
           y={-0.9}
           width={0.6}
           height={1.8}
-          fill={C.tealSoft}
+          fill={C.accentSoft}
           fillOpacity={0.35}
         />
       </g>
@@ -192,13 +194,13 @@ export function TenetOwn() {
           width={0.68}
           height={0.5}
           rx={0.08}
-          fill="#0f3a2e"
+          fill="#1c1f1e"
         />
-        <circle cx={0} cy={0.6} r={0.07} fill={C.tealSoft} />
+        <circle cx={0} cy={0.6} r={0.07} fill={C.accentSoft} />
         <path
           d="M-.2 .85V1.07a.2 .2 0 0 1 .4 0V.98"
           fill="none"
-          stroke={C.teal}
+          stroke={C.accent}
           strokeWidth={0.07}
           strokeLinecap="round"
         />
@@ -208,12 +210,12 @@ export function TenetOwn() {
         <g
           transform="translate(1.5 1.5) rotate(-18)"
           fill="none"
-          stroke={C.tealDeep}
+          stroke={C.accentDeep}
           strokeWidth={0.1}
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <circle cx={0} cy={0} r={0.3} fill={C.tealSoft} />
+          <circle cx={0} cy={0} r={0.3} fill={C.accentSoft} />
           <circle cx={0} cy={0} r={0.1} fill="#fff" stroke="none" />
           <path d="M.3 0H1.5M1.2 0V.3M1.5 0V.3" />
         </g>

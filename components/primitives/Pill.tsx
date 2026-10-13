@@ -13,14 +13,14 @@ export function Eyebrow({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 rounded-pill border px-[14px] py-[6px] text-[12px] font-medium",
+        "inline-flex items-center gap-2 self-start rounded-pill border px-[14px] py-[6px] text-[12px] font-medium",
         onDark
           ? "border-white/15 bg-white/5 text-ondark"
           : "border-line bg-card text-ink-2",
         className,
       )}
     >
-      <span className="inline-block h-1.5 w-1.5 rounded-full bg-teal" />
+      <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />
       {children}
     </span>
   );

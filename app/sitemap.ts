@@ -3,13 +3,15 @@ import { SITE_URL } from "@/lib/siteUrl";
 import { practices } from "@/content/practices";
 import { practiceDetail } from "@/content/practiceDetail";
 
+// Bump when page content changes materially; a fresh `new Date()` per request tells crawlers everything changed every time.
+const LAST_MODIFIED = new Date("2026-10-13");
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
   const entry = (
     path: string,
     priority: number,
     changeFrequency: "weekly" | "monthly" | "yearly" = "monthly",
-  ) => ({ url: `${SITE_URL}${path}`, lastModified: now, changeFrequency, priority });
+  ) => ({ url: `${SITE_URL}${path}`, lastModified: LAST_MODIFIED, changeFrequency, priority });
 
   return [
     entry("", 1, "weekly"),

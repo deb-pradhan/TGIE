@@ -3,24 +3,38 @@ import Link from "next/link";
 import { FrameBlock, Cell } from "@/components/frame/Grid";
 import { Eyebrow } from "@/components/primitives/Pill";
 import { TwoToneHeading } from "@/components/primitives/TwoToneHeading";
+import { cn } from "@/lib/cn";
 
 export type Crumb = { label: string; href?: string };
 
 export function Breadcrumb({ items }: { items: Crumb[] }) {
   return (
-    <nav aria-label="Breadcrumb" className="font-mono text-[12px]">
-      {items.map((it, i) => (
-        <span key={i}>
-          {i > 0 && <span className="px-1.5 text-muted-2">/</span>}
-          {it.href ? (
-            <Link href={it.href} className="text-muted hover:text-teal">
-              {it.label}
-            </Link>
-          ) : (
-            <span className="text-ink-2">{it.label}</span>
-          )}
-        </span>
-      ))}
+    <nav aria-label="Breadcrumb" className="flex min-w-0 items-center font-mono text-[12px]">
+      {items.map((it, i) => {
+        const last = i === items.length - 1;
+        return (
+          <span key={i} className={cn("flex items-center", last && "min-w-0")}>
+            {i > 0 && (
+              <span aria-hidden className="px-1.5 text-muted-2">
+                /
+              </span>
+            )}
+            {it.href ? (
+              <Link
+                href={it.href}
+                aria-current={last ? "page" : undefined}
+                className={cn("-my-3 flex min-h-11 items-center text-muted hover:text-accent-deep", last && "truncate")}
+              >
+                {it.label}
+              </Link>
+            ) : (
+              <span aria-current={last ? "page" : undefined} className="truncate text-ink-2">
+                {it.label}
+              </span>
+            )}
+          </span>
+        );
+      })}
     </nav>
   );
 }
@@ -67,7 +81,7 @@ export function PageHero({
 
   return (
     <FrameBlock>
-      <div className="grid gap-[2px] lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="grid grid-cols-[minmax(0,1fr)] gap-[2px] lg:grid-cols-[1.1fr_0.9fr]">
         <Cell className="flex flex-col justify-center px-[var(--gutter)] py-14 sm:py-16">{copy}</Cell>
         <Cell className="relative min-h-[clamp(280px,75vw,480px)] overflow-hidden lg:min-h-[420px]">{art}</Cell>
       </div>

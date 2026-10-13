@@ -75,7 +75,6 @@ export function CaseGait() {
       {/* plate frame */}
       <rect x="16" y="16" width="488" height="428" rx="3" fill="none" stroke={INK2} strokeWidth="1.2" />
       <rect x="22" y="22" width="476" height="416" rx="2" fill="none" stroke={C.muted} strokeWidth="0.7" />
-      <text x="34" y="44" fontSize="12" fill={C.muted} fontFamily={mono} letterSpacing="2">PLATE IV</text>
 
       {/* ground hatch */}
       <g stroke={C.muted} strokeWidth="0.8">
@@ -145,17 +144,17 @@ export function CaseGait() {
       <g fill="none" stroke={INK2} strokeWidth="1">
         <path d="M256 200 L318 236 H356" />
         <path d={`M${fx(180) - 3} 182 L 318 276 H356`} />
-        <path d="M184 366 H150" />
+        <path d="M184 366 H168" />
       </g>
       <g fill={INK}>
         <circle cx="256" cy="200" r="2.6" />
         <circle cx={fx(180) - 3} cy="182" r="2.6" />
         <circle cx="184" cy="366" r="2.6" />
       </g>
-      <g fontFamily={mono} fontSize="12.5" fill={INK2}>
-        <text x="362" y="236">01 IMU module</text>
-        <text x="362" y="280">02 Strap</text>
-        <text x="34" y="370">03 Heel switch</text>
+      <g fontFamily={mono} fontSize="15" fill={INK2}>
+        <text x="362" y="238">01 IMU module</text>
+        <text x="362" y="282">02 Strap</text>
+        <text x="34" y="372">03 Heel switch</text>
       </g>
 
       {/* gyro plate */}
@@ -177,12 +176,9 @@ export function CaseGait() {
       <g className="ill-scan">
         <path d="M410 56 V150" stroke={INK} strokeWidth="1" strokeDasharray="3 3" />
       </g>
-      <text x="326" y="48" fontSize="11" fill={INK2} fontFamily={mono} letterSpacing="1">GYRO · SHANK</text>
-      <text x="494" y="170" textAnchor="end" fontSize="11" fill={C.muted} fontFamily={mono}>heel strike</text>
+      <text x="326" y="46" fontSize="13" fill={INK2} fontFamily={mono} letterSpacing="1">GYRO · SHANK</text>
+      <text x="494" y="173" textAnchor="end" fontSize="13" fill={C.muted} fontFamily={mono}>heel strike</text>
 
-      <text x="260" y="424" textAnchor="middle" fontSize="12" fill={C.muted} fontFamily={mono} letterSpacing="1.5">
-        FIG. 1  SHANK-MOUNTED INERTIAL SENSOR, LATERAL VIEW
-      </text>
     </Fig>
   );
 }

@@ -43,8 +43,8 @@ Done: everything above. Custom inline-SVG illustration set (hero, 4 pillar scene
 
 Still needs the owner:
 - [ ] Set `NEXT_PUBLIC_SITE_URL` to the real domain (falls back to the placeholder `https://tgie.example`).
-- [ ] Set `RESEND_API_KEY` + `ENQUIRY_TO_EMAIL` (+ `ENQUIRY_FROM_EMAIL` on a verified domain) so `/start` delivers mail; see `.env.example`.
-- [ ] Provide a real contact email (`NEXT_PUBLIC_CONTACT_EMAIL`) and social URLs; none exist in the repo.
+- [ ] **Required for launch:** set `RESEND_API_KEY` + `ENQUIRY_TO_EMAIL` (+ `ENQUIRY_FROM_EMAIL` on a verified domain) so `/start` delivers mail; see `.env.example`. Until then every enquiry lands in the "not delivered" fallback panel.
+- [ ] **Required for launch:** provide a real contact email (`NEXT_PUBLIC_CONTACT_EMAIL`); without it `/start` shows no email anywhere and the fallback can only say "copy it and call us". Social URLs also do not exist in the repo yet.
 - [ ] Privacy / Terms / IP Transparency pages are plain text in the footer; write and link them.
 - [ ] Replace the one remaining stock photo (fabrication page, welding) with real shop photography when available.
 - [ ] `/illustration`, `/pillars`, `/hero` are served `immutable` for a year and are not content-hashed: give a replaced image a new filename.

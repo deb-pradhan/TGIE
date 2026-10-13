@@ -41,7 +41,7 @@ export function Ownership() {
         <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {o.items.map((it) => (
             <div key={it.title} className="flex flex-col gap-3 rounded-tile border border-line bg-card p-5">
-              <span className="grid h-10 w-10 place-items-center rounded-[12px] bg-mint text-teal-deep">
+              <span className="grid h-10 w-10 place-items-center rounded-[12px] bg-accent-pale text-accent-deep">
                 <Icon name={iconFor[it.title] ?? "check"} size={20} />
               </span>
               <div>

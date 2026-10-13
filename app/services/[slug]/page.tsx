@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { practices, subIcons, pillarPage } from "@/content/practices";
-import { practiceDetail } from "@/content/practiceDetail";
+import { practiceDetail, nbHyphen } from "@/content/practiceDetail";
 import { fabrication } from "@/content/fabrication";
 import { materials } from "@/content/pages";
 import { PageHero } from "@/components/sections/PageHero";
@@ -42,7 +42,7 @@ export default async function PracticePage({ params }: Params) {
   const tiles = d.subs.map((s, i) => ({
     href: `/services/${slug}/${s.slug}`,
     label: String(i + 1).padStart(2, "0"),
-    title: s.title,
+    title: nbHyphen(s.title),
     note: s.summary,
     icon: subIcons[s.slug],
   }));
@@ -50,7 +50,7 @@ export default async function PracticePage({ params }: Params) {
   return (
     <div className="flex flex-col gap-[2px] bg-paper pb-[2px]">
       <PageHero
-        crumbs={[{ label: "Services", href: "/#services" }, { label: p.short }]}
+        crumbs={[{ label: "Home", href: "/" }, { label: "Services", href: "/#services" }, { label: p.short }]}
         eyebrow={`Pillar ${p.index}`}
         line1={p.name}
         lead={d.lead}
@@ -91,9 +91,6 @@ export default async function PracticePage({ params }: Params) {
                   className="mt-4"
                 />
               </Reveal>
-              <span className="rounded-pill bg-mint px-3 py-1.5 text-[12px] font-medium text-teal-deep">
-                {fabrication.process.badge}
-              </span>
             </Cell>
           </FrameBlock>
           <GapStrip h={2} />
@@ -103,7 +100,7 @@ export default async function PracticePage({ params }: Params) {
                 <Cell key={s.n} className="flex flex-col overflow-hidden">
                   <PipelineStation index={i} />
                   <div className="flex-1 px-6 pb-7 pt-3">
-                    <div className="font-mono text-[12px] uppercase tracking-[0.12em] text-teal">{s.n}</div>
+                    <div className="font-mono text-[12px] uppercase tracking-[0.12em] text-accent-deep">{s.n}</div>
                     <h3 className="mt-2 font-mono text-[15px] font-medium tracking-tight">{s.title}</h3>
                     <p className="mt-2.5 text-[13px] text-muted">{s.scope}</p>
                   </div>
@@ -176,10 +173,11 @@ export default async function PracticePage({ params }: Params) {
               {[fabrication.categories, fabrication.sectors].map((col) => (
                 <Cell key={col.eyebrow} className="px-[var(--gutter)] py-12">
                   <Eyebrow>{col.eyebrow}</Eyebrow>
+                  <h3 className="mt-4 font-mono text-h3 font-medium tracking-tight text-ink">{col.heading}</h3>
                   <ul className="mt-6 grid gap-3">
                     {col.items.map((it) => (
                       <li key={it} className="flex gap-3 text-[14.5px] text-ink-2">
-                        <Icon name="check" size={16} className="mt-1 shrink-0 text-teal" />
+                        <Icon name="check" size={16} className="mt-1 shrink-0 text-accent" />
                         {it}
                       </li>
                     ))}
@@ -246,7 +244,7 @@ export default async function PracticePage({ params }: Params) {
                       key={doc}
                       className="inline-flex items-center gap-1.5 rounded-chip border border-line bg-card px-3 py-1.5 text-[12.5px] font-medium text-ink-2"
                     >
-                      <Icon name="check" size={14} className="text-teal" />
+                      <Icon name="check" size={14} className="text-accent" />
                       {doc}
                     </li>
                   ))}
@@ -263,7 +261,7 @@ export default async function PracticePage({ params }: Params) {
       )}
 
       <GapStrip />
-      <FinalCTA />
+      <FinalCTA heading={d.cta.heading} accent={d.cta.accent} sub={d.cta.sub} />
     </div>
   );
 }

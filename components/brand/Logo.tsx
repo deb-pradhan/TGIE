@@ -2,7 +2,7 @@ import { cn } from "@/lib/cn";
 
 /**
  * TGIE "Cell T" mark: a T cut from the collage cells (the brand's own
- * construction), stem cell in teal; ghost cells show the grid it was cut from.
+ * construction), stem cell in accent; ghost cells show the grid it was cut from.
  * 64-unit grid, 19-unit cells on a 3.5 seam, so it stays crisp at 16px.
  *
  * Alternate concept kept for reference/swap: <LogoMarkEmbodied> (a PCB-trace T
@@ -11,8 +11,8 @@ import { cn } from "@/lib/cn";
 type Variant = "light" | "dark";
 
 const INK: Record<Variant, { main: string; accent: string }> = {
-  light: { main: "#0f3a2e", accent: "#2fae97" },
-  dark: { main: "#eaf1ed", accent: "#6fd0bb" },
+  light: { main: "#1c1f1e", accent: "#e2561f" },
+  dark: { main: "#f1f2f0", accent: "#ffa36c" },
 };
 
 export function LogoMark({
@@ -49,7 +49,7 @@ export function LogoMark({
 
 /**
  * Mark + "TGIE" wordmark (Space Mono bold: the one sanctioned bold).
- * `variant="light"` = on paper/cell, `"dark"` = on forest.
+ * `variant="light"` = on paper/cell, `"dark"` = on graphite.
  * `lockup` adds "The Great Indian Engineers" beneath at a larger mark size.
  */
 export function Logo({
@@ -80,7 +80,7 @@ export function Logo({
         {lockup && (
           <span
             className={cn(
-              "mt-1.5 font-mono text-[9.5px] font-normal uppercase tracking-[0.16em]",
+              "mt-1.5 font-mono text-[11px] font-normal uppercase tracking-[0.16em]",
               onDark ? "text-ondark-mut" : "text-muted",
             )}
           >
@@ -102,14 +102,14 @@ export function LogoMarkEmbodied({
   variant?: Variant;
   className?: string;
 }) {
-  const tile = variant === "dark" ? "#0b2c23" : "#0f3a2e";
+  const tile = variant === "dark" ? "#111312" : "#1c1f1e";
   return (
     <svg aria-hidden width={size} height={size} viewBox="0 0 32 32" className={cn("shrink-0", className)}>
       <rect width="32" height="32" rx="8" fill={tile} />
-      <path d="M7.2 8.4h17.6M16 8.4v6.2" stroke="#f5f3ee" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-      <path d="M16 13.6 22.3 16.8 16 20 9.7 16.8z" fill="#6fd0bb" />
-      <path d="M9.7 16.8 16 20v7L9.7 23.8z" fill="#2fae97" />
-      <path d="M22.3 16.8 16 20v7l6.3-3.2z" fill="#1b8a76" />
+      <path d="M7.2 8.4h17.6M16 8.4v6.2" stroke="#fafaf8" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <path d="M16 13.6 22.3 16.8 16 20 9.7 16.8z" fill="#ffa36c" />
+      <path d="M9.7 16.8 16 20v7L9.7 23.8z" fill="#e2561f" />
+      <path d="M22.3 16.8 16 20v7l6.3-3.2z" fill="#c24512" />
       <circle cx="16" cy="16.8" r="1.35" fill={tile} />
     </svg>
   );

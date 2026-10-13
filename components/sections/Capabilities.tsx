@@ -20,7 +20,7 @@ export function Capabilities() {
   const c = site.capabilities;
   return (
     <div className="flex flex-col gap-[2px]">
-      <Section tone="paper2" id="capabilities" containerClassName="!pb-10">
+      <Section tone="paper2" id="capabilities" containerClassName="!pb-10 !pt-14 sm:!pt-20">
         <Reveal>
           <Eyebrow>{c.eyebrow}</Eyebrow>
           <TwoToneHeading line1={c.line1} line2={c.line2} className="mt-4" />
@@ -41,7 +41,7 @@ export function Capabilities() {
                 {art[i].fig}
               </div>
               <div className="mt-5 flex items-center gap-3">
-                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-mint text-teal-deep">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-accent-pale text-accent-deep">
                   <Icon name={art[i].icon} size={18} />
                 </span>
                 <h3 className="font-mono text-[16px] font-medium leading-snug tracking-tight">{card.title}</h3>

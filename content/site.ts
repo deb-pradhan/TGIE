@@ -19,7 +19,6 @@ export const site = {
       { value: "ISO 9001", label: "2015 certified fabrication" },
       { value: "100%", label: "IP transfer · zero lock-in" },
     ],
-    figure: { caption: "Fig. 01 · Sketch to steel", meta: "1 PO · one accountable team" },
     legend: [
       { k: "A", label: "Engineering" },
       { k: "B", label: "Products" },
@@ -29,7 +28,7 @@ export const site = {
   },
 
   trust: {
-    caption: "Institutional rigor · medical-grade discipline · ISO 9001:2015 fabrication",
+    caption: "Stack we ship on",
     logos: [
       "FreeRTOS",
       "STM32CubeMX",
@@ -122,8 +121,8 @@ export const site = {
         links: [
           { label: "Engineering", href: "/services/engineering" },
           { label: "Products", href: "/services/products" },
-          { label: "Business Enablement", href: "/services/enablement" },
-          { label: "Heavy Fabrication", href: "/services/fabrication" },
+          { label: "Enablement", href: "/services/enablement" },
+          { label: "Fabrication", href: "/services/fabrication" },
         ],
       },
       {

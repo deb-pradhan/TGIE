@@ -3,7 +3,7 @@ import { C, IsoBox, makeIso, type Pt } from "../../kit";
 
 /**
  * Shared isometric parts for the sub-service illustrations (one family:
- * same projection, same face tints, same teal line-work). Everything here is
+ * same projection, same face tints, same accent line-work). Everything here is
  * a plain server-side SVG fragment — compose inside <SceneFrame>.
  */
 
@@ -106,13 +106,13 @@ export function Ground({ s, x0, y0, x1, y1 }: { s: S; x0: number; y0: number; x1
 
 /** Rigid circuit board: slab + silkscreen outline + mounting holes. Children are drawn on top. */
 export function Pcb({
-  s, x, y, z = 0, w = 6, d = 4, t = 0.2, top = C.mint, holes = true, outline = true, children,
+  s, x, y, z = 0, w = 6, d = 4, t = 0.2, top = C.accentPale, holes = true, outline = true, children,
 }: {
   s: S; x: number; y: number; z?: number; w?: number; d?: number; t?: number; top?: string; holes?: boolean; outline?: boolean; children?: ReactNode;
 }) {
   return (
     <g>
-      <Block s={s} x0={x} y0={y} x1={x + w} y1={y + d} z0={z} z1={z + t} top={top} right={C.faceDark} front={C.faceR} stroke={C.tealSoft} />
+      <Block s={s} x0={x} y0={y} x1={x + w} y1={y + d} z0={z} z1={z + t} top={top} right={C.faceDark} front={C.faceR} stroke={C.accentSoft} />
       <g transform={s.floor(x, y, z + t)}>
         {outline && <rect x={0.18} y={0.18} width={w - 0.36} height={d - 0.36} rx={0.12} fill="none" stroke={C.lineStrong} strokeWidth={0.04} />}
         {holes &&
@@ -144,10 +144,10 @@ export function Chip({
   return (
     <g>
       <path d={out.join("")} stroke={C.muted} strokeWidth={1.6} strokeLinecap="round" />
-      <Block s={s} x0={x} y0={y} x1={x + w} y1={y + d} z0={z} z1={z + h} top={C.ink2} right={C.ink} front="#2b2a26" stroke={C.ink} />
+      <Block s={s} x0={x} y0={y} x1={x + w} y1={y + d} z0={z} z1={z + h} top={C.ink2} right={C.ink} front="#292a2a" stroke={C.ink} />
       {accent && (
         <g transform={s.floor(x, y, z + h)}>
-          <circle cx={0.3} cy={0.3} r={0.1} fill={C.teal} />
+          <circle cx={0.3} cy={0.3} r={0.1} fill={C.accent} />
           <rect x={w * 0.3} y={d * 0.32} width={w * 0.5} height={d * 0.36} rx={0.05} fill="none" stroke={C.muted} strokeWidth={0.04} />
         </g>
       )}
@@ -213,7 +213,7 @@ export function gearPath(r: number, teeth: number, depth = r * 0.22) {
 }
 
 export function Gear({
-  r, teeth = 12, fill = C.card, stroke = C.tealDeep, sw = 0.06, spin, style,
+  r, teeth = 12, fill = C.card, stroke = C.accentDeep, sw = 0.06, spin, style,
 }: {
   r: number; teeth?: number; fill?: string; stroke?: string; sw?: number; spin?: boolean; style?: CSSProperties;
 }) {
@@ -244,11 +244,11 @@ export function NodeGraph({
     <g>
       <path d={edges} stroke={C.lineStrong} strokeWidth={0.9} fill="none" />
       {hot.length > 1 && (
-        <path d={litPath} stroke={C.teal} strokeWidth={1.8} strokeDasharray="5 5" fill="none" className={flow ? "ill-dash" : undefined} />
+        <path d={litPath} stroke={C.accent} strokeWidth={1.8} strokeDasharray="5 5" fill="none" className={flow ? "ill-dash" : undefined} />
       )}
       {pos.flat().map(([px, py], i) => {
         const isHot = lit.some((p) => p[0] === px && p[1] === py);
-        return <circle key={i} cx={px} cy={py} r={r} fill={isHot ? C.teal : C.card} stroke={isHot ? C.tealDeep : C.muted} strokeWidth={1.3} />;
+        return <circle key={i} cx={px} cy={py} r={r} fill={isHot ? C.accent : C.card} stroke={isHot ? C.accentDeep : C.muted} strokeWidth={1.3} />;
       })}
     </g>
   );
@@ -258,10 +258,10 @@ export function NodeGraph({
 export function Tag({
   x, y, children, tone = "card", size = 13, w,
 }: {
-  x: number; y: number; children: string; tone?: "card" | "teal" | "ink"; size?: number; w?: number;
+  x: number; y: number; children: string; tone?: "card" | "accent" | "ink"; size?: number; w?: number;
 }) {
   const width = w ?? children.length * size * 0.62 + 18;
-  const fill = tone === "teal" ? C.teal : tone === "ink" ? C.ink : C.card;
+  const fill = tone === "accent" ? C.accentDeep : tone === "ink" ? C.ink : C.card;
   const text = tone === "card" ? C.ink2 : "#fff";
   return (
     <g>
@@ -283,12 +283,12 @@ export function Dim({ a, b, label, size = 13, off = 0 }: { a: Pt; b: Pt; label?:
   const mx = (a[0] + b[0]) / 2 + off;
   const my = (a[1] + b[1]) / 2;
   return (
-    <g stroke={C.tealDeep} strokeWidth={1.2} fill="none">
+    <g stroke={C.accentDeep} strokeWidth={1.2} fill="none">
       <path d={`M${a[0]} ${a[1]}L${b[0]} ${b[1]}M${a[0] - nx} ${a[1] - ny}L${a[0] + nx} ${a[1] + ny}M${b[0] - nx} ${b[1] - ny}L${b[0] + nx} ${b[1] + ny}`} />
       {label && (
         <g stroke="none">
           <rect x={mx - label.length * size * 0.31 - 6} y={my - size * 0.8} width={label.length * size * 0.62 + 12} height={size * 1.6} rx={4} fill={C.cell} />
-          <text x={mx} y={my + size * 0.35} textAnchor="middle" fontFamily={MONO} fontSize={size} fill={C.tealDeep}>
+          <text x={mx} y={my + size * 0.35} textAnchor="middle" fontFamily={MONO} fontSize={size} fill={C.accentDeep}>
             {label}
           </text>
         </g>
@@ -302,7 +302,7 @@ export function Arcs({ x, y, rot = -45, n = 3, r0 = 16, gap = 11, spread = 80 }:
   const rad = (d: number) => (d * Math.PI) / 180;
   return (
     <g>
-      <circle cx={x} cy={y} r={3.2} fill={C.teal} />
+      <circle cx={x} cy={y} r={3.2} fill={C.accent} />
       {Array.from({ length: n }, (_, i) => {
         const r = r0 + i * gap;
         const a0 = rad(rot - spread / 2);
@@ -311,7 +311,7 @@ export function Arcs({ x, y, rot = -45, n = 3, r0 = 16, gap = 11, spread = 80 }:
           <path
             key={i}
             d={`M${(x + Math.cos(a0) * r).toFixed(1)} ${(y + Math.sin(a0) * r).toFixed(1)}A${r} ${r} 0 0 1 ${(x + Math.cos(a1) * r).toFixed(1)} ${(y + Math.sin(a1) * r).toFixed(1)}`}
-            stroke={C.teal}
+            stroke={C.accent}
             strokeWidth={2.2}
             strokeLinecap="round"
             fill="none"
@@ -327,14 +327,14 @@ export function Arcs({ x, y, rot = -45, n = 3, r0 = 16, gap = 11, spread = 80 }:
 /** Blinking status LED on the floor/board plane (world coords). */
 export function Led({ s, x, y, z, delay = 0 }: { s: S; x: number; y: number; z: number; delay?: number }) {
   const [px, py] = s.proj(x, y, z);
-  return <circle cx={px} cy={py} r={3} fill={C.teal} className="ill-blink" style={{ animationDelay: `${delay}s` }} />;
+  return <circle cx={px} cy={py} r={3} fill={C.accent} className="ill-blink" style={{ animationDelay: `${delay}s` }} />;
 }
 
-/** Defs-free forest "device screen" panel in screen space. */
+/** Defs-free graphite "device screen" panel in screen space. */
 export function Screen({ x, y, w, h, rx = 5, children }: { x: number; y: number; w: number; h: number; rx?: number; children?: ReactNode }) {
   return (
     <g>
-      <rect x={x} y={y} width={w} height={h} rx={rx} fill={C.forest} />
+      <rect x={x} y={y} width={w} height={h} rx={rx} fill={C.graphite} />
       {children}
     </g>
   );

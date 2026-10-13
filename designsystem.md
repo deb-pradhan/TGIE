@@ -9,7 +9,7 @@
 **What changed in v4** (fold-ins from continued build):
 - **Decorative surface treatments** are now a first-class concept: the animated **DitherField** (ordered-dither wave) that skins the green footer collage cell-by-cell, plus the rules for keeping text legible over it. See the new **§11.2**.
 - **Real image assets** are now used for illustration (e.g. the Philosophy engraved plate) via `next/image`, §11.1 updated.
-- **`TwoToneHeading` gains `accentLine2`** (teal second line), §6.3 / §9.2.
+- **`TwoToneHeading` gains `accentLine2`** (orange second line), §6.3 / §9.2.
 - **Motion** section adds the off-screen-pause pattern for many animated instances. See §13.
 - New anti-pattern: **text over the dither must sit on a scrim**. See §20.
 
@@ -89,7 +89,7 @@ Everything else in this document is a consequence of these five facts.
 
 1. **Structure through surfaces, not strokes.** Never draw a line to separate things; separate them with a seam between two cells.
 2. **Paper, not white.** The canvas and cells are warm off-whites. Pure `#fff` is reserved for elevated cards floating *inside* cells.
-3. **One accent, used sparingly.** A single teal family. No second accent, no gradients-as-decoration.
+3. **One accent, used sparingly.** A single safety-orange family. No second accent, no gradients-as-decoration.
 4. **Light-dominant.** Dark appears only in three sanctioned places (announcement bar, trust band, footer). Everything else is paper.
 5. **Type does the talking.** A mono display face + a clean sans body carry the personality; ornament is minimal.
 6. **Calm density.** Whitespace is generous at the page level; density lives *inside* data cards, not in the layout.
@@ -104,13 +104,13 @@ Everything else in this document is a consequence of these five facts.
 - **Positioning line:** *Theory, embodied.*
 - **Promise:** *You carry the vision. We carry the weight.*
 - **Personality:** a senior engineer you trust. Grounded, precise, confident, warm, allergic to hype. (Full character + voice: `brandpositioning.md`.)
-- **Logo lockup:** a rounded-square mark containing a mono "T" (`bg-forest`, white glyph, 7px radius, ~28px) followed by the wordmark **TGIE** set in Space Mono, bold, tight tracking. On dark surfaces the mark's fill becomes `--color-forest-deep`.
+- **Logo lockup:** a rounded-square mark containing a mono "T" (`bg-graphite`, white glyph, 7px radius, ~28px) followed by the wordmark **TGIE** set in Space Mono, bold, tight tracking. On dark surfaces the mark's fill becomes `--color-graphite-deep`.
 - **Visual signatures (what makes it recognizably TGIE):**
   1. the **cell collage** with 2px seams and emergent diamonds;
   2. the **mono display type** paired with clean sans;
-  3. the **warm paper palette** with a single teal accent and forest-green dark zones;
+  3. the **cool graphite paper palette** with a single safety-orange accent and graphite dark zones;
   4. the **isometric / engraved / pixel** illustration registers;
-  5. the **hand-built teal-on-white data-viz.**
+  5. the **hand-built orange-on-white data-viz.**
 
 ---
 
@@ -120,36 +120,36 @@ Everything else in this document is a consequence of these five facts.
 
 | Role | Token | Hex | Use |
 |---|---|---|---|
-| Canvas | `--color-paper` | `#e9e6de` | Page background; **only ever seen in the 2px seams** |
-| Cell | `--color-cell` | `#f5f3ee` | Every content block surface |
-| Cell (alt) | `--color-paper-2` | `#efece4` | Optional alternate cell tone for rhythm |
+| Canvas | `--color-paper` | `#e1e3e0` | Page background; **only ever seen in the 2px seams** |
+| Cell | `--color-cell` | `#f3f4f2` | Every content block surface |
+| Cell (alt) | `--color-paper-2` | `#eaebe9` | Optional alternate cell tone for rhythm |
 | Elevated card | `--color-card` | `#ffffff` | Floating dashboards/cards **inside** a cell only |
-| Inner tile | `--color-card-soft` | `#fbfaf6` | Tiles/wells inside cards & cells |
-| Ink | `--color-ink` | `#1c1b18` | Primary text |
-| Ink secondary | `--color-ink-2` | `#3b3a35` | Strong secondary text, links at rest |
-| Muted | `--color-muted` | `#9c9a90` | Body-supporting text, captions, the 2nd line of two-tone headings |
-| Muted faint | `--color-muted-2` | `#b7b5ac` | De-emphasized marks (breadcrumb slashes, idle arrows) |
-| Brand green (cell) | `--color-forest` | `#0f3a2e` | Dark green cells (footer tiles, dark bands) |
-| Brand green (canvas) | `--color-forest-deep` | `#0b2c23` | Trust-band fill; footer mark fill |
-| Footer canvas | *(inline)* | `#081f18` | The **seams** of the footer's green collage (the only sanctioned inline hex) |
-| Accent | `--color-teal` | `#2fae97` | The single accent: status dots, chart series, hover, key phrases |
-| Accent deep | `--color-teal-deep` | `#0e6e5c` | Teal text on light, gradient dark stop, gauge start |
-| Accent soft | `--color-teal-soft` | `#6fd0bb` | Teal on dark, gradient light stop |
-| Mint wash | `--color-mint` | `#e9f5f1` | Tinted icon badges, small pills |
-| Near-black warm | `--color-inkbtn` | `#232019` | Primary button + announcement bar |
-| Hairline | `--color-line` | `#e5e1d8` | Borders **inside** cells only (tiles, inputs, FAQ dividers) |
-| Hairline strong | `--color-line-strong` | `#cfcbb7` | Dot-pattern texture (`.dots`) |
-| On-dark text | `--color-ondark` | `#eaf1ed` | Text on green/dark cells |
-| On-dark muted | `--color-ondark-mut` | `#9fb5ac` | Secondary text on green/dark cells |
+| Inner tile | `--color-card-soft` | `#fafaf9` | Tiles/wells inside cards & cells |
+| Ink | `--color-ink` | `#121413` | Primary text |
+| Ink secondary | `--color-ink-2` | `#34393a` | Strong secondary text, links at rest |
+| Muted | `--color-muted` | `#656b6c` | Body-supporting text, captions, the 2nd line of two-tone headings |
+| Muted faint | `--color-muted-2` | `#9ea3a2` | De-emphasized marks (breadcrumb slashes, idle arrows) |
+| Graphite (cell) | `--color-graphite` | `#1c1f1e` | Dark graphite cells (footer tiles, dark bands) |
+| Graphite (canvas) | `--color-graphite-deep` | `#111312` | Trust-band fill; footer mark fill |
+| Footer canvas | *(inline)* | `#0b0d0c` | The **seams** of the footer's graphite collage (the only sanctioned inline hex) |
+| Accent | `--color-accent` | `#e2561f` | The single accent: status dots, chart series, hover, key phrases |
+| Accent deep | `--color-accent-deep` | `#a33a0f` | Orange text on light, gradient dark stop, gauge start |
+| Accent soft | `--color-accent-soft` | `#ffa36c` | Orange on dark, gradient light stop |
+| Accent wash | `--color-accent-pale` | `#ffeadc` | Tinted icon badges, small pills |
+| Near-black graphite | `--color-inkbtn` | `#1c1f1e` | Primary button + announcement bar |
+| Hairline | `--color-line` | `#dfe1df` | Borders **inside** cells only (tiles, inputs, FAQ dividers) |
+| Hairline strong | `--color-line-strong` | `#bcc0be` | Dot-pattern texture (`.dots`) |
+| On-dark text | `--color-ondark` | `#f1f2f0` | Text on graphite/dark cells |
+| On-dark muted | `--color-ondark-mut` | `#a9aeac` | Secondary text on graphite/dark cells |
 
 ### 5.2 The collage pairs
 - **Light collage:** canvas `--color-paper` + cell `--color-cell`. The seam contrast is deliberately soft (~2 steps).
-- **Green collage** (footer): canvas `#081f18` + cell `--color-forest`. Same 2px seams, same construction, translated to green.
+- **Graphite collage** (footer): canvas `#0b0d0c` + cell `--color-graphite`. Same 2px seams, same construction, translated to graphite.
 
 ### 5.3 Rules
 - **Two-surface contrast, not lines.** The paper↔cell delta is the whole grid. Do not deepen it into a hard border.
-- **Teal is precious.** One accent family. Never introduce a second hue; never use teal for large fills (it's an accent, not a surface).
-- **Text-on-color** uses the darkest shade of that family (teal text → `--color-teal-deep`; on dark → `--color-ondark`), never pure black/gray.
+- **Safety orange is precious.** One accent family. Never introduce a second hue; never use orange for large fills (it's an accent, not a surface).
+- **Text-on-color** uses the darkest shade of that family (orange text → `--color-accent-deep`; on dark → `--color-ondark`), never pure black/gray.
 - **Contrast:** body text (`--color-ink` on `--color-cell`) passes WCAG AA. Never set essential/body copy in `--color-muted` on a cell for long reads (captions only).
 - **Dark budget:** the page may show dark green in exactly three roles (announcement, trust band, footer). Adding more dark bands is a violation (§20).
 
@@ -186,9 +186,9 @@ Mono is wide; the scale is already sized down to compensate. **Do not enlarge.**
 - **Headings are Space Mono, weight 500, `tracking-tight`.** Never sans for headings.
 - **Body/paragraphs are Hanken Grotesk.** Never mono for long body copy (mono is for headings, labels, indices, blockquotes, the wordmark).
 - **Weight discipline:** 400 (regular) and 500 (medium) only. **Never 600/700**, the sole exception is the logo wordmark (bold).
-- **Two-tone heading (signature):** line 1 in `--color-ink`, line 2 in `--color-muted`, same size/weight. Use the `TwoToneHeading` component; do not hand-roll. Pass **`accentLine2`** to render line 2 in `--color-teal` instead of muted. Reserved for the primary conviction/CTA moment (e.g. Final CTA), not for every heading.
+- **Two-tone heading (signature):** line 1 in `--color-ink`, line 2 in `--color-muted`, same size/weight. Use the `TwoToneHeading` component; do not hand-roll. Pass **`accentLine2`** to render line 2 in `--color-accent` instead of muted. Reserved for the primary conviction/CTA moment (e.g. Final CTA), not for every heading.
 - **Sentence case** everywhere. UPPERCASE only for small mono labels with wide tracking.
-- **One teal phrase max per heading** (e.g. a key phrase in the conviction line, or the whole second line via `accentLine2`). Optional, not default.
+- **One orange phrase max per heading** (e.g. a key phrase in the conviction line, or the whole second line via `accentLine2`). Optional, not default.
 - Base CSS sets `h1–h4` to weight 500, `letter-spacing:-0.02em`, `line-height:1.06`; `TwoToneHeading` overrides to mono with `leading-[1.18]`.
 
 ---
@@ -232,7 +232,7 @@ All geometry lives in `web/components/frame/Grid.tsx`. **Never hand-roll it.**
 4. **Diamonds are emergent.** No diamond element exists anywhere.
 5. **Spacer strips are plain single cells.** No segments, no squares, no splits.
 6. **Dark bands are full-bleed cells.** They span the whole width, content centered to `--maxw` inside; used only for the three sanctioned dark roles.
-7. **The footer is the same collage in green** (`#081f18` canvas, `--color-forest` cells).
+7. **The footer is the same collage in graphite** (`#0b0d0c` canvas, `--color-graphite` cells).
 8. **Hairline borders only inside cells** (tiles, inputs, FAQ answers).
 
 ### 8.2 The FrameBlock geometry (memorize)
@@ -272,7 +272,7 @@ gap: 2px
 
 // A dark full-bleed band
 <FrameBlock full>
-  <div className="rounded-[6px] bg-forest-deep px-[var(--gutter)] py-9 text-ondark">
+  <div className="rounded-[6px] bg-graphite-deep px-[var(--gutter)] py-9 text-ondark">
     <div className="mx-auto max-w-[var(--maxw)]">…</div>
   </div>
 </FrameBlock>
@@ -294,10 +294,10 @@ Location: `web/components/`. Prefer these over anything bespoke.
 | `DottedStrip` | Spacer cell with the `.dots` texture. |
 
 ### 9.2 Primitives: `primitives/`
-- **`Section`**. The standard section: `FrameBlock` + `Cell` + `section-y` padding. Props: `tone` (`paper`/`paper2`/`forest`/`forestDeep`; dark tones render full-bleed), `flush` (drop section padding), `id`, `className`, `containerClassName`.
-- **`TwoToneHeading`**. The signature heading. Props: `line1`, `line2?`, `as` (`h1`/`h2`/`h3`), `align`, `onDark`, `accentLine2` (teal 2nd line, sparing). Always mono, weight 500, tracking-tight. **Use for every section heading.**
+- **`Section`**. The standard section: `FrameBlock` + `Cell` + `section-y` padding. Props: `tone` (`paper`/`paper2`/`graphite`/`graphiteDeep`; dark tones render full-bleed), `flush` (drop section padding), `id`, `className`, `containerClassName`.
+- **`TwoToneHeading`**. The signature heading. Props: `line1`, `line2?`, `as` (`h1`/`h2`/`h3`), `align`, `onDark`, `accentLine2` (orange 2nd line, sparing). Always mono, weight 500, tracking-tight. **Use for every section heading.**
 - **`Button`**. Anchor-based. Variants: `primary` (near-black `--color-inkbtn`, white text, `--shadow-btn` glow, hover `-translate-y-px`), `ghost` (transparent, `--color-line` border, hover border-ink), `onDark` (white on dark), `outlineDark`. Sizes: `md` (22px×12px, 14.5px), `sm` (16px×8px, 13.5px). Radius `--radius-btn` (12px), never a pill. *Note: for internal routes prefer wrapping/using `next/link`; the logo already does.*
-- **`Pill`**. Exports `Eyebrow` (pill with a teal status dot + mono-ish label; `onDark` variant) and inline `Chip` (rounded tag for emphasizing a phrase inside a paragraph, 1–3 per paragraph max).
+- **`Pill`**. Exports `Eyebrow` (pill with a orange status dot + mono-ish label; `onDark` variant) and inline `Chip` (rounded tag for emphasizing a phrase inside a paragraph, 1–3 per paragraph max).
 - **`Card`**. White elevated card, used **only inside a cell** (e.g. floating dashboard over pixel art). Optional `hover` lift.
 
 ### 9.3 Sections: `sections/`
@@ -335,9 +335,9 @@ PageHero (breadcrumb + eyebrow + two-tone heading + lead + CTA, in one cell)
 Every interior page wraps in the page stack (`flex flex-col gap-[2px] bg-paper pb-[2px]`); `Nav` and `Footer` come from the root layout.
 
 ### 10.3 Key patterns
-- **Feature/practice row:** mint icon badge (40px, 12px radius) → mono uppercase label (`PRACTICE 01`) → mono title → **plain** muted paragraph → numbered capability list (`01–04`, mono labels, column-major 2×2). Text cell is left-aligned + vertically centered. Illustration fills its own cell (`iso-grid` background).
+- **Feature/practice row:** accent-pale icon badge (40px, 12px radius) → mono uppercase label (`PRACTICE 01`) → mono title → **plain** muted paragraph → numbered capability list (`01–04`, mono labels, column-major 2×2). Text cell is left-aligned + vertically centered. Illustration fills its own cell (`iso-grid` background).
 - **Accordion (FAQ):** **each question is its own cell**, stacked with 2px seams; chevron sits in a small white (`bg-card`) rounded sub-cell that rotates on open. Never a bordered list inside one cell.
-- **Card grid:** a `FrameBlock` with a `grid gap-[2px]` of linked cells; hover → `bg-card`, title → teal, arrow appears.
+- **Card grid:** a `FrameBlock` with a `grid gap-[2px]` of linked cells; hover → `bg-card`, title → orange, arrow appears.
 - **Mega-menu:** the cell collage (see §9.6). No decorative panels; sub-pages are individual cells.
 - **Dark band:** full-bleed green cell, content centered; used sparingly.
 
@@ -345,10 +345,10 @@ Every interior page wraps in the page stack (`flex flex-col gap-[2px] bg-paper p
 
 ## 11. Iconography, illustration & surface treatments
 
-- **Icons:** line icons, ~1.6–1.8px stroke, rounded joins, `--color-teal` or `--color-ink`. Placed in mint (`--color-mint`) rounded-square badges for feature rows. 16–20px inline, 24px max decorative.
+- **Icons:** line icons, ~1.6–1.8px stroke, rounded joins, `--color-accent` or `--color-ink`. Placed in accent-pale (`--color-accent-pale`) rounded-square badges for feature rows. 16–20px inline, 24px max decorative.
 
 ### 11.1 Illustration registers: one register per figure, never mixed
-1. **Isometric** (product/how-it-works): white pucks/tiles, teal line icons, dashed teal connectors, faint `.iso-grid` ground (`IsoScene`).
+1. **Isometric** (product/how-it-works): white pucks/tiles, orange line icons, dashed orange connectors, faint `.iso-grid` ground (`IsoScene`).
 2. **Engraved line-art** (emotional/editorial beats): monochrome only, **never colorize**. Available both as the generated `EngravedFigure` and as **real image plates** (e.g. `/public/illustration/engraved-atlas.png` in the Philosophy media cell).
 3. **Pixel art** (playful backdrop): only filling a media cell or sitting behind a floating white card, **never behind text**, never a standalone hero background (`PixelBackdrop`).
 
@@ -362,9 +362,9 @@ Every interior page wraps in the page stack (`flex flex-col gap-[2px] bg-paper p
 A decorative, animated **ordered-dither wave** (`DitherField`) that skins **dark/green cells** (currently every cell of the footer green collage). It is deliberately built in the **pixel register** (a low-res canvas quantized with a 4×4 Bayer matrix, upscaled with `image-rendering: pixelated`) so it belongs to the same family as `PixelBackdrop`, not a foreign shader.
 
 Rules for using it:
-- **Palette:** a tight green ramp (`#0b2c23 → #143a2e → #1b4d3f → #23664f`), low-contrast, so it reads as texture, not decoration competing with content. Match the surrounding cell's family if reused elsewhere.
+- **Palette:** a tight green ramp (`#111312 → #1c1f1e → #262a29 → #2c3130`), low-contrast, so it reads as texture, not decoration competing with content. Match the surrounding cell's family if reused elsewhere.
 - **Placement:** `absolute inset-0`, `pointer-events-none`, `aria-hidden`, inside a `relative overflow-hidden rounded-[6px]` cell. Content sits in a `relative z-10` wrapper above it.
-- **Text legibility is mandatory.** Any cell with text over the dither MUST place a **scrim** (`bg-[#081f18]/70`, tune 60–75%) between the dither and the content. Feature/empty cells (e.g. the wordmark, edge fillers) may show it at full strength.
+- **Text legibility is mandatory.** Any cell with text over the dither MUST place a **scrim** (`bg-[#0b0d0c]/70`, tune 60–75%) between the dither and the content. Feature/empty cells (e.g. the wordmark, edge fillers) may show it at full strength.
 - **Performance:** many instances are fine because `DitherField` pauses via `IntersectionObserver` when off-screen and only allocates a small low-res buffer (`PIXEL` = 6). Never run an always-on full-resolution shader.
 - **Motion:** honors `prefers-reduced-motion`. One static frame, no loop, no pointer listeners. Optional pointer ripple only when motion is allowed.
 - **Tuning knobs (all one-liners in `DitherField.tsx`):** `PIXEL` (chunkiness), `SPEED`, `FREQ`, `AMP`, `RAMP` (contrast/hue), and the scrim opacity in the consuming cell.
@@ -374,11 +374,11 @@ Rules for using it:
 
 ## 12. Data visualization
 
-- All charts on **white cards** (`--color-card`) inside a cell, single teal family.
-- **Donut:** track `#e7edea`, value arc `--color-teal`, center % in ink.
-- **Gauge:** 270° arc, `--color-teal-deep → --color-teal-soft` gradient, big mono value.
-- **Bars:** rounded-top, `--color-teal-soft → --color-teal` gradient.
-- **Line:** 2–2.5px teal stroke, faint area fill.
+- All charts on **white cards** (`--color-card`) inside a cell, single safety-orange family.
+- **Donut:** track `#e4e6e5`, value arc `--color-accent`, center % in ink.
+- **Gauge:** 270° arc, `--color-accent-deep → --color-accent-soft` gradient, big mono value.
+- **Bars:** rounded-top, `--color-accent-soft → --color-accent` gradient.
+- **Line:** 2–2.5px orange stroke, faint area fill.
 - **Stat tile:** mono value + muted label.
 - Chart chrome (titles/axes) in `--color-muted`; **one accent hue per chart**. Never install a charting library.
 
@@ -387,7 +387,7 @@ Rules for using it:
 ## 13. Motion & interaction
 
 - **Reveal on scroll:** `Reveal` (Motion / framer-motion). Fade + 14px rise, `once`, `-80px` viewport margin, ~0.5s ease. Gated by `useReducedMotion`.
-- **Hover:** cards/buttons lift `-translate-y-px`; cells shift to `bg-card`; links → teal; FAQ chevron rotates 180°; mega-menu arrow → teal.
+- **Hover:** cards/buttons lift `-translate-y-px`; cells shift to `bg-card`; links → orange; FAQ chevron rotates 180°; mega-menu arrow → orange.
 - **Ambient / decorative animation:** the `DitherField` surface (§11.2) is the only continuous animation. It is texture, not signal.
 - **Off-screen pause (required for continuous animation):** any always-running canvas/rAF loop MUST pause via `IntersectionObserver` when its element is off-screen (as `DitherField` does), so multiple instances cost nothing until scrolled into view.
 - **Transitions:** 150–200ms, color/transform/border/shadow only.
@@ -400,12 +400,12 @@ Rules for using it:
 
 - **Contrast:** ink on cell passes AA; verify any new text/background pair. Never use `--color-muted` for essential body copy.
 - **Semantics:** one `<h1>` per page (the PageHero/Hero); logical heading order; `<nav>`, `<main>`, `<footer>` landmarks; `<details>/<summary>` for FAQ.
-- **Focus:** `focus-visible` teal outline (`outline-2 outline-teal`) on all interactive elements; never remove focus rings.
+- **Focus:** `focus-visible` orange outline (`outline-2 outline-orange`) on all interactive elements; never remove focus rings.
 - **Targets:** ≥44×44px effective for buttons, nav items, accordion summaries.
 - **Labels:** icon-only controls get `aria-label`; decorative illustration/`Cell` fillers get `aria-hidden`.
 - **Keyboard:** mega-menu and mobile menu operable by keyboard; `Esc` closes; no keyboard traps.
 - **Motion:** respect `prefers-reduced-motion` (§13).
-- **Color independence:** never encode meaning by color alone (pair teal states with text/icon).
+- **Color independence:** never encode meaning by color alone (pair orange states with text/icon).
 
 ---
 
@@ -448,7 +448,7 @@ Voice is owned by **`brandpositioning.md`**; read it before writing. This sectio
 ## 18. Engineering conventions
 
 - **Stack:** Next.js 16 (App Router) · React 19 · TypeScript (strict) · Tailwind v4 (tokens in `@theme`) · Motion. Fonts via `next/font/google` (Hanken Grotesk, Space Mono).
-- **Tokens only:** no raw hex/px in components where a token exists. The two documented exceptions: the collage literal radii (6/8/4px) and the footer canvas `#081f18`.
+- **Tokens only:** no raw hex/px in components where a token exists. The two documented exceptions: the collage literal radii (6/8/4px) and the footer canvas `#0b0d0c`.
 - **`cn()`** (`lib/cn.ts`, clsx) for class composition.
 - **Server components by default;** `"use client"` only where needed (`Nav`, `Reveal`, forms).
 - **Internal links:** prefer `next/link` (lint enforces it for static internal hrefs).
@@ -522,12 +522,12 @@ Each of these is a real mistake made while building this system. They are the fa
 - **Edge cell**: the empty fluid cell flanking content to the viewport edge.
 - **Spacer strip**: an empty cell (`GapStrip`) providing vertical rhythm.
 - **Dark band**: a full-bleed dark green cell (one of three sanctioned).
-- **Green collage**: the footer's version of the construction (`#081f18` canvas + `--color-forest` cells).
-- **Two-tone heading**: the signature heading: ink line + muted line (or teal line 2 via `accentLine2`).
+- **Graphite collage**: the footer's version of the construction (`#0b0d0c` canvas + `--color-graphite` cells).
+- **Two-tone heading**: the signature heading: ink line + muted line (or orange line 2 via `accentLine2`).
 - **Register**: one of the three illustration styles (isometric / engraved / pixel).
 - **Surface treatment**: an animated skin applied to a cell's surface (currently `DitherField`); decorative texture, never content.
-- **DitherField**: the animated ordered-dither wave on green/dark cells (§11.2).
-- **Scrim**: the translucent dark overlay (`bg-[#081f18]/70`) placed between a surface treatment and text to keep copy legible.
+- **DitherField**: the animated ordered-dither wave on graphite/dark cells (§11.2).
+- **Scrim**: the translucent dark overlay (`bg-[#0b0d0c]/70`) placed between a surface treatment and text to keep copy legible.
 
 ---
 
@@ -546,14 +546,14 @@ Each of these is a real mistake made while building this system. They are the fa
 
 ```css
 /* @theme (web/app/globals.css) */
---color-paper:#e9e6de;  --color-cell:#f5f3ee;  --color-paper-2:#efece4;
---color-card:#ffffff;   --color-card-soft:#fbfaf6;
---color-ink:#1c1b18;    --color-ink-2:#3b3a35;
---color-muted:#9c9a90;  --color-muted-2:#b7b5ac;
---color-forest:#0f3a2e; --color-forest-deep:#0b2c23;
---color-teal:#2fae97;   --color-teal-deep:#0e6e5c;  --color-teal-soft:#6fd0bb;  --color-mint:#e9f5f1;
---color-inkbtn:#232019; --color-line:#e5e1d8;  --color-line-strong:#cfcbb7;
---color-ondark:#eaf1ed; --color-ondark-mut:#9fb5ac;
+--color-paper:#e1e3e0;  --color-cell:#f3f4f2;  --color-paper-2:#eaebe9;
+--color-card:#ffffff;   --color-card-soft:#fafaf9;
+--color-ink:#121413;    --color-ink-2:#34393a;
+--color-muted:#656b6c;  --color-muted-2:#9ea3a2;
+--color-graphite:#1c1f1e; --color-graphite-deep:#111312;
+--color-accent:#e2561f;   --color-accent-deep:#a33a0f;  --color-accent-soft:#ffa36c;  --color-accent-pale:#ffeadc;
+--color-inkbtn:#1c1f1e; --color-line:#dfe1df;  --color-line-strong:#bcc0be;
+--color-ondark:#f1f2f0; --color-ondark-mut:#a9aeac;
 
 --font-sans: var(--font-hanken), "Inter Tight", ui-sans-serif, system-ui, sans-serif;
 --font-mono: var(--font-spacemono), ui-monospace, "JetBrains Mono", Menlo, monospace;
@@ -566,21 +566,21 @@ Each of these is a real mistake made while building this system. They are the fa
 --radius-chip:8px; --radius-tile:12px; --radius-btn:12px; --radius-card:16px; --radius-pill:999px;
 
 /* :root */
---shadow-card: 0 10px 34px -18px rgba(20,30,25,.18);
---shadow-float:0 26px 60px -30px rgba(16,40,32,.30);
---shadow-btn:  0 10px 24px -10px rgba(30,30,26,.45);
+--shadow-card: 0 10px 34px -18px rgba(18,20,19,.18);
+--shadow-float:0 26px 60px -30px rgba(18,20,19,.30);
+--shadow-btn:  0 10px 24px -10px rgba(18,20,19,.45);
 --gutter: clamp(20px, 4vw, 56px);
 --maxw: 1200px;
 
 /* Grid.tsx */
 GAP = 2;                              /* seam */
 /* collage radii: cell 6px · bar 8px · strip/filler 4px */
-/* footer canvas (inline): #081f18 */
+/* footer canvas (inline): #0b0d0c */
 
 /* DitherField.tsx. Decorative surface treatment (green cells) */
-RAMP = ["#0b2c23","#143a2e","#1b4d3f","#23664f"];   /* tight green ramp */
+RAMP = ["#111312","#1c1f1e","#262a29","#2c3130"];   /* tight green ramp */
 PIXEL = 6; SPEED = 0.028; FREQ = 0.09; AMP = 0.9;
-scrim (behind text over the dither): bg-[#081f18]/70   /* 60–75% */
+scrim (behind text over the dither): bg-[#0b0d0c]/70   /* 60–75% */
 
 /* helper classes: .container-x .section-y .dots .notch-cell .iso-grid */
 ```

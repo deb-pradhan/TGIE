@@ -1,4 +1,6 @@
-/** /start (conversion page) copy and contact details. Contact facts come from public/brochure.html. */
+import { site } from "./site";
+
+/** /start (conversion page) copy. Contact facts live in content/site.ts (from public/brochure.html). */
 export const start = {
   eyebrow: "Start a project",
   line1: "Tell us what you're building.",
@@ -30,9 +32,9 @@ export const start = {
 
   contact: {
     title: "Prefer to talk?",
-    phone: "+91 95001 69253",
-    phoneHref: "tel:+919500169253",
-    place: "Thirumudivakkam, Chennai, India",
+    phone: site.contact.phone,
+    phoneHref: site.contact.phoneHref,
+    place: site.contact.location,
   },
 
   assurance: "100% IP transfer. Zero lock-in.",
@@ -47,7 +49,10 @@ export const start = {
     fallback: {
       notConfigured: "Online sending isn't switched on yet, so your message hasn't been delivered.",
       failed: "We couldn't send that just now, so it hasn't been delivered.",
-      action: "Nothing is lost. Your message is ready below: send it by email, copy it, or call us.",
+      /** shown when a contact email is published (NEXT_PUBLIC_CONTACT_EMAIL) */
+      actionEmail: "Nothing is lost. Your message is ready below: send it by email, copy it, or call us.",
+      /** no contact email yet: only copy + phone are offered, so do not promise email */
+      actionNoEmail: "Nothing is lost. Your message is ready below: copy it and call us, and we'll take it from there.",
     },
   },
 };

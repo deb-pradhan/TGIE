@@ -6,11 +6,11 @@ type Row = { segment: string; pillars: string; note: string };
 
 const rowGrid = "grid gap-x-4 gap-y-3 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1.5fr)_auto] md:items-center";
 const tiles = "grid grid-cols-4 gap-1.5 sm:gap-2";
+const colW = "md:w-12 lg:w-[84px]";
 
 /**
  * Segments x pillars matrix. Rows are cells on the collage canvas; the pillar
- * columns are filled teal tiles. Row hover / keyboard focus lifts the row,
- * fills the tiles and tints the row via CSS only (no client JS).
+ * columns are filled accent tiles. Static: rows are not interactive.
  */
 export function SegmentMatrix({ columns, rows }: { columns: readonly Col[]; rows: readonly Row[] }) {
   return (
@@ -23,11 +23,12 @@ export function SegmentMatrix({ columns, rows }: { columns: readonly Col[]; rows
           </div>
           <div className={tiles}>
             {columns.map((c) => (
-              <div key={c.id} role="columnheader" title={`Pillar ${c.id} · ${c.name}`} className="flex w-12 flex-col items-center gap-1">
-                <span className="grid h-8 w-8 place-items-center rounded-[8px] bg-mint text-teal">
+              <div key={c.id} role="columnheader" title={`Pillar ${c.id} · ${c.name}`} className="flex w-12 flex-col items-center gap-1 lg:w-[84px]">
+                <span className="grid h-8 w-8 place-items-center rounded-[8px] bg-accent-pale text-accent">
                   <Icon name={c.icon} size={18} />
                 </span>
                 <span className="font-mono text-[11px] font-medium text-ink-2">{c.id}</span>
+                <span className="hidden font-mono text-[10.5px] text-muted lg:block">{c.name}</span>
               </div>
             ))}
           </div>
@@ -35,7 +36,7 @@ export function SegmentMatrix({ columns, rows }: { columns: readonly Col[]; rows
         <ul className="flex flex-wrap gap-x-4 gap-y-1.5 md:hidden" aria-label="Pillars">
           {columns.map((c) => (
             <li key={c.id} className="flex items-center gap-1.5 font-mono text-[11.5px] text-ink-2">
-              <span className="grid h-6 w-6 place-items-center rounded-[6px] bg-mint text-teal">
+              <span className="grid h-6 w-6 place-items-center rounded-[6px] bg-accent-pale text-accent">
                 <Icon name={c.icon} size={14} />
               </span>
               {c.id} {c.name}
@@ -50,11 +51,10 @@ export function SegmentMatrix({ columns, rows }: { columns: readonly Col[]; rows
           <div
             key={r.segment}
             role="row"
-            tabIndex={0}
             aria-label={`${r.segment}: pillar ${r.pillars}`}
             className={cn(
               rowGrid,
-              "group rounded-[6px] bg-cell px-5 py-4 outline-none transition-colors duration-150 sm:px-6 hover:bg-mint focus-visible:bg-mint focus-visible:ring-2 focus-visible:ring-teal",
+              "rounded-[6px] bg-cell px-5 py-4 sm:px-6",
             )}
           >
             <div role="cell" className="min-w-0 font-mono text-[14px] font-medium tracking-tight text-ink">
@@ -71,8 +71,9 @@ export function SegmentMatrix({ columns, rows }: { columns: readonly Col[]; rows
                     key={c.id}
                     title={hit ? `Pillar ${c.id} · ${c.name}` : undefined}
                     className={cn(
-                      "grid h-9 w-11 place-items-center rounded-[6px] font-mono text-[12px] font-bold transition-transform duration-150 md:w-12",
-                      hit ? "bg-teal text-white group-hover:scale-[1.06] group-focus-visible:scale-[1.06]" : "bg-paper-2 text-muted-2 group-hover:bg-card",
+                      "grid h-9 w-11 place-items-center rounded-[6px] font-mono text-[12px] font-bold",
+                      colW,
+                      hit ? "bg-accent text-ink" : "bg-paper-2 text-muted-2",
                     )}
                   >
                     {hit ? (

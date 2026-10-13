@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/pageMeta";
 import { start } from "@/content/start";
 import { PageHero } from "@/components/sections/PageHero";
 import { FrameBlock, Cell, GapStrip } from "@/components/frame/Grid";
@@ -6,11 +6,12 @@ import { Icon } from "@/components/icons/Icon";
 import { ConversationScene } from "@/components/illustration/work/ConversationScene";
 import { StartForm } from "./StartForm";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Start a project",
   description:
     "Tell us what you're building. A scoping call, a scoped plan, then the build. You keep the idea and own everything we make.",
-};
+  path: "/start",
+});
 
 export default function StartPage() {
   const { next, contact } = start;
@@ -39,10 +40,10 @@ export default function StartPage() {
             <Cell className="flex-1 px-6 py-8 sm:px-8">
               <h2 className="font-mono text-[18px] font-medium tracking-tight text-ink">{next.title}</h2>
               <ol className="relative mt-6 flex flex-col gap-6">
-                <span aria-hidden className="absolute bottom-6 left-5 top-6 w-px border-l border-dashed border-teal/60" />
+                <span aria-hidden className="absolute bottom-6 left-5 top-6 w-px border-l border-dashed border-accent/60" />
                 {next.steps.map((s, i) => (
                   <li key={s.title} className="relative flex gap-4">
-                    <span className="relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-[12px] border border-line bg-card text-teal-deep">
+                    <span className="relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-[12px] border border-line bg-card text-accent-deep">
                       <Icon name={s.icon} size={20} />
                     </span>
                     <div>
@@ -56,31 +57,31 @@ export default function StartPage() {
                 ))}
               </ol>
               <p className="mt-7 inline-flex items-center gap-2 rounded-chip border border-line bg-card px-3 py-1.5 text-[12.5px] text-ink-2">
-                <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-teal" />
+                <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-accent" />
                 {next.response}
               </p>
             </Cell>
 
-            <Cell className="bg-mint px-6 py-7 sm:px-8">
+            <Cell className="bg-accent-pale px-6 py-7 sm:px-8">
               <h2 className="font-mono text-[15px] font-medium tracking-tight text-ink">{contact.title}</h2>
               <a
                 href={contact.phoneHref}
-                className="mt-3 flex items-center gap-2.5 font-mono text-[17px] font-medium tracking-tight text-ink hover:text-teal-deep focus-visible:outline-2 focus-visible:outline-teal"
+                className="mt-1 flex min-h-[44px] items-center gap-2.5 font-mono text-[17px] font-medium tracking-tight text-ink hover:text-accent-deep"
               >
-                <Icon name="phone" size={18} className="text-teal-deep" />
+                <Icon name="phone" size={18} className="text-accent-deep" />
                 {contact.phone}
               </a>
               <div className="mt-2 flex items-center gap-2.5 text-[13.5px] text-ink-2">
-                <Icon name="pin" size={18} className="text-teal-deep" />
+                <Icon name="pin" size={18} className="text-accent-deep" />
                 {contact.place}
               </div>
               {contactEmail && (
-                <a href={`mailto:${contactEmail}`} className="mt-2 flex items-center gap-2.5 text-[13.5px] text-ink-2 hover:text-teal-deep">
-                  <Icon name="mail" size={18} className="text-teal-deep" />
+                <a href={`mailto:${contactEmail}`} className="flex min-h-[44px] items-center gap-2.5 text-[13.5px] text-ink-2 hover:text-accent-deep">
+                  <Icon name="mail" size={18} className="text-accent-deep" />
                   {contactEmail}
                 </a>
               )}
-              <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.12em] text-teal-deep">{start.assurance}</p>
+              <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.12em] text-accent-deep">{start.assurance}</p>
             </Cell>
           </div>
         </div>

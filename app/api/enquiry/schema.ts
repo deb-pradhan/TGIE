@@ -36,6 +36,11 @@ function str(v: unknown): string {
   return typeof v === "string" ? v.trim() : "";
 }
 
+/** Single-line text: trims and collapses any run of whitespace (incl. newlines) to one space. */
+function line(v: unknown): string {
+  return str(v).replace(/\s+/g, " ");
+}
+
 /** Normalises untrusted input and validates it. Never throws. */
 export function validateEnquiry(raw: unknown):
   | { ok: true; value: Enquiry }
@@ -46,11 +51,11 @@ export function validateEnquiry(raw: unknown):
     ? PILLAR_IDS.filter((p) => (r.pillars as unknown[]).includes(p))
     : [];
   const value: Enquiry = {
-    name: str(r.name),
+    name: line(r.name),
     email: str(r.email),
     phone: str(r.phone),
     role,
-    roleOther: str(r.roleOther),
+    roleOther: line(r.roleOther),
     project: str(r.project),
     pillars,
   };
@@ -66,7 +71,7 @@ export function validateEnquiry(raw: unknown):
   const digits = value.phone.replace(/\D/g, "").length;
   if (!value.phone) errors.phone = "Please add a phone number.";
   else if (value.phone.length > LIMITS.phone || !PHONE_RE.test(value.phone) || digits < 7 || digits > 15)
-    errors.phone = "Use digits, spaces and an optional + only (7 to 15 digits).";
+    errors.phone = "Enter a number with country code, 7 to 15 digits.";
 
   if (value.role === "other") {
     if (!value.roleOther) errors.roleOther = "Tell us briefly what you do.";

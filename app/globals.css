@@ -1,36 +1,37 @@
 @import "tailwindcss";
 
 /* ============================================================
-   Paper & Blueprint — design tokens (see designsystem.md)
+   Graphite & Safety Orange — design tokens (see designsystem.md)
    ============================================================ */
 @theme {
   /* surfaces */
-  --color-paper: #e9e6de; /* the darker CANVAS — visible only in the ~2px seams */
-  --color-cell: #f5f3ee; /* lighter cell surface sitting on the canvas */
-  --color-paper-2: #efece4;
+  --color-paper: #e7e8e5; /* the darker CANVAS — visible only in the ~2px seams */
+  --color-cell: #fafaf8; /* lighter cell surface sitting on the canvas */
+  --color-paper-2: #f2f3f1;
   --color-card: #ffffff;
-  --color-card-soft: #fbfaf6;
+  --color-card-soft: #f3f4f2;
 
   /* ink / text */
-  --color-ink: #1c1b18;
-  --color-ink-2: #3b3a35;
-  --color-muted: #9c9a90;
-  --color-muted-2: #b7b5ac;
+  --color-ink: #0d0f0e;
+  --color-ink-2: #282d2e;
+  --color-muted: #555b5c;
+  --color-muted-2: #8a908f;
 
   /* brand */
-  --color-forest: #0f3a2e;
-  --color-forest-deep: #0b2c23;
-  --color-teal: #2fae97;
-  --color-teal-deep: #0e6e5c;
-  --color-teal-soft: #6fd0bb;
-  --color-mint: #e9f5f1;
+  --color-graphite: #1c1f1e;
+  --color-graphite-deep: #111312;
+  --color-accent: #e2561f;
+  --color-accent-deep: #a33a0f;
+  --color-accent-soft: #ffa36c;
+  --color-accent-pale: #ffeadc;
 
   /* utility */
-  --color-inkbtn: #232019;
-  --color-line: #e5e1d8;
-  --color-line-strong: #cfcbb7;
-  --color-ondark: #eaf1ed;
-  --color-ondark-mut: #9fb5ac;
+  --color-inkbtn: #1c1f1e;
+  --color-line: #d6d9d6;
+  --color-line-strong: #aeb3b1;
+  --color-field: #868c8b; /* form-control borders (>= 3:1 on white/cell) */
+  --color-ondark: #f1f2f0;
+  --color-ondark-mut: #a9aeac;
 
   /* fonts (variables injected by next/font) */
   --font-sans: var(--font-hanken), "Inter Tight", ui-sans-serif, system-ui, sans-serif;
@@ -51,9 +52,9 @@
 }
 
 :root {
-  --shadow-card: 0 10px 34px -18px rgba(20, 30, 25, 0.18);
-  --shadow-float: 0 26px 60px -30px rgba(16, 40, 32, 0.3);
-  --shadow-btn: 0 10px 24px -10px rgba(30, 30, 26, 0.45);
+  --shadow-card: 0 10px 34px -18px rgba(18,20,19, 0.18);
+  --shadow-float: 0 26px 60px -30px rgba(18,20,19, 0.3);
+  --shadow-btn: 0 10px 24px -10px rgba(18,20,19, 0.45);
   --gutter: clamp(20px, 4vw, 56px);
   --maxw: 1200px;
 }
@@ -73,14 +74,23 @@
     text-rendering: optimizeLegibility;
   }
   ::selection {
-    background: var(--color-teal);
-    color: #fff;
+    background: var(--color-accent);
+    color: var(--color-ink);
   }
   h1, h2, h3, h4 {
     font-weight: 500;
     letter-spacing: -0.02em;
     line-height: 1.06;
   }
+}
+
+/* ---------- keyboard focus ---------- */
+:where(a, button, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-accent-deep);
+  outline-offset: 2px;
+}
+:is(.on-dark, .bg-graphite, .bg-graphite-deep, footer) :focus-visible {
+  outline-color: var(--color-accent-soft);
 }
 
 /* ---------- reusable helpers ---------- */
@@ -92,7 +102,7 @@
 }
 
 .section-y {
-  padding-block: clamp(64px, 9vw, 128px);
+  padding-block: clamp(56px, 7vw, 96px);
 }
 
 /* dotted spec-sheet band */
@@ -123,7 +133,7 @@
   content: "";
   position: absolute;
   inset: 1px;
-  background: var(--color-forest-deep);
+  background: var(--color-graphite-deep);
   clip-path: polygon(
     10px 0,
     100% 0,

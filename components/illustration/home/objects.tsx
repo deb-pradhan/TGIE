@@ -29,7 +29,7 @@ export function Sketch(
             width={1.56}
             height={1.16}
             rx={0.03}
-            fill="rgba(28,27,24,.08)"
+            fill="rgba(18,20,19,.08)"
           />
           <rect
             x={-0.78}
@@ -66,14 +66,14 @@ export function Sketch(
             rx={0.34}
             ry={0.28}
             fill="none"
-            stroke={C.teal}
+            stroke={C.accent}
             strokeWidth={0.03}
             strokeDasharray=".06 .05"
           />
           <path
             d="M.62 -.38q-.12 .08-.15 .24"
             fill="none"
-            stroke={C.teal}
+            stroke={C.accent}
             strokeWidth={0.03}
             strokeLinecap="round"
           />
@@ -81,30 +81,30 @@ export function Sketch(
         </g>
       </g>
       {/* pencil */}
-      {S.bx(cx - 0.65, cy + 0.8, cx + 0.75, cy + 0.92, z, z + 0.1, "teal")}
+      {S.bx(cx - 0.65, cy + 0.8, cx + 0.75, cy + 0.92, z, z + 0.1, "accent")}
       {S.bx(cx - 0.82, cy + 0.8, cx - 0.65, cy + 0.92, z, z + 0.1, "ink")}
       {/* the idea lifting off the page: dashed ghost block */}
       <path
         d={S.seg(S.proj(cx, cy, z + 0.2), S.proj(cx, cy, 1.3))}
-        stroke={C.teal}
+        stroke={C.accent}
         strokeWidth={1.2}
         strokeDasharray="2 3"
       />
       <g className="ill-float">
         <path
           d={f.right}
-          fill={C.tealSoft}
+          fill={C.accentSoft}
           fillOpacity={0.16}
-          stroke={C.teal}
+          stroke={C.accent}
           strokeWidth={1.2}
           strokeDasharray="4 3"
           strokeLinejoin="round"
         />
         <path
           d={f.front}
-          fill={C.tealSoft}
+          fill={C.accentSoft}
           fillOpacity={0.1}
-          stroke={C.teal}
+          stroke={C.accent}
           strokeWidth={1.2}
           strokeDasharray="4 3"
           strokeLinejoin="round"
@@ -113,7 +113,7 @@ export function Sketch(
           d={f.top}
           fill="#fff"
           fillOpacity={0.7}
-          stroke={C.teal}
+          stroke={C.accent}
           strokeWidth={1.2}
           strokeDasharray="4 3"
           strokeLinejoin="round"
@@ -144,11 +144,11 @@ export function Pcb(S: Scene, cx: number, cy: number, pad = true): ReactNode {
   return (
     <g>
       {pad && S.pad(cx, cy)}
-      {S.bx(cx - 0.95, cy - 0.75, cx + 0.95, cy + 0.75, 0.16, zb, "forest")}
+      {S.bx(cx - 0.95, cy - 0.75, cx + 0.95, cy + 0.75, 0.16, zb, "graphite")}
       <g transform={S.T(zb)}>
         <g
           fill="none"
-          stroke={C.tealSoft}
+          stroke={C.accentSoft}
           strokeOpacity={0.6}
           strokeWidth={0.035}
           strokeLinecap="round"
@@ -162,7 +162,7 @@ export function Pcb(S: Scene, cx: number, cy: number, pad = true): ReactNode {
             strokeOpacity={0.85}
           />
         </g>
-        <g fill="#efece4">
+        <g fill="#f2f3f1">
           {[
             [-0.75, -0.58],
             [-0.75, 0.58],
@@ -177,7 +177,7 @@ export function Pcb(S: Scene, cx: number, cy: number, pad = true): ReactNode {
             <circle key={`${a}${b}`} cx={cx + a} cy={cy + b} r={0.05} />
           ))}
         </g>
-        <g fill="#0b2c23" stroke="#efece4" strokeWidth={0.02}>
+        <g fill="#111312" stroke="#f2f3f1" strokeWidth={0.02}>
           {[
             [-0.85, -0.62],
             [0.85, -0.62],
@@ -187,10 +187,10 @@ export function Pcb(S: Scene, cx: number, cy: number, pad = true): ReactNode {
             <circle key={`h${a}${b}`} cx={cx + a} cy={cy + b} r={0.06} />
           ))}
         </g>
-        <path d={pins} stroke="#cfcbb7" strokeWidth={0.022} />
+        <path d={pins} stroke="#aeb3b1" strokeWidth={0.022} />
         <path
           d={`M${cx - 0.5} ${cy + 0.66}H${cx - 0.2}M${cx - 0.15} ${cy + 0.66}H${cx + 0.05}`}
-          stroke="#efece4"
+          stroke="#f2f3f1"
           strokeOpacity={0.55}
           strokeWidth={0.022}
         />
@@ -204,11 +204,11 @@ export function Pcb(S: Scene, cx: number, cy: number, pad = true): ReactNode {
           width={0.4}
           height={0.4}
           rx={0.03}
-          fill="#3b3a35"
-          stroke="#6a695f"
+          fill="#282d2e"
+          stroke="#676868"
           strokeWidth={0.02}
         />
-        <circle cx={cx - 0.24} cy={cy - 0.24} r={0.03} fill={C.tealSoft} />
+        <circle cx={cx - 0.24} cy={cy - 0.24} r={0.03} fill={C.accentSoft} />
       </g>
       {S.bx(cx - 0.78, cy + 0.32, cx - 0.5, cy + 0.46, zb, zb + 0.07, "steel")}
       {S.bx(cx + 0.5, cy + 0.08, cx + 0.62, cy + 0.2, zb, zb + 0.06, "steel")}
@@ -216,7 +216,7 @@ export function Pcb(S: Scene, cx: number, cy: number, pad = true): ReactNode {
       {/* signal running along a trace */}
       <path
         d={hotD}
-        stroke="#aef0e0"
+        stroke="#ffc7a1"
         strokeWidth={1.4}
         strokeLinecap="round"
         strokeDasharray="6 4"
@@ -228,7 +228,7 @@ export function Pcb(S: Scene, cx: number, cy: number, pad = true): ReactNode {
         cx={led[0]}
         cy={led[1]}
         r={5}
-        fill={C.tealSoft}
+        fill={C.accentSoft}
         opacity={0.3}
         className="ill-blink"
       />
@@ -236,7 +236,7 @@ export function Pcb(S: Scene, cx: number, cy: number, pad = true): ReactNode {
         cx={led[0]}
         cy={led[1]}
         r={1.9}
-        fill="#d9fff4"
+        fill="#fff1e8"
         className="ill-blink"
       />
     </g>
@@ -303,12 +303,12 @@ export function Enclosure(
           <path d={open} />
         </clipPath>
       </defs>
-      <path d={open} fill="#c3d0c9" />
+      <path d={open} fill="#c8cbcb" />
       <g clipPath={`url(#${cid})`}>
-        <path d={floor} fill="#d3ddd7" />
-        <path d={wallL} fill="#b4c3bb" />
-        <path d={wallR} fill="#a2b4ab" />
-        {S.bx(cx - 0.5, cy - 0.4, cx + 0.5, cy + 0.4, zf, zf + 0.07, "forest")}
+        <path d={floor} fill="#d6d9d9" />
+        <path d={wallL} fill="#bbbebe" />
+        <path d={wallR} fill="#abaeae" />
+        {S.bx(cx - 0.5, cy - 0.4, cx + 0.5, cy + 0.4, zf, zf + 0.07, "graphite")}
         {S.bx(
           cx - 0.2,
           cy - 0.14,
@@ -322,7 +322,7 @@ export function Enclosure(
       <path d={open} fill="none" stroke={C.lineStrong} strokeWidth={0.8} />
       <g
         transform={S.T(zr)}
-        fill="#cbd7d1"
+        fill="#d0d3d3"
         stroke={C.lineStrong}
         strokeWidth={0.02}
       >
@@ -343,12 +343,12 @@ export function Enclosure(
           width={0.78}
           height={0.42}
           rx={0.05}
-          fill="#0e3a2e"
+          fill="#1c1f1e"
         />
         <path
           d={`M${cx - 0.62} .55l.1 0 .06 .13.1 -.24.08 .2.06 -.08h.2`}
           fill="none"
-          stroke={C.tealSoft}
+          stroke={C.accentSoft}
           strokeWidth={0.025}
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -357,7 +357,7 @@ export function Enclosure(
           cx={cx + 0.45}
           cy={0.74}
           r={0.045}
-          fill={C.teal}
+          fill={C.accent}
           className="ill-blink"
         />
         <path
@@ -376,7 +376,7 @@ export function Enclosure(
           width={0.3}
           height={0.13}
           rx={0.065}
-          fill="#1c1b18"
+          fill="#0d0f0e"
         />
         <path
           d={`M${cy + 0.28} .52h.3`}
@@ -388,7 +388,7 @@ export function Enclosure(
       {/* lid lifting off */}
       <path
         d={guides}
-        stroke={C.teal}
+        stroke={C.accent}
         strokeWidth={1.1}
         strokeDasharray="2 3"
         fill="none"
@@ -402,7 +402,7 @@ export function Enclosure(
             width={0.44}
             height={0.44}
             rx={0.07}
-            fill="#0f3a2e"
+            fill="#1c1f1e"
           />
           <path
             d={`M${cx - 0.11} ${cy - 0.1}H${cx + 0.11}M${cx} ${cy - 0.1}V${cy + 0.13}`}
@@ -449,12 +449,12 @@ export function Products(
                 width={0.45}
                 height={0.37}
                 rx={0.06}
-                fill="#0f3a2e"
+                fill="#1c1f1e"
               />
               <path
                 d={`M${x0 + 0.27} ${y0 + 0.44}h.08l.05 -.1.07 .2.06 -.14h.1`}
                 fill="none"
-                stroke={C.tealSoft}
+                stroke={C.accentSoft}
                 strokeWidth={0.025}
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -463,7 +463,7 @@ export function Products(
                 cx={x0 + 0.13}
                 cy={y0 + 0.13}
                 r={0.04}
-                fill={C.teal}
+                fill={C.accent}
                 className={hot ? "ill-blink" : undefined}
               />
             </g>
@@ -494,7 +494,7 @@ export function Company(
             width={0.26}
             height={0.28}
             rx={0.03}
-            fill={lit ? C.tealSoft : "#f3fbf8"}
+            fill={lit ? C.accentSoft : "#fff5ee"}
             fillOpacity={lit ? 0.85 : 1}
             stroke={C.lineStrong}
             strokeWidth={0.015}
@@ -517,8 +517,8 @@ export function Company(
         cy={p[1]}
         rx={1.414 * S.k * 0.27}
         ry={0.707 * S.k * 0.27}
-        fill={C.tealSoft}
-        stroke={C.tealDeep}
+        fill={C.accentSoft}
+        stroke={C.accentDeep}
         strokeWidth={0.9}
       />
     );
@@ -535,11 +535,11 @@ export function Company(
           width={0.3}
           height={0.5}
           rx={0.03}
-          fill="#0f3a2e"
+          fill="#1c1f1e"
         />
       </g>
       <g transform={S.R(cx + 0.65)}>{wins("R", cy - 0.55)}</g>
-      {S.bx(cx - 0.5, cy - 0.45, cx + 0.4, cy + 0.45, 1.7, 2.3, "mint")}
+      {S.bx(cx - 0.5, cy - 0.45, cx + 0.4, cy + 0.45, 1.7, 2.3, "accentPale")}
       <g transform={S.F(cy + 0.45)}>
         <rect
           x={cx - 0.26}
@@ -547,7 +547,7 @@ export function Company(
           width={0.5}
           height={0.3}
           rx={0.04}
-          fill="#0f3a2e"
+          fill="#1c1f1e"
         />
         <path
           d={`M${cx - 0.1} 2.07H${cx + 0.08}M${cx - 0.01} 2.07V1.92`}
@@ -563,7 +563,7 @@ export function Company(
           width={0.22}
           height={0.26}
           rx={0.03}
-          fill="#f3fbf8"
+          fill="#fff5ee"
           stroke={C.lineStrong}
           strokeWidth={0.015}
         />
@@ -573,7 +573,7 @@ export function Company(
           width={0.22}
           height={0.26}
           rx={0.03}
-          fill={C.tealSoft}
+          fill={C.accentSoft}
           fillOpacity={0.85}
           stroke={C.lineStrong}
           strokeWidth={0.015}
@@ -582,8 +582,8 @@ export function Company(
       {S.bx(cx - 0.04, cy - 0.04, cx + 0.04, cy + 0.04, 2.3, 3.1, "ink")}
       <path
         d={pennant}
-        fill={C.teal}
-        stroke={C.tealDeep}
+        fill={C.accent}
+        stroke={C.accentDeep}
         strokeWidth={0.8}
         strokeLinejoin="round"
         className="ill-float"
@@ -617,7 +617,7 @@ export function Steel(
       <g transform={S.R(cx + 0.6)}>
         <path
           d={ribs}
-          stroke="#8fa39a"
+          stroke="#8a908f"
           strokeWidth={0.025}
           strokeLinecap="round"
         />
@@ -625,7 +625,7 @@ export function Steel(
       <g transform={S.F(cy + 0.65)}>
         <path
           d={`M${cx - 0.8} .62H${cx + 0.6}M${cx - 0.8} 1.28H${cx + 0.6}`}
-          stroke="#8fa39a"
+          stroke="#8a908f"
           strokeWidth={0.03}
         />
         <circle
@@ -633,13 +633,13 @@ export function Steel(
           cy={0.95}
           r={0.27}
           fill="#fff"
-          stroke={C.teal}
+          stroke={C.accent}
           strokeWidth={0.04}
         />
         <path
           d={`M${cx - 0.22} .95l.09 -.12.17 .22`}
           fill="none"
-          stroke={C.tealDeep}
+          stroke={C.accentDeep}
           strokeWidth={0.05}
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -649,7 +649,7 @@ export function Steel(
       <g transform={S.R(cx + 0.85)}>
         <path
           d={fins}
-          stroke="#8fa39a"
+          stroke="#8a908f"
           strokeWidth={0.025}
           strokeLinecap="round"
         />
@@ -664,7 +664,7 @@ export function Steel(
             cy + d + 0.07,
             1.65,
             2.1,
-            "forest",
+            "graphite",
           )}
           {S.bx(
             cx - 0.4 - 0.1,
@@ -673,7 +673,7 @@ export function Steel(
             cy + d + 0.1,
             2.1,
             2.2,
-            "teal",
+            "accent",
           )}
         </g>
       ))}
@@ -683,7 +683,7 @@ export function Steel(
             cx={w[0]}
             cy={w[1]}
             r={8}
-            fill={C.tealSoft}
+            fill={C.accentSoft}
             opacity={0.35}
             className="ill-pulse"
           />
@@ -692,12 +692,12 @@ export function Steel(
             cy={w[1]}
             r={2.4}
             fill="#fff"
-            stroke={C.tealSoft}
+            stroke={C.accentSoft}
             strokeWidth={1}
           />
           <path
             d={`M${w[0] - 9} ${w[1] - 7}l4 3M${w[0] + 9} ${w[1] - 8}l-4 3M${w[0]} ${w[1] - 12}v4M${w[0] + 11} ${w[1]}h-4`}
-            stroke={C.tealDeep}
+            stroke={C.accentDeep}
             strokeWidth={1.2}
             strokeLinecap="round"
             className="ill-blink"

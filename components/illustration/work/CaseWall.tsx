@@ -4,7 +4,7 @@ import { OBJECTS, type ObjectKey } from "./objects";
 
 /**
  * /work hero art. Isometric "case wall": six mini object tiles on one iso
- * ground, joined by a dashed teal path, one tile per engagement. Decorative.
+ * ground, joined by a dashed accent path, one tile per engagement. Decorative.
  */
 const ORDER: ObjectKey[] = ["wearable", "environmental", "bezel", "replica", "startup", "transformer"];
 // serpentine so the path reads 1 to 6 without crossing
@@ -46,20 +46,20 @@ export function CaseWall() {
     <SceneFrame viewBox="0 0 640 480" ground tone="cell">
       <Box c={g} b={[-1, -1, X + 1, Y + 1, -0.35, 0]} top={C.soft} front={C.faceL} right={C.faceR} stroke={C.line} />
       {tiles.map((t) => (
-        <Box key={t.n} c={g} b={[t.x, t.y, t.x + SIDE, t.y + SIDE, 0, 0.22]} top={C.mint} front={C.faceL} right={C.faceR} stroke={C.lineStrong} />
+        <Box key={t.n} c={g} b={[t.x, t.y, t.x + SIDE, t.y + SIDE, 0, 0.22]} top={C.accentPale} front={C.faceL} right={C.faceR} stroke={C.lineStrong} />
       ))}
       {hops.map(({ a, b, n }) => (
         <g key={n}>
           <path
             className="ill-dash"
             d={`M${a[0].toFixed(1)} ${a[1].toFixed(1)} L${b[0].toFixed(1)} ${b[1].toFixed(1)}`}
-            stroke={C.teal}
+            stroke={C.accent}
             strokeWidth={1.8}
             strokeDasharray="5 5"
             strokeLinecap="round"
           />
-          <circle cx={a[0]} cy={a[1]} r={3} fill={C.card} stroke={C.teal} strokeWidth={1.5} />
-          <circle cx={b[0]} cy={b[1]} r={3} fill={C.card} stroke={C.teal} strokeWidth={1.5} />
+          <circle cx={a[0]} cy={a[1]} r={3} fill={C.card} stroke={C.accent} strokeWidth={1.5} />
+          <circle cx={b[0]} cy={b[1]} r={3} fill={C.card} stroke={C.accent} strokeWidth={1.5} />
         </g>
       ))}
       {tiles.map((t) => {

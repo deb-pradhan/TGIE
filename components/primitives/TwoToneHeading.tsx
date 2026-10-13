@@ -34,7 +34,7 @@ export function TwoToneHeading({
     <Tag
       className={cn(
         sizeFor[as],
-        "font-mono font-medium leading-[1.18] tracking-tight",
+        "text-balance font-mono font-medium leading-[1.18] tracking-tight",
         onDark ? "text-ondark" : "text-ink",
         align === "center" && "text-center",
         className,
@@ -46,7 +46,7 @@ export function TwoToneHeading({
           <br />
           <span
             className={
-              accentLine2 ? "text-teal-deep" : onDark ? "text-ondark-mut" : "text-muted"
+              accentLine2 ? "text-accent" : onDark ? "text-ondark-mut" : "text-muted"
             }
           >
             {line2}

@@ -7,7 +7,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "What are the four pillars?",
-    a: "A. Embedded Hardware & Engineering (PCB, firmware, enclosures, Edge AI). B. Additive Manufacturing & Product Lines (industrial enclosures, kinetic IoT decor, automotive plastics, retail products). C. Business Enablement & Advisory (branding, incorporation, audit, funding, ops). D. Heavy Fabrication & Manufacturing (ISO 9001:2015 structural fabrication at scale). Holding all four under one roof is what no regional competitor currently replicates.",
+    a: "A. Embedded Hardware & Engineering (PCB, firmware, enclosures, Edge AI). B. Additive Manufacturing & Product Lines (industrial enclosures, kinetic IoT decor, automotive plastics, retail products). C. Business Enablement & Advisory (branding, incorporation, audit, funding, ops). D. Heavy Fabrication & Manufacturing (ISO 9001:2015 structural fabrication at scale).",
   },
   {
     q: "Do I retain ownership of the IP?",

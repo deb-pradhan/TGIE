@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/pageMeta";
 import { company, segments } from "@/content/pages";
 import { site } from "@/content/site";
 import { PageHero } from "@/components/sections/PageHero";
@@ -16,11 +16,12 @@ import { StatGlyph, type StatGlyphName } from "@/components/illustration/company
 import { SegmentMatrix } from "@/components/illustration/company/SegmentMatrix";
 import { LabScene } from "@/components/illustration/company/LabScene";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Company",
   description:
     "The Great Indian Engineers: four pillars under one accountable roof, grounded in institutional rigor and medical-grade discipline, with an ISO 9001:2015 fabrication arm in Thirumudivakkam, Chennai.",
-};
+  path: "/company",
+});
 
 const figures = {
   foundation: FoundationFigure,
@@ -74,11 +75,11 @@ export default function CompanyPage() {
                 </div>
                 {/* credential rail: numbered node on a timeline */}
                 <div className="flex items-center gap-3 px-6 pt-5">
-                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-teal font-mono text-[11px] font-bold text-white">
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-accent font-mono text-[11px] font-bold text-ink">
                     {it.step}
                   </span>
                   <span aria-hidden className="h-px flex-1 bg-line-strong" />
-                  <span className="rounded-full bg-mint px-2.5 py-[3px] font-mono text-[11px] font-medium text-teal-deep">
+                  <span className="rounded-full bg-accent-pale px-2.5 py-[3px] font-mono text-[11px] font-medium text-accent-deep">
                     {it.badge}
                   </span>
                 </div>
@@ -105,9 +106,9 @@ export default function CompanyPage() {
         <SegmentMatrix columns={segments.columns as { id: string; name: string; icon: IconName }[]} rows={segments.items} />
       </FrameBlock>
       <GapStrip h={2} />
-      <FrameBlock full>
-        <div className="rounded-[6px] bg-forest px-[var(--gutter)] py-10 text-center text-ondark">
-          <p className="mx-auto max-w-[64ch] text-[15px] text-ondark-mut">{segments.note}</p>
+      <FrameBlock>
+        <div className="rounded-[6px] bg-graphite-deep px-[var(--gutter)] py-8 text-center text-ondark">
+          <p className="mx-auto max-w-[64ch] font-mono text-[15px] tracking-tight">{segments.note}</p>
         </div>
       </FrameBlock>
 
@@ -117,9 +118,10 @@ export default function CompanyPage() {
         <div className="grid gap-[2px] lg:grid-cols-[0.8fr_1.2fr]">
           <Cell className="flex flex-col justify-center px-[var(--gutter)] py-12">
             <Eyebrow>{company.lab.title}</Eyebrow>
+            <TwoToneHeading as="h2" line1={company.lab.line1} line2={company.lab.line2} className="mt-4" />
             <p className="text-lead mt-4 max-w-[62ch] text-muted">{company.lab.intro}</p>
             <p className="mt-8 inline-flex items-center gap-2 font-mono text-[13px] text-ink-2">
-              <span className="grid h-6 w-6 place-items-center rounded-full bg-mint text-teal">
+              <span className="grid h-6 w-6 place-items-center rounded-full bg-accent-pale text-accent">
                 <Icon name="pin" size={14} />
               </span>
               Based in {site.base}.
@@ -136,18 +138,18 @@ export default function CompanyPage() {
           {company.lab.items.map((it) => (
             <Cell key={it.title} className="p-6">
               <div className="flex items-center justify-between">
-                <span className="grid h-6 w-6 place-items-center rounded-full bg-teal font-mono text-[11px] font-bold text-white">
+                <span className="grid h-6 w-6 place-items-center rounded-full bg-accent font-mono text-[11px] font-bold text-ink">
                   {it.n}
                 </span>
                 <div className="flex gap-1.5">
                   {(it.icons as IconName[]).map((n) => (
-                    <span key={n} className="grid h-10 w-10 place-items-center rounded-[10px] bg-mint text-teal">
+                    <span key={n} className="grid h-10 w-10 place-items-center rounded-[10px] bg-accent-pale text-accent">
                       <Icon name={n} size={22} />
                     </span>
                   ))}
                 </div>
               </div>
-              <h4 className="mt-5 text-[15px] font-medium text-ink">{it.title}</h4>
+              <h3 className="mt-5 text-[15px] font-medium text-ink">{it.title}</h3>
               <p className="mt-1.5 text-[13px] text-muted">{it.note}</p>
             </Cell>
           ))}

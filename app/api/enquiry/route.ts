@@ -8,6 +8,7 @@ import { validateEnquiry, enquiryText, type PillarId } from "./schema";
  * (ENQUIRY_FROM_EMAIL is optional). Without them it answers 503
  * { error: "not_configured" } and the client shows the mailto / copy fallback.
  * Env values are read per request and never sent to the client.
+ * Bot checks (silent 200, nothing sent): filled honeypot `tgie_hp`, or missing/too-fast `elapsed`.
  */
 
 const PILLAR_NAMES: Record<PillarId, string> = {
@@ -25,25 +26,39 @@ const MAX_PER_WINDOW = 5;
 // Best-effort limiter: per server instance only (not shared across serverless instances).
 const hits = new Map<string, number[]>();
 
-function limited(ip: string): boolean {
+/** Records a well-formed submission for `ip`. Returns 0 if allowed, else seconds until the next slot frees up. */
+function retryAfter(ip: string): number {
   const now = Date.now();
   const recent = (hits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
   if (recent.length >= MAX_PER_WINDOW) {
     hits.set(ip, recent);
-    return true;
+    return Math.max(1, Math.ceil((recent[0] + WINDOW_MS - now) / 1000));
   }
   recent.push(now);
   hits.set(ip, recent);
   if (hits.size > 1000) for (const [k, v] of hits) if (v.every((t) => now - t >= WINDOW_MS)) hits.delete(k);
-  return false;
+  return 0;
+}
+
+/**
+ * Client IP for rate limiting, or null when it cannot be known. x-real-ip is set by the
+ * platform proxy; otherwise the LAST x-forwarded-for hop (the one our own proxy appended)
+ * is used, since earlier hops are client-supplied and spoofable. With neither header there
+ * is no per-IP limit rather than one shared "unknown" bucket that locks everyone out.
+ */
+function clientIp(request: Request): string | null {
+  const real = request.headers.get("x-real-ip")?.trim();
+  if (real) return real;
+  const hops = request.headers.get("x-forwarded-for")?.split(",");
+  return hops?.[hops.length - 1]?.trim() || null;
 }
 
 const esc = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const oneLine = (s: string) => s.replace(/[\r\n]+/g, " ").slice(0, 150);
 
-const json = (body: Record<string, unknown>, status: number) =>
-  Response.json(body, { status, headers: { "Cache-Control": "no-store" } });
+const json = (body: Record<string, unknown>, status: number, headers?: Record<string, string>) =>
+  Response.json(body, { status, headers: { "Cache-Control": "no-store", ...headers } });
 
 export async function POST(request: Request) {
   if (!request.headers.get("content-type")?.includes("application/json")) {
@@ -61,17 +76,18 @@ export async function POST(request: Request) {
   }
   const b = (body && typeof body === "object" ? body : {}) as Record<string, unknown>;
 
-  // Honeypot / too-fast submissions: pretend success so bots learn nothing.
-  const elapsed = typeof b.elapsed === "number" ? b.elapsed : Infinity;
-  if (typeof b.website === "string" && b.website.length > 0) return json({ ok: true }, 200);
-  if (elapsed < MIN_FILL_MS) return json({ ok: true }, 200);
+  // Honeypot / missing or too-fast timing: pretend success so bots learn nothing. Not counted by the limiter.
+  if (typeof b.tgie_hp === "string" && b.tgie_hp.length > 0) return json({ ok: true }, 200);
+  if (typeof b.elapsed !== "number" || !(b.elapsed >= MIN_FILL_MS)) return json({ ok: true }, 200);
 
-  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
-  if (limited(ip)) return json({ error: "rate_limited" }, 429);
-
+  // Validate first: malformed requests cost nothing, only well-formed submissions are rate-limited.
   const parsed = validateEnquiry(b);
   if (!parsed.ok) return json({ error: "invalid", fields: parsed.errors }, 400);
   const e = parsed.value;
+
+  const ip = clientIp(request);
+  const wait = ip ? retryAfter(ip) : 0;
+  if (wait) return json({ error: "rate_limited" }, 429, { "Retry-After": String(wait) });
 
   const key = process.env.RESEND_API_KEY;
   const to = process.env.ENQUIRY_TO_EMAIL;
@@ -79,7 +95,7 @@ export async function POST(request: Request) {
   const from = process.env.ENQUIRY_FROM_EMAIL || "TGIE Website <onboarding@resend.dev>";
 
   const text = enquiryText(e, PILLAR_NAMES);
-  const html = `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;color:#1c1b18"><pre style="font-family:inherit;white-space:pre-wrap;margin:0">${esc(text)}</pre></div>`;
+  const html = `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;color:#0d0f0e"><pre style="font-family:inherit;white-space:pre-wrap;margin:0">${esc(text)}</pre></div>`;
 
   try {
     const res = await fetch("https://api.resend.com/emails", {

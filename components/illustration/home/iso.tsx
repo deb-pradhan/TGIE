@@ -11,16 +11,16 @@ import { C, makeIso, type Pt } from "../kit";
  */
 
 export const TONE = {
-  white: { top: "#ffffff", right: "#dbe4de", front: "#e7edea" },
-  mint: { top: "#f3fbf8", right: "#c6e3da", front: "#dcf0ea" },
-  steel: { top: "#eaefec", right: "#b2c1b9", front: "#cbd7d1" },
-  forest: { top: "#14493c", right: "#0b2c23", front: "#0e3a2e" },
-  ink: { top: "#4a4943", right: "#1c1b18", front: "#2e2d28" },
-  teal: { top: C.tealSoft, right: C.tealDeep, front: C.teal },
+  white: { top: "#ffffff", right: "#b9bebc", front: "#dfe2e0" },
+  accentPale: { top: "#fff5ee", right: "#ffd2b5", front: "#ffeadc" },
+  steel: { top: "#eaeded", right: "#b9bcbc", front: "#d0d3d3" },
+  graphite: { top: "#2c3130", right: "#111312", front: "#1c1f1e" },
+  ink: { top: "#484949", right: "#0d0f0e", front: "#2c2d2d" },
+  accent: { top: C.accentSoft, right: C.accentDeep, front: C.accent },
 } as const;
 export type Tone = keyof typeof TONE;
 
-const EDGE = "rgba(28,27,24,.16)";
+const EDGE = "rgba(18,20,19,.16)";
 const n = (v: number) => v.toFixed(1);
 
 export function makeScene(
@@ -94,7 +94,7 @@ export function makeScene(
       >
         <path
           d="M0 3H8"
-          stroke="#0e6e5c"
+          stroke="#a33a0f"
           strokeOpacity=".22"
           strokeWidth=".7"
         />
@@ -108,7 +108,7 @@ export function makeScene(
       >
         <path
           d="M0 3H8"
-          stroke="#0e6e5c"
+          stroke="#a33a0f"
           strokeOpacity=".18"
           strokeWidth=".7"
         />
@@ -121,7 +121,7 @@ export function makeScene(
     a,
     b,
     step = 1,
-    top = "#fbfaf6",
+    top = "#f3f4f2",
   }: {
     a: number;
     b: number;
@@ -137,8 +137,8 @@ export function makeScene(
     }
     return (
       <g>
-        <path d={f.right} fill="#cfdad4" />
-        <path d={f.front} fill="#dbe4de" />
+        <path d={f.right} fill="#d3d6d6" />
+        <path d={f.front} fill="#b9bebc" />
         <path
           d={f.top}
           fill={top}

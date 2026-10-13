@@ -6,12 +6,12 @@ export const alt = "TGIE. Theory, embodied.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// Paper & Cell Collage, scaled up: canvas seams, light cells, forest + one teal.
-const CANVAS = "#e9e6de";
-const CELL = "#f5f3ee";
-const FOREST = "#0f3a2e";
-const TEAL = "#2fae97";
-const INK = "#1c1b18";
+// Paper & Cell Collage, scaled up: canvas seams, light cells, graphite + one accent.
+const CANVAS = "#e7e8e5";
+const CELL = "#fafaf8";
+const GRAPHITE = "#1c1f1e";
+const ACCENT = "#e2561f";
+const INK = "#0d0f0e";
 
 const cells: [number, number, boolean?][] = [
   [0, 0], [22.5, 0], [45, 0], [22.5, 22.5],
@@ -35,14 +35,14 @@ export default async function Image() {
           }}
         >
           <svg width="290" height="290" viewBox="0 0 64 64">
-            <rect x="0" y="22.5" width="19" height="19" rx="4.5" fill={FOREST} fillOpacity="0.16" />
-            <rect x="45" y="22.5" width="19" height="19" rx="4.5" fill={FOREST} fillOpacity="0.16" />
-            <rect x="0" y="45" width="19" height="19" rx="4.5" fill={FOREST} fillOpacity="0.16" />
-            <rect x="45" y="45" width="19" height="19" rx="4.5" fill={FOREST} fillOpacity="0.16" />
+            <rect x="0" y="22.5" width="19" height="19" rx="4.5" fill={GRAPHITE} fillOpacity="0.16" />
+            <rect x="45" y="22.5" width="19" height="19" rx="4.5" fill={GRAPHITE} fillOpacity="0.16" />
+            <rect x="0" y="45" width="19" height="19" rx="4.5" fill={GRAPHITE} fillOpacity="0.16" />
+            <rect x="45" y="45" width="19" height="19" rx="4.5" fill={GRAPHITE} fillOpacity="0.16" />
             {cells.map(([x, y]) => (
-              <rect key={`${x}-${y}`} x={x} y={y} width="19" height="19" rx="4.5" fill={FOREST} />
+              <rect key={`${x}-${y}`} x={x} y={y} width="19" height="19" rx="4.5" fill={GRAPHITE} />
             ))}
-            <rect x="22.5" y="45" width="19" height="19" rx="4.5" fill={TEAL} />
+            <rect x="22.5" y="45" width="19" height="19" rx="4.5" fill={ACCENT} />
           </svg>
         </div>
 
@@ -59,7 +59,7 @@ export default async function Image() {
               padding: "0 56px",
             }}
           >
-            <div style={{ display: "flex", fontFamily: "Space Mono", fontSize: 22, letterSpacing: 4, color: TEAL }}>
+            <div style={{ display: "flex", fontFamily: "Space Mono", fontSize: 22, letterSpacing: 4, color: ACCENT }}>
               THE GREAT INDIAN ENGINEERS
             </div>
             <div
@@ -82,7 +82,7 @@ export default async function Image() {
                 fontSize: 92,
                 lineHeight: 1.02,
                 letterSpacing: -4,
-                color: FOREST,
+                color: GRAPHITE,
               }}
             >
               embodied.
@@ -94,16 +94,16 @@ export default async function Image() {
               alignItems: "center",
               justifyContent: "space-between",
               height: 130,
-              background: FOREST,
+              background: GRAPHITE,
               borderRadius: 14,
               padding: "0 56px",
-              color: "#eaf1ed",
+              color: "#f1f2f0",
               fontFamily: "Space Mono",
               fontSize: 20,
             }}
           >
             <span style={{ display: "flex" }}>You carry the vision. We carry the weight.</span>
-            <span style={{ display: "flex", color: "#6fd0bb" }}>TGIE</span>
+            <span style={{ display: "flex", color: "#ffa36c" }}>TGIE</span>
           </div>
         </div>
       </div>

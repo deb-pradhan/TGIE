@@ -4,7 +4,6 @@ import { TwoToneHeading } from "@/components/primitives/TwoToneHeading";
 import { Live } from "../Live";
 import { practices } from "@/content/practices";
 import { work } from "@/content/pages";
-import { cn } from "@/lib/cn";
 import { PillarStrip } from "./CaseCard";
 import { PillarGlyph, StageArt, type StageId } from "./ConceptStages";
 
@@ -14,12 +13,12 @@ function Connector() {
   return (
     <li aria-hidden className="flex items-center justify-center py-1 md:px-2 md:py-0">
       <svg viewBox="0 0 12 40" className="h-9 w-3 md:hidden">
-        <path className="ill-dash" d="M6 0V30" stroke="var(--color-teal)" strokeWidth="1.8" strokeDasharray="5 5" fill="none" />
-        <path d="M1 28l5 8 5-8z" fill="var(--color-teal)" />
+        <path className="ill-dash" d="M6 0V30" stroke="var(--color-accent)" strokeWidth="1.8" strokeDasharray="5 5" fill="none" />
+        <path d="M1 28l5 8 5-8z" fill="var(--color-accent)" />
       </svg>
       <svg viewBox="0 0 48 12" className="hidden h-3 w-12 md:block">
-        <path className="ill-dash" d="M0 6H38" stroke="var(--color-teal)" strokeWidth="1.8" strokeDasharray="5 5" fill="none" />
-        <path d="M36 1l8 5-8 5z" fill="var(--color-teal)" />
+        <path className="ill-dash" d="M0 6H38" stroke="var(--color-accent)" strokeWidth="1.8" strokeDasharray="5 5" fill="none" />
+        <path d="M36 1l8 5-8 5z" fill="var(--color-accent)" />
       </svg>
     </li>
   );
@@ -40,7 +39,7 @@ export function ConceptFlow() {
             <div className="relative pl-6 md:pb-6 md:pl-0">
               <span
                 aria-hidden
-                className="absolute bottom-2 left-0 top-2 w-3 rounded-l-xl border-y-2 border-l-2 border-teal/55 md:inset-x-2 md:bottom-0 md:left-2 md:right-2 md:top-auto md:h-3 md:w-auto md:rounded-l-none md:rounded-b-xl md:border-y-0 md:border-b-2 md:border-l-2 md:border-r-2"
+                className="absolute bottom-2 left-0 top-2 w-3 rounded-l-xl border-y-2 border-l-2 border-accent/55 md:inset-x-2 md:bottom-0 md:left-2 md:right-2 md:top-auto md:h-3 md:w-auto md:rounded-l-none md:rounded-b-xl md:border-y-0 md:border-b-2 md:border-l-2 md:border-r-2"
               />
               <ol className="grid items-stretch md:grid-cols-[1fr_auto_1fr_auto_1fr]">
                 {c.stages.flatMap((s, i) => [
@@ -52,7 +51,7 @@ export function ConceptFlow() {
                     <div className="flex flex-1 flex-col p-5">
                       <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.12em] text-muted">
                         <span>{s.n}</span>
-                        <PillarStrip pillars={[s.pillar]} className="gap-3 text-teal-deep" />
+                        <PillarStrip pillars={[s.pillar]} className="gap-3 text-accent-deep" />
                       </div>
                       <h3 className="mt-2 font-mono text-[16px] font-medium tracking-tight text-ink">{s.title}</h3>
                       <p className="mt-1.5 text-[13.5px] text-ink-2">{s.note}</p>
@@ -64,28 +63,22 @@ export function ConceptFlow() {
 
             <div className="mt-4 flex flex-col items-center gap-5 text-center">
               <div className="inline-flex items-center gap-2.5 rounded-pill border border-line bg-card px-4 py-2 font-mono text-[12px] tracking-tight text-ink">
-                <span className="grid h-5 w-5 place-items-center rounded-[6px] bg-forest text-[10px] font-bold text-white">T</span>
+                <span className="grid h-5 w-5 place-items-center rounded-[6px] bg-graphite text-[10px] font-bold text-white">T</span>
                 <span className="font-medium">{c.bracket.title}.</span>
                 <span className="text-ink-2">{c.bracket.note}</span>
               </div>
               <ul className="grid w-full max-w-[720px] grid-cols-2 gap-[2px] sm:grid-cols-4">
-                {practices.map((p) => {
-                  const on = c.stages.some((s) => s.pillar === p.index);
-                  return (
-                    <li
-                      key={p.slug}
-                      className={cn(
-                        "flex items-center justify-center gap-2 rounded-[6px] px-3 py-3 font-mono text-[12px] tracking-tight",
-                        on ? "bg-mint text-teal-deep" : "bg-card-soft text-ink-2",
-                      )}
-                    >
-                      <PillarGlyph pillar={p.index as "A" | "B" | "C" | "D"} />
-                      <span>
-                        <span className="font-medium">{p.index}</span> {p.short}
-                      </span>
-                    </li>
-                  );
-                })}
+                {practices.map((p) => (
+                  <li
+                    key={p.slug}
+                    className="flex items-center justify-center gap-2 rounded-[6px] bg-card-soft px-3 py-3 font-mono text-[12px] tracking-tight text-ink-2"
+                  >
+                    <PillarGlyph pillar={p.index as "A" | "B" | "C" | "D"} />
+                    <span>
+                      <span className="font-medium">{p.index}</span> {p.short}
+                    </span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

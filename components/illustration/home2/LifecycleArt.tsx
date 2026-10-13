@@ -6,7 +6,7 @@ import { Txt } from "./Fig";
 /**
  * Lifecycle roadmap — isometric register.
  * Four station vignettes (discover / design / build / handover) on stepped
- * pedestals, joined by a dashed teal path. Desktop: one wide scene.
+ * pedestals, joined by a dashed accent path. Desktop: one wide scene.
  * Mobile: each station is drawn alone and the page draws a vertical rail.
  */
 const g = iso(150, 70, 28, 20);
@@ -31,25 +31,25 @@ function Discover() {
         <rect x="0.95" y="0.8" width="1.7" height="2.3" rx="0.05" fill="#fff" stroke={C.line} strokeWidth="1" />
         <rect x="1.15" y="1.0" width="0.9" height="0.1" fill={C.lineStrong} />
         <rect x="1.15" y="1.2" width="0.55" height="0.08" fill={C.line} />
-        <rect x="1.15" y="1.45" width="1.3" height="0.75" rx="0.07" fill="none" stroke={C.tealDeep} strokeWidth="1.2" strokeDasharray="3 2" />
-        <circle cx="1.5" cy="1.82" r="0.2" fill="none" stroke={C.teal} strokeWidth="1.4" />
-        <path d="M1.9 1.95 H2.3 M1.9 1.75 H2.15" stroke={C.teal} strokeWidth="1.2" strokeLinecap="round" />
+        <rect x="1.15" y="1.45" width="1.3" height="0.75" rx="0.07" fill="none" stroke={C.accentDeep} strokeWidth="1.2" strokeDasharray="3 2" />
+        <circle cx="1.5" cy="1.82" r="0.2" fill="none" stroke={C.accent} strokeWidth="1.4" />
+        <path d="M1.9 1.95 H2.3 M1.9 1.75 H2.15" stroke={C.accent} strokeWidth="1.2" strokeLinecap="round" />
         {[2.45, 2.7, 2.95].map((y, i) => (
           <g key={y}>
             <rect x="1.15" y={y - 0.07} width="0.14" height="0.14" fill="none" stroke={C.muted} strokeWidth="1" />
-            {i < 2 && <path d={`M1.17 ${y} l0.04 0.05 l0.08 -0.12`} fill="none" stroke={C.teal} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />}
+            {i < 2 && <path d={`M1.17 ${y} l0.04 0.05 l0.08 -0.12`} fill="none" stroke={C.accent} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />}
             <rect x="1.45" y={y - 0.03} width={1.0 - i * 0.2} height="0.06" fill={C.line} />
           </g>
         ))}
       </g>
-      <IsoBox faces={box(1.3, 0.3, 2.3, 0.75, 0.14, 0.34)} top={C.ink2} right={C.ink} front="#2a2924" stroke={C.ink} />
+      <IsoBox faces={box(1.3, 0.3, 2.3, 0.75, 0.14, 0.34)} top={C.ink2} right={C.ink} front="#282929" stroke={C.ink} />
       {/* pencil */}
-      <IsoBox faces={box(3.15, 0.8, 3.4, 2.9, 0, 0.24)} top={C.tealSoft} right={C.tealDeep} front={C.teal} stroke={C.tealDeep} />
+      <IsoBox faces={box(3.15, 0.8, 3.4, 2.9, 0, 0.24)} top={C.accentSoft} right={C.accentDeep} front={C.accent} stroke={C.accentDeep} />
       <path d={poly([proj(3.15, 2.9, 0.24), proj(3.4, 2.9, 0.24), proj(3.275, 3.4, 0.12)])} fill={C.paper} stroke={C.lineStrong} strokeWidth="1" strokeLinejoin="round" />
       <g className="ill-float">
         <path
           d={`M${star[0]} ${star[1] - 11} L${star[0] + 3} ${star[1] - 3} L${star[0] + 11} ${star[1]} L${star[0] + 3} ${star[1] + 3} L${star[0]} ${star[1] + 11} L${star[0] - 3} ${star[1] + 3} L${star[0] - 11} ${star[1]} L${star[0] - 3} ${star[1] - 3} Z`}
-          fill={C.teal}
+          fill={C.accent}
         />
       </g>
     </g>
@@ -64,9 +64,9 @@ function Design() {
   const edge = (a: readonly [number, number, number], b: readonly [number, number, number]) => g.seg(wp(...a), wp(...b));
   return (
     <g>
-      <IsoBox faces={box(0.4, 0.9, 3.1, 3.4, 0, 0.12)} top={C.mint} right={C.faceR} front={C.faceL} stroke={C.lineStrong} />
+      <IsoBox faces={box(0.4, 0.9, 3.1, 3.4, 0, 0.12)} top={C.accentPale} right={C.faceR} front={C.faceL} stroke={C.lineStrong} />
       <g className="ill-ns" transform={g.top(0.12)}>
-        <g fill="none" stroke={C.teal} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+        <g fill="none" stroke={C.accent} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
           <path d="M0.8 1.3 H1.5 V2.0 H2.0" />
           <path d="M0.8 1.6 H1.2 V2.4 H2.0" />
           <path d="M0.8 3.0 H1.7 V2.6 H2.0" />
@@ -74,24 +74,24 @@ function Design() {
           <path d="M2.8 3.0 H2.4 V2.5 H2.2" strokeDasharray="4 3" className="ill-dash" />
         </g>
         {[[0.8, 1.3], [0.8, 1.6], [0.8, 3.0], [2.8, 1.4], [2.8, 3.0]].map(([x, y]) => (
-          <circle key={`${x}${y}`} cx={x} cy={y} r="0.09" fill="#fff" stroke={C.tealDeep} strokeWidth="1" />
+          <circle key={`${x}${y}`} cx={x} cy={y} r="0.09" fill="#fff" stroke={C.accentDeep} strokeWidth="1" />
         ))}
-        <rect x="2.15" y="1.05" width="0.55" height="0.2" rx="0.03" fill="none" stroke={C.tealDeep} strokeWidth="1" />
-        <circle cx="1.1" cy="2.05" r="0.08" fill={C.tealDeep} />
+        <rect x="2.15" y="1.05" width="0.55" height="0.2" rx="0.03" fill="none" stroke={C.accentDeep} strokeWidth="1" />
+        <circle cx="1.1" cy="2.05" r="0.08" fill={C.accentDeep} />
         {/* dimension line */}
-        <path d="M0.4 3.72 H3.1 M0.4 3.58 V3.86 M3.1 3.58 V3.86" stroke={C.tealDeep} strokeWidth="1" fill="none" />
-        <rect x="1.35" y="3.55" width="0.8" height="0.34" fill={C.card} />
-        <Txt x={1.75} y={3.8} size={0.27} fill={C.tealDeep} anchor="middle">42 mm</Txt>
+        <path d="M0.4 3.72 H3.1 M0.4 3.58 V3.86 M3.1 3.58 V3.86" stroke={C.accentDeep} strokeWidth="1" fill="none" />
+        <rect x="1.05" y="3.48" width="1.4" height="0.5" fill={C.card} />
+        <Txt x={1.75} y={3.86} size={0.42} fill={C.accentDeep} anchor="middle">42 mm</Txt>
       </g>
-      <IsoBox faces={box(1.2, 1.5, 2.0, 2.3, 0.12, 0.42)} top={C.ink2} right={C.ink} front="#2a2924" stroke={C.ink} />
+      <IsoBox faces={box(1.2, 1.5, 2.0, 2.3, 0.12, 0.42)} top={C.ink2} right={C.ink} front="#282929" stroke={C.ink} />
       {/* CAD wireframe, hovering */}
       <g className="ill-float" fill="none" strokeLinecap="round" strokeLinejoin="round">
-        <path d={edge([0, 0, 0], [0, 0, 1]) + edge([1, 0, 0], [1, 0, 1]) + edge([0, 1, 0], [0, 1, 1]) + edge([0, 0, 0], [1, 0, 0]) + edge([0, 0, 0], [0, 1, 0])} stroke={C.teal} strokeWidth="1" strokeDasharray="3 3" opacity="0.7" />
-        <path d={poly([wp(0, 0, 1), wp(1, 0, 1), wp(1, 1, 1), wp(0, 1, 1)])} stroke={C.tealDeep} strokeWidth="1.6" fill={C.card} fillOpacity=".6" />
-        <path d={poly([wp(1, 0, 0), wp(1, 1, 0), wp(1, 1, 1), wp(1, 0, 1)])} stroke={C.tealDeep} strokeWidth="1.6" />
-        <path d={poly([wp(0, 1, 0), wp(1, 1, 0), wp(1, 1, 1), wp(0, 1, 1)])} stroke={C.tealDeep} strokeWidth="1.6" />
-        <circle cx={wp(0, 1, 1)[0]} cy={wp(0, 1, 1)[1]} r="2.6" fill={C.teal} />
-        <circle cx={wp(1, 0, 0)[0]} cy={wp(1, 0, 0)[1]} r="2.6" fill={C.teal} />
+        <path d={edge([0, 0, 0], [0, 0, 1]) + edge([1, 0, 0], [1, 0, 1]) + edge([0, 1, 0], [0, 1, 1]) + edge([0, 0, 0], [1, 0, 0]) + edge([0, 0, 0], [0, 1, 0])} stroke={C.accent} strokeWidth="1" strokeDasharray="3 3" opacity="0.7" />
+        <path d={poly([wp(0, 0, 1), wp(1, 0, 1), wp(1, 1, 1), wp(0, 1, 1)])} stroke={C.accentDeep} strokeWidth="1.6" fill={C.card} fillOpacity=".6" />
+        <path d={poly([wp(1, 0, 0), wp(1, 1, 0), wp(1, 1, 1), wp(1, 0, 1)])} stroke={C.accentDeep} strokeWidth="1.6" />
+        <path d={poly([wp(0, 1, 0), wp(1, 1, 0), wp(1, 1, 1), wp(0, 1, 1)])} stroke={C.accentDeep} strokeWidth="1.6" />
+        <circle cx={wp(0, 1, 1)[0]} cy={wp(0, 1, 1)[1]} r="2.6" fill={C.accent} />
+        <circle cx={wp(1, 0, 0)[0]} cy={wp(1, 0, 0)[1]} r="2.6" fill={C.accent} />
       </g>
     </g>
   );
@@ -111,28 +111,28 @@ function Build() {
         ))}
       </g>
       {/* dev board with chip */}
-      <IsoBox faces={box(0.4, 0.5, 2.1, 2.2, 0, 0.12)} top={C.mint} right={C.faceR} front={C.faceL} stroke={C.lineStrong} />
+      <IsoBox faces={box(0.4, 0.5, 2.1, 2.2, 0, 0.12)} top={C.accentPale} right={C.faceR} front={C.faceL} stroke={C.lineStrong} />
       <g className="ill-ns" transform={g.top(0.12)}>
-        <path d="M0.6 0.9 H1.0 V1.3 M0.6 1.9 H1.2 M1.9 0.8 H1.7 V1.4" fill="none" stroke={C.teal} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="0.7" cy="0.7" r="0.1" fill={C.teal} className="ill-blink" />
+        <path d="M0.6 0.9 H1.0 V1.3 M0.6 1.9 H1.2 M1.9 0.8 H1.7 V1.4" fill="none" stroke={C.accent} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="0.7" cy="0.7" r="0.1" fill={C.accent} className="ill-blink" />
       </g>
-      <IsoBox faces={box(1.0, 1.0, 1.7, 1.7, 0.12, 0.34)} top={C.ink2} right={C.ink} front="#2a2924" stroke={C.ink} />
+      <IsoBox faces={box(1.0, 1.0, 1.7, 1.7, 0.12, 0.34)} top={C.ink2} right={C.ink} front="#282929" stroke={C.ink} />
       {/* scope */}
       <IsoBox faces={box(2.6, 0.4, 3.8, 1.6, 0, 1.5)} top={C.faceTop} right={C.faceR} front={C.faceL} stroke={C.lineStrong} />
       <g className="ill-ns" transform={g.front(1.6, 1.5)}>
-        <rect x="2.75" y="0.18" width="0.9" height="0.8" rx="0.06" fill={C.forest} />
-        <path d="M2.8 0.58 q0.1 -0.28 0.2 0 t0.2 0 t0.2 0 t0.2 0 t0.2 0" fill="none" stroke={C.tealSoft} strokeWidth="1.4" strokeLinecap="round" />
+        <rect x="2.75" y="0.18" width="0.9" height="0.8" rx="0.06" fill={C.graphite} />
+        <path d="M2.8 0.58 q0.1 -0.28 0.2 0 t0.2 0 t0.2 0 t0.2 0 t0.2 0" fill="none" stroke={C.accentSoft} strokeWidth="1.4" strokeLinecap="round" />
         <circle cx="3.0" cy="1.2" r="0.07" fill={C.muted} />
         <circle cx="3.25" cy="1.2" r="0.07" fill={C.muted} />
       </g>
       {/* probe lead */}
-      <path d={`M${probe[0][0]} ${probe[0][1]} L${probe[1][0]} ${probe[1][1]} L${probe[2][0]} ${probe[2][1]}`} fill="none" stroke={C.teal} strokeWidth="1.5" strokeDasharray="4 4" className="ill-dash" />
+      <path d={`M${probe[0][0]} ${probe[0][1]} L${probe[1][0]} ${probe[1][1]} L${probe[2][0]} ${probe[2][1]}`} fill="none" stroke={C.accent} strokeWidth="1.5" strokeDasharray="4 4" className="ill-dash" />
       {/* soldering iron */}
       <IsoBox faces={box(3.0, 2.1, 3.25, 3.7, 0, 0.26)} top={C.lineStrong} right={C.ink2} front={C.ink} stroke={C.ink2} />
-      <IsoBox faces={box(3.0, 1.8, 3.25, 2.1, 0, 0.26)} top={C.tealSoft} right={C.tealDeep} front={C.teal} stroke={C.tealDeep} />
+      <IsoBox faces={box(3.0, 1.8, 3.25, 2.1, 0, 0.26)} top={C.accentSoft} right={C.accentDeep} front={C.accent} stroke={C.accentDeep} />
       {[[-5, -8], [3, -13], [8, -6], [-9, -15]].map(([dx, dy], i) => {
         const [x, y] = proj(3.12, 1.8, 0.3);
-        return <circle key={i} cx={x + dx} cy={y + dy} r="1.3" fill={C.teal} className="ill-blink" style={{ animationDelay: `${i * 0.4}s` }} />;
+        return <circle key={i} cx={x + dx} cy={y + dy} r="1.3" fill={C.accent} className="ill-blink" style={{ animationDelay: `${i * 0.4}s` }} />;
       })}
     </g>
   );
@@ -147,31 +147,31 @@ function Handover() {
     <g>
       <IsoBox faces={box(0.7, 0.7, 2.7, 2.7, 0, 1.5)} top={C.faceTop} right={C.faceR} front={C.faceL} stroke={C.lineStrong} />
       <g className="ill-ns" transform={g.top(1.5)}>
-        <rect x="1.5" y="0.7" width="0.4" height="2.0" fill={C.teal} opacity="0.85" />
+        <rect x="1.5" y="0.7" width="0.4" height="2.0" fill={C.accent} opacity="0.85" />
       </g>
       <g className="ill-ns" transform={g.front(2.7, 1.5)}>
-        <rect x="1.5" y="0" width="0.4" height="1.5" fill={C.teal} opacity="0.85" />
+        <rect x="1.5" y="0" width="0.4" height="1.5" fill={C.accent} opacity="0.85" />
         <rect x="0.9" y="0.7" width="0.45" height="0.5" rx="0.04" fill="#fff" stroke={C.lineStrong} strokeWidth="1" />
         <path d="M1.0 0.85 H1.25 M1.0 0.98 H1.25 M1.0 1.1 H1.15" stroke={C.muted} strokeWidth="1" />
       </g>
       {/* key on the slab */}
       <g className="ill-ns" transform={g.top(0)}>
-        <circle cx="1.1" cy="3.4" r="0.27" fill="none" stroke={C.tealDeep} strokeWidth="3" />
-        <path d="M1.37 3.4 H2.5 M2.15 3.4 V3.68 M2.4 3.4 V3.62" stroke={C.tealDeep} strokeWidth="3" strokeLinecap="round" fill="none" />
+        <circle cx="1.1" cy="3.4" r="0.27" fill="none" stroke={C.accentDeep} strokeWidth="3" />
+        <path d="M1.37 3.4 H2.5 M2.15 3.4 V3.68 M2.4 3.4 V3.62" stroke={C.accentDeep} strokeWidth="3" strokeLinecap="round" fill="none" />
         <circle cx="1.1" cy="3.4" r="0.08" fill={C.card} />
       </g>
       {/* flag */}
       <g className="ill-float-2">
         <path d={g.seg(a, proj(2.2, 1.2, 1.5))} stroke={C.ink2} strokeWidth="2" strokeLinecap="round" />
-        <path d={poly([a, c, b])} fill={C.teal} stroke={C.tealDeep} strokeWidth="1" strokeLinejoin="round" />
+        <path d={poly([a, c, b])} fill={C.accent} stroke={C.accentDeep} strokeWidth="1" strokeLinejoin="round" />
       </g>
       {/* done badge */}
       <g className="ill-float">
-        <circle cx={proj(3.4, 2.4, 1.9)[0]} cy={proj(3.4, 2.4, 1.9)[1]} r="10" fill="#fff" stroke={C.teal} strokeWidth="1.6" />
+        <circle cx={proj(3.4, 2.4, 1.9)[0]} cy={proj(3.4, 2.4, 1.9)[1]} r="10" fill="#fff" stroke={C.accent} strokeWidth="1.6" />
         <path
           d={`M${proj(3.4, 2.4, 1.9)[0] - 4.5} ${proj(3.4, 2.4, 1.9)[1]} l3.2 3.4 l6 -7`}
           fill="none"
-          stroke={C.teal}
+          stroke={C.accent}
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -206,7 +206,7 @@ export function RoadmapDesktop() {
           ))}
           <path d={d} fill="none" stroke={C.lineStrong} strokeWidth="19" strokeLinecap="round" strokeLinejoin="round" />
           <path d={d} fill="none" stroke="#fff" strokeWidth="16" strokeLinecap="round" strokeLinejoin="round" />
-          <path d={d} fill="none" stroke={C.teal} strokeWidth="2.4" strokeLinecap="round" strokeDasharray="8 8" className="ill-dash" />
+          <path d={d} fill="none" stroke={C.accent} strokeWidth="2.4" strokeLinecap="round" strokeDasharray="8 8" className="ill-dash" />
           {stations.map((i) => {
             const Art = arts[i];
             return (

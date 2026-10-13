@@ -3,7 +3,7 @@ import { Hanken_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav/Nav";
 import { Footer } from "@/components/sections/Footer";
-import { SITE_URL } from "@/lib/siteUrl";
+import { SITE_URL, SITE_URL_IS_PLACEHOLDER } from "@/lib/siteUrl";
 import { site } from "@/content/site";
 
 // Only the weights the design system allows (body 400/500; mono 400 + the
@@ -46,11 +46,12 @@ export const metadata: Metadata = {
     title: "TGIE. Theory, embodied.",
     description: "We give ideas a form and carry the weight of making it real.",
   },
-  robots: { index: true, follow: true },
+  // The placeholder origin must never be indexed; set NEXT_PUBLIC_SITE_URL to go live.
+  robots: SITE_URL_IS_PLACEHOLDER ? { index: false, follow: false } : { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#e9e6de",
+  themeColor: "#e7e8e5",
   width: "device-width",
   initialScale: 1,
 };
@@ -64,7 +65,7 @@ const jsonLd = {
       name: site.fullName,
       alternateName: "TGIE",
       url: SITE_URL,
-      logo: `${SITE_URL}/icon.svg`,
+      logo: `${SITE_URL}/apple-icon`,
       slogan: "Theory, embodied.",
       description,
       telephone: site.contact.phone,
@@ -96,7 +97,7 @@ export default function RootLayout({
       <body>
         <a
           href="#main"
-          className="sr-only rounded-[8px] bg-inkbtn text-[14px] font-medium text-white focus:not-sr-only focus:px-4 focus:py-2.5 focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus-visible:outline-2 focus-visible:outline-teal"
+          className="sr-only rounded-[8px] bg-inkbtn text-[14px] font-medium text-white focus:not-sr-only focus:px-4 focus:py-2.5 focus:fixed focus:left-3 focus:top-3 focus:z-[100]"
         >
           Skip to content
         </a>

@@ -14,7 +14,7 @@ function Art({ children }: { children: ReactNode }) {
   return (
     <div
       aria-hidden
-      className="iso-grid relative h-[200px] w-full overflow-hidden bg-mint"
+      className="iso-grid relative h-[200px] w-full overflow-hidden bg-accent-pale"
     >
       <Live>
         <svg
@@ -58,12 +58,12 @@ export function LabBench() {
           width={1.35}
           height={0.7}
           rx={0.05}
-          fill="#0e3a2e"
+          fill="#1c1f1e"
         />
         <path
           d="M-2.2 2.1h.2l.1 -.25.2 .5.2 -.5.2 .5.2 -.5.2 .5.1 -.25h.2"
           fill="none"
-          stroke={C.tealSoft}
+          stroke={C.accentSoft}
           strokeWidth={0.04}
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -73,7 +73,7 @@ export function LabBench() {
           y={1.75}
           width={0.06}
           height={0.7}
-          fill={C.tealSoft}
+          fill={C.accentSoft}
           opacity={0.6}
           className="ill-scan"
         />
@@ -97,7 +97,7 @@ export function LabBench() {
           cx={-0.35}
           cy={1.7}
           r={0.05}
-          fill={C.teal}
+          fill={C.accent}
           className="ill-blink"
         />
       </g>
@@ -117,7 +117,7 @@ export function LabBench() {
             />
             <path
               d={`M${b[0] - rx} ${b[1] - 8}V${b[1]}A${rx} ${ry} 0 0 0 ${b[0] + rx} ${b[1]}V${b[1] - 8}A${rx} ${ry} 0 0 1 ${b[0] - rx} ${b[1] - 8}Z`}
-              fill={C.tealSoft}
+              fill={C.accentSoft}
               fillOpacity={0.7}
             />
             <ellipse
@@ -136,20 +136,20 @@ export function LabBench() {
       <path
         d={`M${s.proj(1.3, 0.1, 1.46)[0]} ${s.proj(1.3, 0.1, 1.46)[1]}L${s.proj(0.7, 0.45, 1.46)[0]} ${s.proj(0.7, 0.45, 1.46)[1]}L${s.proj(-0.2, 0.45, 1.46)[0]} ${s.proj(-0.2, 0.45, 1.46)[1]}`}
         fill="none"
-        stroke={C.teal}
+        stroke={C.accent}
         strokeWidth={1.5}
         strokeDasharray="6 4"
         className="ill-dash"
       />
       {/* wearable sensor: strap + puck */}
-      {s.bx(1.0, -0.45, 2.2, 0.35, 1.45, 1.6, "mint")}
-      {s.bx(1.3, -0.25, 1.9, 0.2, 1.6, 1.85, "forest")}
+      {s.bx(1.0, -0.45, 2.2, 0.35, 1.45, 1.6, "accentPale")}
+      {s.bx(1.3, -0.25, 1.9, 0.2, 1.6, 1.85, "graphite")}
       <g transform={s.T(1.85)}>
         <circle
           cx={1.6}
           cy={-0.02}
           r={0.1}
-          fill={C.tealSoft}
+          fill={C.accentSoft}
           className="ill-blink"
         />
       </g>
@@ -157,7 +157,7 @@ export function LabBench() {
         cx={sensor[0]}
         cy={sensor[1]}
         r={9}
-        fill={C.tealSoft}
+        fill={C.accentSoft}
         opacity={0.18}
         className="ill-pulse"
       />
@@ -183,11 +183,11 @@ export function FounderSteps() {
         <g key={i}>{s.bx(x - 1, y - 1, x + 1, y + 1, 0.1, hts[i], "white")}</g>
       ))}
       {/* 1 prototype board */}
-      {s.bx(-0.7, 1.9, 0.7, 3.1, hts[0], hts[0] + 0.12, "forest")}
+      {s.bx(-0.7, 1.9, 0.7, 3.1, hts[0], hts[0] + 0.12, "graphite")}
       <g transform={s.T(hts[0] + 0.12)}>
         <path
           d="M-.5 2.3H-.1V2.7M.5 2.5H.1"
-          stroke={C.tealSoft}
+          stroke={C.accentSoft}
           strokeWidth={0.05}
           fill="none"
           strokeLinecap="round"
@@ -196,7 +196,7 @@ export function FounderSteps() {
           cx={0.45}
           cy={2.9}
           r={0.06}
-          fill={C.tealSoft}
+          fill={C.accentSoft}
           className="ill-blink"
         />
       </g>
@@ -209,7 +209,7 @@ export function FounderSteps() {
           y={-0.12}
           width={1.5}
           height={0.24}
-          fill={C.tealSoft}
+          fill={C.accentSoft}
           fillOpacity={0.8}
         />
       </g>
@@ -220,7 +220,7 @@ export function FounderSteps() {
           width={0.4}
           height={0.4}
           rx={0.06}
-          fill="#0f3a2e"
+          fill="#1c1f1e"
         />
         <path
           d={`M-.1 ${hts[1] + 0.58}H.1M0 ${hts[1] + 0.58}V${hts[1] + 0.4}`}
@@ -241,7 +241,7 @@ export function FounderSteps() {
               width={0.25}
               height={0.28}
               rx={0.03}
-              fill={(r + c) % 2 ? C.tealSoft : "#f3fbf8"}
+              fill={(r + c) % 2 ? C.accentSoft : "#fff5ee"}
               stroke={C.lineStrong}
               strokeWidth={0.015}
             />
@@ -255,8 +255,8 @@ export function FounderSteps() {
           s.proj(0.6, -2.5, hts[2] + 2.0),
           s.proj(0.04, -2.5, hts[2] + 1.85),
         ])}
-        fill={C.teal}
-        stroke={C.tealDeep}
+        fill={C.accent}
+        stroke={C.accentDeep}
         strokeWidth={0.8}
         className="ill-float"
       />
@@ -264,14 +264,14 @@ export function FounderSteps() {
       <path
         d={`M${s.proj(0, 2.5, 2.2)[0]} ${s.proj(0, 2.5, 2.2)[1]}Q${s.proj(0, 0, 3.9)[0] - 8} ${s.proj(0, 0, 3.9)[1] - 6} ${tx[0] - 4} ${tx[1] - 6}`}
         fill="none"
-        stroke={C.teal}
+        stroke={C.accent}
         strokeWidth={1.5}
         strokeDasharray="6 4"
         className="ill-dash"
       />
       <path
         d={`M${tx[0] - 10} ${tx[1] - 12}L${tx[0] - 2} ${tx[1] - 4}L${tx[0] - 12} ${tx[1] - 3}Z`}
-        fill={C.teal}
+        fill={C.accent}
       />
     </Art>
   );

@@ -5,33 +5,33 @@ import { Live } from "./Live";
 /**
  * Shared illustration kit. Every custom figure on the site is built from this:
  *  - one register per figure (isometric | engraved | pixel) — designsystem §11.1
- *  - palette below only (single teal accent + warm neutrals + forest tints)
+ *  - palette below only (single accent accent + warm neutrals + graphite tints)
  *  - pure inline SVG, server-rendered; animation = CSS classes `.ill-*`
  *    (see globals.css) gated by <Live>.
  */
 
 export const C = {
-  ink: "#1c1b18",
-  ink2: "#3b3a35",
-  muted: "#9c9a90",
-  line: "#e5e1d8",
-  lineStrong: "#cfcbb7",
-  paper: "#e9e6de",
-  paper2: "#efece4",
-  cell: "#f5f3ee",
+  ink: "#0d0f0e",
+  ink2: "#282d2e",
+  muted: "#555b5c",
+  line: "#d6d9d6",
+  lineStrong: "#aeb3b1",
+  paper: "#e7e8e5",
+  paper2: "#f2f3f1",
+  cell: "#fafaf8",
   card: "#ffffff",
-  soft: "#fbfaf6",
+  soft: "#f3f4f2",
   // iso face tints (top is brightest, left/front darker)
   faceTop: "#ffffff",
-  faceR: "#dbe4de",
-  faceL: "#e7edea",
-  faceDark: "#cdd8d1",
-  mint: "#e9f5f1",
-  teal: "#2fae97",
-  tealDeep: "#0e6e5c",
-  tealSoft: "#6fd0bb",
-  forest: "#0f3a2e",
-  forestDeep: "#0b2c23",
+  faceR: "#b9bebc",
+  faceL: "#dfe2e0",
+  faceDark: "#8a908f",
+  accentPale: "#ffeadc",
+  accent: "#e2561f",
+  accentDeep: "#a33a0f",
+  accentSoft: "#ffa36c",
+  graphite: "#1c1f1e",
+  graphiteDeep: "#111312",
 } as const;
 
 /* ---------------- isometric helpers (2:1 projection) ---------------- */
@@ -99,10 +99,10 @@ export function SceneFrame({
   children: ReactNode;
   ground?: boolean;
   cover?: boolean;
-  tone?: "cell" | "paper2" | "mint" | "forest";
+  tone?: "cell" | "paper2" | "accentPale" | "graphite";
   className?: string;
 }) {
-  const bg = { cell: "bg-cell", paper2: "bg-paper-2", mint: "bg-mint", forest: "bg-forest-deep" }[tone];
+  const bg = { cell: "bg-cell", paper2: "bg-paper-2", accentPale: "bg-accent-pale", graphite: "bg-graphite-deep" }[tone];
   return (
     <div className={cn("relative h-full w-full overflow-hidden", bg, ground && "iso-grid", className)}>
       <Live>

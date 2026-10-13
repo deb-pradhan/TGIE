@@ -60,15 +60,15 @@ export function Icon({
 }
 
 const badgeTones = {
-  mint: "bg-mint text-teal-deep",
-  ink: "bg-inkbtn text-teal-soft",
-  forest: "bg-forest text-teal-soft",
+  accentPale: "bg-accent-pale text-accent-deep",
+  ink: "bg-inkbtn text-accent-soft",
+  graphite: "bg-graphite text-accent-soft",
 } as const;
 
 /** Rounded-square icon badge used across feature rows (44px by default). */
 export function IconBadge({
   name,
-  tone = "mint",
+  tone = "accentPale",
   size = 44,
   className,
 }: {

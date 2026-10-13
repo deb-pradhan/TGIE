@@ -23,7 +23,7 @@ export function Person({
   x,
   y,
   s = 1,
-  body = C.teal,
+  body = C.accent,
   hat = false,
   className,
 }: {
@@ -41,7 +41,7 @@ export function Person({
       <rect x="0.8" y="-9" width="3.2" height="9" rx="1.4" fill={C.ink2} />
       <rect x="-5.2" y="-23" width="10.4" height="16" rx="5" fill={body} />
       <circle cx="0" cy="-28.5" r="4.4" fill={C.faceTop} stroke={C.ink2} strokeWidth="1.2" />
-      {hat && <path d="M-5.2 -29.6 a5.2 5.2 0 0 1 10.4 0 z" fill={C.tealDeep} />}
+      {hat && <path d="M-5.2 -29.6 a5.2 5.2 0 0 1 10.4 0 z" fill={C.accentDeep} />}
     </g>
   );
 }
@@ -69,14 +69,14 @@ export function Stage({
   children: ReactNode;
   overlay?: ReactNode;
   ground?: boolean;
-  tone?: "cell" | "mint" | "paper2";
+  tone?: "cell" | "accentPale" | "paper2";
   /** inside PageHero's art cell: gives mobile a taller in-flow box, fills the cell on lg */
   hero?: boolean;
   /** override the in-flow height of the hero box below lg */
   heroClass?: string;
   className?: string;
 }) {
-  const bg = { cell: "bg-cell", mint: "bg-mint", paper2: "bg-paper-2" }[tone];
+  const bg = { cell: "bg-cell", accentPale: "bg-accent-pale", paper2: "bg-paper-2" }[tone];
   return (
     <div className={hero ? cn("relative lg:absolute lg:inset-0 lg:h-auto", heroClass) : "absolute inset-0"}>
     <div className={cn("absolute inset-0 overflow-hidden [container-type:size]", bg, ground && "iso-grid", className)}>
@@ -139,7 +139,7 @@ export function Mark({ n, style }: { n: number | string; style: CSSProperties })
   return (
     <span
       style={style}
-      className="pointer-events-none absolute grid h-[22px] w-[22px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-teal font-mono text-[11px] font-bold text-white shadow-[0_0_0_3px_var(--color-mint)]"
+      className="pointer-events-none absolute grid h-[22px] w-[22px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-accent font-mono text-[11px] font-bold text-ink shadow-[0_0_0_3px_var(--color-accent-pale)]"
     >
       {n}
     </span>

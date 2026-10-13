@@ -24,9 +24,9 @@ export function Hero() {
           </p>
           <p className="text-lead mt-6 max-w-[52ch] text-muted">
             Most ideas die after the breakthrough. In the board that won&apos;t{" "}
-            <Chip>hold a signal</Chip>, the company nobody has time to form, the{" "}
-            <Chip>raise</Chip> nobody prepped for. We carry all of it. You keep
-            the idea.
+            <Chip>hold a signal</Chip>, the company nobody has time to{" "}
+            <Chip>form</Chip>, the <Chip>raise</Chip> nobody prepped for. We
+            carry all of it. You keep the idea.
           </p>
           <div className="mt-8 flex flex-wrap gap-3.5">
             <Button href="/start">Start a Project</Button>
@@ -35,18 +35,13 @@ export function Hero() {
             </Button>
           </div>
           <div className="mt-5 flex items-center gap-2 text-[13px] text-ink-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-teal" />
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
             Free scoping call. Your idea stays yours from day one.
           </div>
         </Cell>
 
         {/* media cell: the isometric journey */}
-        <div className="iso-grid relative flex min-h-[360px] flex-col justify-between gap-4 overflow-hidden rounded-[6px] bg-mint px-4 py-4 sm:px-6 sm:py-5 lg:min-h-[600px]">
-          <div className="relative z-10 flex items-center justify-between gap-3 font-mono text-[10.5px] uppercase tracking-[0.14em] sm:text-[11px]">
-            <span className="text-teal-deep">{h.figure.caption}</span>
-            <span className="hidden text-ink-2 sm:inline">{h.figure.meta}</span>
-          </div>
-
+        <div className="iso-grid relative flex min-h-[360px] flex-col justify-between gap-4 overflow-hidden rounded-[6px] bg-accent-pale px-4 py-4 sm:px-6 sm:py-5 lg:min-h-[600px]">
           <div className="relative aspect-[612/380] w-full">
             <HeroScene />
           </div>
@@ -60,13 +55,21 @@ export function Hero() {
                 <dt className="font-mono whitespace-nowrap text-[15px] font-medium leading-none tracking-tight text-ink sm:text-[19px]">
                   {s.value}
                   {"unit" in s && s.unit ? (
-                    <span className="ml-1 text-[11px] font-normal text-teal-deep">
+                    <span className="ml-1 text-[11px] font-normal text-accent-deep">
                       {s.unit}
                     </span>
                   ) : null}
                 </dt>
-                <dd className="mt-2 text-[11.5px] leading-snug text-muted sm:text-[12px]">
-                  {s.label}
+                <dd className="mt-2 text-[12px] leading-snug text-muted">
+                  {s.label.split(/(lock-in)/).map((part, i) =>
+                    part === "lock-in" ? (
+                      <span key={i} className="whitespace-nowrap">
+                        {part}
+                      </span>
+                    ) : (
+                      part
+                    ),
+                  )}
                 </dd>
               </div>
             ))}
@@ -78,7 +81,7 @@ export function Hero() {
                 key={l.k}
                 className="flex items-center gap-2 rounded-chip border border-line bg-card px-2.5 py-1.5 text-[12px] text-ink-2"
               >
-                <span className="grid h-[18px] w-[18px] place-items-center rounded-full bg-teal-deep font-mono text-[10px] text-white">
+                <span className="grid h-5 w-5 place-items-center rounded-full bg-accent-deep font-mono text-[11px] text-white">
                   {l.k}
                 </span>
                 {l.label}

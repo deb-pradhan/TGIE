@@ -46,7 +46,7 @@ export const segments = {
     { segment: "Funded startups (business services)", pillars: "C", note: "Branding, incorporation, audit, funding access, ops support" },
     { segment: "Heavy industrial & OEM", pillars: "D", note: "Transformer tanks, structural skid bases, furnace components" },
   ],
-  note: "Engineering, additive manufacturing, business enablement, and heavy fabrication under one roof. A breadth no single regional competitor currently replicates.",
+  note: "Engineering, additive manufacturing, business enablement, and heavy fabrication, under one roof.",
 };
 
 /* ------------------------------------------------ Pillar B: materials matrix */
@@ -96,8 +96,8 @@ export const work = {
 /* ------------------------------------------------------------------ Insights */
 export const insights = {
   eyebrow: "Insights & resources",
-  h1: "Everything you need",
-  h2: "to know.",
+  h1: "Answers before",
+  h2: "the first call.",
   lead: "Answers, guides, and the capability portfolio, for researchers, founders, and industrial buyers weighing an engagement.",
   resources: [
     {
@@ -109,9 +109,9 @@ export const insights = {
       kind: "portfolio",
     },
     {
-      title: "Engineering & funding notes",
-      note: "Short, practical writing on hardware, grants, and getting a product to market.",
-      cta: "Read the notes",
+      title: "Selected case studies",
+      note: "The engagements we can talk about, from a PhD's wearable sensor to a certified fabrication run.",
+      cta: "See the work",
       href: "/work",
       meta: "Case studies",
       kind: "notes",
@@ -121,7 +121,7 @@ export const insights = {
       note: "How a project runs. The four-phase lifecycle, mapped to grant stages.",
       cta: "See the model",
       href: "/#lifecycle",
-      meta: "Four phases · Home",
+      meta: "Diagram",
       kind: "model",
     },
   ],
@@ -164,6 +164,8 @@ export const company = {
   ],
   lab: {
     title: "The lab & infrastructure",
+    line1: "One base,",
+    line2: "bench to floor.",
     intro:
       "Our prototyping laboratory and fabrication operation share one operational base in Thirumudivakkam, Chennai. A short drive from major campus clusters. Scholars, researchers, and founders are welcome to work in-house with our engineers.",
     items: [

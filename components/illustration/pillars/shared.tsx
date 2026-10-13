@@ -82,7 +82,7 @@ export function WallCard({
 
 /** A cluster of small square "dither" particles: [dx, dy, size] relative to an origin. */
 export function Dots({
-  at, pts, fill = C.teal, className, opacity = 1,
+  at, pts, fill = C.accent, className, opacity = 1,
 }: {
   at: readonly [number, number]; pts: ReadonlyArray<readonly [number, number, number]>;
   fill?: string; className?: string; opacity?: number;

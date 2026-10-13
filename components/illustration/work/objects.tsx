@@ -9,7 +9,7 @@ import { Box, Cyl, type Ctx } from "./geo";
 type P = { c: Ctx; full?: boolean };
 
 const NS = { vectorEffect: "non-scaling-stroke" as const };
-const DARK = "#d5dfd8";
+const DARK = "#d8dbdb";
 
 /** 1. Wearable gait-analysis sensor: strap + module with BLE. Local center (2.1, 1.5). */
 export function Wearable({ c, full }: P) {
@@ -24,21 +24,21 @@ export function Wearable({ c, full }: P) {
       <path d={c.seg(c.proj(3.0, 2.1, 0.14), c.proj(3.8, 2.1, 0.14))} stroke={C.lineStrong} strokeWidth={1} strokeDasharray="3 3" />
       <Box c={c} b={[1.3, 0.6, 2.9, 2.4, 0.28, 1]} />
       {/* device screen inset */}
-      <path d={top} fill={C.forest} transform={`translate(${ax} ${ay}) scale(0.78) translate(${-ax} ${-ay})`} />
+      <path d={top} fill={C.graphite} transform={`translate(${ax} ${ay}) scale(0.78) translate(${-ax} ${-ay})`} />
       <path
         d={`M${ax - 14} ${ay + 1} l5 0 l3 -5 l4 9 l3 -7 l3 3 l7 0`}
-        stroke={C.tealSoft}
+        stroke={C.accentSoft}
         strokeWidth={1.3}
         fill="none"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <circle className="ill-blink" cx={lx} cy={ly} r={1.8} fill={C.teal} />
-      <g className="ill-pulse" fill="none" stroke={C.teal} strokeWidth={1.5} strokeLinecap="round">
+      <circle className="ill-blink" cx={lx} cy={ly} r={1.8} fill={C.accent} />
+      <g className="ill-pulse" fill="none" stroke={C.accent} strokeWidth={1.5} strokeLinecap="round">
         <path d={`M${ax - 7} ${ay - 18} a10 10 0 0 1 14 0`} />
         {full && <path d={`M${ax - 12} ${ay - 24} a17 17 0 0 1 24 0`} opacity={0.6} />}
       </g>
-      <circle cx={ax} cy={ay - 13} r={1.8} fill={C.teal} />
+      <circle cx={ax} cy={ay - 13} r={1.8} fill={C.accent} />
     </g>
   );
 }
@@ -54,9 +54,9 @@ export function EnvSensor({ c, full }: P) {
       <path d={c.seg(c.proj(3, 2.4, 1.3), c.proj(3, 0, 1.3))} stroke={C.lineStrong} strokeWidth={1} />
       {/* weatherproof connectors on the lit face */}
       <g transform={c.front(2.4)}>
-        <circle cx={0.8} cy={0.62} r={0.26} fill={C.ink2} stroke={C.tealDeep} strokeWidth={2} {...NS} />
-        <circle cx={2.1} cy={0.62} r={0.26} fill={C.ink2} stroke={C.tealDeep} strokeWidth={2} {...NS} />
-        <circle cx={1.45} cy={0.62} r={0.1} fill={C.teal} />
+        <circle cx={0.8} cy={0.62} r={0.26} fill={C.ink2} stroke={C.accentDeep} strokeWidth={2} {...NS} />
+        <circle cx={2.1} cy={0.62} r={0.26} fill={C.ink2} stroke={C.accentDeep} strokeWidth={2} {...NS} />
+        <circle cx={1.45} cy={0.62} r={0.1} fill={C.accent} />
       </g>
       {full && (
         <g transform={c.right(3)} stroke={C.lineStrong} strokeWidth={1.2} {...NS}>
@@ -70,7 +70,7 @@ export function EnvSensor({ c, full }: P) {
       })}
       {/* antenna */}
       <path d={c.seg(c.proj(2.5, 0.4, 1.7), c.proj(2.5, 0.4, 3))} stroke={C.ink2} strokeWidth={2.4} strokeLinecap="round" />
-      <circle className="ill-blink" cx={tx} cy={ty - 1.3 * c.hz} r={2.2} fill={C.teal} />
+      <circle className="ill-blink" cx={tx} cy={ty - 1.3 * c.hz} r={2.2} fill={C.accent} />
     </g>
   );
 }
@@ -82,11 +82,11 @@ export function Bezel({ c, full }: P) {
       <Box c={c} b={[0, 1, 4, 1.35, 0, 1.9]} top={C.faceL} right={C.faceDark} front={C.faceR} />
       <g transform={c.front(1.35)}>
         <circle cx={0.95} cy={0.95} r={0.5} fill={C.ink2} />
-        <circle cx={0.95} cy={0.95} r={0.34} fill={C.forest} stroke={C.tealSoft} strokeWidth={1} {...NS} />
+        <circle cx={0.95} cy={0.95} r={0.34} fill={C.graphite} stroke={C.accentSoft} strokeWidth={1} {...NS} />
         <circle cx={3.05} cy={0.95} r={0.5} fill={C.ink2} />
-        <circle cx={3.05} cy={0.95} r={0.34} fill={C.forest} stroke={C.tealSoft} strokeWidth={1} {...NS} />
-        <path d="M0.95 0.95 L1.12 1.1" stroke={C.tealSoft} strokeWidth={1.4} strokeLinecap="round" {...NS} />
-        <path d="M3.05 0.95 L2.88 1.1" stroke={C.tealSoft} strokeWidth={1.4} strokeLinecap="round" {...NS} />
+        <circle cx={3.05} cy={0.95} r={0.34} fill={C.graphite} stroke={C.accentSoft} strokeWidth={1} {...NS} />
+        <path d="M0.95 0.95 L1.12 1.1" stroke={C.accentSoft} strokeWidth={1.4} strokeLinecap="round" {...NS} />
+        <path d="M3.05 0.95 L2.88 1.1" stroke={C.accentSoft} strokeWidth={1.4} strokeLinecap="round" {...NS} />
         <rect x={1.75} y={0.62} width={0.5} height={0.65} rx={0.1} fill={C.ink2} />
         <rect x={0.7} y={1.55} width={2.6} height={0.14} rx={0.07} fill={C.faceDark} />
         {full &&
@@ -94,7 +94,7 @@ export function Bezel({ c, full }: P) {
       </g>
       {/* scan line sweeping over it */}
       <g className="ill-scan">
-        <path d={c.seg(c.proj(2, 1.35, 0), c.proj(2, 1.35, 1.9))} stroke={C.teal} strokeWidth={1.6} strokeDasharray="2 3" />
+        <path d={c.seg(c.proj(2, 1.35, 0), c.proj(2, 1.35, 1.9))} stroke={C.accent} strokeWidth={1.6} strokeDasharray="2 3" />
       </g>
     </g>
   );
@@ -106,13 +106,13 @@ export function Replica({ c, full }: P) {
     <g>
       <Box c={c} b={[-0.3, -0.3, 3.7, 2.1, 0, 0.3]} front={C.faceR} right={C.faceDark} />
       <g transform={c.front(2.1)}>
-        <rect x={1.3} y={0.08} width={1.1} height={0.1} rx={0.03} fill={C.teal} />
+        <rect x={1.3} y={0.08} width={1.1} height={0.1} rx={0.03} fill={C.accent} />
       </g>
       {/* body */}
       <Box c={c} b={[0.1, 0.2, 3.3, 1.6, 0.55, 1.1]} />
       <Box c={c} b={[1, 0.35, 2.5, 1.45, 1.1, 1.65]} top={C.faceL} />
       <g transform={c.front(1.45)}>
-        <path d="M1.15 1.18h0.55v0.35h-0.7z M1.85 1.18h0.5l0.3 0.35h-0.8z" fill={C.forest} />
+        <path d="M1.15 1.18h0.55v0.35h-0.7z M1.85 1.18h0.5l0.3 0.35h-0.8z" fill={C.graphite} />
       </g>
       {/* wheels */}
       <g transform={c.front(1.6)}>
@@ -121,8 +121,8 @@ export function Replica({ c, full }: P) {
         <circle cx={2.6} cy={0.62} r={0.36} fill={C.ink2} />
         <circle cx={2.6} cy={0.62} r={0.16} fill={C.faceDark} />
       </g>
-      <path d={c.seg(c.proj(0.4, 0.2, 1.1), c.proj(3, 0.2, 1.1))} stroke={C.tealSoft} strokeWidth={1.2} />
-      {full && <path d={c.seg(c.proj(0.5, 1.6, 0.95), c.proj(3, 1.6, 0.95))} stroke={C.teal} strokeWidth={1} strokeDasharray="1 3" />}
+      <path d={c.seg(c.proj(0.4, 0.2, 1.1), c.proj(3, 0.2, 1.1))} stroke={C.accentSoft} strokeWidth={1.2} />
+      {full && <path d={c.seg(c.proj(0.5, 1.6, 0.95), c.proj(3, 1.6, 0.95))} stroke={C.accent} strokeWidth={1} strokeDasharray="1 3" />}
     </g>
   );
 }
@@ -130,7 +130,7 @@ export function Replica({ c, full }: P) {
 /** 5. Funded startup: a small building with lit windows. Local center (1.8, 1). */
 export function Startup({ c, full }: P) {
   const win = (x: number, z: number, lit: boolean) => (
-    <rect key={`${x}-${z}`} x={x} y={z} width={0.3} height={0.34} rx={0.04} fill={lit ? C.tealSoft : C.mint} />
+    <rect key={`${x}-${z}`} x={x} y={z} width={0.3} height={0.34} rx={0.04} fill={lit ? C.accentSoft : C.accentPale} />
   );
   const [fx, fy] = c.proj(0.9, 0.9, 2.8);
   return (
@@ -146,7 +146,7 @@ export function Startup({ c, full }: P) {
       </g>
       {/* roof flag */}
       <path d={`M${fx} ${fy} l0 -16`} stroke={C.ink2} strokeWidth={1.6} strokeLinecap="round" />
-      <path className="ill-float" d={`M${fx} ${fy - 16} l11 3.5 l-11 3.5 z`} fill={C.teal} />
+      <path className="ill-float" d={`M${fx} ${fy - 16} l11 3.5 l-11 3.5 z`} fill={C.accent} />
       {full && <path d={c.seg(c.proj(0, 1.8, 0.02), c.proj(3.4, 1.8, 0.02))} stroke={C.lineStrong} strokeWidth={1} />}
     </g>
   );
@@ -173,14 +173,14 @@ export function Transformer({ c, full }: P) {
       </g>
       <Box c={c} b={[-0.1, -0.1, 3.1, 2.1, 2.1, 2.25]} top={C.faceTop} />
       {[0.6, 1.5, 2.4].map((x) => (
-        <Cyl key={x} c={c} x={x} y={0.7} r={0.17} z0={2.25} z1={2.9} side={C.faceDark} top={C.tealSoft} stroke={C.tealDeep} />
+        <Cyl key={x} c={c} x={x} y={0.7} r={0.17} z0={2.25} z1={2.9} side={C.faceDark} top={C.accentSoft} stroke={C.accentDeep} />
       ))}
       <g transform={c.front(2)}>
         <circle cx={gx} cy={1.55} r={0.24} fill={C.card} stroke={C.ink2} strokeWidth={1.2} {...NS} />
-        <path d={`M${gx} 1.55 L${gx + 0.12} 1.66`} stroke={C.teal} strokeWidth={1.4} strokeLinecap="round" {...NS} />
+        <path d={`M${gx} 1.55 L${gx + 0.12} 1.66`} stroke={C.accent} strokeWidth={1.4} strokeLinecap="round" {...NS} />
       </g>
       {full && (
-        <g fill={C.tealSoft}>
+        <g fill={C.accentSoft}>
           {[[0.2, -0.3], [0.9, -0.3], [1.6, -0.3], [2.3, -0.3]].map(([x, y], i) => {
             const [sx, sy] = c.proj(x, y + 2.6, 0.15);
             return <circle key={i} className="ill-pulse" cx={sx} cy={sy} r={1.4} />;
@@ -198,16 +198,16 @@ export function Pcb({ c }: P) {
     "M" + pts.map(([x, y]) => c.proj(x, y, z).map((n) => n.toFixed(1)).join(" ")).join(" L");
   return (
     <g>
-      <Box c={c} b={[0, 0, 3.4, 2.4, 0, z]} top={C.mint} stroke={C.lineStrong} />
-      <path d={tr([[0.3, 0.4], [1.2, 0.4], [1.5, 0.8], [2.2, 0.8]])} stroke={C.teal} strokeWidth={1.3} fill="none" strokeLinejoin="round" />
-      <path className="ill-dash" d={tr([[0.3, 1.9], [1.1, 1.9], [1.5, 1.5], [3.0, 1.5]])} stroke={C.teal} strokeWidth={1.3} fill="none" strokeDasharray="5 5" strokeLinejoin="round" />
-      <path d={tr([[2.2, 0.4], [3.0, 0.4], [3.0, 1.2]])} stroke={C.tealSoft} strokeWidth={1.3} fill="none" strokeLinejoin="round" />
+      <Box c={c} b={[0, 0, 3.4, 2.4, 0, z]} top={C.accentPale} stroke={C.lineStrong} />
+      <path d={tr([[0.3, 0.4], [1.2, 0.4], [1.5, 0.8], [2.2, 0.8]])} stroke={C.accent} strokeWidth={1.3} fill="none" strokeLinejoin="round" />
+      <path className="ill-dash" d={tr([[0.3, 1.9], [1.1, 1.9], [1.5, 1.5], [3.0, 1.5]])} stroke={C.accent} strokeWidth={1.3} fill="none" strokeDasharray="5 5" strokeLinejoin="round" />
+      <path d={tr([[2.2, 0.4], [3.0, 0.4], [3.0, 1.2]])} stroke={C.accentSoft} strokeWidth={1.3} fill="none" strokeLinejoin="round" />
       <Box c={c} b={[1.2, 0.9, 2, 1.5, z, z + 0.3]} top={C.ink2} right={C.ink} front={C.ink} stroke={C.ink} />
       <Box c={c} b={[0.3, 0.9, 0.7, 1.3, z, z + 0.18]} top={C.faceDark} />
       <Box c={c} b={[2.5, 1.7, 3.1, 2.1, z, z + 0.22]} top={C.faceDark} />
       {[[0.4, 0.4], [3.0, 1.2], [1.1, 1.9], [2.2, 0.8]].map(([x, y], i) => {
         const [sx, sy] = c.proj(x, y, z);
-        return <circle key={i} cx={sx} cy={sy} r={1.6} fill={C.card} stroke={C.teal} strokeWidth={1} />;
+        return <circle key={i} cx={sx} cy={sy} r={1.6} fill={C.card} stroke={C.accent} strokeWidth={1} />;
       })}
     </g>
   );

@@ -4,7 +4,7 @@ import { Arcs, Block, Chip, Cyl, Dim, Gear, Ground, Led, mk, MONO, Prism, Shadow
 
 /** Sub-service illustrations for the "products" pillar, keyed by sub slug. */
 
-const dash = { stroke: C.teal, strokeWidth: 1.8, strokeDasharray: "5 5", fill: "none" } as const;
+const dash = { stroke: C.accent, strokeWidth: 1.8, strokeDasharray: "5 5", fill: "none" } as const;
 const dly = (v: string, w: string) => ({ ["--dx" as string]: "0px", ["--dy" as string]: v, animationDelay: w });
 
 /** Diagonal carbon-weave hatch inside a w x d rectangle (floor-plane coords). */
@@ -41,12 +41,12 @@ function Industrial() {
       <path d={ring(s, 0, 0, W, D, 1.6, 0.4)} fill={C.faceTop} fillRule="evenodd" stroke={C.lineStrong} strokeLinejoin="round" />
       <path d={s.poly([s.proj(0.4, 0.4, 1.6), s.proj(W - 0.4, 0.4, 1.6), s.proj(W - 0.4, D - 0.4, 1.6), s.proj(0.4, D - 0.4, 1.6)])} fill={C.faceDark} />
       {/* gasket ring on the rim */}
-      <path d={ring(s, 0.08, 0.08, W - 0.08, D - 0.08, 1.64, 0.2)} fill={C.teal} fillRule="evenodd" stroke={C.tealDeep} strokeWidth={1} />
+      <path d={ring(s, 0.08, 0.08, W - 0.08, D - 0.08, 1.64, 0.2)} fill={C.accent} fillRule="evenodd" stroke={C.accentDeep} strokeWidth={1} />
       {/* connector cut-outs: right face (M12 + gland), front face (USB-C, RJ45, vents) */}
       <g transform={s.wallY(W, 0, 0)}>
         <circle cx={1.4} cy={0.85} r={0.4} fill={C.ink2} stroke={C.ink} strokeWidth={0.05} />
         <circle cx={1.4} cy={0.85} r={0.26} fill={C.ink} />
-        {[[1.4, 1.0], [1.4, 0.7], [1.27, 0.85], [1.53, 0.85]].map(([u, v]) => <circle key={`${u}${v}`} cx={u} cy={v} r={0.04} fill={C.tealSoft} />)}
+        {[[1.4, 1.0], [1.4, 0.7], [1.27, 0.85], [1.53, 0.85]].map(([u, v]) => <circle key={`${u}${v}`} cx={u} cy={v} r={0.04} fill={C.accentSoft} />)}
         <circle cx={2.4} cy={0.85} r={0.24} fill={C.card} stroke={C.lineStrong} strokeWidth={0.05} />
         <circle cx={2.4} cy={0.85} r={0.1} fill={C.lineStrong} />
       </g>
@@ -54,7 +54,7 @@ function Industrial() {
         <rect x={0.6} y={0.7} width={1.0} height={0.4} rx={0.2} fill={C.ink2} />
         <rect x={0.72} y={0.8} width={0.76} height={0.2} rx={0.1} fill={C.ink} />
         <rect x={2.1} y={0.55} width={0.9} height={0.65} rx={0.06} fill={C.ink2} />
-        <path d="M2.3 0.75V0.95M2.45 0.75V0.95M2.6 0.75V0.95M2.75 0.75V0.95" stroke={C.tealSoft} strokeWidth={0.04} />
+        <path d="M2.3 0.75V0.95M2.45 0.75V0.95M2.6 0.75V0.95M2.75 0.75V0.95" stroke={C.accentSoft} strokeWidth={0.04} />
         {[3.5, 3.7, 3.9].map((u) => <rect key={u} x={u} y={0.4} width={0.08} height={0.8} rx={0.04} fill={C.lineStrong} />)}
       </g>
       {/* lid lifts off: dashed alignment guides + floating lid */}
@@ -71,7 +71,7 @@ function Industrial() {
         <Cyl s={s} x={3.9} y={0.9} z0={lidTop} z1={lidTop + 0.4} r={0.18} side={C.ink2} top={C.ink} stroke={C.ink} />
         <path d={s.route([[3.9, 0.9, lidTop + 0.4], [3.9, 0.9, lidTop + 1.9]])} stroke={C.ink2} strokeWidth={2.4} strokeLinecap="round" />
       </g>
-      <Tag x={24} y={64} size={13} tone="teal">PA-CF composite</Tag>
+      <Tag x={24} y={64} size={13} tone="accent">PA-CF composite</Tag>
       <Tag x={24} y={96} size={13}>no mold tooling</Tag>
       <path d={`M${s.proj(0, D, 1.7)[0]} ${s.proj(0, D, 1.7)[1]}h-44`} stroke={C.muted} strokeWidth={1} />
       <Tag x={s.proj(0, D, 1.7)[0] - 44 - 107} y={s.proj(0, D, 1.7)[1]} size={13} w={107}>gasket seal</Tag>
@@ -93,10 +93,10 @@ function Kinetic() {
       <g transform={s.wallX(0, 2.4, 0)}>
         <rect x={0.25} y={0.2} width={4.4} height={1.1} rx={0.12} fill={C.cell} stroke={C.line} strokeWidth={0.04} />
         <g transform="translate(1.1 0.75)"><Gear r={0.46} teeth={10} spin style={{ animationDuration: "9s" }} sw={0.045} /></g>
-        <g transform="translate(2.15 0.75)"><Gear r={0.55} teeth={12} spin style={{ animationDuration: "10.8s", animationDirection: "reverse" }} fill={C.mint} sw={0.045} /></g>
+        <g transform="translate(2.15 0.75)"><Gear r={0.55} teeth={12} spin style={{ animationDuration: "10.8s", animationDirection: "reverse" }} fill={C.accentPale} sw={0.045} /></g>
         <g transform="translate(3.22 0.75)"><Gear r={0.46} teeth={10} spin style={{ animationDuration: "9s" }} sw={0.045} /></g>
         <rect x={5.3} y={0.55} width={1.7} height={0.4} rx={0.2} fill={C.ink2} />
-        <rect x={5.4} y={0.65} width={0.9} height={0.2} rx={0.1} fill={C.teal} />
+        <rect x={5.4} y={0.65} width={0.9} height={0.2} rx={0.1} fill={C.accent} />
       </g>
       {/* cam-driven wave: discs rise and fall with a phase offset */}
       {Array.from({ length: 7 }, (_, i) => {
@@ -108,7 +108,7 @@ function Kinetic() {
         return (
           <g key={i} className="ill-slide" style={dly("-10px", `${-i * 0.6}s`)}>
             <path d={`M${bx} ${by}L${px} ${py}`} stroke={C.lineStrong} strokeWidth={2.4} />
-            <ellipse cx={px} cy={py} rx={17} ry={8.5} fill={hot ? C.tealSoft : C.card} stroke={hot ? C.teal : C.lineStrong} strokeWidth={1.4} />
+            <ellipse cx={px} cy={py} rx={17} ry={8.5} fill={hot ? C.accentSoft : C.card} stroke={hot ? C.accent : C.lineStrong} strokeWidth={1.4} />
           </g>
         );
       })}
@@ -116,7 +116,7 @@ function Kinetic() {
       <Chip s={s} x={6.5} y={0.6} z={1.5} w={0.9} d={0.9} h={0.3} pins={3} />
       <Led s={s} x={6.2} y={1.9} z={1.55} />
       <Arcs x={s.proj(6.95, 1.05, 1.8)[0]} y={s.proj(6.95, 1.05, 1.8)[1] - 8} rot={-90} n={3} r0={16} gap={11} spread={90} />
-      <Tag x={s.proj(6.95, 1.05, 1.8)[0] - 14} y={s.proj(6.95, 1.05, 1.8)[1] - 84} size={13} tone="teal">Wi-Fi · BLE</Tag>
+      <Tag x={s.proj(6.95, 1.05, 1.8)[0] - 14} y={s.proj(6.95, 1.05, 1.8)[1] - 84} size={13} tone="accent">Wi-Fi · BLE</Tag>
       <Tag x={24} y={64} size={13}>cam + motor</Tag>
     </>
   );
@@ -134,7 +134,7 @@ function Automotive() {
       <Shadow s={s} x0={-0.9} y0={-0.9} x1={4.3} y1={3.3} />
       {/* turntable */}
       <Cyl s={s} x={1.7} y={1.1} z0={0} z1={0.35} r={2.35} side={C.faceR} top={C.faceTop} />
-      <Cyl s={s} x={1.7} y={1.1} z0={0.35} z1={tz} r={2.1} side={C.faceDark} top={C.mint} stroke={C.tealSoft} />
+      <Cyl s={s} x={1.7} y={1.1} z0={0.35} z1={tz} r={2.1} side={C.faceDark} top={C.accentPale} stroke={C.accentSoft} />
       {/* dashboard bezel being scanned */}
       <Block s={s} x0={0} y0={0.1} x1={3.4} y1={2.1} z0={tz} z1={tz + 0.5} top={C.card} right={C.faceDark} front={C.faceR} stroke={C.lineStrong} />
       <Block s={s} x0={3.4} y0={0.8} x1={3.8} y1={1.4} z0={tz} z1={tz + 0.3} top={C.card} right={C.faceDark} front={C.faceR} stroke={C.lineStrong} />
@@ -143,7 +143,7 @@ function Automotive() {
         <circle cx={0.9} cy={1.85} r={0.2} fill={C.ink2} />
         <circle cx={1.6} cy={1.85} r={0.2} fill={C.ink2} />
         <circle cx={2.3} cy={1.85} r={0.2} fill={C.ink2} />
-        <rect x={2.9} y={0.45} width={0.35} height={0.35} rx={0.06} fill="none" stroke={C.teal} strokeWidth={0.05} />
+        <rect x={2.9} y={0.45} width={0.35} height={0.35} rx={0.06} fill="none" stroke={C.accent} strokeWidth={0.05} />
         <path d="M0.3 0.2H3.1" stroke={C.line} strokeWidth={0.03} />
       </g>
       {/* trim clip beside it */}
@@ -153,14 +153,14 @@ function Automotive() {
       {/* scanner on a rail: laser fan sweeps across the part */}
       <Block s={s} x0={-2.2} y0={-1.3} x1={4.8} y1={-1.1} z0={0} z1={0.2} top={C.card} stroke={C.lineStrong} />
       <g className="ill-slide" style={{ ["--dx" as string]: "56px", ["--dy" as string]: "28px" }}>
-        <path d={sweep(0.2)} fill={C.teal} opacity={0.14} />
-        <path d={`M${hx} ${hy}L${s.proj(0.2, -0.15, 0.62)[0]} ${s.proj(0.2, -0.15, 0.62)[1]}M${hx} ${hy}L${s.proj(0.2, 2.35, 0.62)[0]} ${s.proj(0.2, 2.35, 0.62)[1]}`} stroke={C.teal} strokeWidth={1.2} strokeDasharray="4 4" fill="none" />
-        <path d={`M${s.proj(0.2, -0.15, 0.62)[0]} ${s.proj(0.2, -0.15, 0.62)[1]}L${s.proj(0.2, 2.35, 0.62)[0]} ${s.proj(0.2, 2.35, 0.62)[1]}`} stroke={C.teal} strokeWidth={3} strokeLinecap="round" />
+        <path d={sweep(0.2)} fill={C.accent} opacity={0.14} />
+        <path d={`M${hx} ${hy}L${s.proj(0.2, -0.15, 0.62)[0]} ${s.proj(0.2, -0.15, 0.62)[1]}M${hx} ${hy}L${s.proj(0.2, 2.35, 0.62)[0]} ${s.proj(0.2, 2.35, 0.62)[1]}`} stroke={C.accent} strokeWidth={1.2} strokeDasharray="4 4" fill="none" />
+        <path d={`M${s.proj(0.2, -0.15, 0.62)[0]} ${s.proj(0.2, -0.15, 0.62)[1]}L${s.proj(0.2, 2.35, 0.62)[0]} ${s.proj(0.2, 2.35, 0.62)[1]}`} stroke={C.accent} strokeWidth={3} strokeLinecap="round" />
         <path d={s.route([[-1.4, -1.2, 0.2], [-1.4, -1.0, 3.3]])} stroke={C.ink2} strokeWidth={2.4} />
-        <Block s={s} x0={-1.7} y0={-1.3} x1={-1.1} y1={-0.7} z0={3.3} z1={3.7} top={C.card} right={C.faceDark} front={C.faceL} stroke={C.tealDeep} />
+        <Block s={s} x0={-1.7} y0={-1.3} x1={-1.1} y1={-0.7} z0={3.3} z1={3.7} top={C.card} right={C.faceDark} front={C.faceL} stroke={C.accentDeep} />
       </g>
       <Dim a={s.proj(-0.6, 0.1, tz)} b={s.proj(-0.6, 2.1, tz)} label="±0.1 mm" off={-52} />
-      <Tag x={24} y={64} size={13} tone="teal">3D scan → CAD</Tag>
+      <Tag x={24} y={64} size={13} tone="accent">3D scan → CAD</Tag>
       <Tag x={24} y={96} size={13}>ASA · ABS · nylon</Tag>
     </>
   );
@@ -186,10 +186,10 @@ function Miniature() {
       </g>
       {/* the replica */}
       <g transform={`translate(0 0)`}>
-        <Prism s={s} pts={body.map(([x, z]) => [x, z + zp] as [number, number])} y0={y0} y1={y1} front={C.tealSoft} top={C.mint} right={C.teal} stroke={C.tealDeep} />
+        <Prism s={s} pts={body.map(([x, z]) => [x, z + zp] as [number, number])} y0={y0} y1={y1} front={C.accentSoft} top={C.accentPale} right={C.accent} stroke={C.accentDeep} />
         <g transform={s.wallX(0, y1, zp)}>
-          <path d="M0.62 1.04L1.08 1.42H2.14L2.55 1.04Z" fill={C.card} stroke={C.tealDeep} strokeWidth={0.05} strokeLinejoin="round" />
-          <path d="M1.6 1.04V1.42M0.3 0.62H3.9" stroke={C.tealDeep} strokeWidth={0.035} opacity={0.5} />
+          <path d="M0.62 1.04L1.08 1.42H2.14L2.55 1.04Z" fill={C.card} stroke={C.accentDeep} strokeWidth={0.05} strokeLinejoin="round" />
+          <path d="M1.6 1.04V1.42M0.3 0.62H3.9" stroke={C.accentDeep} strokeWidth={0.035} opacity={0.5} />
           {[0.8, 3.2].map((u) => (
             <g key={u}>
               <circle cx={u} cy={0.3} r={0.42} fill={C.faceDark} />
@@ -199,16 +199,16 @@ function Miniature() {
           ))}
         </g>
         <g transform={s.wallY(4, 0, zp)}>
-          {[0.3, 1.4].map((u) => <ellipse key={u} cx={u} cy={0.56} rx={0.14} ry={0.1} fill={C.tealSoft} stroke={C.teal} strokeWidth={0.04} className="ill-blink" />)}
+          {[0.3, 1.4].map((u) => <ellipse key={u} cx={u} cy={0.56} rx={0.14} ry={0.1} fill={C.accentSoft} stroke={C.accent} strokeWidth={0.04} className="ill-blink" />)}
         </g>
         <g transform={s.floor(0, 0, zp + 0.95)}>
           <path d="M3.45 0.15H3.95M3.45 0.45H3.95M3.45 0.75H3.95M3.45 1.05H3.95M3.45 1.35H3.95" stroke={C.lineStrong} strokeWidth={0.03} />
         </g>
       </g>
       {/* glass case */}
-      <path d={cs.right + cs.front + cs.top} fill={C.mint} opacity={0.3} stroke={C.tealSoft} strokeWidth={1.4} strokeLinejoin="round" />
-      <path d={s.route([[-0.35, y1 + 0.35, zp], [-0.35, y1 + 0.35, 3.0]]) + s.route([[4.35, y1 + 0.35, zp], [4.35, y1 + 0.35, 3.0]])} stroke={C.teal} strokeWidth={1.2} fill="none" opacity={0.5} />
-      <Tag x={30} y={72} size={18} tone="teal" w={74}>1:24</Tag>
+      <path d={cs.right + cs.front + cs.top} fill={C.accentPale} opacity={0.3} stroke={C.accentSoft} strokeWidth={1.4} strokeLinejoin="round" />
+      <path d={s.route([[-0.35, y1 + 0.35, zp], [-0.35, y1 + 0.35, 3.0]]) + s.route([[4.35, y1 + 0.35, zp], [4.35, y1 + 0.35, 3.0]])} stroke={C.accent} strokeWidth={1.2} fill="none" opacity={0.5} />
+      <Tag x={30} y={72} size={18} tone="accent" w={74}>1:24</Tag>
       <Tag x={30} y={116} size={13}>multi-material</Tag>
       <Dim a={s.proj(4.9, 2.6, zp)} b={s.proj(4.9, -0.6, zp)} label="168 mm" off={40} />
     </>
@@ -228,23 +228,23 @@ function Retail() {
       <Block s={s} x0={-2.2} y0={-1.2} x1={1.6} y1={0.2} z0={1.2} z1={1.3} top={C.card} right={C.faceDark} front={C.faceR} stroke={C.lineStrong} />
       {[-2.2, 1.5].map((x) => <Block key={x} s={s} x0={x} y0={-1.2} x1={x + 0.1} y1={0.2} z0={0} z1={1.3} top={C.card} stroke={C.lineStrong} />)}
       {[0, 1, 2].map((i) => (
-        <Block key={i} s={s} x0={-2.0 + i * 1.15} y0={-1.0} x1={-1.2 + i * 1.15} y1={0} z0={1.3} z1={2.2} top={C.card} right={C.faceDark} front={i === 1 ? C.mint : C.faceR} stroke={i === 1 ? C.teal : C.lineStrong} />
+        <Block key={i} s={s} x0={-2.0 + i * 1.15} y0={-1.0} x1={-1.2 + i * 1.15} y1={0} z0={1.3} z1={2.2} top={C.card} right={C.faceDark} front={i === 1 ? C.accentPale : C.faceR} stroke={i === 1 ? C.accent : C.lineStrong} />
       ))}
       <Block s={s} x0={-2.0} y0={-1.0} x1={1.5} y1={0} z0={0.08} z1={0.18} top={C.card} stroke={C.lineStrong} />
       {/* hero product box with barcode */}
       <Shadow s={s} x0={0.4} y0={0.8} x1={3.8} y1={3} />
       <Block s={s} x0={0.6} y0={1.0} x1={3.4} y1={2.6} z0={0} z1={2.2} top={C.card} right={C.faceDark} front={C.card} stroke={C.lineStrong} />
       <g transform={s.wallX(0.6, 2.6, 0)}>
-        <rect x={0} y={1.5} width={2.8} height={0.32} fill={C.teal} />
+        <rect x={0} y={1.5} width={2.8} height={0.32} fill={C.accent} />
         <path d="M0.3 0.95H1.5M0.3 0.75H1.0" stroke={C.ink2} strokeWidth={0.1} strokeLinecap="round" />
         <rect x={1.6} y={0.18} width={1.0} height={0.7} rx={0.04} fill={C.cell} stroke={C.line} strokeWidth={0.03} />
         <path d={barcode} transform="translate(1.65 -0.05) scale(0.5 0.55)" stroke={C.ink} strokeWidth={0.07} />
-        <circle cx={0.55} cy={0.5} r={0.22} fill={C.mint} stroke={C.teal} strokeWidth={0.05} />
+        <circle cx={0.55} cy={0.5} r={0.22} fill={C.accentPale} stroke={C.accent} strokeWidth={0.05} />
       </g>
       {/* parcel on the right, route from shelf to parcel */}
       <Shadow s={s} x0={4.2} y0={1.4} x1={6} y1={3.1} />
       <Block s={s} x0={4.4} y0={1.6} x1={5.8} y1={2.9} z0={0} z1={1.1} top={C.faceL} right={C.faceDark} front={C.faceR} stroke={C.muted} />
-      <path d={s.route([[4.4, 2.25, 1.1], [5.8, 2.25, 1.1]])} stroke={C.teal} strokeWidth={5} />
+      <path d={s.route([[4.4, 2.25, 1.1], [5.8, 2.25, 1.1]])} stroke={C.accent} strokeWidth={5} />
       <path d={s.route([[5.1, 1.6, 1.1], [5.1, 2.9, 1.1]]) + s.route([[5.8, 1.6, 0.55], [5.8, 2.9, 0.55]])} stroke="none" />
       <path d={s.route([[1.6, -0.5, 0.15], [4.0, -0.5, 0.15], [4.0, 2.2, 0.15], [4.3, 2.2, 0.15]])} {...dash} className="ill-dash" />
       {/* sales + cart cards */}
@@ -252,17 +252,17 @@ function Retail() {
         <rect width={206} height={126} rx={10} fill={C.card} stroke={C.lineStrong} />
         <text x={14} y={24} fontFamily={MONO} fontSize={12} fill={C.muted}>sales / week</text>
         {bars.map((h, i) => (
-          <rect key={i} className="ill-grow" style={{ animationDelay: `${i * 0.35}s` }} x={16 + i * 30} y={104 - h * 62} width={20} height={h * 62} rx={4} fill={i === bars.length - 1 ? C.teal : C.lineStrong} />
+          <rect key={i} className="ill-grow" style={{ animationDelay: `${i * 0.35}s` }} x={16 + i * 30} y={104 - h * 62} width={20} height={h * 62} rx={4} fill={i === bars.length - 1 ? C.accent : C.lineStrong} />
         ))}
-        <path d="M24 82L56 74L86 76L116 60L146 48L190 34" stroke={C.tealDeep} strokeWidth={2} fill="none" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M182 31L192 33L189 43" stroke={C.tealDeep} strokeWidth={2} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M24 82L56 74L86 76L116 60L146 48L190 34" stroke={C.accentDeep} strokeWidth={2} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M182 31L192 33L189 43" stroke={C.accentDeep} strokeWidth={2} fill="none" strokeLinecap="round" strokeLinejoin="round" />
       </g>
       <g transform="translate(36 40)">
         <rect width={96} height={72} rx={10} fill={C.card} stroke={C.lineStrong} />
         <path d="M22 26h8l5 22h28l5-16H33" fill="none" stroke={C.ink2} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
         <circle cx={39} cy={55} r={3.4} fill={C.ink2} />
         <circle cx={60} cy={55} r={3.4} fill={C.ink2} />
-        <circle cx={72} cy={22} r={11} fill={C.teal} />
+        <circle cx={72} cy={22} r={11} fill={C.ink} />
         <text x={72} y={26.5} textAnchor="middle" fontFamily={MONO} fontSize={13} fill="#fff">3</text>
       </g>
     </>

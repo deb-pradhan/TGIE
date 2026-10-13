@@ -1,9 +1,9 @@
-import Link from "next/link";
 import { Fragment } from "react";
 import { practices } from "@/content/practices";
 import { Section } from "@/components/primitives/Section";
 import { TwoToneHeading } from "@/components/primitives/TwoToneHeading";
 import { Eyebrow } from "@/components/primitives/Pill";
+import { Button } from "@/components/primitives/Button";
 import { PillarScene } from "@/components/illustration/pillars";
 import { Icon, IconBadge, type IconName } from "@/components/icons/Icon";
 import { Reveal } from "@/lib/motion";
@@ -13,18 +13,17 @@ import { cn } from "@/lib/cn";
 export function Practices() {
   return (
     <div className="flex flex-col gap-[2px]">
-      <Section id="services">
+      <Section id="services" containerClassName="!py-14 sm:!py-20">
         <Reveal>
           <Eyebrow>Four pillars, one roof</Eyebrow>
           <TwoToneHeading
-            line1="Engineering, products, business,"
-            line2="and heavy fabrication."
+            line1="Engineering, products, enablement,"
+            line2="and fabrication."
             className="mt-4"
           />
           <p className="text-lead mt-4 max-w-[60ch] text-muted">
             Not a menu of services. Each pillar gives your idea a different form, and lifts a
-            different weight. All held by one accountable team. Holding all four together is the
-            part no regional competitor replicates.
+            different weight. All held by one accountable team.
           </p>
         </Reveal>
       </Section>
@@ -44,11 +43,11 @@ export function Practices() {
               >
                 <IconBadge name={p.slug as IconName} className="mb-6" />
 
-                <div className="font-mono text-[12px] uppercase tracking-[0.12em] text-teal">
-                  {`Pillar ${p.index}`}
+                <div className="font-mono text-[12px] uppercase tracking-[0.12em] text-accent-deep">
+                  {`Pillar ${p.index} · ${p.short}`}
                 </div>
-                <h3 className="mt-2 font-mono text-h3 font-medium tracking-tight">{p.name}</h3>
-                <p className="mt-3 max-w-[42ch] text-[15.5px] text-muted">{p.position}</p>
+                <h3 className="mt-2 text-balance font-mono text-h3 font-medium tracking-tight">{p.name}</h3>
+                <p className="mt-3 max-w-[42ch] text-balance text-[15.5px] text-muted">{p.position}</p>
 
                 <div className="mt-8 grid max-w-[30rem] grid-flow-col grid-cols-2 grid-rows-2 gap-x-10 gap-y-7">
                   {p.capabilities.map((c, idx) => (
@@ -57,18 +56,20 @@ export function Practices() {
                         {String(idx + 1).padStart(2, "0")}
                       </div>
                       <div className="mt-2 text-[14.5px] font-medium">{c.title}</div>
-                      <div className="mt-0.5 text-[12.5px] text-muted">{c.note}</div>
+                      <div className="mt-0.5 text-[13px] text-muted">{c.note}</div>
                     </div>
                   ))}
                 </div>
 
-                <Link
+                <Button
                   href={`/services/${p.slug}`}
-                  className="group mt-9 inline-flex w-fit items-center gap-2 font-mono text-[13px] font-medium tracking-tight text-ink-2 transition-colors duration-200 hover:text-teal focus-visible:outline-2 focus-visible:outline-teal"
+                  variant="ghost"
+                  size="sm"
+                  className="group mt-9 min-h-11 w-fit"
                 >
                   {`Explore ${p.short.toLowerCase()}`}
-                  <Icon name="arrow-right" size={16} className="transition-transform duration-200 motion-safe:group-hover:translate-x-0.5" />
-                </Link>
+                  <Icon name="arrow-right" size={16} className="text-accent-deep transition-transform duration-200 motion-safe:group-hover:translate-x-0.5" />
+                </Button>
               </Cell>
 
               {/* illustration cell: signature isometric scene */}
@@ -78,7 +79,7 @@ export function Practices() {
                   i % 2 === 1 && "lg:order-1",
                 )}
               >
-                <div className="absolute inset-0">
+                <div className="absolute inset-3 sm:inset-6">
                   <PillarScene slug={p.slug} />
                 </div>
               </Cell>

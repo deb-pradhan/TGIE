@@ -1,28 +1,30 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/pageMeta";
 import Link from "next/link";
 import { insights } from "@/content/pages";
 import { PageHero } from "@/components/sections/PageHero";
 import { Faq } from "@/components/sections/Faq";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { Button } from "@/components/primitives/Button";
 import { FrameBlock, Cell, GapStrip } from "@/components/frame/Grid";
 import { Icon } from "@/components/icons/Icon";
 import { InsightsHero } from "@/components/illustration/company/InsightsHero";
 import { CoverCard, type CoverKind } from "@/components/illustration/company/Covers";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Insights & resources",
   description:
-    "Answers, guides, and the TGIE capability portfolio: a downloadable PDF, engineering and funding notes, and the four-phase engagement model.",
-};
+    "Answers, guides, and the TGIE capability portfolio: a downloadable PDF, selected case studies, and the four-phase engagement model.",
+  path: "/insights",
+});
 
 const coverLabels: Record<CoverKind, string> = {
   portfolio: "Cover of the capability portfolio PDF: four pillar tiles A to D.",
-  notes: "Cover of the engineering and funding notes: a notebook page with a trace and a growth chart.",
+  notes: "Cover of the selected case studies: a notebook page with a trace and a growth chart.",
   model: "Cover of the engagement model: four numbered phases on a timeline.",
 };
 
 const linkCls =
-  "mt-5 inline-flex w-fit items-center gap-2 rounded-btn border border-line bg-card px-4 py-2 text-[13.5px] font-medium text-ink transition-colors hover:border-ink focus-visible:outline-2 focus-visible:outline-teal";
+  "mt-5 inline-flex w-fit items-center gap-2 rounded-btn border border-line bg-card px-4 py-2 text-[13.5px] font-medium text-ink transition-colors hover:border-ink focus-visible:outline-2 focus-visible:outline-accent";
 
 export default function InsightsPage() {
   return (
@@ -33,6 +35,7 @@ export default function InsightsPage() {
         line1={insights.h1}
         line2={insights.h2}
         lead={insights.lead}
+        cta={<Button href="/start">Start a Project</Button>}
         art={<InsightsHero />}
       />
 
@@ -49,10 +52,10 @@ export default function InsightsPage() {
                   <CoverCard kind={kind} label={coverLabels[kind]} />
                 </div>
                 <div className="flex flex-1 flex-col p-6">
-                  <span className="mb-3 w-fit rounded-full bg-mint px-2.5 py-[3px] font-mono text-[11px] font-medium text-teal-deep">
+                  <span className="mb-3 w-fit rounded-full bg-accent-pale px-2.5 py-[3px] font-mono text-[11px] font-medium text-accent-deep">
                     {r.meta}
                   </span>
-                  <h3 className="font-mono text-[16px] font-medium tracking-tight text-ink">{r.title}</h3>
+                  <h2 className="font-mono text-[16px] font-medium tracking-tight text-ink">{r.title}</h2>
                   <p className="mt-2 flex-1 text-[13.5px] text-muted">{r.note}</p>
                   {isPdf ? (
                     <a href={r.href} download className={linkCls}>
@@ -73,7 +76,7 @@ export default function InsightsPage() {
       </FrameBlock>
 
       <GapStrip />
-      <Faq />
+      <Faq eyebrow="Common questions" heading={{ line1: "Questions people ask", line2: "before they start." }} />
 
       <GapStrip />
       <FinalCTA />

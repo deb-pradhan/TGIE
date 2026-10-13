@@ -9,7 +9,7 @@ function Slab({ children }: { children: ReactNode }) {
   return (
     <SceneFrame viewBox="0 0 320 200" ground tone="paper2">
       <path d="M30 128 L160 63 L290 128 L290 136 L160 201 L30 136 Z" fill={C.faceR} />
-      <path d="M30 128 L160 63 L290 128 L160 193 Z" fill={C.mint} stroke={C.lineStrong} strokeLinejoin="round" />
+      <path d="M30 128 L160 63 L290 128 L160 193 Z" fill={C.accentPale} stroke={C.lineStrong} strokeLinejoin="round" />
       <path d="M30 128 L30 136 L160 201 L160 193 Z" fill={C.faceL} />
       {children}
     </SceneFrame>
@@ -22,8 +22,8 @@ function Prototype() {
   return (
     <Slab>
       <Pcb c={pcb} />
-      <path className="ill-dash" d="M148 112 Q184 82 206 104" fill="none" stroke={C.teal} strokeWidth={1.6} strokeDasharray="5 5" />
-      <path d="M200 98 l7 7 l-9 2z" fill={C.teal} />
+      <path className="ill-dash" d="M148 112 Q184 82 206 104" fill="none" stroke={C.accent} strokeWidth={1.6} strokeDasharray="5 5" />
+      <path d="M200 98 l7 7 l-9 2z" fill={C.accent} />
       <EnvSensor c={box} />
     </Slab>
   );
@@ -35,18 +35,18 @@ function Trials() {
   return (
     <Slab>
       <EnvSensor c={dev} full />
-      <g className="ill-pulse" fill="none" stroke={C.teal} strokeWidth={1.5} strokeLinecap="round">
+      <g className="ill-pulse" fill="none" stroke={C.accent} strokeWidth={1.5} strokeLinecap="round">
         <path d={`M${ax - 9} ${ay - 4} a13 13 0 0 1 18 0`} />
         <path d={`M${ax - 15} ${ay - 10} a21 21 0 0 1 30 0`} opacity={0.55} />
       </g>
       <g className="ill-float-2">
         <rect x={208} y={64} width={72} height={48} rx={5} fill={C.card} stroke={C.lineStrong} />
-        <path d="M216 98 l9 -4 l9 6 l10 -14 l9 8 l9 -10 l10 4" fill="none" stroke={C.teal} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M216 98 l9 -4 l9 6 l10 -14 l9 8 l9 -10 l10 4" fill="none" stroke={C.accent} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
         <path d="M216 104h56" stroke={C.line} strokeWidth={1} />
-        <circle cx={218} cy={74} r={2.2} fill={C.teal} />
+        <circle cx={218} cy={74} r={2.2} fill={C.accent} />
         <path d="M225 74h20" stroke={C.lineStrong} strokeWidth={2} strokeLinecap="round" />
       </g>
-      <path className="ill-dash" d={`M${ax + 14} ${ay - 12} Q${ax + 50} ${ay - 36} 208 100`} fill="none" stroke={C.teal} strokeWidth={1.5} strokeDasharray="5 5" />
+      <path className="ill-dash" d={`M${ax + 14} ${ay - 12} Q${ax + 50} ${ay - 36} 208 100`} fill="none" stroke={C.accent} strokeWidth={1.5} strokeDasharray="5 5" />
     </Slab>
   );
 }
@@ -63,7 +63,7 @@ function Production() {
         <Transformer key={i} c={placed(1.5, 1, x, y, 13.5)} />
       ))}
       {[[142, 150], [176, 156], [198, 112], [120, 108]].map(([x, y], i) => (
-        <circle key={i} className="ill-pulse" cx={x} cy={y} r={1.6} fill={C.tealSoft} />
+        <circle key={i} className="ill-pulse" cx={x} cy={y} r={1.6} fill={C.accentSoft} />
       ))}
     </Slab>
   );

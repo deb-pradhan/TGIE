@@ -116,7 +116,7 @@ export function GlyphPuck({
         <path
           d={glyph}
           fill="none"
-          stroke={C.teal}
+          stroke={C.accent}
           strokeWidth={1.7}
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -142,7 +142,7 @@ export function Sparkle({ x, y, s = 5, className }: { x: number; y: number; s?: 
     <path
       className={className}
       d={`M${x} ${y - s} L${x + s / 4} ${y - s / 4} L${x + s} ${y} L${x + s / 4} ${y + s / 4} L${x} ${y + s} L${x - s / 4} ${y + s / 4} L${x - s} ${y} L${x - s / 4} ${y - s / 4} Z`}
-      fill={C.tealSoft}
+      fill={C.accentSoft}
     />
   );
 }

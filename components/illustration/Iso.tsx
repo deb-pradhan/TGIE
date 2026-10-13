@@ -30,7 +30,7 @@ export function IsoScene({
 }) {
   const svg = (
     <svg viewBox="0 0 320 240" className="h-full w-full" role="img" aria-label="Isometric illustration">
-      <path d="M110 150 L210 96" stroke="var(--color-teal)" strokeWidth="1.5" strokeDasharray="5 5" fill="none" />
+      <path d="M110 150 L210 96" stroke="var(--color-accent)" strokeWidth="1.5" strokeDasharray="5 5" fill="none" />
       <Puck cx={230} cy={78} scale={0.72} />
       <Puck cx={130} cy={150} scale={1} iconPath={icons[variant]} />
     </svg>
@@ -41,7 +41,7 @@ export function IsoScene({
   }
 
   return (
-    <div className={cn("iso-grid relative aspect-[4/3] w-full overflow-hidden rounded-card border border-line bg-[#eef2ee]", className)}>
+    <div className={cn("iso-grid relative aspect-[4/3] w-full overflow-hidden rounded-card border border-line bg-[#f2f3f1]", className)}>
       <div className="absolute inset-0">{svg}</div>
     </div>
   );
@@ -65,7 +65,7 @@ function Puck({
     <g>
       <path
         d={`M${cx - w / 2} ${cy} L${cx} ${cy + h / 2} L${cx + w / 2} ${cy} L${cx + w / 2} ${cy + depth} L${cx} ${cy + h / 2 + depth} L${cx - w / 2} ${cy + depth} Z`}
-        fill="#dfe7e2"
+        fill="#e1e4e4"
       />
       <path
         d={`M${cx - w / 2} ${cy} L${cx} ${cy - h / 2} L${cx + w / 2} ${cy} L${cx} ${cy + h / 2} Z`}
@@ -78,7 +78,7 @@ function Puck({
           <path
             d={iconPath}
             fill="none"
-            stroke="var(--color-teal)"
+            stroke="var(--color-accent)"
             strokeWidth="1.6"
             strokeLinejoin="round"
             strokeLinecap="round"

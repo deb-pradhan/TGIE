@@ -15,7 +15,7 @@ const ART = [LabBench, FounderSteps, SteelSkid];
 export function Audiences() {
   return (
     <>
-      <Section id="audiences" containerClassName="!pb-8">
+      <Section id="audiences" containerClassName="!pb-8 !pt-14 sm:!pt-20">
         <Reveal>
           <Eyebrow>{audiences.eyebrow}</Eyebrow>
           <TwoToneHeading
@@ -37,10 +37,10 @@ export function Audiences() {
                 <Art />
                 <Reveal delay={i * 0.08} className="flex flex-1 flex-col p-6">
                   <div className="flex items-center justify-between gap-3">
-                    <span className="font-mono text-[13px] text-teal">
+                    <span className="font-mono text-[13px] text-accent-deep">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="rounded-chip border border-line bg-card whitespace-nowrap px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.06em] text-teal-deep">
+                    <span className="rounded-chip border border-line bg-card whitespace-nowrap px-2 py-0.5 font-mono text-[11px] uppercase tracking-[0.06em] text-accent-deep">
                       {it.tag}
                     </span>
                   </div>

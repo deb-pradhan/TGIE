@@ -1,34 +1,16 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { site } from "@/content/site";
 import { GAP } from "@/components/frame/Grid";
-import { DitherField } from "@/components/illustration/DitherField";
-import Link from "next/link";
 import { Logo } from "@/components/brand/Logo";
-import { Icon } from "@/components/icons/Icon";
+import { Icon, type IconName } from "@/components/icons/Icon";
+import { pillarIcons, subIcons } from "@/components/icons/subIcons";
 import { cn } from "@/lib/cn";
 
-/**
- * Every footer cell carries the dither. Text cells get a dark scrim over the
- * dither so copy stays clearly legible; empty/wordmark cells show it at full
- * strength.
- */
-function DitherCell({
-  children,
-  className,
-  contentClassName,
-  scrim = false,
-}: {
-  children?: ReactNode;
-  className?: string;
-  contentClassName?: string;
-  scrim?: boolean;
-}) {
+/** Footer cells: graphite cells on a near-black canvas, same 2px seams as the page. */
+function DarkCell({ children, className }: { children?: ReactNode; className?: string }) {
   return (
-    <div className={cn("relative overflow-hidden rounded-[6px] bg-forest", className)}>
-      <DitherField />
-      {scrim && <div aria-hidden className="absolute inset-0 bg-[#081f18]/70" />}
-      {children && <div className={cn("relative z-10", contentClassName)}>{children}</div>}
-    </div>
+    <div className={cn("relative overflow-hidden rounded-[6px] bg-graphite", className)}>{children}</div>
   );
 }
 
@@ -42,90 +24,121 @@ function Row({ children }: { children: ReactNode }) {
         gap: GAP,
       }}
     >
-      <DitherCell />
+      <DarkCell />
       <div className="min-w-0">{children}</div>
-      <DitherCell />
+      <DarkCell />
     </div>
   );
 }
 
+const companyIcons: Record<string, IconName> = {
+  "/work": "publish",
+  "/company": "partners",
+  "/insights": "discover",
+  "/start": "rocket",
+};
+
+function iconFor(href: string): IconName {
+  const parts = href.split("/").filter(Boolean); // services/<pillar>/<sub>
+  if (parts[0] === "services") {
+    return (parts[2] && subIcons[parts[2]]) || pillarIcons[parts[1]] || "spark";
+  }
+  return companyIcons[href] ?? "arrow-right";
+}
+
 export function Footer() {
   const f = site.footer;
+  const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
   return (
-    <footer aria-label="Site footer" className="flex flex-col bg-[#081f18] pb-[2px] text-ondark-mut" style={{ gap: GAP }}>
-      {/* link columns row — each column its own dithered cell */}
+    <footer aria-label="Site footer" className="flex flex-col bg-[#0b0d0c] pb-[2px] text-ondark-mut" style={{ gap: GAP }}>
+      <h2 className="sr-only">Explore TGIE</h2>
+      {/* brand + link columns */}
       <Row>
-        <div className="grid gap-[2px] md:grid-cols-[1.4fr_1fr_1fr_1fr]">
-          <DitherCell scrim contentClassName="p-6">
+        <div className="grid grid-cols-2 gap-[2px] md:grid-cols-[1.3fr_1fr_1fr_1fr]">
+          <DarkCell className="col-span-2 p-6 sm:p-7 md:col-span-1">
             <Logo variant="dark" />
-            <p className="mt-3.5 max-w-[34ch] text-[13.5px] text-ondark-mut">{f.blurb}</p>
-            <ul className="mt-5 space-y-2.5 text-[13.5px] text-ondark">
-              <li>
-                <a href={site.contact.phoneHref} className="inline-flex items-center gap-2.5 hover:text-white">
-                  <Icon name="phone" size={16} className="text-teal-soft" />
-                  {site.contact.phone}
-                </a>
-              </li>
-              {process.env.NEXT_PUBLIC_CONTACT_EMAIL && (
+            <p className="mt-4 max-w-[34ch] text-[13.5px] leading-relaxed text-ondark-mut">{f.blurb}</p>
+            <Link
+              href="/start"
+              className="group mt-6 hidden items-center gap-2.5 rounded-btn bg-accent px-5 py-2.5 text-[14px] font-medium text-ink transition-transform duration-150 hover:-translate-y-px md:inline-flex"
+            >
+              Start a Project
+              <Icon name="arrow-right" size={16} className="transition-transform group-hover:translate-x-0.5" />
+            </Link>
+            <ul className="mt-6 text-[13.5px] text-ondark">
+              {email && (
                 <li>
-                  <a
-                    href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}
-                    className="inline-flex items-center gap-2.5 hover:text-white"
-                  >
-                    <Icon name="mail" size={16} className="text-teal-soft" />
-                    {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
+                  <a href={`mailto:${email}`} className="inline-flex items-center gap-2.5 min-h-11 hover:text-white">
+                    <Icon name="mail" size={16} className="text-accent-soft" />
+                    {email}
                   </a>
                 </li>
               )}
-              <li className="inline-flex items-center gap-2.5">
-                <Icon name="pin" size={16} className="text-teal-soft" />
+              <li>
+                <a href={site.contact.phoneHref} className="inline-flex items-center gap-2.5 min-h-11 hover:text-white">
+                  <Icon name="phone" size={16} className="text-accent-soft" />
+                  {site.contact.phone}
+                </a>
+              </li>
+              <li className="inline-flex items-start gap-2.5 py-2.5">
+                <Icon name="pin" size={16} className="mt-0.5 shrink-0 text-accent-soft" />
                 {site.contact.location}
               </li>
             </ul>
-          </DitherCell>
-          {f.columns.map((col) => (
-            <DitherCell key={col.title} scrim contentClassName="p-6">
-              <h5 className="mb-4 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-ondark">
+          </DarkCell>
+          {f.columns.map((col, i) => (
+            <DarkCell key={col.title} className={cn("p-6 sm:p-7", i === 0 && "col-span-2 md:col-span-1")}>
+              <h3 className="mb-3 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-ondark">
                 {col.title}
-              </h5>
-              {col.links.map((l) => (
-                <Link
-                  key={l.label}
-                  href={l.href}
-                  className="block py-1.5 text-[14px] text-ondark-mut hover:text-white focus-visible:outline-2 focus-visible:outline-teal"
-                >
-                  {l.label}
-                </Link>
-              ))}
-            </DitherCell>
+              </h3>
+              <ul>
+                {col.links.map((l) => (
+                  <li key={l.label}>
+                    <Link
+                      href={l.href}
+                      className="group flex items-center gap-3 rounded-lg py-2 text-[14px] text-ondark-mut transition-colors hover:text-white"
+                    >
+                      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-[8px] bg-white/[0.06] text-accent-soft transition-colors group-hover:bg-accent group-hover:text-ink">
+                        <Icon name={iconFor(l.href)} size={15} />
+                      </span>
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </DarkCell>
           ))}
         </div>
       </Row>
 
-      {/* wordmark cell — dither at full strength, no scrim */}
+      {/* wordmark */}
       <Row>
-        <DitherCell contentClassName="px-6 py-2">
-          <div
-            className="select-none text-center font-mono font-medium leading-[0.95] tracking-tighter text-transparent"
-            style={{
-              fontSize: "clamp(60px, 15vw, 180px)",
-              WebkitTextStroke: "1px rgba(255,255,255,0.22)",
-            }}
-          >
-            TGIE
+        <DarkCell className="pb-3 pt-4">
+          <div className="flex justify-end px-5">
+            <a
+              href="#main"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3.5 min-h-11 text-[12.5px] text-ondark transition-colors hover:border-white/40 hover:text-white"
+            >
+              Back to top
+              <Icon name="arrow-up-right" size={14} className="-rotate-45" />
+            </a>
           </div>
-        </DitherCell>
+          <div
+            aria-hidden
+            className="pointer-events-none mt-6 select-none text-center font-mono font-bold leading-[0.8] tracking-tighter text-[#272b2a]"
+            style={{ fontSize: "clamp(72px, 19vw, 260px)" }}
+          >
+            TGIE<span className="text-accent">_</span>
+          </div>
+        </DarkCell>
       </Row>
 
-      {/* legal strip cell */}
+      {/* legal strip */}
       <Row>
-        <DitherCell
-          scrim
-          contentClassName="flex flex-wrap items-center justify-between gap-2.5 px-6 py-4 text-[12.5px]"
-        >
+        <DarkCell className="flex flex-wrap items-center justify-between gap-2.5 px-6 py-4 text-[12.5px]">
           <span>© 2026 The Great Indian Engineers. {site.base}.</span>
           <span>{f.legal.join(" · ")}</span>
-        </DitherCell>
+        </DarkCell>
       </Row>
     </footer>
   );

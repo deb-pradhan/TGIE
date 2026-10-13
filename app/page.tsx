@@ -29,11 +29,11 @@ export default function Home() {
       <GapStrip />
       <Ownership />
       <GapStrip />
-      <CaseStudy />
+      <CaseStudy showWorkLink />
       <DottedStrip />
-      <FinalCTA />
+      <Faq eyebrow="Common questions" />
       <GapStrip />
-      <Faq />
+      <FinalCTA />
     </div>
   );
 }

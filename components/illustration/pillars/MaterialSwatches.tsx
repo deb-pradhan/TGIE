@@ -4,12 +4,12 @@ import { C } from "../kit";
 
 type Row = { category: string; filaments: string; use: string };
 
-/** Teal-family tones only, dark to light. One ramp per material category. */
+/** Graphite and safety-orange tones only, dark to light. One ramp per material category. */
 const RAMPS: string[][] = [
-  [C.forestDeep, C.forest, C.tealDeep, C.teal],
-  [C.tealDeep, C.teal, C.tealSoft],
-  [C.tealSoft, C.mint, C.faceR],
-  [C.mint, C.tealSoft, C.faceR, C.card],
+  [C.graphiteDeep, C.graphite, C.accentDeep, C.accent],
+  [C.accentDeep, C.accent, C.accentSoft],
+  [C.accentSoft, C.accentPale, C.faceR],
+  [C.accentPale, C.accentSoft, C.faceR, C.faceL],
 ];
 
 /** Split "PA-CF, PET-CF" and keep parenthesised groups intact; "TPU (95A / 85A)" becomes two chips. */
@@ -37,7 +37,7 @@ export function MaterialSwatches({ rows }: { rows: Row[] }) {
           return (
             <Cell key={r.category} className="flex flex-col gap-5 px-[var(--gutter)] py-8">
               <div className="flex items-center gap-3">
-                <span className="grid h-9 w-9 place-items-center rounded-[10px] bg-mint text-teal-deep">
+                <span className="grid h-9 w-9 place-items-center rounded-[10px] bg-accent-pale text-accent-deep">
                   <Icon name="printer" size={18} />
                 </span>
                 <h3 className="font-mono text-[15px] font-medium tracking-tight text-ink">{r.category}</h3>
@@ -46,7 +46,7 @@ export function MaterialSwatches({ rows }: { rows: Row[] }) {
                 {list.map((n, i) => (
                   <div key={n} className="min-w-0 flex-1">
                     <div
-                      className="h-16 rounded-[10px] border border-line shadow-[inset_0_-10px_14px_-10px_rgba(0,0,0,.18)]"
+                      className="h-16 rounded-[10px] border border-line-strong shadow-[inset_0_-10px_14px_-10px_rgba(0,0,0,.18)]"
                       style={{ backgroundColor: ramp[i % ramp.length], backgroundImage: layers }}
                     />
                     <div className="mt-2 font-mono text-[11.5px] leading-tight text-ink-2">{n}</div>
