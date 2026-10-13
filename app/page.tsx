@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
 import { TrustBand } from "@/components/sections/TrustBand";
 import { Philosophy } from "@/components/sections/Philosophy";
@@ -10,6 +11,11 @@ import { CaseStudy } from "@/components/sections/CaseStudy";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Faq } from "@/components/sections/Faq";
 import { GapStrip, DottedStrip } from "@/components/frame/Grid";
+
+// The root layout supplies title/description/share image; the home page only adds its own canonical URL.
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
