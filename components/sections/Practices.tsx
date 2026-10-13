@@ -1,28 +1,14 @@
-import type { ReactNode } from "react";
+import Link from "next/link";
 import { Fragment } from "react";
 import { practices } from "@/content/practices";
 import { Section } from "@/components/primitives/Section";
 import { TwoToneHeading } from "@/components/primitives/TwoToneHeading";
 import { Eyebrow } from "@/components/primitives/Pill";
-import { StockImage } from "@/components/illustration/StockImage";
+import { PillarScene } from "@/components/illustration/pillars";
+import { Icon, IconBadge, type IconName } from "@/components/icons/Icon";
 import { Reveal } from "@/lib/motion";
 import { FrameBlock, GapStrip, Cell } from "@/components/frame/Grid";
 import { cn } from "@/lib/cn";
-
-// Interim stock photos per pillar (placeholders for bespoke visuals).
-const pillarImages: Record<string, string> = {
-  engineering: "/pillars/engineering.jpg",
-  products: "/pillars/products.jpg",
-  enablement: "/pillars/enablement-writing.jpg",
-  fabrication: "/pillars/fabrication.jpg",
-};
-
-const icons: Record<string, ReactNode> = {
-  engineering: <path d="M8 4h8v16H8zM4 8h4M4 12h4M4 16h4M16 8h4M16 12h4M16 16h4M11 10h2v4h-2z" />,
-  products: <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3zM4 7.5l8 4.5 8-4.5M12 12v9" />,
-  enablement: <path d="M4 21h16M6 21V8l6-4 6 4v13M10 21v-5h4v5" />,
-  fabrication: <path d="M3 21h18M5 21V11l4 3V11l4 3V11l4 3v7M8 6V4" />,
-};
 
 export function Practices() {
   return (
@@ -56,20 +42,7 @@ export function Practices() {
                   i % 2 === 1 && "lg:order-2",
                 )}
               >
-                <div className="mb-6 grid h-11 w-11 place-items-center rounded-tile bg-mint text-teal">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    strokeLinejoin="round"
-                    strokeLinecap="round"
-                  >
-                    {icons[p.slug]}
-                  </svg>
-                </div>
+                <IconBadge name={p.slug as IconName} className="mb-6" />
 
                 <div className="font-mono text-[12px] uppercase tracking-[0.12em] text-teal">
                   {`Pillar ${p.index}`}
@@ -88,16 +61,26 @@ export function Practices() {
                     </div>
                   ))}
                 </div>
+
+                <Link
+                  href={`/services/${p.slug}`}
+                  className="group mt-9 inline-flex w-fit items-center gap-2 font-mono text-[13px] font-medium tracking-tight text-ink-2 transition-colors duration-200 hover:text-teal focus-visible:outline-2 focus-visible:outline-teal"
+                >
+                  {`Explore ${p.short.toLowerCase()}`}
+                  <Icon name="arrow-right" size={16} className="transition-transform duration-200 motion-safe:group-hover:translate-x-0.5" />
+                </Link>
               </Cell>
 
-              {/* illustration cell */}
+              {/* illustration cell: signature isometric scene */}
               <Cell
                 className={cn(
-                  "relative min-h-[300px] overflow-hidden",
+                  "relative aspect-[4/3] overflow-hidden lg:aspect-auto lg:min-h-[420px]",
                   i % 2 === 1 && "lg:order-1",
                 )}
               >
-                <StockImage src={pillarImages[p.slug]} alt={p.name} />
+                <div className="absolute inset-0">
+                  <PillarScene slug={p.slug} />
+                </div>
               </Cell>
             </div>
           </FrameBlock>

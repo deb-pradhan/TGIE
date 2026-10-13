@@ -13,6 +13,15 @@
 - **Motion** section adds the off-screen-pause pattern for many animated instances. See §13.
 - New anti-pattern: **text over the dither must sit on a scrim**. See §20.
 
+**What changed in v5** (visual + performance pass, 2026-10):
+- **Custom illustration is now the default** over stock photography: every pillar, sub-service, case study and section has a bespoke inline-SVG scene built on `components/illustration/kit.tsx` (`C` palette, `makeIso`, `SceneFrame`). Registers in §11.1 still apply: one per figure.
+- **`Live`** (`components/illustration/Live.tsx`) gates `.ill-*` CSS animations to on-screen figures; reduced motion disables them. Satisfies the §13 off-screen rule without JS per frame.
+- **Icon family** in `components/icons/` (`Icon`, `IconBadge`, 69 glyphs); names are a contract, add never rename.
+- **Logo** in `components/brand/Logo.tsx`; favicon `app/icon.svg`.
+- **`Reveal`** is now progressive (visible in server HTML, no `motion` dependency).
+- **`PageHero`** takes an `art` prop for a hero illustration cell.
+- Removed: `StockImage`, `AdditiveScene`, `PixelBackdrop`, the hero MP4.
+
 This is written as a **cross-disciplinary handover**, for whoever picks up the work next, human or agent, whether they touch pixels, copy, components, or content. It is deliberately exhaustive. If you read only one section, read **§2 (Core Mental Model)** and **§20 (Anti-patterns)**. Nearly every past mistake came from missing those.
 
 ---

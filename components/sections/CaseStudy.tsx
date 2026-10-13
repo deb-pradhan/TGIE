@@ -1,8 +1,8 @@
 import { site } from "@/content/site";
 import { Eyebrow } from "@/components/primitives/Pill";
 import { Reveal } from "@/lib/motion";
-import { StockImage } from "@/components/illustration/StockImage";
 import { FrameBlock, Cell } from "@/components/frame/Grid";
+import { CaseGait } from "@/components/illustration/home2/CaseGait";
 
 export function CaseStudy() {
   const c = site.caseStudy;
@@ -12,17 +12,30 @@ export function CaseStudy() {
         <Cell className="flex flex-col justify-center px-[var(--gutter)] py-16">
           <Reveal>
             <Eyebrow>{c.eyebrow}</Eyebrow>
-            <blockquote className="mt-4 font-mono text-[clamp(20px,2.6vw,29px)] font-medium leading-snug tracking-tight text-ink">
-              &ldquo;{c.quote}&rdquo;
+            <div
+              aria-hidden
+              className="mt-5 h-[0.5em] select-none font-mono text-[clamp(88px,11vw,132px)] font-medium leading-none tracking-tighter text-teal"
+            >
+              &ldquo;
+            </div>
+            <blockquote className="mt-3 font-mono text-[clamp(20px,2.6vw,29px)] font-medium leading-snug tracking-tight text-ink">
+              {c.quote}
             </blockquote>
-            <div className="mt-6 text-[14px]">
-              <div className="font-medium">{c.who}</div>
-              <div className="text-muted">{c.role}</div>
+            <div className="mt-8 flex items-stretch gap-4 text-[14px]">
+              <span aria-hidden className="w-[3px] shrink-0 rounded-full bg-teal" />
+              <div>
+                <div className="font-medium">{c.who}</div>
+                <div className="text-muted">{c.role}</div>
+              </div>
             </div>
           </Reveal>
         </Cell>
-        <Cell className="relative min-h-[280px] overflow-hidden">
-          <StockImage src="/pillars/casestudy.jpg" alt="" />
+        <Cell
+          className="relative min-h-[360px] overflow-hidden"
+        >
+          <div role="img" aria-label="Engraved plate: a gait sensor module strapped to the shank, with a gyro trace" className="absolute inset-0">
+            <CaseGait />
+          </div>
         </Cell>
       </div>
     </FrameBlock>

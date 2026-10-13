@@ -1,4 +1,5 @@
 import type { IsoVariant } from "@/components/illustration/Iso";
+import type { IconName } from "@/components/icons/Icon";
 
 export type Capability = { title: string; note: string };
 
@@ -94,3 +95,45 @@ export const practices: Practice[] = [
     illustration: "iso-factory",
   },
 ];
+
+/** Icon for each sub-service tile on the pillar pages, keyed by sub slug. */
+export const subIcons: Record<string, IconName> = {
+  "custom-pcb-design": "pcb",
+  "3d-enclosures": "enclosure",
+  "embedded-firmware": "firmware",
+  "edge-ai-tinyml": "edge-ai",
+  "data-dashboards": "dashboard",
+  "small-batch-production": "small-batch",
+  "industrial-enclosures": "industrial-enclosure",
+  "kinetic-iot-decor": "kinetic",
+  "automotive-plastics": "automotive",
+  "scale-miniatures": "miniature",
+  "retail-ecommerce": "retail",
+  "branding-marketing": "branding",
+  incorporation: "incorporation",
+  "funding-investor-access": "funding",
+  "audit-compliance": "audit",
+  "lead-gen-networking": "leads",
+  operations: "operations",
+  "single-source-accountability": "accountability",
+  "machinery-welding": "welding",
+  "partner-network-ops": "partners",
+  "quality-documentation": "quality",
+};
+
+/** Shared copy for the pillar pages' form / weight band and the closing tile. */
+export const pillarPage = {
+  form: { eyebrow: "The form we give", icon: "form" as IconName },
+  weight: { eyebrow: "The weight we lift", icon: "weight" as IconName },
+  capabilities: {
+    eyebrow: "What we deliver",
+    line1: "Everything in this pillar,",
+    line2: "under one accountable team.",
+  },
+  tilesCta: {
+    href: "/start",
+    title: "Something between the pillars?",
+    note: "Most projects cross more than one. Describe the idea and we will scope the whole path.",
+    cta: "Start a project",
+  },
+};

@@ -2,6 +2,12 @@ export const site = {
   name: "TGIE",
   fullName: "The Great Indian Engineers",
   base: "Thirumudivakkam, Chennai · working globally",
+  // Real contact details, taken from public/brochure.html. No email or social URLs are published yet.
+  contact: {
+    phone: "+91 95001 69253",
+    phoneHref: "tel:+919500169253",
+    location: "Thirumudivakkam, Chennai, India",
+  },
 
   hero: {
     eyebrow: "The Great Indian Engineers",
@@ -12,6 +18,13 @@ export const site = {
       { value: "4", unit: "pillars", label: "Under one accountable roof" },
       { value: "ISO 9001", label: "2015 certified fabrication" },
       { value: "100%", label: "IP transfer · zero lock-in" },
+    ],
+    figure: { caption: "Fig. 01 · Sketch to steel", meta: "1 PO · one accountable team" },
+    legend: [
+      { k: "A", label: "Engineering" },
+      { k: "B", label: "Products" },
+      { k: "C", label: "Enablement" },
+      { k: "D", label: "Fabrication" },
     ],
   },
 
@@ -24,6 +37,7 @@ export const site = {
       "Zero Data-Packet Loss",
       "DFM-Ready Gerber",
     ],
+    hints: ["Real-time tasks", "MCU configured", "Radio stack", "Lossless streams", "Fab-ready layers"],
   },
 
   philosophy: {

@@ -2,18 +2,24 @@ import { faqs } from "@/content/faq";
 import { TwoToneHeading } from "@/components/primitives/TwoToneHeading";
 import { Eyebrow } from "@/components/primitives/Pill";
 import { FrameBlock, Cell } from "@/components/frame/Grid";
+import { EngravedFigure } from "@/components/illustration/EngravedFigure";
 
 export function Faq() {
   return (
     <FrameBlock id="faq">
       <div className="relative grid gap-[2px] lg:grid-cols-2">
         {/* heading cell */}
-        <Cell className="flex flex-col justify-center px-[var(--gutter)] py-14">
-          <Eyebrow>Insights &amp; resources</Eyebrow>
-          <TwoToneHeading as="h2" line1="Everything you need" line2="to know." className="mt-4" />
-          <p className="text-lead mt-3 text-muted">
-            Common questions about working with TGIE across research and commercial engagements.
-          </p>
+        <Cell className="px-[var(--gutter)] py-14">
+          <div className="lg:sticky lg:top-28">
+            <Eyebrow>Insights &amp; resources</Eyebrow>
+            <TwoToneHeading as="h2" line1="Everything you need" line2="to know." className="mt-4" />
+            <p className="text-lead mt-3 max-w-[44ch] text-muted">
+              Common questions about working with TGIE across research and commercial engagements.
+            </p>
+            <div className="mt-10 hidden max-w-[260px] lg:block">
+              <EngravedFigure className="!rounded-[12px]" />
+            </div>
+          </div>
         </Cell>
 
         {/* each question is its own cell, stacked with 2px seams */}
@@ -21,8 +27,14 @@ export function Faq() {
           {faqs.map((f, i) => (
             <Cell key={f.q} className="min-w-0">
               <details className="group" open={i === 0}>
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-[15.5px] font-medium [&::-webkit-details-marker]:hidden">
-                  {f.q}
+                <summary className="flex cursor-pointer list-none items-center gap-3.5 px-5 py-5 text-[15.5px] font-medium sm:px-6 [&::-webkit-details-marker]:hidden">
+                  <span
+                    aria-hidden
+                    className="grid h-7 w-7 shrink-0 place-items-center rounded-[8px] bg-mint font-mono text-[11px] text-teal-deep"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="flex-1">{f.q}</span>
                   <span className="grid h-8 w-8 shrink-0 place-items-center rounded-[8px] bg-card text-ink-2 transition-transform duration-200 group-open:rotate-180 group-open:text-teal">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                       <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -32,7 +44,7 @@ export function Faq() {
                 {/* Grid-row trick: animates height/opacity without measuring. */}
                 <div className="grid grid-rows-[0fr] transition-[grid-template-rows,opacity] duration-200 ease-out opacity-0 group-open:grid-rows-[1fr] group-open:opacity-100">
                   <div className="min-h-0 overflow-hidden">
-                    <p className="px-6 pb-5 text-[14px] text-muted">{f.a}</p>
+                    <p className="pb-5 pl-[60px] pr-5 text-[14px] text-muted sm:pr-6 sm:pl-[62px]">{f.a}</p>
                   </div>
                 </div>
               </details>

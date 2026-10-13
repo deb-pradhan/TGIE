@@ -2,7 +2,9 @@ import type { ReactNode } from "react";
 import { site } from "@/content/site";
 import { GAP } from "@/components/frame/Grid";
 import { DitherField } from "@/components/illustration/DitherField";
+import Link from "next/link";
 import { Logo } from "@/components/brand/Logo";
+import { Icon } from "@/components/icons/Icon";
 import { cn } from "@/lib/cn";
 
 /**
@@ -47,39 +49,39 @@ function Row({ children }: { children: ReactNode }) {
   );
 }
 
-function Social({ label, d }: { label: string; d: string }) {
-  return (
-    <a
-      href="#"
-      aria-label={label}
-      className="grid h-[34px] w-[34px] place-items-center rounded-[8px] border border-white/15 bg-forest-deep/40 text-ondark hover:text-white"
-    >
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-        <path d={d} />
-      </svg>
-    </a>
-  );
-}
-
 export function Footer() {
   const f = site.footer;
   return (
-    <footer className="flex flex-col bg-[#081f18] pb-[2px] text-ondark-mut" style={{ gap: GAP }}>
+    <footer aria-label="Site footer" className="flex flex-col bg-[#081f18] pb-[2px] text-ondark-mut" style={{ gap: GAP }}>
       {/* link columns row — each column its own dithered cell */}
       <Row>
         <div className="grid gap-[2px] md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <DitherCell scrim contentClassName="p-6">
-            <div className="flex items-center gap-2.5 font-mono text-[17px] font-bold tracking-tight text-white">
-              <Logo dark />
-            </div>
+            <Logo variant="dark" />
             <p className="mt-3.5 max-w-[34ch] text-[13.5px] text-ondark-mut">{f.blurb}</p>
-            <div className="mt-4 flex gap-3">
-              <Social label="X" d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l8-9L2 2h6l5 6 5-6z" />
-              <Social
-                label="LinkedIn"
-                d="M4 4h4v16H4zM6 2a2 2 0 110 4 2 2 0 010-4zM10 8h4v2c1-2 3-2 4-2 3 0 4 2 4 5v7h-4v-6c0-2-1-2-2-2s-2 1-2 2v6h-4z"
-              />
-            </div>
+            <ul className="mt-5 space-y-2.5 text-[13.5px] text-ondark">
+              <li>
+                <a href={site.contact.phoneHref} className="inline-flex items-center gap-2.5 hover:text-white">
+                  <Icon name="phone" size={16} className="text-teal-soft" />
+                  {site.contact.phone}
+                </a>
+              </li>
+              {process.env.NEXT_PUBLIC_CONTACT_EMAIL && (
+                <li>
+                  <a
+                    href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}
+                    className="inline-flex items-center gap-2.5 hover:text-white"
+                  >
+                    <Icon name="mail" size={16} className="text-teal-soft" />
+                    {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
+                  </a>
+                </li>
+              )}
+              <li className="inline-flex items-center gap-2.5">
+                <Icon name="pin" size={16} className="text-teal-soft" />
+                {site.contact.location}
+              </li>
+            </ul>
           </DitherCell>
           {f.columns.map((col) => (
             <DitherCell key={col.title} scrim contentClassName="p-6">
@@ -87,13 +89,13 @@ export function Footer() {
                 {col.title}
               </h5>
               {col.links.map((l) => (
-                <a
+                <Link
                   key={l.label}
                   href={l.href}
-                  className="block py-1.5 text-[14px] text-ondark-mut hover:text-white"
+                  className="block py-1.5 text-[14px] text-ondark-mut hover:text-white focus-visible:outline-2 focus-visible:outline-teal"
                 >
                   {l.label}
-                </a>
+                </Link>
               ))}
             </DitherCell>
           ))}

@@ -5,6 +5,7 @@ export const fabrication = {
     eyebrow: "Single-source accountability",
     line1: "One Purchase Order,",
     line2: "from RFQ to a delivered structure.",
+    badge: "one PO · single accountable team",
     steps: [
       {
         n: "Step 01",
@@ -32,16 +33,17 @@ export const fabrication = {
   gap: {
     eyebrow: "Why heavy fabrication is its own pillar",
     heading: "A validated design still isn't a delivered structure.",
+    photoCaption: "In the shop: certified GMAW and SMAW welding",
     body: "TGIE's manufacturing extends beyond 3D-printed and small-batch parts into heavy structural fabrication, an ISO 9001:2015 certified operation processing roughly 200 tonnes a month. Clients issue a single Purchase Order and we manage the whole lifecycle: RFQ, sourcing, cutting, bending, fabrication, machining, coating, and logistics. That removes the vendor-coordination burden a fragmented fab chain puts on the client.",
   },
 
   stats: {
     eyebrow: "Built at industrial scale",
     items: [
-      { value: "ISO 9001", label: "2015 certified", note: "Process control & QC" },
-      { value: "~200 t", label: "Per month", note: "Fabricated material" },
-      { value: "250mm", label: "Plasma cut", note: "Mild steel capacity" },
-      { value: "1 PO", label: "Single source", note: "RFQ to logistics" },
+      { value: "ISO 9001", label: "2015 certified", note: "Process control & QC", icon: "quality" },
+      { value: "~200 t", label: "Per month", note: "Fabricated material", icon: "gear" },
+      { value: "250mm", label: "Plasma cut", note: "Mild steel capacity", icon: "laser" },
+      { value: "1 PO", label: "Single source", note: "RFQ to logistics", icon: "accountability" },
     ],
   },
 
@@ -50,6 +52,7 @@ export const fabrication = {
     heading: "Certified, documented,",
     headingMuted: "delivered.",
     body: "Every fabrication engagement ships with mill certificates, Welding Procedure Specifications (WPS), and test reports. The QC documentation industrial OEMs and heavy-equipment manufacturers need on file.",
+    docs: ["Mill certificates", "WPS", "Test reports"],
   },
 
   categories: {

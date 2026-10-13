@@ -158,3 +158,54 @@
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+
+/* ============================================================
+   Illustration motion (components/illustration/kit.tsx + Live.tsx)
+   Animations run only while the figure is on screen ([data-live=true]).
+   ============================================================ */
+.ill-float, .ill-dash, .ill-pulse, .ill-spin, .ill-blink, .ill-scan { transform-box: fill-box; }
+[data-live="true"] .ill-float { animation: ill-float 6s ease-in-out infinite; }
+[data-live="true"] .ill-float-2 { animation: ill-float 7.5s ease-in-out -2s infinite; }
+[data-live="true"] .ill-dash { animation: ill-dash 2.4s linear infinite; }
+[data-live="true"] .ill-pulse { animation: ill-pulse 3s ease-in-out infinite; transform-origin: center; }
+[data-live="true"] .ill-spin { animation: ill-spin 24s linear infinite; transform-origin: center; }
+[data-live="true"] .ill-blink { animation: ill-blink 2.2s steps(2, jump-none) infinite; }
+[data-live="true"] .ill-scan { animation: ill-scan 5s ease-in-out infinite; }
+@keyframes ill-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes ill-dash { to { stroke-dashoffset: -20; } }
+@keyframes ill-pulse { 0%,100% { opacity: .55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.06); } }
+@keyframes ill-spin { to { transform: rotate(360deg); } }
+@keyframes ill-blink { 0% { opacity: 1; } 50% { opacity: .25; } }
+@keyframes ill-scan { 0%,100% { transform: translateX(-12px); } 50% { transform: translateX(12px); } }
+@media (prefers-reduced-motion: reduce) {
+  [data-live="true"] [class*="ill-"] { animation: none !important; }
+}
+
+/* ---- sub-page illustration motion (subs/*): slide, grow, ping ---- */
+.ill-slide, .ill-grow, .ill-ping { transform-box: fill-box; }
+[data-live="true"] .ill-slide { animation: ill-slide 6s ease-in-out infinite; }
+[data-live="true"] .ill-grow { animation: ill-grow 4s ease-in-out infinite; transform-origin: 50% 100%; }
+[data-live="true"] .ill-ping { animation: ill-ping 3s ease-out infinite; transform-origin: center; }
+@keyframes ill-slide { 0%,100% { transform: translate(0,0); } 50% { transform: translate(var(--dx,12px), var(--dy,6px)); } }
+@keyframes ill-grow { 0%,100% { transform: scaleY(.55); } 50% { transform: scaleY(1); } }
+@keyframes ill-ping { 0% { opacity: .9; transform: scale(.5); } 100% { opacity: 0; transform: scale(1.7); } }
+
+/* ---- home2 illustrations: keep strokes in px inside iso-plane groups ---- */
+.ill-ns, .ill-ns * { vector-effect: non-scaling-stroke; }
+
+/* ---- brand/shell: Reveal (lib/motion.tsx) — visible by default; JS opts in below the fold ---- */
+.reveal-pending {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y, 14px), 0);
+  will-change: opacity, transform;
+}
+.reveal-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) var(--reveal-delay, 0s),
+    transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) var(--reveal-delay, 0s);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-pending { opacity: 1; transform: none; }
+}
