@@ -25,7 +25,7 @@ const spaceMono = Space_Mono({
 });
 
 const description =
-  "TGIE gives research and startup ideas a form: hardware, company, and market, and carries the weight of building it. You keep the vision. And you own everything we make.";
+  "Embedded hardware, product development, company setup and fundraising, and ISO 9001 fabrication for researchers and founders. One team, you own it all.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -37,8 +37,7 @@ export const metadata: Metadata = {
   applicationName: "TGIE",
   openGraph: {
     title: "TGIE. Theory, embodied.",
-    description:
-      "We give ideas a form and carry the weight of making it real. You carry the vision. We carry the weight.",
+    description,
     type: "website",
     siteName: "The Great Indian Engineers",
     locale: "en_IN",
@@ -46,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "TGIE. Theory, embodied.",
-    description: "We give ideas a form and carry the weight of making it real.",
+    description,
   },
   // The placeholder origin must never be indexed; set NEXT_PUBLIC_SITE_URL to go live.
   robots: SITE_URL_IS_PLACEHOLDER ? { index: false, follow: false } : { index: true, follow: true },
