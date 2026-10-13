@@ -107,7 +107,7 @@ function Hub(): ReactNode {
   const hx = 4.5,
     hy = 4.5;
   const c = S.proj(hx, hy, 0.02);
-  const ring = (r: number) => ({ rx: 1.414 * S.k * r, ry: 0.707 * S.k * r });
+  const ring = (r: number) => ({ rx: +(1.414 * S.k * r).toFixed(2), ry: +(0.707 * S.k * r).toFixed(2) });
   return (
     <g>
       {[1.7, 2.5].map((r, i) => (

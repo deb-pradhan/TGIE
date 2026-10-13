@@ -104,8 +104,8 @@ export function LabBench() {
       {/* beaker */}
       {(() => {
         const b = s.proj(0.2, -0.5, 1.45);
-        const rx = 1.414 * s.k * 0.28;
-        const ry = 0.707 * s.k * 0.28;
+        const rx = +(1.414 * s.k * 0.28).toFixed(2);
+        const ry = +(0.707 * s.k * 0.28).toFixed(2);
         return (
           <g>
             <path

@@ -329,13 +329,3 @@ export function Led({ s, x, y, z, delay = 0 }: { s: S; x: number; y: number; z: 
   const [px, py] = s.proj(x, y, z);
   return <circle cx={px} cy={py} r={3} fill={C.accent} className="ill-blink" style={{ animationDelay: `${delay}s` }} />;
 }
-
-/** Defs-free graphite "device screen" panel in screen space. */
-export function Screen({ x, y, w, h, rx = 5, children }: { x: number; y: number; w: number; h: number; rx?: number; children?: ReactNode }) {
-  return (
-    <g>
-      <rect x={x} y={y} width={w} height={h} rx={rx} fill={C.graphite} />
-      {children}
-    </g>
-  );
-}

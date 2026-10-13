@@ -24,5 +24,3 @@ export function iso(ox: number, oy: number, k = 24, hz = 16) {
     },
   };
 }
-
-export type IsoKit = ReturnType<typeof iso>;

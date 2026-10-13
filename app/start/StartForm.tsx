@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
+import { track } from "@/lib/analytics";
 import { start } from "@/content/start";
 import { practices } from "@/content/practices";
 import { PillarGlyph } from "@/components/illustration/work/ConceptStages";
@@ -141,7 +142,10 @@ export function StartForm({ contactEmail }: { contactEmail?: string }) {
     });
   };
 
-  const touch = (k: keyof Enquiry) => touched.current.add(k);
+  const touch = (k: keyof Enquiry) => {
+    if (touched.current.size === 0) track("form_start", { form_id: "start_enquiry" });
+    touched.current.add(k);
+  };
   const blurTouched = (k: keyof Enquiry) => {
     if (touched.current.has(k) || errors[k]) blur(k);
   };
@@ -168,6 +172,7 @@ export function StartForm({ contactEmail }: { contactEmail?: string }) {
     const text = enquiryText(r.value, PILLAR_NAMES);
     setMessage(text);
     const tgie_hp = new FormData(formRef.current!).get("tgie_hp");
+    let failure: "not_configured" | "failed" = "failed";
     try {
       const res = await fetch("/api/enquiry", {
         method: "POST",
@@ -175,6 +180,7 @@ export function StartForm({ contactEmail }: { contactEmail?: string }) {
         body: JSON.stringify({ ...r.value, tgie_hp, elapsed: Date.now() - openedAt.current }),
       });
       if (res.ok) {
+        track("generate_lead", { form_id: "start_enquiry", lead_role: r.value.role, lead_pillars: r.value.pillars.join(",") || "none" });
         setStatus("sent");
         setTimeout(() => headingRef.current?.focus(), 50);
         return;
@@ -192,12 +198,14 @@ export function StartForm({ contactEmail }: { contactEmail?: string }) {
         setStatus("idle");
         return;
       }
-      setReason(data.error === "not_configured" ? "not_configured" : "failed");
+      failure = data.error === "not_configured" ? "not_configured" : "failed";
     } catch {
-      setReason("failed");
+      failure = "failed";
     } finally {
       sendingRef.current = false;
     }
+    setReason(failure);
+    track("enquiry_failed", { reason: failure });
     setStatus("fallback");
     setTimeout(() => fallbackRef.current?.focus(), 50);
   }

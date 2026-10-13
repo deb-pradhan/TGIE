@@ -1,4 +1,3 @@
-import type { IsoVariant } from "@/components/illustration/Iso";
 import type { IconName } from "@/components/icons/Icon";
 
 export type Capability = { title: string; note: string };
@@ -13,7 +12,6 @@ export type Practice = {
   body: string; // "the form it gives"
   weight: string; // "the weight it lifts"
   capabilities: Capability[];
-  illustration: IsoVariant;
 };
 
 /**
@@ -41,7 +39,6 @@ export const practices: Practice[] = [
       { title: "3D enclosures", note: "Designed with the PCB footprint" },
       { title: "Edge AI / TinyML", note: "On-device inference, no cloud" },
     ],
-    illustration: "iso-boards",
   },
   {
     slug: "products",
@@ -58,7 +55,6 @@ export const practices: Practice[] = [
       { title: "Automotive plastics", note: "Discontinued & custom cabin parts" },
       { title: "Retail & e-commerce", note: "Curated Amazon / D2C product runs" },
     ],
-    illustration: "iso-market",
   },
   {
     slug: "enablement",
@@ -75,7 +71,6 @@ export const practices: Practice[] = [
       { title: "Fundraising & GTM", note: "DST-NIDHI, BIRAC BIG, MeitY, angels" },
       { title: "Corporate audit", note: "Compliance, BOM traceability, SOPs" },
     ],
-    illustration: "iso-legal",
   },
   {
     slug: "fabrication",
@@ -92,7 +87,6 @@ export const practices: Practice[] = [
       { title: "Certified welding", note: "GMAW (MIG) and SMAW (ARC)" },
       { title: "QA & documentation", note: "ISO 9001:2015, mill certs, WPS" },
     ],
-    illustration: "iso-factory",
   },
 ];
 

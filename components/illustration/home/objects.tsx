@@ -513,10 +513,10 @@ export function Company(
     return (
       <ellipse
         key={i}
-        cx={p[0]}
-        cy={p[1]}
-        rx={1.414 * S.k * 0.27}
-        ry={0.707 * S.k * 0.27}
+        cx={+p[0].toFixed(1)}
+        cy={+p[1].toFixed(1)}
+        rx={+(1.414 * S.k * 0.27).toFixed(2)}
+        ry={+(0.707 * S.k * 0.27).toFixed(2)}
         fill={C.accentSoft}
         stroke={C.accentDeep}
         strokeWidth={0.9}

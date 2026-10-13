@@ -3,6 +3,8 @@ import { Hanken_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav/Nav";
 import { Footer } from "@/components/sections/Footer";
+import { ScrollEffects } from "@/components/ScrollEffects";
+import { Analytics } from "@/components/Analytics";
 import { SITE_URL, SITE_URL_IS_PLACEHOLDER } from "@/lib/siteUrl";
 import { site } from "@/content/site";
 
@@ -112,6 +114,8 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
+        <ScrollEffects />
+        <Analytics />
       </body>
     </html>
   );

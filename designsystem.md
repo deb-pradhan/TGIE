@@ -15,10 +15,13 @@
 
 **What changed in v5** (visual + performance pass, 2026-10):
 - **Custom illustration is now the default** over stock photography: every pillar, sub-service, case study and section has a bespoke inline-SVG scene built on `components/illustration/kit.tsx` (`C` palette, `makeIso`, `SceneFrame`). Registers in §11.1 still apply: one per figure.
-- **`Live`** (`components/illustration/Live.tsx`) gates `.ill-*` CSS animations to on-screen figures; reduced motion disables them. Satisfies the §13 off-screen rule without JS per frame.
+- **`Live`** (`components/illustration/Live.tsx`) is plain server markup (`data-live`); one shared client component, `components/ScrollEffects.tsx`, flips it so `.ill-*` CSS animations run only on screen (reduced motion disables them). Satisfies the §13 off-screen rule with no hydration per figure. `Reveal` works the same way (`data-reveal`).
 - **Icon family** in `components/icons/` (`Icon`, `IconBadge`, 69 glyphs); names are a contract, add never rename.
 - **Logo** in `components/brand/Logo.tsx`; favicon `app/icon.svg`.
 - **`Reveal`** is now progressive (visible in server HTML, no `motion` dependency).
+- **Palette:** Graphite & Safety Orange (`--color-accent*`, `--color-graphite*`), with a lighter canvas (`--color-paper` #e7e8e5) and cells (`--color-cell` #fafaf8) and stronger text/line contrast; the old teal/forest tokens are gone. Illustration colours live in `components/illustration/kit.tsx` (`C`).
+- **Footer:** graphite collage with icon-led link columns and a large `TGIE_` wordmark; the dither surface (`DitherField`, §11.2) was removed, so §11.2 is historical.
+- Animated SVG groups must not carry both a `transform` attribute and an `.ill-*` animation class on the same element (the CSS animation overrides the attribute): nest two groups.
 - **`PageHero`** takes an `art` prop for a hero illustration cell.
 - Removed: `StockImage`, `AdditiveScene`, `PixelBackdrop`, the hero MP4.
 
