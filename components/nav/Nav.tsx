@@ -5,6 +5,7 @@ import Link from "next/link";
 import { practices } from "@/content/practices";
 import { practiceDetail } from "@/content/practiceDetail";
 import { Button } from "@/components/primitives/Button";
+import { Logo } from "@/components/brand/Logo";
 import { cn } from "@/lib/cn";
 
 export function Nav() {
@@ -22,10 +23,7 @@ export function Nav() {
           <div className="rounded-[8px] bg-cell">
             <div className="mx-auto flex h-14 max-w-[var(--maxw)] items-center gap-2 px-4">
             <Link href="/" className="flex items-center gap-2.5 pr-4 font-mono text-[17px] font-bold tracking-tight">
-              <span className="grid h-7 w-7 place-items-center rounded-[7px] bg-forest font-mono text-[14px] text-white">
-                T
-              </span>
-              TGIE
+              <Logo />
             </Link>
 
             {/* desktop links */}

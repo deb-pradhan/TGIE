@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { site } from "@/content/site";
 import { GAP } from "@/components/frame/Grid";
 import { DitherField } from "@/components/illustration/DitherField";
+import { Logo } from "@/components/brand/Logo";
 import { cn } from "@/lib/cn";
 
 /**
@@ -69,10 +70,7 @@ export function Footer() {
         <div className="grid gap-[2px] md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <DitherCell scrim contentClassName="p-6">
             <div className="flex items-center gap-2.5 font-mono text-[17px] font-bold tracking-tight text-white">
-              <span className="grid h-7 w-7 place-items-center rounded-[7px] bg-forest-deep font-mono text-[14px]">
-                T
-              </span>
-              TGIE
+              <Logo dark />
             </div>
             <p className="mt-3.5 max-w-[34ch] text-[13.5px] text-ondark-mut">{f.blurb}</p>
             <div className="mt-4 flex gap-3">
